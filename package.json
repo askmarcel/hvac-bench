@@ -8,6 +8,7 @@
     "validate:cases": "tsx scripts/validate-cases.ts",
     "run:d": "tsx runners/arm-d.ts",
     "run:a": "tsx runners/arm-a.ts",
+    "run:b": "tsx runners/arm-b.ts",
     "compare:arms": "tsx scripts/compare-arms.ts",
     "score": "tsx scorer/index.ts",
     "gate": "tsx gate/run.ts",

@@ -1,14 +1,14 @@
 /**
- * Runner bras A — LLM closed-book (CDC §6).
+ * Runner bras B — LLM + recherche web (CDC §6).
  *
  * Usage :
- *   BENCH_ARM_A_API_KEY=… tsx runners/arm-a.ts \
+ *   BENCH_ARM_B_API_KEY=… tsx runners/arm-b.ts \
  *     --cases ../hvac-bench-heldout/dataset/gate.jsonl --out runs/<run_id>
  *
  * Variables :
- *   BENCH_ARM_A_API_KEY — clé OpenAI-compatible (défaut : OPENROUTER_API_KEY puis OPENAI_API_KEY)
- *   BENCH_ARM_A_BASE_URL — défaut https://openrouter.ai/api/v1
- *   BENCH_ARM_A_MODEL — défaut openai/gpt-4o
+ *   BENCH_ARM_B_API_KEY — clé OpenAI-compatible (défaut : OPENROUTER_API_KEY)
+ *   BENCH_ARM_B_BASE_URL — défaut https://openrouter.ai/api/v1
+ *   BENCH_ARM_B_MODEL — défaut perplexity/sonar (recherche web intégrée)
  */
 import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
@@ -27,10 +27,10 @@ import {
   stripBenchFields,
 } from './lib.js';
 
-const CONCURRENCY = Number(process.env.BENCH_CONCURRENCY ?? 3);
-const TIMEOUT_MS = Number(process.env.BENCH_TIMEOUT_MS ?? 60_000);
+const CONCURRENCY = Number(process.env.BENCH_CONCURRENCY ?? 2);
+const TIMEOUT_MS = Number(process.env.BENCH_TIMEOUT_MS ?? 120_000);
 const MAX_ATTEMPTS = 3;
-const PROMPT_PATH = resolve(dirname(fileURLToPath(import.meta.url)), '../prompts/arm-a-v1.md');
+const PROMPT_PATH = resolve(dirname(fileURLToPath(import.meta.url)), '../prompts/arm-b-v1.md');
 
 async function callOnce(
   config: ReturnType<typeof resolveOpenRouterArmConfig>,
@@ -42,6 +42,22 @@ async function callOnce(
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
 
   try {
+    const body: Record<string, unknown> = {
+      model: config.model,
+      temperature: 0.2,
+      messages: [
+        { role: 'system', content: systemPrompt },
+        {
+          role: 'user',
+          content: `${buildUserMessage(c)}\n\nRecherche web autorisée. Réponds en JSON Answer Contract uniquement.`,
+        },
+      ],
+    };
+    // Perplexity Sonar : pas de response_format json_object (provider 400).
+    if (!config.model.startsWith('perplexity/')) {
+      body.response_format = { type: 'json_object' };
+    }
+
     const response = await fetch(`${config.baseUrl}/chat/completions`, {
       method: 'POST',
       headers: {
@@ -54,15 +70,7 @@ async function callOnce(
             }
           : {}),
       },
-      body: JSON.stringify({
-        model: config.model,
-        temperature: 0.2,
-        response_format: { type: 'json_object' },
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: buildUserMessage(c) },
-        ],
-      }),
+      body: JSON.stringify(body),
       signal: controller.signal,
     });
 
@@ -75,12 +83,28 @@ async function callOnce(
       return {
         record: {
           case_id: c.id,
-          arm: 'A',
+          arm: 'B',
           http_status: response.status,
           latency_ms: latency,
           answer: null,
           confidence: { band: 'unknown', score: null },
           error: `réponse provider non JSON (${text.slice(0, 120)})`,
+        },
+        retryable: response.status >= 500 || response.status === 429,
+      };
+    }
+
+    const apiError = payload?.error as { message?: string } | undefined;
+    if (apiError?.message) {
+      return {
+        record: {
+          case_id: c.id,
+          arm: 'B',
+          http_status: response.status,
+          latency_ms: latency,
+          answer: null,
+          confidence: { band: 'unknown', score: null },
+          error: apiError.message.slice(0, 160),
         },
         retryable: response.status >= 500 || response.status === 429,
       };
@@ -93,7 +117,7 @@ async function callOnce(
       return {
         record: {
           case_id: c.id,
-          arm: 'A',
+          arm: 'B',
           http_status: response.status,
           latency_ms: latency,
           answer: null,
@@ -108,7 +132,7 @@ async function callOnce(
     return {
       record: {
         case_id: c.id,
-        arm: 'A',
+        arm: 'B',
         http_status: response.status,
         latency_ms: latency,
         answer: stripBenchFields(parsed),
@@ -121,7 +145,7 @@ async function callOnce(
     return {
       record: {
         case_id: c.id,
-        arm: 'A',
+        arm: 'B',
         http_status: null,
         latency_ms: Date.now() - started,
         answer: null,
@@ -147,19 +171,19 @@ async function callWithRetry(
     if (!retryable && !record.error) return record;
     if (!retryable) return record;
     if (attempt < MAX_ATTEMPTS) {
-      await new Promise((r) => setTimeout(r, 800 * 2 ** (attempt - 1)));
+      await new Promise((r) => setTimeout(r, 1200 * 2 ** (attempt - 1)));
     }
   }
   return last as RunRecord;
 }
 
 async function main() {
-  const config = resolveOpenRouterArmConfig('A');
+  const config = resolveOpenRouterArmConfig('B');
   const casesPath = resolve(arg('cases') ?? '../hvac-bench-heldout/dataset/gate.jsonl');
   const cases = loadCases(casesPath);
   const systemPrompt = readFileSync(PROMPT_PATH, 'utf8');
 
-  const runId = arg('run-id') ?? newRunId('a');
+  const runId = arg('run-id') ?? newRunId('b');
   const outDir = resolve(arg('out') ?? `runs/${runId}`);
   mkdirSync(outDir, { recursive: true });
   const rawPath = resolve(outDir, 'raw.jsonl');
@@ -167,7 +191,7 @@ async function main() {
 
   const startedAt = new Date().toISOString();
   const endpoint = `${config.baseUrl} · ${config.model}`;
-  console.log(`Bras A · ${cases.length} cas · ${endpoint}\nrun ${runId}\n`);
+  console.log(`Bras B · ${cases.length} cas · ${endpoint}\nrun ${runId}\n`);
 
   let done = 0;
   let contractVersion: string | null = null;
@@ -192,7 +216,7 @@ async function main() {
 
   const artifact = makeRunArtifact({
     runId,
-    arm: 'A',
+    arm: 'B',
     casesPath,
     endpoint,
     n: cases.length,

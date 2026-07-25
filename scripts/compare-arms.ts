@@ -1,13 +1,15 @@
 /**
- * Compare deux rapports de score (ex. bras A vs bras D).
+ * Compare rapports de score — A / B vs D (et A vs B).
  *
  * Usage :
  *   tsx scripts/compare-arms.ts --a runs/arm-a/score.json --d baselines/last-green.json
+ *   tsx scripts/compare-arms.ts --a … --b runs/arm-b/score.json --d …
  */
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import type { ScoreReport } from '../scorer/index.js';
+import type { Metrics } from '../scorer/aggregate.js';
 
 function arg(name: string): string | undefined {
   const i = process.argv.indexOf(`--${name}`);
@@ -23,23 +25,38 @@ function pct(rate: number | null | undefined): string {
   return `${(rate * 100).toFixed(1)} %`;
 }
 
-function delta(a: number | null | undefined, d: number | null | undefined): string {
-  if (a === null || a === undefined || d === null || d === undefined) return 'n/a';
-  const diff = (d - a) * 100;
+function delta(ref: number | null | undefined, other: number | null | undefined): string {
+  if (ref === null || ref === undefined || other === null || other === undefined) return 'n/a';
+  const diff = (ref - other) * 100;
   const sign = diff >= 0 ? '+' : '';
-  return `${sign}${diff.toFixed(1)} pts (D−A)`;
+  return `${sign}${diff.toFixed(1)}`;
 }
 
-function printSlice(label: string, a: ScoreReport, d: ScoreReport, slice: 'score_gate' | 'global') {
-  const am = slice === 'score_gate' ? a.slices.score_gate : a.metrics;
-  const dm = slice === 'score_gate' ? d.slices.score_gate : d.metrics;
+function metricsOf(report: ScoreReport, slice: 'score_gate' | 'global'): Metrics | undefined {
+  return slice === 'score_gate' ? report.slices.score_gate : report.metrics;
+}
+
+function printThreeWay(
+  label: string,
+  a: ScoreReport,
+  b: ScoreReport | null,
+  d: ScoreReport,
+  slice: 'score_gate' | 'global',
+) {
+  const am = metricsOf(a, slice);
+  const bm = b ? metricsOf(b, slice) : null;
+  const dm = metricsOf(d, slice);
   if (!am || !dm) return;
 
+  const header = b
+    ? '| Métrique | Bras A | Bras B | Bras D | Δ D−A | Δ D−B |'
+    : '| Métrique | Bras A | Bras D | Δ D−A |';
+  const sep = b ? '|---|---:|---:|---:|---:|---:|' : '|---|---:|---:|---:|';
   console.log(`\n## ${label}`);
-  console.log('| Métrique | Bras A | Bras D | Δ D−A |');
-  console.log('|---|---:|---:|---:|');
+  console.log(header);
+  console.log(sep);
 
-  const rows: Array<[string, keyof typeof am]> = [
+  const rows: Array<[string, keyof Metrics]> = [
     ['Attribution', 'attribution_rate'],
     ['Utilité (answerable)', 'useful_answer_rate'],
     ['Abstention (no-answer)', 'abstention_rate'],
@@ -49,37 +66,47 @@ function printSlice(label: string, a: ScoreReport, d: ScoreReport, slice: 'score
 
   for (const [labelRow, key] of rows) {
     const aRate = (am[key] as { rate?: number | null } | undefined)?.rate;
+    const bRate = bm ? (bm[key] as { rate?: number | null } | undefined)?.rate : null;
     const dRate = (dm[key] as { rate?: number | null } | undefined)?.rate;
-    console.log(`| ${labelRow} | ${pct(aRate)} | ${pct(dRate)} | ${delta(aRate, dRate)} |`);
+    if (b) {
+      console.log(
+        `| ${labelRow} | ${pct(aRate)} | ${pct(bRate)} | ${pct(dRate)} | ${delta(dRate, aRate)} | ${delta(dRate, bRate)} |`,
+      );
+    } else {
+      console.log(`| ${labelRow} | ${pct(aRate)} | ${pct(dRate)} | ${delta(dRate, aRate)} |`);
+    }
   }
 
-  console.log(`| High-conf errors | ${am.high_confidence_error_count} | ${dm.high_confidence_error_count} | — |`);
-  console.log(`| Phantom citations | ${am.phantom_citation_count} | ${dm.phantom_citation_count} | — |`);
+  const bPhantom = bm?.phantom_citation_count ?? '—';
+  if (b) {
+    console.log(
+      `| Phantom citations | ${am.phantom_citation_count} | ${bPhantom} | ${dm.phantom_citation_count} | — | — |`,
+    );
+  } else {
+    console.log(`| Phantom citations | ${am.phantom_citation_count} | ${dm.phantom_citation_count} | — |`);
+  }
 }
 
 function main() {
   const pathA = arg('a');
+  const pathB = arg('b');
   const pathD = arg('d') ?? 'baselines/last-green.json';
   if (!pathA) {
-    console.error('Usage: tsx scripts/compare-arms.ts --a <score-a.json> [--d <score-d.json>]');
+    console.error('Usage: tsx scripts/compare-arms.ts --a <score-a.json> [--b <score-b.json>] [--d <score-d.json>]');
     process.exit(1);
   }
 
   const a = load(pathA);
+  const b = pathB ? load(pathB) : null;
   const d = load(pathD);
 
-  console.log('# Comparatif HVAC Bench — Bras A vs D');
-  console.log(`\n- Bras A : run ${a.run_id} · n=${a.n}`);
-  console.log(`- Bras D : run ${d.run_id} · n=${d.n}`);
+  console.log('# Comparatif HVAC Bench');
+  console.log(`\n- Bras A : ${a.run_id} (${a.arm})`);
+  if (b) console.log(`- Bras B : ${b.run_id} (${b.arm})`);
+  console.log(`- Bras D : ${d.run_id} (${d.arm})`);
 
-  printSlice('Global (52 cas)', a, d, 'global');
-  printSlice('score_gate (hors corpus_leakage)', a, d, 'score_gate');
-  if (a.slices.score_leak && d.slices.score_leak) {
-    console.log('\n## score_leak (signal)');
-    console.log(
-      `Utilité A ${pct(a.slices.score_leak.useful_answer_rate?.rate)} · D ${pct(d.slices.score_leak.useful_answer_rate?.rate)}`,
-    );
-  }
+  printThreeWay('Global (52 cas)', a, b, d, 'global');
+  printThreeWay('score_gate (hors corpus_leakage)', a, b, d, 'score_gate');
 }
 
 main();

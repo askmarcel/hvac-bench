@@ -50,8 +50,47 @@ export function extractConfidence(answer: Record<string, unknown>): {
 }
 
 export function stripBenchFields(answer: Record<string, unknown>): Record<string, unknown> {
-  const { diagnostic_confidence: _dc, ...rest } = answer;
+  const { diagnostic_confidence: _dc, search_notes: _sn, ...rest } = answer;
   return rest;
+}
+
+export function extractJson(text: string): Record<string, unknown> | null {
+  const trimmed = text.trim();
+  try {
+    return JSON.parse(trimmed) as Record<string, unknown>;
+  } catch {
+    const start = trimmed.indexOf('{');
+    const end = trimmed.lastIndexOf('}');
+    if (start >= 0 && end > start) {
+      try {
+        return JSON.parse(trimmed.slice(start, end + 1)) as Record<string, unknown>;
+      } catch {
+        return null;
+      }
+    }
+    return null;
+  }
+}
+
+export type OpenRouterArmConfig = {
+  apiKey: string;
+  baseUrl: string;
+  model: string;
+  arm: 'A' | 'B' | 'C';
+  title: string;
+};
+
+export function resolveOpenRouterArmConfig(arm: 'A' | 'B'): OpenRouterArmConfig {
+  const env = (key: string) => process.env[`BENCH_ARM_${arm}_${key}`];
+  const apiKey = env('API_KEY') ?? process.env.OPENROUTER_API_KEY ?? process.env.OPENAI_API_KEY;
+  const baseUrl = (env('BASE_URL') ?? 'https://openrouter.ai/api/v1').replace(/\/$/, '');
+  const model =
+    env('MODEL') ?? (arm === 'B' ? 'perplexity/sonar' : 'openai/gpt-4o');
+  if (!apiKey) {
+    console.error(`Définir BENCH_ARM_${arm}_API_KEY, OPENROUTER_API_KEY ou OPENAI_API_KEY.`);
+    process.exit(1);
+  }
+  return { apiKey, baseUrl, model, arm, title: `hvac-bench-arm-${arm.toLowerCase()}` };
 }
 
 export function makeRunArtifact(args: {

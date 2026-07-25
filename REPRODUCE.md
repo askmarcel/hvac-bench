@@ -108,3 +108,18 @@ pnpm compare:arms --a runs/arm-a-2026-07-25/score.json --d baselines/last-green.
 ```
 
 Rapport figé : [reports/arm-a-vs-d-2026-07-25.md](./reports/arm-a-vs-d-2026-07-25.md).
+
+## Bras B (LLM + web search)
+
+```bash
+# Prérequis : OPENROUTER_API_KEY
+pnpm run:b --cases ../hvac-bench-heldout/dataset/gate.jsonl --out runs/arm-b-2026-07-25
+pnpm score --cases ../hvac-bench-heldout/dataset/gate.jsonl \
+  --run runs/arm-b-2026-07-25/raw.jsonl --meta runs/arm-b-2026-07-25/run.json \
+  --index ../hvac-bench-heldout/index/corpus-index.json \
+  --out runs/arm-b-2026-07-25/score.json
+pnpm compare:arms --a baselines/arm-a-2026-07-25.json \
+  --b runs/arm-b-2026-07-25/score.json --d baselines/last-green.json
+```
+
+Rapport combiné : [reports/arm-a-b-vs-d-2026-07-25.md](./reports/arm-a-b-vs-d-2026-07-25.md).
