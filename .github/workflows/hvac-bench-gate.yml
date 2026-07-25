@@ -1,0 +1,83 @@
+name: hvac-bench-gate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  # Toujours exécuté, sans secret : schéma, tests du scorer et du gate.
+  # C'est ce job qui garantit que le harnais rougit quand il doit.
+  harness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      - run: pnpm install --no-frozen-lockfile
+      - name: Valider l'échantillon public contre le schéma
+        run: pnpm validate:cases --paths dataset/public
+      - name: Tests scorer et gate
+        run: pnpm test
+
+  # Gate réel : nécessite le held-out et une clé API. Si les secrets manquent, le job
+  # échoue au lieu de passer — un gate vert par absence de mesure ne vaut rien.
+  gate:
+    runs-on: ubuntu-latest
+    needs: harness
+    if: github.event_name == 'push'
+    env:
+      BENCH_API_URL: ${{ secrets.BENCH_API_URL }}
+      BENCH_API_KEY: ${{ secrets.BENCH_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      - run: pnpm install --no-frozen-lockfile
+
+      - name: Récupérer le held-out
+        env:
+          HELDOUT_REPO: ${{ secrets.HELDOUT_REPO }}
+          HELDOUT_TOKEN: ${{ secrets.HELDOUT_TOKEN }}
+        run: |
+          if [ -z "$HELDOUT_REPO" ] || [ -z "$BENCH_API_KEY" ]; then
+            echo "::error::held-out ou clé API non configurés — le gate ne peut pas être évalué."
+            exit 1
+          fi
+          git clone --depth 1 "https://x-access-token:${HELDOUT_TOKEN}@${HELDOUT_REPO}" ../hvac-bench-heldout
+
+      - name: Valider le held-out contre le schéma
+        run: pnpm validate:cases --paths ../hvac-bench-heldout/dataset/gate.jsonl
+
+      - name: Run bras D
+        run: pnpm run:d --cases ../hvac-bench-heldout/dataset/gate.jsonl --out runs/ci
+
+      - name: Scorer
+        run: |
+          pnpm score --cases ../hvac-bench-heldout/dataset/gate.jsonl \
+                     --run runs/ci/raw.jsonl \
+                     --meta runs/ci/run.json \
+                     --index ../hvac-bench-heldout/index/corpus-index.json \
+                     --out runs/ci/score.json
+
+      - name: Gate
+        run: pnpm gate --score runs/ci/score.json --baseline baselines/last-green.json
+
+      - name: Archiver le rapport de score
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hvac-bench-score
+          # Seul score.json est archivé : raw.jsonl contiendrait les réponses aux prompts
+          # held-out, donc de quoi reconstituer une partie du jeu réservé.
+          path: runs/ci/score.json
+          retention-days: 90

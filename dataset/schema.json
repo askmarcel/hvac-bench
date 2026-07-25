@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://askmarcel.app/hvac-bench/case.schema.json",
+  "title": "HVAC Bench case",
+  "version": "0.1.0",
+  "description": "Schéma normatif d'un cas — CDC §2 + amendement corpus_leakage (2026-07-25) + amendement anti-artefact (2026-07-25, revue schéma). Les règles conditionnelles utilisent `required` dans les branches `then` : sans cela une clé absente ou nulle échappe à la contrainte.",
+  "type": "object",
+  "required": ["id", "version", "split", "strata", "locale", "prompt", "ground_truth", "flags", "rubrics_enabled", "meta"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^hb-[0-9]{4}$" },
+    "version": { "type": "integer", "minimum": 1 },
+    "split": { "enum": ["public", "heldout"] },
+    "strata": { "enum": ["no_answer", "marcel_trap", "forum"] },
+    "no_answer_kind": {
+      "enum": ["nonexistent_code", "cross_attribution", "out_of_coverage", "underspecified", null]
+    },
+    "locale": { "type": "string", "default": "fr" },
+    "prompt": {
+      "type": "object",
+      "required": ["user_message"],
+      "additionalProperties": false,
+      "properties": {
+        "user_message": { "type": "string", "minLength": 3 },
+        "brand_hint": { "type": ["string", "null"] },
+        "model_hint": { "type": ["string", "null"] },
+        "error_code_hint": {
+          "type": ["string", "null"],
+          "pattern": "^(?=.*[A-Za-z0-9])[A-Za-z0-9][A-Za-z0-9 ._/-]{0,15}$",
+          "description": "Anti-artefact : au moins un caractère alphanumérique. Rejette les extractions parasites ' ' et '--'."
+        }
+      }
+    },
+    "ground_truth": {
+      "type": "object",
+      "required": ["expected_state", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "expected_brand": { "type": ["string", "null"], "minLength": 2 },
+        "expected_code": {
+          "type": ["string", "null"],
+          "pattern": "^(?=.*[A-Za-z0-9])[A-Za-z0-9][A-Za-z0-9 ._/-]{0,15}$",
+          "description": "Anti-artefact : idem error_code_hint."
+        },
+        "expected_meaning": {
+          "type": ["string", "null"],
+          "minLength": 10,
+          "description": "Anti-artefact : un extrait tronqué de moins de 10 caractères n'est pas une vérité terrain."
+        },
+        "expected_state": {
+          "enum": ["answer", "unknown_code", "ambiguous", "empty", "off_topic"]
+        },
+        "source": {
+          "type": "object",
+          "required": ["kind"],
+          "additionalProperties": false,
+          "properties": {
+            "kind": { "enum": ["manufacturer_pdf", "expert", "forum", "synthetic"] },
+            "document_id": { "type": ["string", "null"] },
+            "document_title": { "type": ["string", "null"] },
+            "page": { "type": ["integer", "null"], "minimum": 1 },
+            "notes": { "type": ["string", "null"] }
+          }
+        }
+      }
+    },
+    "flags": {
+      "type": "object",
+      "required": ["contamination_risk", "corpus_leakage", "citation_scorable", "safety_sensitive", "gate_critical"],
+      "additionalProperties": false,
+      "properties": {
+        "contamination_risk": {
+          "type": "boolean",
+          "description": "Vérité présente dans le pré-entraînement probable des LLM (forums publics anciens) — exclut du headline"
+        },
+        "corpus_leakage": {
+          "type": "boolean",
+          "description": "Vérité issue d'un contenu lui-même ingéré dans le corpus AskMarcel (avantage trivial bras C/D) — exclut du headline"
+        },
+        "citation_scorable": { "type": "boolean" },
+        "safety_sensitive": { "type": "boolean" },
+        "gate_critical": { "type": "boolean" }
+      }
+    },
+    "rubrics_enabled": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["attribution", "code_accuracy", "citation", "abstention", "safety", "workflow"] }
+    },
+    "meta": {
+      "type": "object",
+      "required": ["created_at", "author"],
+      "additionalProperties": false,
+      "properties": {
+        "created_at": { "type": "string", "format": "date-time" },
+        "author": { "type": "string", "minLength": 1 },
+        "tags": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "title": "R1 — no_answer ⇒ kind obligatoire et expected_state ≠ answer",
+      "if": {
+        "required": ["strata"],
+        "properties": { "strata": { "const": "no_answer" } }
+      },
+      "then": {
+        "required": ["no_answer_kind"],
+        "properties": {
+          "no_answer_kind": { "enum": ["nonexistent_code", "cross_attribution", "out_of_coverage", "underspecified"] },
+          "ground_truth": {
+            "properties": { "expected_state": { "enum": ["unknown_code", "ambiguous", "empty", "off_topic"] } }
+          }
+        }
+      }
+    },
+    {
+      "title": "R2 — un no_answer_kind renseigné interdit expected_state = answer, quelle que soit la strate",
+      "if": {
+        "required": ["no_answer_kind"],
+        "properties": { "no_answer_kind": { "type": "string" } }
+      },
+      "then": {
+        "properties": {
+          "ground_truth": {
+            "properties": { "expected_state": { "enum": ["unknown_code", "ambiguous", "empty", "off_topic"] } }
+          }
+        }
+      }
+    },
+    {
+      "title": "R3 — source forum ⇒ citation non scorable",
+      "if": {
+        "required": ["ground_truth"],
+        "properties": {
+          "ground_truth": {
+            "required": ["source"],
+            "properties": { "source": { "required": ["kind"], "properties": { "kind": { "const": "forum" } } } }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "flags": { "properties": { "citation_scorable": { "const": false } } },
+          "rubrics_enabled": { "not": { "contains": { "const": "citation" } } }
+        }
+      }
+    },
+    {
+      "title": "R4 — citation_scorable ⇒ document_id et page non nuls",
+      "if": {
+        "required": ["flags"],
+        "properties": {
+          "flags": { "required": ["citation_scorable"], "properties": { "citation_scorable": { "const": true } } }
+        }
+      },
+      "then": {
+        "properties": {
+          "ground_truth": {
+            "properties": {
+              "source": {
+                "required": ["kind", "document_id", "page"],
+                "properties": {
+                  "document_id": { "type": "string", "minLength": 1 },
+                  "page": { "type": "integer", "minimum": 1 }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "R5 — expected_state = answer ⇒ marque, code et sens obligatoires et non nuls, source non synthétique",
+      "if": {
+        "required": ["ground_truth"],
+        "properties": {
+          "ground_truth": {
+            "required": ["expected_state"],
+            "properties": { "expected_state": { "const": "answer" } }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "ground_truth": {
+            "required": ["expected_brand", "expected_code", "expected_meaning"],
+            "properties": {
+              "expected_brand": { "type": "string", "minLength": 2 },
+              "expected_code": { "type": "string" },
+              "expected_meaning": { "type": "string", "minLength": 10 },
+              "source": { "properties": { "kind": { "enum": ["manufacturer_pdf", "expert", "forum"] } } }
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "R6 — un cas marqué TEMPLATE-A-COMPLETER ne peut pas être bloquant en CI",
+      "if": {
+        "required": ["meta"],
+        "properties": {
+          "meta": { "required": ["tags"], "properties": { "tags": { "contains": { "const": "TEMPLATE-A-COMPLETER" } } } }
+        }
+      },
+      "then": {
+        "properties": { "flags": { "properties": { "gate_critical": { "const": false } } } }
+      }
+    }
+  ]
+}

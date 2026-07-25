@@ -1,0 +1,20 @@
+{
+  "name": "hvac-bench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "HVAC Bench — harness de mesure AskMarcel (gate CI + dataset public)",
+  "scripts": {
+    "validate:cases": "tsx scripts/validate-cases.ts",
+    "run:d": "tsx runners/arm-d.ts",
+    "score": "tsx scorer/index.ts",
+    "gate": "tsx gate/run.ts",
+    "test": "tsx --test scorer/*.test.ts"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}
