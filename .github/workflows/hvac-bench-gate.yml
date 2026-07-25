@@ -46,14 +46,26 @@ jobs:
 
       - name: Récupérer le held-out
         env:
-          HELDOUT_REPO: ${{ secrets.HELDOUT_REPO }}
+          HELDOUT_DEPLOY_KEY: ${{ secrets.HELDOUT_DEPLOY_KEY }}
           HELDOUT_TOKEN: ${{ secrets.HELDOUT_TOKEN }}
+          HELDOUT_REPO: ${{ secrets.HELDOUT_REPO }}
         run: |
-          if [ -z "$HELDOUT_REPO" ] || [ -z "$BENCH_API_KEY" ]; then
-            echo "::error::held-out ou clé API non configurés — le gate ne peut pas être évalué."
+          if [ -z "$BENCH_API_KEY" ]; then
+            echo "::error::clé API non configurée — le gate ne peut pas être évalué."
             exit 1
           fi
-          git clone --depth 1 "https://x-access-token:${HELDOUT_TOKEN}@${HELDOUT_REPO}" ../hvac-bench-heldout
+          if [ -n "$HELDOUT_DEPLOY_KEY" ]; then
+            eval "$(ssh-agent -s)"
+            echo "$HELDOUT_DEPLOY_KEY" | ssh-add -
+            mkdir -p ~/.ssh
+            ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts
+            git clone --depth 1 git@github.com:askmarcel/hvac-bench-heldout.git ../hvac-bench-heldout
+          elif [ -n "$HELDOUT_REPO" ] && [ -n "$HELDOUT_TOKEN" ]; then
+            git clone --depth 1 "https://x-access-token:${HELDOUT_TOKEN}@${HELDOUT_REPO}" ../hvac-bench-heldout
+          else
+            echo "::error::HELDOUT_DEPLOY_KEY ou (HELDOUT_REPO + HELDOUT_TOKEN) requis."
+            exit 1
+          fi
 
       - name: Valider le held-out contre le schéma
         run: pnpm validate:cases --paths ../hvac-bench-heldout/dataset/gate.jsonl

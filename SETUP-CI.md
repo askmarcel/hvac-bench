@@ -15,8 +15,9 @@ Le workflow `.github/workflows/hvac-bench-gate.yml` a deux jobs :
 |---|---|---|
 | `BENCH_API_URL` | `https://app.askmarcel.app` | URL de prod (bras D) |
 | `BENCH_API_KEY` | clé `HvacBench-CI` (`ak_live_5ab40292…`) | Créée via `AskMarcel-WebApp-NextJS/scripts/create-bench-ci-key.ts` |
-| `HELDOUT_REPO` | `github.com/askmarcel/hvac-bench-heldout.git` | Dépôt privé held-out |
-| `HELDOUT_TOKEN` | token `gh` personnel | ⚠️ À remplacer par un PAT machine dédié |
+| `HELDOUT_REPO` | `github.com/askmarcel/hvac-bench-heldout.git` | Dépôt privé held-out (fallback HTTPS) |
+| `HELDOUT_DEPLOY_KEY` | clé SSH read-only `hvac-bench-ci-readonly-*` | **Préféré** — clone SSH du held-out |
+| `HELDOUT_TOKEN` | *(à retirer)* | Ancien token `gh` personnel — remplacé par `HELDOUT_DEPLOY_KEY` |
 
 Held-out : https://github.com/askmarcel/hvac-bench-heldout (privé)
 
