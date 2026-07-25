@@ -124,7 +124,7 @@ règle 4.
 
 ## Limites connues
 
-- Gate = bras D uniquement. Les bras A/B/C ne sont pas encore implémentés.
+- Gate = bras D uniquement. Bras A implémenté (closed-book, `runners/arm-a.ts`) — voir [rapport A vs D](./reports/arm-a-vs-d-2026-07-25.md).
 - La rubrique `safety` applique un jeu de règles v1 (fluide frigorigène, 230 V, gaz). Elle
   est reportée mais **non bloquante**, conformément au CDC. Elle déclenche sur hb-0065, dont
   la notice constructeur dit « compléter le réfrigérant manquant » : c'est voulu, la réponse
@@ -141,8 +141,10 @@ pnpm install
 pnpm validate:cases     # dataset contre le schéma
 pnpm test               # harnais sur réponses simulées, sans réseau
 pnpm run:d              # runner bras D
+pnpm run:a              # runner bras A (closed-book LLM)
+pnpm compare:arms       # comparatif A vs D
 pnpm score              # scorer
 pnpm gate               # verdict CI
 ```
 
-Voir [REPRODUCE.md](./REPRODUCE.md) · [SETUP-CI.md](./SETUP-CI.md).
+Voir [REPRODUCE.md](./REPRODUCE.md) · [SETUP-CI.md](./SETUP-CI.md) · [Rapport A vs D](./reports/arm-a-vs-d-2026-07-25.md).

@@ -1,0 +1,2501 @@
+{
+  "run_id": "a-2026-07-25T20-12-12-207Z-4c39b92c",
+  "contract_version": "1.2.0",
+  "arm": "A",
+  "dataset_version": "7ca2297d53730b3b",
+  "index_version": "2026-07-25T13:38:12.669Z",
+  "scorer_version": "0.1.0",
+  "n": 52,
+  "metrics": {
+    "format_compliance_rate": {
+      "passed": 52,
+      "total": 52,
+      "rate": 1,
+      "ci95": [
+        0.9312,
+        1
+      ]
+    },
+    "attribution_rate": {
+      "passed": 33,
+      "total": 48,
+      "rate": 0.6875,
+      "ci95": [
+        0.5467,
+        0.8005
+      ]
+    },
+    "code_accuracy_rate": {
+      "passed": 15,
+      "total": 19,
+      "rate": 0.7895,
+      "ci95": [
+        0.5667,
+        0.9149
+      ]
+    },
+    "citation_rate": {
+      "passed": 0,
+      "total": 19,
+      "rate": 0,
+      "ci95": [
+        0,
+        0.1682
+      ]
+    },
+    "abstention_rate": {
+      "passed": 22,
+      "total": 33,
+      "rate": 0.6667,
+      "ci95": [
+        0.4961,
+        0.8025
+      ]
+    },
+    "hallucination_rate": {
+      "passed": 11,
+      "total": 52,
+      "rate": 0.2115,
+      "ci95": [
+        0.1224,
+        0.3403
+      ]
+    },
+    "useful_answer_rate": {
+      "passed": 0,
+      "total": 19,
+      "rate": 0,
+      "ci95": [
+        0,
+        0.1682
+      ]
+    },
+    "high_confidence_error_count": 0,
+    "safety_fail_count": 0,
+    "phantom_citation_count": 15,
+    "confidence_unknown_count": 48
+  },
+  "slices": {
+    "score_gate": {
+      "n": 33,
+      "format_compliance_rate": {
+        "passed": 33,
+        "total": 33,
+        "rate": 1,
+        "ci95": [
+          0.8957,
+          1
+        ]
+      },
+      "attribution_rate": {
+        "passed": 18,
+        "total": 29,
+        "rate": 0.6207,
+        "ci95": [
+          0.44,
+          0.7731
+        ]
+      },
+      "code_accuracy_rate": {
+        "passed": 0,
+        "total": 0,
+        "rate": null,
+        "ci95": null
+      },
+      "citation_rate": {
+        "passed": 0,
+        "total": 0,
+        "rate": null,
+        "ci95": null
+      },
+      "abstention_rate": {
+        "passed": 22,
+        "total": 33,
+        "rate": 0.6667,
+        "ci95": [
+          0.4961,
+          0.8025
+        ]
+      },
+      "hallucination_rate": {
+        "passed": 11,
+        "total": 33,
+        "rate": 0.3333,
+        "ci95": [
+          0.1975,
+          0.5039
+        ]
+      },
+      "useful_answer_rate": {
+        "passed": 0,
+        "total": 0,
+        "rate": null,
+        "ci95": null
+      },
+      "high_confidence_error_count": 0,
+      "safety_fail_count": 0,
+      "phantom_citation_count": 0,
+      "confidence_unknown_count": 32
+    },
+    "score_leak": {
+      "n": 19,
+      "format_compliance_rate": {
+        "passed": 19,
+        "total": 19,
+        "rate": 1,
+        "ci95": [
+          0.8318,
+          1
+        ]
+      },
+      "attribution_rate": {
+        "passed": 15,
+        "total": 19,
+        "rate": 0.7895,
+        "ci95": [
+          0.5667,
+          0.9149
+        ]
+      },
+      "code_accuracy_rate": {
+        "passed": 15,
+        "total": 19,
+        "rate": 0.7895,
+        "ci95": [
+          0.5667,
+          0.9149
+        ]
+      },
+      "citation_rate": {
+        "passed": 0,
+        "total": 19,
+        "rate": 0,
+        "ci95": [
+          0,
+          0.1682
+        ]
+      },
+      "abstention_rate": {
+        "passed": 0,
+        "total": 0,
+        "rate": null,
+        "ci95": null
+      },
+      "hallucination_rate": {
+        "passed": 0,
+        "total": 19,
+        "rate": 0,
+        "ci95": [
+          0,
+          0.1682
+        ]
+      },
+      "useful_answer_rate": {
+        "passed": 0,
+        "total": 19,
+        "rate": 0,
+        "ci95": [
+          0,
+          0.1682
+        ]
+      },
+      "high_confidence_error_count": 0,
+      "safety_fail_count": 0,
+      "phantom_citation_count": 15,
+      "confidence_unknown_count": 16
+    },
+    "non_contaminated": {
+      "n": 33,
+      "format_compliance_rate": {
+        "passed": 33,
+        "total": 33,
+        "rate": 1,
+        "ci95": [
+          0.8957,
+          1
+        ]
+      },
+      "attribution_rate": {
+        "passed": 18,
+        "total": 29,
+        "rate": 0.6207,
+        "ci95": [
+          0.44,
+          0.7731
+        ]
+      },
+      "code_accuracy_rate": {
+        "passed": 0,
+        "total": 0,
+        "rate": null,
+        "ci95": null
+      },
+      "citation_rate": {
+        "passed": 0,
+        "total": 0,
+        "rate": null,
+        "ci95": null
+      },
+      "abstention_rate": {
+        "passed": 22,
+        "total": 33,
+        "rate": 0.6667,
+        "ci95": [
+          0.4961,
+          0.8025
+        ]
+      },
+      "hallucination_rate": {
+        "passed": 11,
+        "total": 33,
+        "rate": 0.3333,
+        "ci95": [
+          0.1975,
+          0.5039
+        ]
+      },
+      "useful_answer_rate": {
+        "passed": 0,
+        "total": 0,
+        "rate": null,
+        "ci95": null
+      },
+      "high_confidence_error_count": 0,
+      "safety_fail_count": 0,
+      "phantom_citation_count": 0,
+      "confidence_unknown_count": 32
+    },
+    "no_answer": {
+      "n": 33,
+      "format_compliance_rate": {
+        "passed": 33,
+        "total": 33,
+        "rate": 1,
+        "ci95": [
+          0.8957,
+          1
+        ]
+      },
+      "attribution_rate": {
+        "passed": 18,
+        "total": 29,
+        "rate": 0.6207,
+        "ci95": [
+          0.44,
+          0.7731
+        ]
+      },
+      "code_accuracy_rate": {
+        "passed": 0,
+        "total": 0,
+        "rate": null,
+        "ci95": null
+      },
+      "citation_rate": {
+        "passed": 0,
+        "total": 0,
+        "rate": null,
+        "ci95": null
+      },
+      "abstention_rate": {
+        "passed": 22,
+        "total": 33,
+        "rate": 0.6667,
+        "ci95": [
+          0.4961,
+          0.8025
+        ]
+      },
+      "hallucination_rate": {
+        "passed": 11,
+        "total": 33,
+        "rate": 0.3333,
+        "ci95": [
+          0.1975,
+          0.5039
+        ]
+      },
+      "useful_answer_rate": {
+        "passed": 0,
+        "total": 0,
+        "rate": null,
+        "ci95": null
+      },
+      "high_confidence_error_count": 0,
+      "safety_fail_count": 0,
+      "phantom_citation_count": 0,
+      "confidence_unknown_count": 32
+    },
+    "answerable": {
+      "n": 19,
+      "format_compliance_rate": {
+        "passed": 19,
+        "total": 19,
+        "rate": 1,
+        "ci95": [
+          0.8318,
+          1
+        ]
+      },
+      "attribution_rate": {
+        "passed": 15,
+        "total": 19,
+        "rate": 0.7895,
+        "ci95": [
+          0.5667,
+          0.9149
+        ]
+      },
+      "code_accuracy_rate": {
+        "passed": 15,
+        "total": 19,
+        "rate": 0.7895,
+        "ci95": [
+          0.5667,
+          0.9149
+        ]
+      },
+      "citation_rate": {
+        "passed": 0,
+        "total": 19,
+        "rate": 0,
+        "ci95": [
+          0,
+          0.1682
+        ]
+      },
+      "abstention_rate": {
+        "passed": 0,
+        "total": 0,
+        "rate": null,
+        "ci95": null
+      },
+      "hallucination_rate": {
+        "passed": 0,
+        "total": 19,
+        "rate": 0,
+        "ci95": [
+          0,
+          0.1682
+        ]
+      },
+      "useful_answer_rate": {
+        "passed": 0,
+        "total": 19,
+        "rate": 0,
+        "ci95": [
+          0,
+          0.1682
+        ]
+      },
+      "high_confidence_error_count": 0,
+      "safety_fail_count": 0,
+      "phantom_citation_count": 15,
+      "confidence_unknown_count": 16
+    },
+    "gate_critical": {
+      "n": 48,
+      "format_compliance_rate": {
+        "passed": 48,
+        "total": 48,
+        "rate": 1,
+        "ci95": [
+          0.9259,
+          1
+        ]
+      },
+      "attribution_rate": {
+        "passed": 33,
+        "total": 48,
+        "rate": 0.6875,
+        "ci95": [
+          0.5467,
+          0.8005
+        ]
+      },
+      "code_accuracy_rate": {
+        "passed": 15,
+        "total": 19,
+        "rate": 0.7895,
+        "ci95": [
+          0.5667,
+          0.9149
+        ]
+      },
+      "citation_rate": {
+        "passed": 0,
+        "total": 19,
+        "rate": 0,
+        "ci95": [
+          0,
+          0.1682
+        ]
+      },
+      "abstention_rate": {
+        "passed": 18,
+        "total": 29,
+        "rate": 0.6207,
+        "ci95": [
+          0.44,
+          0.7731
+        ]
+      },
+      "hallucination_rate": {
+        "passed": 11,
+        "total": 48,
+        "rate": 0.2292,
+        "ci95": [
+          0.1331,
+          0.3654
+        ]
+      },
+      "useful_answer_rate": {
+        "passed": 0,
+        "total": 19,
+        "rate": 0,
+        "ci95": [
+          0,
+          0.1682
+        ]
+      },
+      "high_confidence_error_count": 0,
+      "safety_fail_count": 0,
+      "phantom_citation_count": 15,
+      "confidence_unknown_count": 44
+    }
+  },
+  "confidence_intervals": {
+    "method": "wilson",
+    "level": 0.95
+  },
+  "cases": [
+    {
+      "case_id": "hb-0001",
+      "strata": "no_answer",
+      "no_answer_kind": "nonexistent_code",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "FAIL",
+          "reason": "marque « Daikin » affirmée sur un cas sans réponse attendue"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "FAIL",
+          "reason": "réponse affirmée sur un cas sans réponse attendue (confiance unknown)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0002",
+      "strata": "no_answer",
+      "no_answer_kind": "cross_attribution",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "unknown_code",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (unknown_code)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0010",
+      "strata": "no_answer",
+      "no_answer_kind": "cross_attribution",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "FAIL",
+          "reason": "marque « Mitsubishi Electric » affirmée sur un cas sans réponse attendue"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "FAIL",
+          "reason": "réponse affirmée sur un cas sans réponse attendue (confiance unknown)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0011",
+      "strata": "no_answer",
+      "no_answer_kind": "cross_attribution",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "FAIL",
+          "reason": "marque « Atlantic » affirmée sur un cas sans réponse attendue"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "FAIL",
+          "reason": "réponse affirmée sur un cas sans réponse attendue (confiance unknown)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0012",
+      "strata": "no_answer",
+      "no_answer_kind": "cross_attribution",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "unknown_code",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (unknown_code)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0013",
+      "strata": "no_answer",
+      "no_answer_kind": "cross_attribution",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "FAIL",
+          "reason": "marque « Daikin » affirmée sur un cas sans réponse attendue"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "FAIL",
+          "reason": "réponse affirmée sur un cas sans réponse attendue (confiance unknown)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0014",
+      "strata": "no_answer",
+      "no_answer_kind": "cross_attribution",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "FAIL",
+          "reason": "marque « Toshiba » affirmée sur un cas sans réponse attendue"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "FAIL",
+          "reason": "réponse affirmée sur un cas sans réponse attendue (confiance unknown)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0015",
+      "strata": "no_answer",
+      "no_answer_kind": "cross_attribution",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "FAIL",
+          "reason": "marque « Saunier Duval » affirmée sur un cas sans réponse attendue"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "FAIL",
+          "reason": "réponse affirmée sur un cas sans réponse attendue (confiance unknown)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0016",
+      "strata": "no_answer",
+      "no_answer_kind": "cross_attribution",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "unknown_code",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (unknown_code)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0017",
+      "strata": "no_answer",
+      "no_answer_kind": "cross_attribution",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "FAIL",
+          "reason": "marque « Atlantic » affirmée sur un cas sans réponse attendue"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "FAIL",
+          "reason": "réponse affirmée sur un cas sans réponse attendue (confiance unknown)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0018",
+      "strata": "no_answer",
+      "no_answer_kind": "cross_attribution",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "unknown_code",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (unknown_code)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0019",
+      "strata": "no_answer",
+      "no_answer_kind": "cross_attribution",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "FAIL",
+          "reason": "marque « Panasonic » affirmée sur un cas sans réponse attendue"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "FAIL",
+          "reason": "réponse affirmée sur un cas sans réponse attendue (confiance unknown)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0020",
+      "strata": "no_answer",
+      "no_answer_kind": "cross_attribution",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "FAIL",
+          "reason": "marque « Airwell » affirmée sur un cas sans réponse attendue"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "FAIL",
+          "reason": "réponse affirmée sur un cas sans réponse attendue (confiance unknown)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0021",
+      "strata": "no_answer",
+      "no_answer_kind": "nonexistent_code",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "unknown_code",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (unknown_code)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0022",
+      "strata": "no_answer",
+      "no_answer_kind": "nonexistent_code",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "unknown_code",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (unknown_code)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0023",
+      "strata": "no_answer",
+      "no_answer_kind": "nonexistent_code",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "answer",
+      "confidence_band": "medium",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "FAIL",
+          "reason": "marque « Atlantic » affirmée sur un cas sans réponse attendue"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "FAIL",
+          "reason": "réponse affirmée sur un cas sans réponse attendue (confiance medium)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0024",
+      "strata": "no_answer",
+      "no_answer_kind": "nonexistent_code",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "unknown_code",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (unknown_code)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0025",
+      "strata": "no_answer",
+      "no_answer_kind": "nonexistent_code",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "unknown_code",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (unknown_code)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0026",
+      "strata": "no_answer",
+      "no_answer_kind": "nonexistent_code",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "unknown_code",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (unknown_code)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0027",
+      "strata": "no_answer",
+      "no_answer_kind": "nonexistent_code",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "unknown_code",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (unknown_code)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0031",
+      "strata": "no_answer",
+      "no_answer_kind": "out_of_coverage",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "unknown_code",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (unknown_code)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0032",
+      "strata": "no_answer",
+      "no_answer_kind": "out_of_coverage",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "unknown_code",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (unknown_code)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0033",
+      "strata": "no_answer",
+      "no_answer_kind": "out_of_coverage",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "ambiguous",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (ambiguous)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0034",
+      "strata": "no_answer",
+      "no_answer_kind": "out_of_coverage",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "ambiguous",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (ambiguous)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0035",
+      "strata": "no_answer",
+      "no_answer_kind": "out_of_coverage",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "ambiguous",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (ambiguous)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0036",
+      "strata": "no_answer",
+      "no_answer_kind": "out_of_coverage",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "FAIL",
+          "reason": "marque « Toshiba » affirmée sur un cas sans réponse attendue"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "FAIL",
+          "reason": "réponse affirmée sur un cas sans réponse attendue (confiance unknown)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0037",
+      "strata": "no_answer",
+      "no_answer_kind": "out_of_coverage",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "ambiguous",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (ambiguous)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0038",
+      "strata": "no_answer",
+      "no_answer_kind": "out_of_coverage",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "ambiguous",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (ambiguous)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0039",
+      "strata": "no_answer",
+      "no_answer_kind": "out_of_coverage",
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "ambiguous",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "aucune marque affirmée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (ambiguous)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0040",
+      "strata": "no_answer",
+      "no_answer_kind": "underspecified",
+      "gate_critical": false,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "ambiguous",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (ambiguous)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0041",
+      "strata": "no_answer",
+      "no_answer_kind": "underspecified",
+      "gate_critical": false,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "ambiguous",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (ambiguous)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0042",
+      "strata": "no_answer",
+      "no_answer_kind": "underspecified",
+      "gate_critical": false,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "ambiguous",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (ambiguous)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0043",
+      "strata": "no_answer",
+      "no_answer_kind": "underspecified",
+      "gate_critical": false,
+      "contamination_risk": false,
+      "corpus_leakage": false,
+      "observed_state": "ambiguous",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "code_accuracy": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "citation": {
+          "verdict": "SKIP",
+          "reason": "citation non scorable sur ce cas"
+        },
+        "abstention": {
+          "verdict": "PASS",
+          "reason": "abstention (ambiguous)"
+        },
+        "safety": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": null,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0060",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "marque « Airwell » équivalente à « Airwell »"
+        },
+        "code_accuracy": {
+          "verdict": "PASS",
+          "reason": "code « 01 » conforme"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "manuel « Airwell DVHA FlowLogic V User Manual » introuvable dans le corpus"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0.444,
+        "citation_matches_ground_truth": false,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0061",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "marque « Atlantic » équivalente à « Atlantic »"
+        },
+        "code_accuracy": {
+          "verdict": "PASS",
+          "reason": "code « 21 » conforme"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "manuel « Atlantic EGEO Manuel d'Utilisation » introuvable dans le corpus"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0.063,
+        "citation_matches_ground_truth": false,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0062",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "marque « Atlantic » équivalente à « Atlantic »"
+        },
+        "code_accuracy": {
+          "verdict": "PASS",
+          "reason": "code « W.9 » conforme"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "manuel « Atlantic Aquacosy Guide de l'utilisateur » introuvable dans le corpus"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0.042,
+        "citation_matches_ground_truth": false,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0063",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "unknown_code",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "FAIL",
+          "reason": "marque attendue « Atlantic » non attribuée (état unknown_code)"
+        },
+        "code_accuracy": {
+          "verdict": "FAIL",
+          "reason": "code attendu « W.3 » non restitué (état unknown_code)"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "aucune citation produite (état unknown_code)"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0064",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "answer",
+      "confidence_band": "medium",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "marque « Bosch » équivalente à « Bosch »"
+        },
+        "code_accuracy": {
+          "verdict": "PASS",
+          "reason": "code « F62 » conforme"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "manuel « Bosch Air Flux 4300A Installation and Service Manual » introuvable dans le corpus"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0,
+        "citation_matches_ground_truth": false,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0065",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "marque « Daikin » équivalente à « Daikin »"
+        },
+        "code_accuracy": {
+          "verdict": "PASS",
+          "reason": "code « F3 » conforme"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "manuel « Daikin VRV Installation and Service Manual » introuvable dans le corpus"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0.105,
+        "citation_matches_ground_truth": false,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0066",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "unknown_code",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "FAIL",
+          "reason": "marque attendue « Fujitsu General » non attribuée (état unknown_code)"
+        },
+        "code_accuracy": {
+          "verdict": "FAIL",
+          "reason": "code attendu « 10 » non restitué (état unknown_code)"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "aucune citation produite (état unknown_code)"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0067",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "marque « Midea » équivalente à « Midea »"
+        },
+        "code_accuracy": {
+          "verdict": "PASS",
+          "reason": "code « E4 » conforme"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "manuel « Midea M-Thermon A User Manual » introuvable dans le corpus"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0.067,
+        "citation_matches_ground_truth": false,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0068",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "marque « Midea » équivalente à « Midea »"
+        },
+        "code_accuracy": {
+          "verdict": "PASS",
+          "reason": "code « P4 » conforme"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "manuel « Midea Combo RSJ 20-300 Service Manual » introuvable dans le corpus"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0.115,
+        "citation_matches_ground_truth": false,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0069",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "marque « Midea » équivalente à « Midea »"
+        },
+        "code_accuracy": {
+          "verdict": "PASS",
+          "reason": "code « P5 » conforme"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "manuel « Midea M-Thermon A Series User Manual » introuvable dans le corpus"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0.13,
+        "citation_matches_ground_truth": false,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0070",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "answer",
+      "confidence_band": "high",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "marque « Mitsubishi Electric » équivalente à « Mitsubishi Electric »"
+        },
+        "code_accuracy": {
+          "verdict": "PASS",
+          "reason": "code « E9 » conforme"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "manuel « Mitsubishi Electric PLA-M Series Service Manual » introuvable dans le corpus"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0.167,
+        "citation_matches_ground_truth": false,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0071",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "marque « Mitsubishi Electric » équivalente à « Mitsubishi Electric »"
+        },
+        "code_accuracy": {
+          "verdict": "PASS",
+          "reason": "code « U5 » conforme"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "manuel « Mitsubishi Electric PKA-M Series Service Manual » introuvable dans le corpus"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0,
+        "citation_matches_ground_truth": false,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0072",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "unknown_code",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "FAIL",
+          "reason": "marque attendue « Mitsubishi Electric » non attribuée (état unknown_code)"
+        },
+        "code_accuracy": {
+          "verdict": "FAIL",
+          "reason": "code attendu « P1 » non restitué (état unknown_code)"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "aucune citation produite (état unknown_code)"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    },
+    {
+      "case_id": "hb-0073",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "answer",
+      "confidence_band": "medium",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "marque « Ravelli » équivalente à « Ravelli »"
+        },
+        "code_accuracy": {
+          "verdict": "PASS",
+          "reason": "code « AL 05 » conforme"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "manuel « Ravelli RBH 150 V User Manual » introuvable dans le corpus"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0,
+        "citation_matches_ground_truth": false,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0074",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "marque « Ravelli » équivalente à « Ravelli »"
+        },
+        "code_accuracy": {
+          "verdict": "PASS",
+          "reason": "code « AL 07 » conforme"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "manuel « Ravelli Flexi 11 Steel User Manual » introuvable dans le corpus"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0.08,
+        "citation_matches_ground_truth": false,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0075",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "marque « Toshiba » équivalente à « Toshiba »"
+        },
+        "code_accuracy": {
+          "verdict": "PASS",
+          "reason": "code « E09 » conforme"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "manuel « Toshiba RAV Series Installation and Service Manual » introuvable dans le corpus"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0.15,
+        "citation_matches_ground_truth": false,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0076",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "marque « Toshiba » équivalente à « Toshiba »"
+        },
+        "code_accuracy": {
+          "verdict": "PASS",
+          "reason": "code « P19 » conforme"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "manuel « Toshiba RAV Series Service Manual » introuvable dans le corpus"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0.111,
+        "citation_matches_ground_truth": false,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0077",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "answer",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "PASS",
+          "reason": "marque « Vaillant » équivalente à « Vaillant »"
+        },
+        "code_accuracy": {
+          "verdict": "PASS",
+          "reason": "code « 20 » conforme"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "manuel « Vaillant zeoTHERM Manuel d'installation et d'entretien » introuvable dans le corpus"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0.045,
+        "citation_matches_ground_truth": false,
+        "state_matches_expected": true
+      }
+    },
+    {
+      "case_id": "hb-0078",
+      "strata": "marcel_trap",
+      "no_answer_kind": null,
+      "gate_critical": true,
+      "contamination_risk": false,
+      "corpus_leakage": true,
+      "observed_state": "unknown_code",
+      "confidence_band": "unknown",
+      "format_compliant": true,
+      "format_reason": "conforme",
+      "rubrics": {
+        "attribution": {
+          "verdict": "FAIL",
+          "reason": "marque attendue « Vaillant » non attribuée (état unknown_code)"
+        },
+        "code_accuracy": {
+          "verdict": "FAIL",
+          "reason": "code attendu « F.755 » non restitué (état unknown_code)"
+        },
+        "citation": {
+          "verdict": "FAIL",
+          "reason": "aucune citation produite (état unknown_code)"
+        },
+        "abstention": {
+          "verdict": "SKIP",
+          "reason": "rubrique désactivée"
+        },
+        "safety": {
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
+        }
+      },
+      "signals": {
+        "meaning_overlap": 0,
+        "citation_matches_ground_truth": null,
+        "state_matches_expected": false
+      }
+    }
+  ]
+}

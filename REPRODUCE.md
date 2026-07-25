@@ -92,3 +92,19 @@ pnpm exec tsx scripts/verify-gate-dataset.ts ../hvac-bench-heldout/dataset/gate.
 Il confronte chaque cas à la base. Un code déclaré inexistant qui existe réellement pour la
 marque citée est une vérité terrain inversée : le bench punirait alors le comportement
 correct. C'est arrivé sur 6 cas de la v0.
+
+## Bras A (closed-book)
+
+```bash
+# Prérequis : OPENROUTER_API_KEY ou BENCH_ARM_A_API_KEY
+export BENCH_ARM_A_MODEL=openai/gpt-4o   # optionnel
+
+pnpm run:a --cases ../hvac-bench-heldout/dataset/gate.jsonl --out runs/arm-a-2026-07-25
+pnpm score --cases ../hvac-bench-heldout/dataset/gate.jsonl \
+  --run runs/arm-a-2026-07-25/raw.jsonl --meta runs/arm-a-2026-07-25/run.json \
+  --index ../hvac-bench-heldout/index/corpus-index.json \
+  --out runs/arm-a-2026-07-25/score.json
+pnpm compare:arms --a runs/arm-a-2026-07-25/score.json --d baselines/last-green.json
+```
+
+Rapport figé : [reports/arm-a-vs-d-2026-07-25.md](./reports/arm-a-vs-d-2026-07-25.md).
