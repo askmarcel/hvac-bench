@@ -6,13 +6,16 @@ Benchmark CVC AskMarcel — harness de mesure, dataset versionné, gate CI.
 
 | Élément | État |
 |---|---|
-| Schéma cas | `dataset/schema.json` v0.1.0 |
-| Gate held-out | 52 cas, hors dépôt (`../hvac-bench-heldout/`) |
-| Échantillon public | 4 cas illustratifs, `dataset/public/sample.jsonl` — **hors gate** |
+| Dépôt | https://github.com/askmarcel/hvac-bench (public) |
+| Held-out | https://github.com/askmarcel/hvac-bench-heldout (privé, secret CI) |
+| Schéma cas | `dataset/schema.json` v0.1.0 — tag `dataset-schema-v0.1.0` |
+| Gate held-out | 52 cas |
+| Échantillon public | 4 cas, `dataset/public/sample.jsonl` — **hors gate** |
 | Runner | bras D (`pnpm run:d`) |
-| Scorer | `pnpm score` — déterministe, sans LLM |
-| Gate | `pnpm gate` — règles CDC §7 |
-| Baseline verte | non figée : à établir après le correctif d'attribution (REQ-G3) |
+| Scorer | `pnpm score` — déterministe, sans LLM, 18 tests |
+| Gate | `pnpm gate` — 4 règles (CDC §7 + confiance illisible) |
+| CI | workflow `hvac-bench-gate` — harness + gate sur push |
+| Baseline verte | non figée — premier run prod **rouge** (2026-07-25) |
 
 ## Métriques headline
 
@@ -66,6 +69,22 @@ se comportent comme attendu :
 Le deuxième est le plus important : un système qui ne se trompe jamais parce qu'il ne
 répond jamais doit être rouge. Il l'est, par la règle de régression d'attribution.
 
+## Premier run prod (2026-07-25)
+
+Gate CI sur les 52 cas held-out, clé `HvacBench-CI`, prod `app.askmarcel.app`.
+Artefact : [Actions run #30160899365](https://github.com/askmarcel/hvac-bench/actions/runs/30160899365).
+
+| Métrique | Résultat |
+|---|---|
+| Attribution | 87,5 % (42/48) |
+| Hallucination | 15,4 % (8/52) |
+| Verdict gate | **ROUGE** |
+| Règle 2 | ✗ hb-0042 (high sur no-answer) |
+| Règle 3 | ✗ hb-0066…0069 (citations fantômes) |
+| Règle 4 (confiance lisible) | ✓ |
+
+Ce run sert de preuve pré-correctif (REQ-G3). À archiver en `baselines/pre-fix.json`.
+
 ## Règles du gate
 
 Trois règles du CDC §7 REQ-G2, plus une quatrième ajoutée ici et signalée comme hors CDC :
@@ -103,4 +122,4 @@ pnpm score              # scorer
 pnpm gate               # verdict CI
 ```
 
-Voir [REPRODUCE.md](./REPRODUCE.md).
+Voir [REPRODUCE.md](./REPRODUCE.md) · [SETUP-CI.md](./SETUP-CI.md).

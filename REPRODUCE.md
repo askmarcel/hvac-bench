@@ -3,8 +3,8 @@
 ## Prérequis
 
 - Node 22, pnpm 9, `pnpm install`
-- Le held-out dans `../hvac-bench-heldout/` (jamais public — NFR-2)
-- `BENCH_API_URL` et `BENCH_API_KEY` pour le bras D
+- Clone https://github.com/askmarcel/hvac-bench-heldout (accès privé) ou copie locale `../hvac-bench-heldout/`
+- `BENCH_API_URL` et `BENCH_API_KEY` pour le bras D (clé `HvacBench-CI` en CI)
 
 ## Chaîne complète
 
@@ -53,8 +53,12 @@ daté avant tout re-run revendiqué comparable.
 ## Le run pré-correctif
 
 Le premier run bras D est archivé en `baselines/pre-fix.json` — **preuve interne, jamais
-baseline verte** (CDC REQ-G3). Il n'a lieu qu'une fois : c'est le chiffre d'avant. Le runner
-écrit `raw.jsonl` au fil de l'eau pour qu'un plantage à mi-parcours ne le gâche pas.
+baseline verte** (CDC REQ-G3).
+
+**État 2026-07-25 :** exécuté via CI ([run #30160899365](https://github.com/askmarcel/hvac-bench/actions/runs/30160899365)).
+Télécharger l'artefact `hvac-bench-score` et le placer en `baselines/pre-fix.json` pour figer la preuve dans le dépôt.
+
+Le runner écrit `raw.jsonl` au fil de l'eau pour qu'un plantage à mi-parcours ne le gâche pas.
 
 ## Déterminisme
 
