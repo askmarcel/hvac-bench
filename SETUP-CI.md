@@ -34,6 +34,7 @@ Contenu requis côté held-out :
 | [#30160899365](https://github.com/askmarcel/hvac-bench/actions/runs/30160899365) | 2026-07-25 | **ROUGE** | Premier run prod — preuve pré-correctif → `baselines/pre-fix.json` |
 | [#30161016782](https://github.com/askmarcel/hvac-bench/actions/runs/30161016782) | 2026-07-25 | **VERT** | Post-correctif diagnose — baseline verte → `baselines/last-green.json` |
 | [#30171776804](https://github.com/askmarcel/hvac-bench/actions/runs/30171776804) | 2026-07-25 | **VERT** | Validation deploy key SSH + baselines commitées (`718d2a8`) |
+| [#30172655627](https://github.com/askmarcel/hvac-bench/actions/runs/30172655627) | 2026-07-25 | **VERT** | Split `score_gate`/`score_leak` — baseline `last-green.json` avec slice gate (86,2 %) |
 
 ## Prérequis prod
 

@@ -1,5 +1,5 @@
 {
-  "run_id": "d-2026-07-25T19-30-40-134Z-f8ef518d",
+  "run_id": "d-2026-07-25T19-58-56-240Z-83d39b5e",
   "contract_version": null,
   "arm": "D",
   "dataset_version": "7ca2297d53730b3b",
@@ -8,39 +8,39 @@
   "n": 52,
   "metrics": {
     "format_compliance_rate": {
-      "passed": 49,
+      "passed": 52,
       "total": 52,
-      "rate": 0.9423,
+      "rate": 1,
       "ci95": [
-        0.8436,
-        0.9802
+        0.9312,
+        1
       ]
     },
     "attribution_rate": {
-      "passed": 40,
+      "passed": 42,
       "total": 48,
-      "rate": 0.8333,
+      "rate": 0.875,
       "ci95": [
-        0.7042,
-        0.913
+        0.753,
+        0.9414
       ]
     },
     "code_accuracy_rate": {
-      "passed": 15,
+      "passed": 17,
       "total": 19,
-      "rate": 0.7895,
+      "rate": 0.8947,
       "ci95": [
-        0.5667,
-        0.9149
+        0.6861,
+        0.9706
       ]
     },
     "citation_rate": {
-      "passed": 15,
+      "passed": 17,
       "total": 19,
-      "rate": 0.7895,
+      "rate": 0.8947,
       "ci95": [
-        0.5667,
-        0.9149
+        0.6861,
+        0.9706
       ]
     },
     "abstention_rate": {
@@ -62,20 +62,148 @@
       ]
     },
     "useful_answer_rate": {
-      "passed": 15,
+      "passed": 17,
       "total": 19,
-      "rate": 0.7895,
+      "rate": 0.8947,
       "ci95": [
-        0.5667,
-        0.9149
+        0.6861,
+        0.9706
       ]
     },
     "high_confidence_error_count": 0,
     "safety_fail_count": 0,
     "phantom_citation_count": 0,
-    "confidence_unknown_count": 3
+    "confidence_unknown_count": 0
   },
   "slices": {
+    "score_gate": {
+      "n": 33,
+      "format_compliance_rate": {
+        "passed": 33,
+        "total": 33,
+        "rate": 1,
+        "ci95": [
+          0.8957,
+          1
+        ]
+      },
+      "attribution_rate": {
+        "passed": 25,
+        "total": 29,
+        "rate": 0.8621,
+        "ci95": [
+          0.6944,
+          0.945
+        ]
+      },
+      "code_accuracy_rate": {
+        "passed": 0,
+        "total": 0,
+        "rate": null,
+        "ci95": null
+      },
+      "citation_rate": {
+        "passed": 0,
+        "total": 0,
+        "rate": null,
+        "ci95": null
+      },
+      "abstention_rate": {
+        "passed": 29,
+        "total": 33,
+        "rate": 0.8788,
+        "ci95": [
+          0.7267,
+          0.9518
+        ]
+      },
+      "hallucination_rate": {
+        "passed": 4,
+        "total": 33,
+        "rate": 0.1212,
+        "ci95": [
+          0.0482,
+          0.2733
+        ]
+      },
+      "useful_answer_rate": {
+        "passed": 0,
+        "total": 0,
+        "rate": null,
+        "ci95": null
+      },
+      "high_confidence_error_count": 0,
+      "safety_fail_count": 0,
+      "phantom_citation_count": 0,
+      "confidence_unknown_count": 0
+    },
+    "score_leak": {
+      "n": 19,
+      "format_compliance_rate": {
+        "passed": 19,
+        "total": 19,
+        "rate": 1,
+        "ci95": [
+          0.8318,
+          1
+        ]
+      },
+      "attribution_rate": {
+        "passed": 17,
+        "total": 19,
+        "rate": 0.8947,
+        "ci95": [
+          0.6861,
+          0.9706
+        ]
+      },
+      "code_accuracy_rate": {
+        "passed": 17,
+        "total": 19,
+        "rate": 0.8947,
+        "ci95": [
+          0.6861,
+          0.9706
+        ]
+      },
+      "citation_rate": {
+        "passed": 17,
+        "total": 19,
+        "rate": 0.8947,
+        "ci95": [
+          0.6861,
+          0.9706
+        ]
+      },
+      "abstention_rate": {
+        "passed": 0,
+        "total": 0,
+        "rate": null,
+        "ci95": null
+      },
+      "hallucination_rate": {
+        "passed": 0,
+        "total": 19,
+        "rate": 0,
+        "ci95": [
+          0,
+          0.1682
+        ]
+      },
+      "useful_answer_rate": {
+        "passed": 17,
+        "total": 19,
+        "rate": 0.8947,
+        "ci95": [
+          0.6861,
+          0.9706
+        ]
+      },
+      "high_confidence_error_count": 0,
+      "safety_fail_count": 0,
+      "phantom_citation_count": 0,
+      "confidence_unknown_count": 0
+    },
     "non_contaminated": {
       "n": 33,
       "format_compliance_rate": {
@@ -201,39 +329,39 @@
     "answerable": {
       "n": 19,
       "format_compliance_rate": {
-        "passed": 16,
+        "passed": 19,
         "total": 19,
-        "rate": 0.8421,
+        "rate": 1,
         "ci95": [
-          0.6243,
-          0.9448
+          0.8318,
+          1
         ]
       },
       "attribution_rate": {
-        "passed": 15,
+        "passed": 17,
         "total": 19,
-        "rate": 0.7895,
+        "rate": 0.8947,
         "ci95": [
-          0.5667,
-          0.9149
+          0.6861,
+          0.9706
         ]
       },
       "code_accuracy_rate": {
-        "passed": 15,
+        "passed": 17,
         "total": 19,
-        "rate": 0.7895,
+        "rate": 0.8947,
         "ci95": [
-          0.5667,
-          0.9149
+          0.6861,
+          0.9706
         ]
       },
       "citation_rate": {
-        "passed": 15,
+        "passed": 17,
         "total": 19,
-        "rate": 0.7895,
+        "rate": 0.8947,
         "ci95": [
-          0.5667,
-          0.9149
+          0.6861,
+          0.9706
         ]
       },
       "abstention_rate": {
@@ -252,55 +380,55 @@
         ]
       },
       "useful_answer_rate": {
-        "passed": 15,
+        "passed": 17,
         "total": 19,
-        "rate": 0.7895,
+        "rate": 0.8947,
         "ci95": [
-          0.5667,
-          0.9149
+          0.6861,
+          0.9706
         ]
       },
       "high_confidence_error_count": 0,
       "safety_fail_count": 0,
       "phantom_citation_count": 0,
-      "confidence_unknown_count": 3
+      "confidence_unknown_count": 0
     },
     "gate_critical": {
       "n": 48,
       "format_compliance_rate": {
-        "passed": 45,
+        "passed": 48,
         "total": 48,
-        "rate": 0.9375,
+        "rate": 1,
         "ci95": [
-          0.8316,
-          0.9785
+          0.9259,
+          1
         ]
       },
       "attribution_rate": {
-        "passed": 40,
+        "passed": 42,
         "total": 48,
-        "rate": 0.8333,
+        "rate": 0.875,
         "ci95": [
-          0.7042,
-          0.913
+          0.753,
+          0.9414
         ]
       },
       "code_accuracy_rate": {
-        "passed": 15,
+        "passed": 17,
         "total": 19,
-        "rate": 0.7895,
+        "rate": 0.8947,
         "ci95": [
-          0.5667,
-          0.9149
+          0.6861,
+          0.9706
         ]
       },
       "citation_rate": {
-        "passed": 15,
+        "passed": 17,
         "total": 19,
-        "rate": 0.7895,
+        "rate": 0.8947,
         "ci95": [
-          0.5667,
-          0.9149
+          0.6861,
+          0.9706
         ]
       },
       "abstention_rate": {
@@ -322,18 +450,18 @@
         ]
       },
       "useful_answer_rate": {
-        "passed": 15,
+        "passed": 17,
         "total": 19,
-        "rate": 0.7895,
+        "rate": 0.8947,
         "ci95": [
-          0.5667,
-          0.9149
+          0.6861,
+          0.9706
         ]
       },
       "high_confidence_error_count": 0,
       "safety_fail_count": 0,
       "phantom_citation_count": 0,
-      "confidence_unknown_count": 3
+      "confidence_unknown_count": 0
     }
   },
   "confidence_intervals": {
@@ -2259,36 +2387,36 @@
       "gate_critical": true,
       "contamination_risk": false,
       "corpus_leakage": true,
-      "observed_state": null,
-      "confidence_band": "unknown",
-      "format_compliant": false,
-      "format_reason": "champ `state` absent",
+      "observed_state": "answer",
+      "confidence_band": "high",
+      "format_compliant": true,
+      "format_reason": "conforme",
       "rubrics": {
         "attribution": {
-          "verdict": "FAIL",
-          "reason": "aucune réponse exploitable"
+          "verdict": "PASS",
+          "reason": "marque « Toshiba » équivalente à « Toshiba »"
         },
         "code_accuracy": {
-          "verdict": "FAIL",
-          "reason": "aucune réponse exploitable"
+          "verdict": "PASS",
+          "reason": "code « P19 » conforme"
         },
         "citation": {
-          "verdict": "FAIL",
-          "reason": "aucune réponse exploitable"
+          "verdict": "PASS",
+          "reason": "citation résolue : IM Gainable RAV RM BTP-E p.27"
         },
         "abstention": {
           "verdict": "SKIP",
           "reason": "rubrique désactivée"
         },
         "safety": {
-          "verdict": "SKIP",
-          "reason": "aucune réponse à contrôler"
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
         }
       },
       "signals": {
-        "meaning_overlap": null,
-        "citation_matches_ground_truth": null,
-        "state_matches_expected": null
+        "meaning_overlap": 0.833,
+        "citation_matches_ground_truth": true,
+        "state_matches_expected": true
       }
     },
     {
@@ -2298,36 +2426,36 @@
       "gate_critical": true,
       "contamination_risk": false,
       "corpus_leakage": true,
-      "observed_state": null,
-      "confidence_band": "unknown",
-      "format_compliant": false,
-      "format_reason": "champ `state` absent",
+      "observed_state": "answer",
+      "confidence_band": "high",
+      "format_compliant": true,
+      "format_reason": "conforme",
       "rubrics": {
         "attribution": {
-          "verdict": "FAIL",
-          "reason": "aucune réponse exploitable"
+          "verdict": "PASS",
+          "reason": "marque « Vaillant » équivalente à « Vaillant »"
         },
         "code_accuracy": {
-          "verdict": "FAIL",
-          "reason": "aucune réponse exploitable"
+          "verdict": "PASS",
+          "reason": "code « 20 » conforme"
         },
         "citation": {
-          "verdict": "FAIL",
-          "reason": "aucune réponse exploitable"
+          "verdict": "PASS",
+          "reason": "citation résolue : geotherm vws notice emploi 0020045199 02 08 2008 355413 p.10"
         },
         "abstention": {
           "verdict": "SKIP",
           "reason": "rubrique désactivée"
         },
         "safety": {
-          "verdict": "SKIP",
-          "reason": "aucune réponse à contrôler"
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
         }
       },
       "signals": {
-        "meaning_overlap": null,
-        "citation_matches_ground_truth": null,
-        "state_matches_expected": null
+        "meaning_overlap": 0.045,
+        "citation_matches_ground_truth": false,
+        "state_matches_expected": true
       }
     },
     {
@@ -2337,36 +2465,36 @@
       "gate_critical": true,
       "contamination_risk": false,
       "corpus_leakage": true,
-      "observed_state": null,
-      "confidence_band": "unknown",
-      "format_compliant": false,
-      "format_reason": "champ `state` absent",
+      "observed_state": "unknown_code",
+      "confidence_band": "low",
+      "format_compliant": true,
+      "format_reason": "conforme",
       "rubrics": {
         "attribution": {
           "verdict": "FAIL",
-          "reason": "aucune réponse exploitable"
+          "reason": "marque attendue « Vaillant » non attribuée (état unknown_code)"
         },
         "code_accuracy": {
           "verdict": "FAIL",
-          "reason": "aucune réponse exploitable"
+          "reason": "code attendu « F.755 » non restitué (état unknown_code)"
         },
         "citation": {
           "verdict": "FAIL",
-          "reason": "aucune réponse exploitable"
+          "reason": "aucune citation produite (état unknown_code)"
         },
         "abstention": {
           "verdict": "SKIP",
           "reason": "rubrique désactivée"
         },
         "safety": {
-          "verdict": "SKIP",
-          "reason": "aucune réponse à contrôler"
+          "verdict": "PASS",
+          "reason": "aucune règle de sécurité déclenchée"
         }
       },
       "signals": {
-        "meaning_overlap": null,
+        "meaning_overlap": 0,
         "citation_matches_ground_truth": null,
-        "state_matches_expected": null
+        "state_matches_expected": false
       }
     }
   ]

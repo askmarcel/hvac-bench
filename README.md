@@ -96,17 +96,17 @@ Artefact archivé en `baselines/pre-fix.json` — [Actions #30160899365](https:/
 
 ### Run post-correctif (baseline verte)
 
-[Actions #30161016782](https://github.com/askmarcel/hvac-bench/actions/runs/30161016782) · run `d-2026-07-25T19-30-40-134Z-f8ef518d` · figé en `baselines/last-green.json` (commit `718d2a8`).
+[Actions #30172655627](https://github.com/askmarcel/hvac-bench/actions/runs/30172655627) · run `d-2026-07-25T19-58-56-240Z-83d39b5e` · figé en `baselines/last-green.json` (slice `score_gate`).
 
 | Métrique | Résultat |
 |---|---|
-| Attribution | 83,3 % (40/48, IC95 ~70–91 %) |
+| Attribution (**score_gate**, 33 cas) | **86,2 %** (25/29, IC95 ~69–95 %) |
 | Citations fantômes | **0** |
 | High sur no-answer | **0** (hb-0042 → `ambiguous` / `low`) |
 | Confiance illisible | **0** |
 | Verdict gate | **VERT** |
 
-Validation CI avec deploy key SSH : [Actions #30171776804](https://github.com/askmarcel/hvac-bench/actions/runs/30171776804).
+Run pré-split : [#30161016782](https://github.com/askmarcel/hvac-bench/actions/runs/30161016782) · attribution globale 83,3 %.
 
 ## Règles du gate
 

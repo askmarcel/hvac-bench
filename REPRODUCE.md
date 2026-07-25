@@ -59,14 +59,18 @@ baseline verte** (CDC REQ-G3).
 
 ## La baseline verte
 
-Après correctif diagnose, le run post-correctif est figé en `baselines/last-green.json` :
+Après split `score_gate` / `score_leak`, la baseline est figée en `baselines/last-green.json` :
 
-- Run : `d-2026-07-25T19-30-40-134Z-f8ef518d`
-- CI : [Actions #30161016782](https://github.com/askmarcel/hvac-bench/actions/runs/30161016782)
-- Attribution de référence : **83,3 %** (40/48)
+- Run : `d-2026-07-25T19-58-56-240Z-83d39b5e`
+- CI : [Actions #30172655627](https://github.com/askmarcel/hvac-bench/actions/runs/30172655627)
+- Attribution de référence (**score_gate**, 33 cas hors `corpus_leakage`) : **86,2 %** (25/29)
 - Citations fantômes : **0**
+- Tranches : `score_gate` 33 cas · `score_leak` 19 cas (signal, non bloquant)
 
-Tout push sur `main` compare désormais la règle 1 (régression attribution) à cette baseline.
+Tout push sur `main` compare la règle 1 (régression attribution) à `slices.score_gate.attribution_rate`
+de cette baseline.
+
+Run pré-split archivé : `d-2026-07-25T19-30-40-134Z-f8ef518d` ([#30161016782](https://github.com/askmarcel/hvac-bench/actions/runs/30161016782)), attribution globale 83,3 %.
 
 Le runner écrit `raw.jsonl` au fil de l'eau pour qu'un plantage à mi-parcours ne le gâche pas.
 
