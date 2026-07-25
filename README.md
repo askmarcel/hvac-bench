@@ -15,7 +15,9 @@ Benchmark CVC AskMarcel — harness de mesure, dataset versionné, gate CI.
 | Scorer | `pnpm score` — déterministe, sans LLM, 18 tests |
 | Gate | `pnpm gate` — 4 règles (CDC §7 + confiance illisible) |
 | CI | workflow `hvac-bench-gate` — harness + gate sur push |
-| Baseline verte | non figée — premier run prod **rouge** (2026-07-25) |
+| Baseline verte | figée — run `d-2026-07-25T19-30-40-134Z-f8ef518d` ([CI #30161016782](https://github.com/askmarcel/hvac-bench/actions/runs/30161016782)) |
+| Baseline pre-fix | `baselines/pre-fix.json` — run [#30160899365](https://github.com/askmarcel/hvac-bench/actions/runs/30160899365) |
+| CI | workflow `hvac-bench-gate` — harness + gate sur push — **VERT** depuis 2026-07-25 |
 
 ## Métriques headline
 
@@ -69,10 +71,10 @@ se comportent comme attendu :
 Le deuxième est le plus important : un système qui ne se trompe jamais parce qu'il ne
 répond jamais doit être rouge. Il l'est, par la règle de régression d'attribution.
 
-## Premier run prod (2026-07-25)
+## Premier run prod (2026-07-25) — pré-correctif
 
 Gate CI sur les 52 cas held-out, clé `HvacBench-CI`, prod `app.askmarcel.app`.
-Artefact : [Actions run #30160899365](https://github.com/askmarcel/hvac-bench/actions/runs/30160899365).
+Artefact archivé en `baselines/pre-fix.json` — [Actions #30160899365](https://github.com/askmarcel/hvac-bench/actions/runs/30160899365).
 
 | Métrique | Résultat |
 |---|---|
@@ -83,7 +85,28 @@ Artefact : [Actions run #30160899365](https://github.com/askmarcel/hvac-bench/ac
 | Règle 3 | ✗ hb-0066…0069 (citations fantômes) |
 | Règle 4 (confiance lisible) | ✓ |
 
-Ce run sert de preuve pré-correctif (REQ-G3). À archiver en `baselines/pre-fix.json`.
+## Correctif diagnose + gate vert (2026-07-25)
+
+### Causes racines
+
+| Cas | Symptôme | Correctif |
+|---|---|---|
+| hb-0042 | Requête symptom-only → `answer` + confiance haute | Détection `isSymptomOnlyUnderspecified` → `ambiguous` / `low` (`4fe3f6a`) |
+| hb-0066…0069 | `doc_title` null → fallback « Manuel technique » | Chunks publiés sur documents `is_published = false` : le JOIN RPC filtrait `rd.is_published` ; migration `20260725213000_fix_search_rpc_doc_title.sql` + enrichissement admin (`e752394`) |
+
+### Run post-correctif (baseline verte)
+
+[Actions #30161016782](https://github.com/askmarcel/hvac-bench/actions/runs/30161016782) · run `d-2026-07-25T19-30-40-134Z-f8ef518d` · figé en `baselines/last-green.json` (commit `718d2a8`).
+
+| Métrique | Résultat |
+|---|---|
+| Attribution | 83,3 % (40/48, IC95 ~70–91 %) |
+| Citations fantômes | **0** |
+| High sur no-answer | **0** (hb-0042 → `ambiguous` / `low`) |
+| Confiance illisible | **0** |
+| Verdict gate | **VERT** |
+
+Validation CI avec deploy key SSH : [Actions #30171776804](https://github.com/askmarcel/hvac-bench/actions/runs/30171776804).
 
 ## Règles du gate
 

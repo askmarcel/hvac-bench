@@ -55,8 +55,18 @@ daté avant tout re-run revendiqué comparable.
 Le premier run bras D est archivé en `baselines/pre-fix.json` — **preuve interne, jamais
 baseline verte** (CDC REQ-G3).
 
-**État 2026-07-25 :** exécuté via CI ([run #30160899365](https://github.com/askmarcel/hvac-bench/actions/runs/30160899365)).
-Télécharger l'artefact `hvac-bench-score` et le placer en `baselines/pre-fix.json` pour figer la preuve dans le dépôt.
+**État 2026-07-25 :** exécuté via CI ([run #30160899365](https://github.com/askmarcel/hvac-bench/actions/runs/30160899365)), figé dans le dépôt (commit `718d2a8`).
+
+## La baseline verte
+
+Après correctif diagnose, le run post-correctif est figé en `baselines/last-green.json` :
+
+- Run : `d-2026-07-25T19-30-40-134Z-f8ef518d`
+- CI : [Actions #30161016782](https://github.com/askmarcel/hvac-bench/actions/runs/30161016782)
+- Attribution de référence : **83,3 %** (40/48)
+- Citations fantômes : **0**
+
+Tout push sur `main` compare désormais la règle 1 (régression attribution) à cette baseline.
 
 Le runner écrit `raw.jsonl` au fil de l'eau pour qu'un plantage à mi-parcours ne le gâche pas.
 
