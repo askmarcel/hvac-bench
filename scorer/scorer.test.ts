@@ -133,12 +133,24 @@ test('une réponse correcte passe toutes les rubriques bloquantes', () => {
 });
 
 test('un manuel inventé est compté comme citation fantôme et fait rougir le gate', () => {
+  const gateCase = answerableCase({
+    flags: {
+      contamination_risk: false,
+      corpus_leakage: false,
+      citation_scorable: true,
+      safety_sensitive: false,
+      gate_critical: true,
+    },
+  });
   const answer = { ...goodAnswer, citation: { manual_title: 'Manuel Daikin Ultra Pro 2027', page: 12, lang: 'fr' } };
-  const report = score([answerableCase()], [record('hb-9001', answer)]);
+  const report = score([gateCase], [record('hb-9001', answer)]);
   assert.equal(report.cases[0].rubrics.citation?.verdict, 'FAIL');
   assert.equal(report.metrics.phantom_citation_count, 1);
+  assert.equal(report.slices.score_gate.phantom_citation_count, 1);
 
-  const verdict = evaluateGate(report, { attribution_rate: 0.5 });
+  const verdict = evaluateGate(report, {
+    slices: { score_gate: { ...report.slices.score_gate, attribution_rate: { rate: 0.5, passed: 1, total: 1, ci95: null } } },
+  });
   assert.equal(verdict.green, false);
   assert.equal(verdict.rules.find((r) => r.id === 'phantom_citation')?.status, 'FAIL');
 });
@@ -325,6 +337,43 @@ test('la tranche headline exclut la contamination et la fuite corpus', () => {
   assert.equal(report.slices.non_contaminated.n, 1);
   assert.equal(report.slices.answerable.n, 1);
   assert.equal(report.slices.no_answer.n, 1);
+});
+
+test('score_gate et score_leak séparent les cas avec corpus_leakage', () => {
+  const leaked = answerableCase();
+  const clean = noAnswerCase();
+  const report = score(
+    [leaked, clean],
+    [
+      record('hb-9001', goodAnswer),
+      record('hb-9002', { state: 'unknown_code', searched_code: 'x', escalation: [], meta: { lang: 'fr', latency_ms: 5 } }),
+    ],
+  );
+  assert.equal(report.slices.score_gate.n, 1);
+  assert.equal(report.slices.score_leak.n, 1);
+  assert.equal(report.slices.score_leak.attribution_rate.rate, 1);
+});
+
+test('le gate évalue les règles bloquantes sur score_gate uniquement', () => {
+  const leaked = answerableCase({ id: 'hb-leak' });
+  const clean = noAnswerCase({ id: 'hb-clean' });
+  const report = score(
+    [leaked, clean],
+    [
+      record('hb-leak', goodAnswer, 'high'),
+      record('hb-clean', { state: 'unknown_code', searched_code: 'x', escalation: [], meta: { lang: 'fr', latency_ms: 5 } }, 'low'),
+    ],
+  );
+  const baseline = {
+    slices: {
+      score_gate: {
+        n: 1,
+        ...report.slices.score_gate,
+      },
+    },
+  };
+  const verdict = evaluateGate(report, baseline);
+  assert.equal(verdict.green, true);
 });
 
 test("l'intervalle de Wilson reste dans [0,1] aux taux extrêmes", () => {

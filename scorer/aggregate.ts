@@ -100,6 +100,10 @@ export function computeSlices(scores: CaseScore[], phantomIds: Set<string>): Sli
   });
 
   return {
+    // Gate strict : cas sans avantage corpus (REQ-G2 opérationnel).
+    score_gate: build(scores.filter((s) => !s.corpus_leakage)),
+    // Signal séparé : cas où la vérité terrain est dans le corpus ingéré.
+    score_leak: build(scores.filter((s) => s.corpus_leakage)),
     // Tranche headline : ni contamination pré-entraînement, ni vérité issue du corpus.
     non_contaminated: build(scores.filter((s) => !s.contamination_risk && !s.corpus_leakage)),
     no_answer: build(scores.filter((s) => s.strata === 'no_answer')),

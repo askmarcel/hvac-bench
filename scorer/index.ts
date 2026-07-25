@@ -163,6 +163,18 @@ function main() {
   console.log(`  abstention          ${pct(m.abstention_rate)}`);
   console.log(`  hallucination       ${pct(m.hallucination_rate)}`);
   console.log(`  réponse utile       ${pct(m.useful_answer_rate)}`);
+  if (report.slices.score_gate) {
+    const g = report.slices.score_gate;
+    console.log(`\n  score_gate (${g.n} cas)`);
+    console.log(`    attribution       ${pct(g.attribution_rate)}`);
+    console.log(`    citations fantômes: ${g.phantom_citation_count}`);
+  }
+  if (report.slices.score_leak) {
+    const l = report.slices.score_leak;
+    console.log(`\n  score_leak (${l.n} cas, signal)`);
+    console.log(`    attribution       ${pct(l.attribution_rate)}`);
+    console.log(`    réponse utile     ${pct(l.useful_answer_rate)}`);
+  }
   console.log(`\n  erreurs confiance haute : ${m.high_confidence_error_count}`);
   console.log(`  citations fantômes      : ${m.phantom_citation_count}`);
   console.log(`  échecs sécurité         : ${m.safety_fail_count}`);

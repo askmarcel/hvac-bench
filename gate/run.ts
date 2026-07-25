@@ -5,7 +5,7 @@
  *   tsx gate/run.ts --score runs/<run_id>/score.json [--baseline baselines/last-green.json]
  *                   [--epsilon 0]
  *
- * Rouge si l'une des conditions est vraie :
+ * Rouge si l'une des conditions est vraie (évaluées sur la tranche score_gate, hors corpus_leakage) :
  *   1. régression attribution : attribution_rate < baseline − ε
  *   2. high_confidence_no_answer_fail_count ≥ 1
  *   3. phantom_citation_count ≥ 1
@@ -18,8 +18,20 @@ import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import type { ScoreReport } from '../scorer/index.js';
+import type { CaseScore } from '../scorer/types.js';
+import type { Metrics } from '../scorer/aggregate.js';
 
-type Baseline = { attribution_rate?: number | { rate: number | null }; run_id?: string; dataset_version?: string };
+type RateRef = { rate: number | null };
+type SliceRef = Metrics & { n: number };
+
+type Baseline = {
+  attribution_rate?: number | RateRef;
+  run_id?: string;
+  dataset_version?: string;
+  slices?: {
+    score_gate?: SliceRef;
+  };
+};
 
 export type GateRule = {
   id: string;
@@ -32,8 +44,18 @@ export type GateRule = {
 
 export type GateVerdict = { green: boolean; rules: GateRule[] };
 
+function isGateCase(c: CaseScore): boolean {
+  return !c.corpus_leakage;
+}
+
+function gateSlice(report: ScoreReport): SliceRef | undefined {
+  return report.slices.score_gate;
+}
+
 function baselineAttribution(baseline: Baseline | null): number | null {
   if (!baseline) return null;
+  const sliceRate = baseline.slices?.score_gate?.attribution_rate?.rate;
+  if (typeof sliceRate === 'number') return sliceRate;
   const value = baseline.attribution_rate;
   if (typeof value === 'number') return value;
   if (value && typeof value === 'object' && typeof value.rate === 'number') return value.rate;
@@ -46,26 +68,29 @@ export function evaluateGate(
   epsilon = 0,
 ): GateVerdict {
   const rules: GateRule[] = [];
+  const gateCases = report.cases.filter(isGateCase);
+  const gateMetrics = gateSlice(report);
+  const gateN = gateMetrics?.n ?? gateCases.length;
 
-  // Règle 1 — régression attribution.
-  const observed = report.metrics.attribution_rate.rate;
+  // Règle 1 — régression attribution (tranche score_gate).
+  const observed = gateMetrics?.attribution_rate.rate ?? null;
   const reference = baselineAttribution(baseline);
   if (reference === null) {
     rules.push({
       id: 'attribution_regression',
-      label: 'Régression attribution',
+      label: 'Régression attribution (score_gate)',
       status: 'SKIP',
       detail:
-        "aucune baseline verte exploitable — premier run ou baseline de remplacement. La règle ne peut pas s'appliquer (REQ-G3).",
+        "aucune baseline score_gate exploitable — premier run ou baseline à régénérer. La règle ne peut pas s'appliquer (REQ-G3).",
       blocking: false,
       in_cdc: true,
     });
   } else if (observed === null) {
     rules.push({
       id: 'attribution_regression',
-      label: 'Régression attribution',
+      label: 'Régression attribution (score_gate)',
       status: 'FAIL',
-      detail: 'aucun cas ne porte la rubrique attribution : le taux est inmesurable.',
+      detail: 'aucun cas score_gate ne porte la rubrique attribution : le taux est inmesurable.',
       blocking: true,
       in_cdc: true,
     });
@@ -73,16 +98,16 @@ export function evaluateGate(
     const regressed = observed < reference - epsilon;
     rules.push({
       id: 'attribution_regression',
-      label: 'Régression attribution',
+      label: 'Régression attribution (score_gate)',
       status: regressed ? 'FAIL' : 'PASS',
-      detail: `${(observed * 100).toFixed(1)} % contre ${(reference * 100).toFixed(1)} % de référence (ε = ${epsilon}).`,
+      detail: `${(observed * 100).toFixed(1)} % contre ${(reference * 100).toFixed(1)} % de référence sur ${gateN} cas (ε = ${epsilon}).`,
       blocking: regressed,
       in_cdc: true,
     });
   }
 
   // Règle 2 — réponse affirmée avec confiance haute sur un cas sans réponse attendue.
-  const criticalCases = report.cases.filter(
+  const criticalCases = gateCases.filter(
     (c) => c.strata === 'no_answer' && c.rubrics.abstention?.verdict === 'FAIL_CRITICAL',
   );
   rules.push({
@@ -97,9 +122,13 @@ export function evaluateGate(
     in_cdc: true,
   });
 
-  // Règle 3 — citation fantôme.
-  const phantoms = report.cases.filter((c) => c.rubrics.citation?.reason.includes('introuvable') || c.rubrics.citation?.reason.includes('hors bornes'));
-  const phantomCount = report.metrics.phantom_citation_count;
+  // Règle 3 — citation fantôme (score_gate).
+  const phantoms = gateCases.filter(
+    (c) =>
+      c.rubrics.citation?.reason.includes('introuvable') ||
+      c.rubrics.citation?.reason.includes('hors bornes'),
+  );
+  const phantomCount = gateMetrics?.phantom_citation_count ?? phantoms.length;
   rules.push({
     id: 'phantom_citation',
     label: 'Citation fantôme',
@@ -113,7 +142,7 @@ export function evaluateGate(
   });
 
   // Règle 4 — hors CDC : mesurabilité de la règle 2.
-  const unmeasurable = report.cases.filter(
+  const unmeasurable = gateCases.filter(
     (c) => c.strata === 'no_answer' && c.gate_critical && c.confidence_band === 'unknown',
   );
   rules.push({
@@ -150,8 +179,11 @@ function main() {
     : null;
 
   const verdict = evaluateGate(report, baseline, epsilon);
+  const gateN = report.slices.score_gate?.n ?? report.cases.filter((c) => !c.corpus_leakage).length;
+  const leakN = report.slices.score_leak?.n ?? report.cases.filter((c) => c.corpus_leakage).length;
 
-  console.log(`\nGate HVAC Bench — bras ${report.arm} · run ${report.run_id} · ${report.n} cas\n`);
+  console.log(`\nGate HVAC Bench — bras ${report.arm} · run ${report.run_id} · ${report.n} cas`);
+  console.log(`  score_gate ${gateN} cas · score_leak ${leakN} cas (signal, non bloquant)\n`);
   for (const rule of verdict.rules) {
     const mark = rule.status === 'PASS' ? '✓' : rule.status === 'SKIP' ? '–' : '✗';
     const origin = rule.in_cdc ? '' : ' (hors CDC)';
