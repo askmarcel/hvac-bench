@@ -1,0 +1,1639 @@
+{
+  "generated_at": "2026-07-27T08:19:28.655Z",
+  "n_cases": 10,
+  "prior_mass_useless_threshold": 0.6,
+  "pooled_eig": {
+    "median": 0.2625078024832792,
+    "std": 0.22247296811557515,
+    "n_samples": 190,
+    "pct_exact_zero": 0.2631578947368421
+  },
+  "per_case_median_eig_std": 0.22247296811557524,
+  "per_case_median_eig_max_over_lambda_delta": 15.394073358609104,
+  "cases": [
+    {
+      "case_id": "hb2-0001",
+      "base_entropy_bits": 4.086396957115957,
+      "n_actions": 19,
+      "eig_median": 0.2625078024832792,
+      "eig_std": 0.22247296811557524,
+      "eig_max": 0.7697036679304552,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.2631578947368421,
+      "eig_max_action": "MES-DEBIT",
+      "engine_pick_action": "MES-DEBIT",
+      "engine_top_score": 0.6697036679304552,
+      "cheapest_action": "OBS-BRUIT-POMPE",
+      "cheapest_cost": 25,
+      "eig_max_cost": 50,
+      "lambda_delta_cost": 25,
+      "eig_max_over_lambda_delta_cost": 15.394073358609104,
+      "useless_mass_actions": [],
+      "actions": [
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.7697036679304552,
+          "prior_mass": 0.35625,
+          "cost": 50,
+          "voi_score": 0.6697036679304552
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0.6249644459970627,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.5749644459970626
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.45662571075699354,
+          "prior_mass": 0.534375,
+          "cost": 50,
+          "voi_score": 0.35662571075699356
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0.3649151790670029,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.3149151790670029
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.32992535535976497,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.279925355359765
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.2849925219111764,
+          "prior_mass": 0.2375,
+          "cost": 50,
+          "voi_score": 0.1849925219111764
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.274092895243617,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": 0.174092895243617
+        },
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.26250780248328054,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248328055
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0.2625078024832801,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": 0.1625078024832801
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0.2625078024832792,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248327922
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.058438661640179745,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.008438661640179743
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": -0.05267595070482614
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": -0.0026759507048261383
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.006227061411516743,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": -0.09377293858848326
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0002",
+      "base_entropy_bits": 4.086396957115957,
+      "n_actions": 19,
+      "eig_median": 0.2625078024832792,
+      "eig_std": 0.22247296811557524,
+      "eig_max": 0.7697036679304552,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.2631578947368421,
+      "eig_max_action": "MES-DEBIT",
+      "engine_pick_action": "MES-DEBIT",
+      "engine_top_score": 0.6697036679304552,
+      "cheapest_action": "OBS-BRUIT-POMPE",
+      "cheapest_cost": 25,
+      "eig_max_cost": 50,
+      "lambda_delta_cost": 25,
+      "eig_max_over_lambda_delta_cost": 15.394073358609104,
+      "useless_mass_actions": [],
+      "actions": [
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.7697036679304552,
+          "prior_mass": 0.35625,
+          "cost": 50,
+          "voi_score": 0.6697036679304552
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0.6249644459970627,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.5749644459970626
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.45662571075699354,
+          "prior_mass": 0.534375,
+          "cost": 50,
+          "voi_score": 0.35662571075699356
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0.3649151790670029,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.3149151790670029
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.32992535535976497,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.279925355359765
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.2849925219111764,
+          "prior_mass": 0.2375,
+          "cost": 50,
+          "voi_score": 0.1849925219111764
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.274092895243617,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": 0.174092895243617
+        },
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.26250780248328054,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248328055
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0.2625078024832801,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": 0.1625078024832801
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0.2625078024832792,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248327922
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.058438661640179745,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.008438661640179743
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": -0.05267595070482614
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": -0.0026759507048261383
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.006227061411516743,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": -0.09377293858848326
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0003",
+      "base_entropy_bits": 4.086396957115957,
+      "n_actions": 19,
+      "eig_median": 0.2625078024832792,
+      "eig_std": 0.22247296811557524,
+      "eig_max": 0.7697036679304552,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.2631578947368421,
+      "eig_max_action": "MES-DEBIT",
+      "engine_pick_action": "MES-DEBIT",
+      "engine_top_score": 0.6697036679304552,
+      "cheapest_action": "OBS-BRUIT-POMPE",
+      "cheapest_cost": 25,
+      "eig_max_cost": 50,
+      "lambda_delta_cost": 25,
+      "eig_max_over_lambda_delta_cost": 15.394073358609104,
+      "useless_mass_actions": [],
+      "actions": [
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.7697036679304552,
+          "prior_mass": 0.35625,
+          "cost": 50,
+          "voi_score": 0.6697036679304552
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0.6249644459970627,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.5749644459970626
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.45662571075699354,
+          "prior_mass": 0.534375,
+          "cost": 50,
+          "voi_score": 0.35662571075699356
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0.3649151790670029,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.3149151790670029
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.32992535535976497,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.279925355359765
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.2849925219111764,
+          "prior_mass": 0.2375,
+          "cost": 50,
+          "voi_score": 0.1849925219111764
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.274092895243617,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": 0.174092895243617
+        },
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.26250780248328054,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248328055
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0.2625078024832801,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": 0.1625078024832801
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0.2625078024832792,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248327922
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.058438661640179745,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.008438661640179743
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": -0.05267595070482614
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": -0.0026759507048261383
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.006227061411516743,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": -0.09377293858848326
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0004",
+      "base_entropy_bits": 4.086396957115957,
+      "n_actions": 19,
+      "eig_median": 0.2625078024832792,
+      "eig_std": 0.22247296811557524,
+      "eig_max": 0.7697036679304552,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.2631578947368421,
+      "eig_max_action": "MES-DEBIT",
+      "engine_pick_action": "MES-DEBIT",
+      "engine_top_score": 0.6697036679304552,
+      "cheapest_action": "OBS-BRUIT-POMPE",
+      "cheapest_cost": 25,
+      "eig_max_cost": 50,
+      "lambda_delta_cost": 25,
+      "eig_max_over_lambda_delta_cost": 15.394073358609104,
+      "useless_mass_actions": [],
+      "actions": [
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.7697036679304552,
+          "prior_mass": 0.35625,
+          "cost": 50,
+          "voi_score": 0.6697036679304552
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0.6249644459970627,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.5749644459970626
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.45662571075699354,
+          "prior_mass": 0.534375,
+          "cost": 50,
+          "voi_score": 0.35662571075699356
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0.3649151790670029,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.3149151790670029
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.32992535535976497,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.279925355359765
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.2849925219111764,
+          "prior_mass": 0.2375,
+          "cost": 50,
+          "voi_score": 0.1849925219111764
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.274092895243617,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": 0.174092895243617
+        },
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.26250780248328054,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248328055
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0.2625078024832801,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": 0.1625078024832801
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0.2625078024832792,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248327922
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.058438661640179745,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.008438661640179743
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": -0.05267595070482614
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": -0.0026759507048261383
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.006227061411516743,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": -0.09377293858848326
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0005",
+      "base_entropy_bits": 4.086396957115957,
+      "n_actions": 19,
+      "eig_median": 0.2625078024832792,
+      "eig_std": 0.22247296811557524,
+      "eig_max": 0.7697036679304552,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.2631578947368421,
+      "eig_max_action": "MES-DEBIT",
+      "engine_pick_action": "MES-DEBIT",
+      "engine_top_score": 0.6697036679304552,
+      "cheapest_action": "OBS-BRUIT-POMPE",
+      "cheapest_cost": 25,
+      "eig_max_cost": 50,
+      "lambda_delta_cost": 25,
+      "eig_max_over_lambda_delta_cost": 15.394073358609104,
+      "useless_mass_actions": [],
+      "actions": [
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.7697036679304552,
+          "prior_mass": 0.35625,
+          "cost": 50,
+          "voi_score": 0.6697036679304552
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0.6249644459970627,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.5749644459970626
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.45662571075699354,
+          "prior_mass": 0.534375,
+          "cost": 50,
+          "voi_score": 0.35662571075699356
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0.3649151790670029,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.3149151790670029
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.32992535535976497,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.279925355359765
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.2849925219111764,
+          "prior_mass": 0.2375,
+          "cost": 50,
+          "voi_score": 0.1849925219111764
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.274092895243617,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": 0.174092895243617
+        },
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.26250780248328054,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248328055
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0.2625078024832801,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": 0.1625078024832801
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0.2625078024832792,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248327922
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.058438661640179745,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.008438661640179743
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": -0.05267595070482614
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": -0.0026759507048261383
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.006227061411516743,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": -0.09377293858848326
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0007",
+      "base_entropy_bits": 4.086396957115957,
+      "n_actions": 19,
+      "eig_median": 0.2625078024832792,
+      "eig_std": 0.22247296811557524,
+      "eig_max": 0.7697036679304552,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.2631578947368421,
+      "eig_max_action": "MES-DEBIT",
+      "engine_pick_action": "MES-DEBIT",
+      "engine_top_score": 0.6697036679304552,
+      "cheapest_action": "OBS-BRUIT-POMPE",
+      "cheapest_cost": 25,
+      "eig_max_cost": 50,
+      "lambda_delta_cost": 25,
+      "eig_max_over_lambda_delta_cost": 15.394073358609104,
+      "useless_mass_actions": [],
+      "actions": [
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.7697036679304552,
+          "prior_mass": 0.35625,
+          "cost": 50,
+          "voi_score": 0.6697036679304552
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0.6249644459970627,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.5749644459970626
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.45662571075699354,
+          "prior_mass": 0.534375,
+          "cost": 50,
+          "voi_score": 0.35662571075699356
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0.3649151790670029,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.3149151790670029
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.32992535535976497,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.279925355359765
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.2849925219111764,
+          "prior_mass": 0.2375,
+          "cost": 50,
+          "voi_score": 0.1849925219111764
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.274092895243617,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": 0.174092895243617
+        },
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.26250780248328054,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248328055
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0.2625078024832801,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": 0.1625078024832801
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0.2625078024832792,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248327922
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.058438661640179745,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.008438661640179743
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": -0.05267595070482614
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": -0.0026759507048261383
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.006227061411516743,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": -0.09377293858848326
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0010",
+      "base_entropy_bits": 4.086396957115957,
+      "n_actions": 19,
+      "eig_median": 0.2625078024832792,
+      "eig_std": 0.22247296811557524,
+      "eig_max": 0.7697036679304552,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.2631578947368421,
+      "eig_max_action": "MES-DEBIT",
+      "engine_pick_action": "MES-DEBIT",
+      "engine_top_score": 0.6697036679304552,
+      "cheapest_action": "OBS-BRUIT-POMPE",
+      "cheapest_cost": 25,
+      "eig_max_cost": 50,
+      "lambda_delta_cost": 25,
+      "eig_max_over_lambda_delta_cost": 15.394073358609104,
+      "useless_mass_actions": [],
+      "actions": [
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.7697036679304552,
+          "prior_mass": 0.35625,
+          "cost": 50,
+          "voi_score": 0.6697036679304552
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0.6249644459970627,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.5749644459970626
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.45662571075699354,
+          "prior_mass": 0.534375,
+          "cost": 50,
+          "voi_score": 0.35662571075699356
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0.3649151790670029,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.3149151790670029
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.32992535535976497,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.279925355359765
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.2849925219111764,
+          "prior_mass": 0.2375,
+          "cost": 50,
+          "voi_score": 0.1849925219111764
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.274092895243617,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": 0.174092895243617
+        },
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.26250780248328054,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248328055
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0.2625078024832801,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": 0.1625078024832801
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0.2625078024832792,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248327922
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.058438661640179745,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.008438661640179743
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": -0.05267595070482614
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": -0.0026759507048261383
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.006227061411516743,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": -0.09377293858848326
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0011",
+      "base_entropy_bits": 4.086396957115957,
+      "n_actions": 19,
+      "eig_median": 0.2625078024832792,
+      "eig_std": 0.22247296811557524,
+      "eig_max": 0.7697036679304552,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.2631578947368421,
+      "eig_max_action": "MES-DEBIT",
+      "engine_pick_action": "MES-DEBIT",
+      "engine_top_score": 0.6697036679304552,
+      "cheapest_action": "OBS-BRUIT-POMPE",
+      "cheapest_cost": 25,
+      "eig_max_cost": 50,
+      "lambda_delta_cost": 25,
+      "eig_max_over_lambda_delta_cost": 15.394073358609104,
+      "useless_mass_actions": [],
+      "actions": [
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.7697036679304552,
+          "prior_mass": 0.35625,
+          "cost": 50,
+          "voi_score": 0.6697036679304552
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0.6249644459970627,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.5749644459970626
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.45662571075699354,
+          "prior_mass": 0.534375,
+          "cost": 50,
+          "voi_score": 0.35662571075699356
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0.3649151790670029,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.3149151790670029
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.32992535535976497,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.279925355359765
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.2849925219111764,
+          "prior_mass": 0.2375,
+          "cost": 50,
+          "voi_score": 0.1849925219111764
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.274092895243617,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": 0.174092895243617
+        },
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.26250780248328054,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248328055
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0.2625078024832801,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": 0.1625078024832801
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0.2625078024832792,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248327922
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.058438661640179745,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.008438661640179743
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": -0.05267595070482614
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": -0.0026759507048261383
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.006227061411516743,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": -0.09377293858848326
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0013",
+      "base_entropy_bits": 4.086396957115957,
+      "n_actions": 19,
+      "eig_median": 0.2625078024832792,
+      "eig_std": 0.22247296811557524,
+      "eig_max": 0.7697036679304552,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.2631578947368421,
+      "eig_max_action": "MES-DEBIT",
+      "engine_pick_action": "MES-DEBIT",
+      "engine_top_score": 0.6697036679304552,
+      "cheapest_action": "OBS-BRUIT-POMPE",
+      "cheapest_cost": 25,
+      "eig_max_cost": 50,
+      "lambda_delta_cost": 25,
+      "eig_max_over_lambda_delta_cost": 15.394073358609104,
+      "useless_mass_actions": [],
+      "actions": [
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.7697036679304552,
+          "prior_mass": 0.35625,
+          "cost": 50,
+          "voi_score": 0.6697036679304552
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0.6249644459970627,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.5749644459970626
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.45662571075699354,
+          "prior_mass": 0.534375,
+          "cost": 50,
+          "voi_score": 0.35662571075699356
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0.3649151790670029,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.3149151790670029
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.32992535535976497,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.279925355359765
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.2849925219111764,
+          "prior_mass": 0.2375,
+          "cost": 50,
+          "voi_score": 0.1849925219111764
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.274092895243617,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": 0.174092895243617
+        },
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.26250780248328054,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248328055
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0.2625078024832801,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": 0.1625078024832801
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0.2625078024832792,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248327922
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.058438661640179745,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.008438661640179743
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": -0.05267595070482614
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": -0.0026759507048261383
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.006227061411516743,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": -0.09377293858848326
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0015",
+      "base_entropy_bits": 4.086396957115957,
+      "n_actions": 19,
+      "eig_median": 0.2625078024832792,
+      "eig_std": 0.22247296811557524,
+      "eig_max": 0.7697036679304552,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.2631578947368421,
+      "eig_max_action": "MES-DEBIT",
+      "engine_pick_action": "MES-DEBIT",
+      "engine_top_score": 0.6697036679304552,
+      "cheapest_action": "OBS-BRUIT-POMPE",
+      "cheapest_cost": 25,
+      "eig_max_cost": 50,
+      "lambda_delta_cost": 25,
+      "eig_max_over_lambda_delta_cost": 15.394073358609104,
+      "useless_mass_actions": [],
+      "actions": [
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.7697036679304552,
+          "prior_mass": 0.35625,
+          "cost": 50,
+          "voi_score": 0.6697036679304552
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0.6249644459970627,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.5749644459970626
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.45662571075699354,
+          "prior_mass": 0.534375,
+          "cost": 50,
+          "voi_score": 0.35662571075699356
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0.3649151790670029,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.3149151790670029
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.32992535535976497,
+          "prior_mass": 0.17812499999999998,
+          "cost": 25,
+          "voi_score": 0.279925355359765
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.2849925219111764,
+          "prior_mass": 0.2375,
+          "cost": 50,
+          "voi_score": 0.1849925219111764
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.274092895243617,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": 0.174092895243617
+        },
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.26250780248328054,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248328055
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0.2625078024832801,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": 0.1625078024832801
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0.2625078024832792,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.21250780248327922
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.058438661640179745,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": 0.008438661640179743
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 50,
+          "voi_score": -0.05267595070482614
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0.047324049295173864,
+          "prior_mass": 0.059375,
+          "cost": 25,
+          "voi_score": -0.0026759507048261383
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.006227061411516743,
+          "prior_mass": 0.11875,
+          "cost": 50,
+          "voi_score": -0.09377293858848326
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        }
+      ]
+    }
+  ],
+  "top_eig_actions_pooled": [
+    {
+      "action_id": "MES-DEBIT",
+      "mean_eig": 0.7697036679304553,
+      "n_cases": 10
+    },
+    {
+      "action_id": "OBS-LED-DEFAUT",
+      "mean_eig": 0.6249644459970627,
+      "n_cases": 10
+    },
+    {
+      "action_id": "MES-DT-EAU",
+      "mean_eig": 0.45662571075699354,
+      "n_cases": 10
+    },
+    {
+      "action_id": "OBS-CONDENSATS",
+      "mean_eig": 0.3649151790670029,
+      "n_cases": 10
+    },
+    {
+      "action_id": "OBS-GELEE",
+      "mean_eig": 0.32992535535976497,
+      "n_cases": 10
+    },
+    {
+      "action_id": "MES-HP-BP",
+      "mean_eig": 0.2849925219111764,
+      "n_cases": 10
+    },
+    {
+      "action_id": "MES-PRESSION",
+      "mean_eig": 0.274092895243617,
+      "n_cases": 10
+    },
+    {
+      "action_id": "OBS-BRUIT-POMPE",
+      "mean_eig": 0.26250780248328054,
+      "n_cases": 10
+    },
+    {
+      "action_id": "MES-SONDE",
+      "mean_eig": 0.2625078024832801,
+      "n_cases": 10
+    },
+    {
+      "action_id": "OBS-VANNE",
+      "mean_eig": 0.2625078024832792,
+      "n_cases": 10
+    },
+    {
+      "action_id": "OBS-PURGEUR",
+      "mean_eig": 0.058438661640179745,
+      "n_cases": 10
+    },
+    {
+      "action_id": "MES-TEMP-AMBIANTE",
+      "mean_eig": 0.047324049295173864,
+      "n_cases": 10
+    },
+    {
+      "action_id": "OBS-BYPASS",
+      "mean_eig": 0.047324049295173864,
+      "n_cases": 10
+    },
+    {
+      "action_id": "MES-AMPERAGE",
+      "mean_eig": 0.006227061411516743,
+      "n_cases": 10
+    },
+    {
+      "action_id": "MES-CONTINUITE",
+      "mean_eig": 0,
+      "n_cases": 10
+    }
+  ],
+  "diagnosis": "H1 PASS — médiane EIG 0.2625 bit, pct_zero 26.3 %",
+  "h1_guard": {
+    "ok": true,
+    "pct_exact_zero": 0.2631578947368421,
+    "threshold_max": 0.3
+  },
+  "hypothesis": "H1"
+}

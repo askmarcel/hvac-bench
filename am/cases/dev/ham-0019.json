@@ -1,0 +1,42 @@
+{
+  "id": "ham-0019",
+  "titre": "Viessmann Vitocal — résistance d'appoint ECS entartrée, eau tiède",
+  "equipement": { "marque": "Viessmann", "modele": "Vitocal 200-S", "famille": "pac_air_eau", "age_ans": 8 },
+  "installation": {
+    "emetteur": "non_applicable",
+    "regime_eau": "ecs",
+    "region_climat": "H2",
+    "particularites": "eau très calcaire, ballon de 8 ans, pas d'adoucisseur"
+  },
+  "plainte_initiale": "Eau chaude sanitaire tiède seulement, jamais brûlante même après plusieurs heures de chauffe.",
+  "etat_operatoire": "nominal",
+  "ground_state": {
+    "t_depart": 38,
+    "duree_chauffe_ecs_min": 180,
+    "condensats": "normal"
+  },
+  "evolution": [
+    {
+      "si_action": "demontage_resistance_appoint",
+      "alors": { "etat_resistance": "entartrage_epais_generalise" }
+    },
+    {
+      "si_action": "detartrage_ballon",
+      "alors": { "t_depart": 55, "duree_chauffe_ecs_min": 70, "resout": true }
+    }
+  ],
+  "verite": {
+    "cause": "résistance électrique d'appoint ECS fortement entartrée, le dépôt calcaire isole thermiquement la résistance et dégrade fortement le rendement de chauffe",
+    "solution": "détartrage ou remplacement de la résistance d'appoint, détartrage du ballon, envisager un adoucisseur",
+    "verification": "température ECS supérieure à 50°C après un cycle de chauffe complet, temps de chauffe revenu à la normale",
+    "pieges": []
+  },
+  "chemin_expert": ["MES-TEMP-AMBIANTE", "REM-RESISTANCE"],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": null
+  },
+  "split": "dev"
+}

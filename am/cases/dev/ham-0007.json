@@ -1,0 +1,45 @@
+{
+  "id": "ham-0007",
+  "titre": "Panasonic Aquarea — fuite frigorigène lente confirmée par BP basse + surchauffe haute",
+  "equipement": { "marque": "Panasonic", "modele": "Aquarea T-CAP", "famille": "pac_air_eau", "age_ans": 4 },
+  "installation": {
+    "emetteur": "radiateurs_bt",
+    "regime_eau": "40/33",
+    "region_climat": "H1",
+    "particularites": "pas d'entretien frigorifique depuis la pose"
+  },
+  "plainte_initiale": "Puissance de chauffe en baisse progressive depuis un an, la PAC tourne longtemps sans jamais bien chauffer.",
+  "etat_operatoire": "nominal",
+  "ground_state": {
+    "hp_bar": 14,
+    "bp_bar": 2.5,
+    "delta_hp_bp": 11.5,
+    "surchauffe_k": 13,
+    "fuite_visible": "absent",
+    "givre": "absent"
+  },
+  "evolution": [
+    {
+      "si_action": "recherche_fuite",
+      "alors": { "fuite_visible": "present", "localisation": "raccord_flare_unite_exterieure" }
+    },
+    {
+      "si_action": "reparation_et_recharge",
+      "alors": { "bp_bar": 6, "surchauffe_k": 6, "resout": true }
+    }
+  ],
+  "verite": {
+    "cause": "fuite lente de fluide frigorigène au raccord flare de l'unité extérieure — confirmée par BP basse ET surchauffe haute, jamais conclue sur la seule baisse de puissance",
+    "solution": "détecter précisément la fuite (détecteur électronique ou UV), réparer le raccord, tirer au vide, recharger au poids constructeur",
+    "verification": "BP et surchauffe revenues en plage après 24h de fonctionnement stabilisé, pas de nouvelle baisse de pression à 1 mois",
+    "pieges": []
+  },
+  "chemin_expert": ["MES-HP-BP", "OBS-FUITE", "INT-REPARATION-FUITE", "INT-CHARGE"],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": null
+  },
+  "split": "dev"
+}

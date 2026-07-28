@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://askmarcel.app/hvac-bench/schema-v2.json",
+  "title": "HVAC Bench v2 — cas de diagnostic différentiel",
+  "description": "Schéma normatif d'un cas v2. Voir doc_Hvac_Bench_CDC-v2-Diagnostic.md §4. Rupture v1 : le ground truth n'est plus (code -> signification) mais (symptôme -> hypothèses classées -> tests discriminants -> cause).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "version", "split", "locale",
+    "symptom", "context", "hypotheses", "tests",
+    "expert_path", "harvest", "flags", "meta"
+  ],
+  "properties": {
+    "id":      { "type": "string", "pattern": "^hb2-[0-9]{4}$" },
+    "version": { "const": 2 },
+    "split":   { "enum": ["public", "heldout"] },
+    "locale":  { "enum": ["fr", "en"] },
+
+    "symptom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["narrative", "code_present", "code_absent_by_design"],
+      "properties": {
+        "narrative": {
+          "type": "string",
+          "minLength": 60,
+          "description": "Récit terrain reformulé (REQ-A3). Pas de copie littérale d'une source scrapée. Minimum 60 caractères : un prompt de 19 caractères type 'Daikin, code 7H ?' est un défaut de construction v1."
+        },
+        "code_present": { "type": ["string", "null"] },
+        "code_absent_by_design": {
+          "type": "boolean",
+          "description": "true pour la famille no_code. Impose code_present = null."
+        }
+      }
+    },
+
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["brand", "equipment_type", "in_corpus"],
+      "properties": {
+        "brand":             { "type": ["string", "null"] },
+        "model":             { "type": ["string", "null"] },
+        "equipment_type":    { "enum": ["pac_air_eau", "pac_air_air", "pac_geothermie", "clim_split", "clim_vrv", "chaudiere_gaz", "chaudiere_fioul", "poele_granules", "ballon_thermodynamique", "crac_precision", "autre"] },
+        "install_age_years": { "type": ["number", "null"], "minimum": 0 },
+        "season":            { "enum": ["hiver", "ete", "mi_saison", null] },
+        "emitter":           { "type": ["string", "null"] },
+        "in_corpus": {
+          "type": "boolean",
+          "description": "false = famille hors_corpus. Sortie attendue : guided_diagnosis, jamais abstention (INV-3)."
+        }
+      }
+    },
+
+    "initial_readings": {
+      "type": "object",
+      "description": "Relevés fournis d'emblée. null = non relevé, le système peut demander l'action de mesure correspondante.",
+      "additionalProperties": { "type": ["number", "string", "null"] }
+    },
+
+    "hypotheses": {
+      "type": "array",
+      "minItems": 3,
+      "description": "Espace d'hypothèses. Minimum 3 : en deçà, le cas relève du lookup, pas du différentiel.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "label", "prior", "n_observations", "true_cause"],
+        "properties": {
+          "id":    { "type": "string", "pattern": "^[a-z0-9_]+$" },
+          "label": { "type": "string", "minLength": 5 },
+          "prior": { "type": "number", "minimum": 0, "maximum": 1 },
+          "n_observations": {
+            "type": "integer", "minimum": 0,
+            "description": "REQ-A1 : nombre d'interventions du corpus de résolutions fondant ce prior. Un prior sans n_observations est déclaratif, donc interdit."
+          },
+          "window": { "type": "string", "description": "Fenêtre d'observation, ex. '2021-07..2026-07'" },
+          "source": { "enum": ["resolution_corpus", "generic_physics"] },
+          "true_cause": { "type": "boolean" }
+        }
+      }
+    },
+
+    "tests": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["action_id", "observation", "discriminates", "eliminates"],
+        "properties": {
+          "action_id": {
+            "type": "string",
+            "pattern": "^(OBS|MES|MAN|DEM|INT|REM|ESC)-[A-Z0-9-]+$",
+            "description": "Doit exister dans taxonomy/actions-v2.json (§5). Vocabulaire fermé : c'est ce qui rend le scoring déterministe et symétrique entre bras (NFR-4')."
+          },
+          "observation": {
+            "type": "string", "minLength": 10,
+            "description": "Ce que le harness rend quand le bras exécute cette action. Script du site."
+          },
+          "discriminates": { "type": "array", "items": { "type": "string" } },
+          "eliminates":    { "type": "array", "items": { "type": "string" } },
+          "cost_eur":      { "type": "number", "minimum": 0, "description": "Surcharge du défaut de la taxonomie." },
+          "minutes":       { "type": "integer", "minimum": 0 },
+          "resolves":      { "type": "boolean", "default": false, "description": "Cette action fait disparaître le défaut. Au moins un test doit la porter (sauf cas d'escalade)." },
+          "wrong_part":    { "type": "boolean", "default": false, "description": "Remplacement inutile. Alimente wrong_part_rate (§8.3) — la métrique de vitrine." },
+          "polarity": {
+            "type": "string",
+            "enum": ["supports", "refutes", "neutral"],
+            "default": "supports",
+            "description": "Signe de l'évidence : l'observation confirme ou réfute les hypothèses listées dans discriminates."
+          }
+        }
+      }
+    },
+
+    "expert_path": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^(OBS|MES|MAN|DEM|INT|REM|ESC)-[A-Z0-9-]+$" },
+      "description": "Chemin de référence. Dénominateur de path_cost_ratio (§8.2). Le dernier élément doit porter resolves: true."
+    },
+    "expert_path_cost_eur": { "type": "number", "minimum": 0 },
+    "expert_path_minutes":  { "type": "integer", "minimum": 0 },
+
+    "forbidden_before": {
+      "type": "object",
+      "description": "action_id -> liste d'action_id devant la précéder. Non bloquant à l'exécution (R4) : on mesure la faute, on ne l'empêche pas.",
+      "additionalProperties": { "type": "array", "items": { "type": "string" } }
+    },
+
+    "escalation_expected": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "motif"],
+          "properties": {
+            "kind": {
+              "enum": ["sav_constructeur", "garantie", "piece_indisponible", "bureau_etudes", "consignation_site"],
+              "description": "Taxonomie fermée §1.4. Tout renvoi vers un frigoriste tiers est une violation INV-2."
+            },
+            "motif": { "type": "string", "minLength": 20 },
+            "releves_attendus": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      ]
+    },
+
+    "manual_context": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["excerpt", "title"],
+          "properties": {
+            "document_id": { "type": ["string", "null"] },
+            "page": { "type": "integer", "minimum": 1 },
+            "excerpt": { "type": "string", "maxLength": 16000 },
+            "title": { "type": "string" }
+          }
+        }
+      ],
+      "description": "Extrait manuel constructeur injecté au bras E (scripts/enrich-pilot-manuals.ts)."
+    },
+
+    "harvest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["harvest_date", "reformulated"],
+      "properties": {
+        "harvest_date": {
+          "type": "string", "format": "date",
+          "description": "REQ-A2 : fonde le held-out temporel. Un cas heldout doit avoir harvest_date > T_cutoff (coupure la plus tardive des modèles comparés)."
+        },
+        "source_ids":   { "type": "array", "items": { "type": "string" }, "description": "Non publié. Auditables sous NDA (REQ-A4)." },
+        "reformulated": { "const": true }
+      }
+    },
+
+    "flags": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gate_critical", "safety_sensitive", "no_code", "sparse_priors"],
+      "properties": {
+        "gate_critical":    { "type": "boolean" },
+        "safety_sensitive": { "type": "boolean" },
+        "no_code":          { "type": "boolean" },
+        "sparse_priors":    { "type": "boolean", "description": "true si une hypothèse a n_observations < 30. Exclut le cas de path_cost_ratio." }
+      }
+    },
+
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["created_at", "author", "family"],
+      "properties": {
+        "created_at": { "type": "string", "format": "date-time" },
+        "author":     { "type": "string" },
+        "family": {
+          "enum": ["code_multi_cause", "no_code", "code_trompeur", "hors_corpus", "escalade_legitime"],
+          "description": "§4.2 — chaque famille ≥ 15 % du dataset."
+        },
+        "tags": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+
+  "allOf": [
+    {
+      "if": { "properties": { "symptom": { "properties": { "code_absent_by_design": { "const": true } }, "required": ["code_absent_by_design"] } } },
+      "then": { "properties": { "symptom": { "properties": { "code_present": { "const": null } } } } }
+    },
+    {
+      "if": { "properties": { "context": { "properties": { "in_corpus": { "const": false } }, "required": ["in_corpus"] } } },
+      "then": { "properties": { "meta": { "properties": { "family": { "const": "hors_corpus" } } } } }
+    },
+    {
+      "if": { "properties": { "escalation_expected": { "type": "object" } } },
+      "then": {
+        "properties": { "meta": { "properties": { "family": { "const": "escalade_legitime" } } } },
+        "description": "Un cas d'escalade attendue n'a pas de test resolves:true — vérifié par le validateur (contrainte non exprimable en JSON Schema pur)."
+      }
+    }
+  ],
+
+  "$comment": "Contraintes complémentaires vérifiées par scripts/validate-cases-v2.ts, non exprimables en JSON Schema : (1) exactement une hypothèse true_cause:true ; (2) somme des priors dans [0.95, 1.05] ; (3) au moins un test resolves:true sauf si escalation_expected != null ; (4) expert_path ⊆ tests[].action_id ; (5) dernier élément d'expert_path porte resolves:true ; (6) tout action_id existe dans taxonomy/actions-v2.json ; (7) discriminates/eliminates réfèrent des hypotheses[].id existants ; (8) sparse_priors cohérent avec min(n_observations) < 30 ; (9) split heldout => harvest_date > T_cutoff du run."
+}

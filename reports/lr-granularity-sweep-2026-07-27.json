@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-07-27T08:47:27.911Z",
+  "hypothesis": "H4",
+  "profiles": [
+    {
+      "profile": "tier3_default",
+      "lr_tiers": {
+        "fort": 10,
+        "moyen": 3,
+        "faible": 1.5
+      },
+      "conv_at_5": 0.1,
+      "numerator": 1,
+      "denominator": 10,
+      "run_dir": "/Users/mac/Documents/AskMarcel-APP/hvac-bench/runs/o-tree-db-2026-07-27T08-47-27-909Z-d8bcd606"
+    },
+    {
+      "profile": "adjusted",
+      "lr_tiers": {
+        "fort": 15,
+        "moyen": 4,
+        "faible": 2
+      },
+      "conv_at_5": 0.2,
+      "numerator": 2,
+      "denominator": 10,
+      "run_dir": "/Users/mac/Documents/AskMarcel-APP/hvac-bench/runs/o-tree-db-2026-07-27T08-47-27-910Z-8bb76451"
+    }
+  ],
+  "delta_cases": 1,
+  "threshold_max_delta_cases": 1,
+  "verdict": "PASS"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "ham-0010",
+  "titre": "Viessmann Vitocal — compresseur bruyant et ampérage hors plage, escalade garantie",
+  "equipement": { "marque": "Viessmann", "modele": "Vitocal 250-A", "famille": "pac_air_eau", "age_ans": 1 },
+  "installation": {
+    "emetteur": "radiateurs_ht",
+    "regime_eau": "55/45",
+    "region_climat": "H1",
+    "particularites": "PAC installée il y a 14 mois"
+  },
+  "plainte_initiale": "Bruit métallique fort au démarrage du compresseur depuis 3 jours, disjoncte parfois.",
+  "etat_operatoire": "arret_force",
+  "ground_state": {
+    "amperage_compresseur": 19,
+    "bruit_pompe": "claquement",
+    "hp_bar": 24,
+    "bp_bar": 9,
+    "age_installation_mois": 14
+  },
+  "evolution": [
+    {
+      "si_action": "mesure_amperage",
+      "alors": { "amperage_compresseur": 19, "stabilite": "pic_repete_a_chaque_demarrage" }
+    }
+  ],
+  "verite": {
+    "cause": "défaillance mécanique interne du compresseur (probable grippage partiel) — ampérage et bruit hors norme au démarrage",
+    "solution": "arrêt de l'unité, ouverture d'un dossier de garantie constructeur (compresseur de moins de 2 ans), ne pas forcer de redémarrages répétés qui aggraveraient la casse",
+    "verification": "non applicable — dossier garantie en cours, remplacement sous garantie à valider par le SAV constructeur",
+    "pieges": []
+  },
+  "chemin_expert": ["MES-AMPERAGE", "OBS-BRUIT-POMPE"],
+  "escalade_attendue": "garantie_compresseur",
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": null
+  },
+  "split": "dev"
+}

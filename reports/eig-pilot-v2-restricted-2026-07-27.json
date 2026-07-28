@@ -1,0 +1,87 @@
+{
+  "generated_at": "2026-07-27T08:36:33.732Z",
+  "purpose": "Contrôle H1 — dénominateur aligné v2 vs v3",
+  "roster": {
+    "pilot_pac_total": 13,
+    "gate_diagnostic_count": 10,
+    "gate_diagnostic_case_ids": [
+      "hb2-0001",
+      "hb2-0002",
+      "hb2-0003",
+      "hb2-0004",
+      "hb2-0005",
+      "hb2-0007",
+      "hb2-0010",
+      "hb2-0011",
+      "hb2-0013",
+      "hb2-0015"
+    ],
+    "excluded_escalade": {
+      "hb2-0016": "escalade_legitime — SAV constructeur (U0), déverrouillage usine requis",
+      "hb2-0017": "escalade_legitime — garantie compresseur, ouverture interdite sur site",
+      "hb2-0019": "escalade_legitime — sous-dimensionnement BE, hors périmètre réparation terrain"
+    },
+    "candidate_actions": [
+      "MES-AMPERAGE",
+      "MES-CONTINUITE",
+      "MES-DEBIT",
+      "MES-DT-EAU",
+      "MES-HP-BP",
+      "MES-PRESSION",
+      "MES-RESISTANCE",
+      "MES-SONDE",
+      "MES-TEMP-AMBIANTE",
+      "OBS-BRUIT-POMPE",
+      "OBS-BYPASS",
+      "OBS-CAPTEUR",
+      "OBS-CONDENSATS",
+      "OBS-FUITE",
+      "OBS-GELEE",
+      "OBS-LED-DEFAUT",
+      "OBS-PURGEUR",
+      "OBS-VANNE",
+      "OBS-VAPEUR"
+    ],
+    "n_candidate_actions": 19,
+    "expected_couples": 190
+  },
+  "v2_full_baseline": {
+    "source": "reports/eig-pilot-turn0-2026-07-27.json",
+    "n_cases_note": "~15 diagnostiques v2",
+    "n_actions_note": "~60 (MAN/REM inclus)",
+    "pct_exact_zero": 0.7966666666666666,
+    "median_eig": 0,
+    "n_samples": 900
+  },
+  "v2_restricted": {
+    "engine": "v2",
+    "n_cases": 10,
+    "n_actions": 19,
+    "pooled_eig": {
+      "median": 0,
+      "std": 0.1024566151582022,
+      "n_samples": 190,
+      "pct_exact_zero": 0.6105263157894737
+    },
+    "pct_exact_zero_threshold_solid_h1": 0.5
+  },
+  "v3_same_roster": {
+    "engine": "v3",
+    "n_cases": 10,
+    "pooled_eig": {
+      "median": 0.2625078024832792,
+      "std": 0.22247296811557515,
+      "n_samples": 190,
+      "pct_exact_zero": 0.2631578947368421
+    },
+    "h1_threshold_max_zero": 0.3,
+    "h1_guard_pass": true
+  },
+  "comparison": {
+    "delta_pct_zero_v2_full_to_v2_restricted": 0.18614035087719294,
+    "delta_pct_zero_v2_restricted_to_v3": 0.3473684210526316,
+    "delta_median_eig_v2_restricted_to_v3": 0.2625078024832792
+  },
+  "h1_verdict": "H1_SOLIDE — v2-restreint reste ≥ 50 % EIG=0 ; la chute v2→v3 est majoritairement modèle",
+  "h1_solid": true
+}

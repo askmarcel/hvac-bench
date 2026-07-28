@@ -1,0 +1,285 @@
+{
+  "version": "quantities-v3.2026-07-27",
+  "family": "pac_air_eau",
+  "T_cutoff": "2026-04-01",
+  "quantities": [
+    {
+      "quantity_id": "delta_t_eau",
+      "unit": "K",
+      "action_id": "MES-DT-EAU",
+      "kind": "numeric",
+      "nominal": {
+        "plancher_chauffant": [5, 7],
+        "radiateurs_bt": [8, 12],
+        "radiateurs_ht": [15, 20],
+        "default": [4, 8]
+      },
+      "condition_var": "emitter",
+      "sources": [
+        "doc:2407e0ed-4717-40d8-bb9d-5782099f95f5#p7",
+        "doc:b7355b17-1fb2-4c16-9fb1-e1fd5eb484ab#p91"
+      ]
+    },
+    {
+      "quantity_id": "pression_circuit_bar",
+      "unit": "bar",
+      "action_id": "MES-PRESSION",
+      "kind": "numeric",
+      "nominal": {
+        "default": [1.2, 2.0],
+        "daikin": [1.2, 2.5],
+        "atlantic": [1.2, 2.0],
+        "mitsubishi": [1.2, 2.0],
+        "mitsubishi_electric": [1.2, 2.0],
+        "panasonic": [1.2, 2.0]
+      },
+      "condition_var": "brand",
+      "sources": [
+        "doc:b7355b17-1fb2-4c16-9fb1-e1fd5eb484ab#p91",
+        "doc:b21ee3bb-b0cb-41b0-ac4d-81f62f521f75#p21"
+      ]
+    },
+    {
+      "quantity_id": "debit_l_min",
+      "unit": "l/min",
+      "action_id": "MES-DEBIT",
+      "kind": "numeric",
+      "nominal": {
+        "chauffage": [22, 40],
+        "default": [16, 35]
+      },
+      "condition_var": "regime_eau",
+      "sources": [
+        "doc:b7355b17-1fb2-4c16-9fb1-e1fd5eb484ab#p91",
+        "doc:de614caf-ddf2-4df5-81b8-2218ab7870ff#p27"
+      ]
+    },
+    {
+      "quantity_id": "hp_bar",
+      "unit": "bar",
+      "action_id": "MES-HP-BP",
+      "kind": "numeric",
+      "nominal": {
+        "R32": [8, 25],
+        "default": [8, 25]
+      },
+      "condition_var": "fluide",
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "bp_bar",
+      "unit": "bar",
+      "action_id": "MES-HP-BP",
+      "kind": "numeric",
+      "nominal": {
+        "R32": [3, 10],
+        "default": [3, 10]
+      },
+      "condition_var": "fluide",
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "delta_hp_bp",
+      "unit": "bar",
+      "action_id": "MES-HP-BP",
+      "kind": "numeric",
+      "nominal": {
+        "default": [5, 15]
+      },
+      "condition_var": null,
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "surchauffe_k",
+      "unit": "K",
+      "action_id": "MES-HP-BP",
+      "kind": "numeric",
+      "nominal": {
+        "default": [4, 8]
+      },
+      "condition_var": null,
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "sous_refroidissement_k",
+      "unit": "K",
+      "action_id": "MES-HP-BP",
+      "kind": "numeric",
+      "nominal": {
+        "default": [3, 6]
+      },
+      "condition_var": null,
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "amperage_circulateur",
+      "unit": "A",
+      "action_id": "MES-AMPERAGE",
+      "kind": "numeric",
+      "nominal": {
+        "default": [0.3, 2.5]
+      },
+      "condition_var": "target_component",
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "amperage_compresseur",
+      "unit": "A",
+      "action_id": "MES-AMPERAGE",
+      "kind": "numeric",
+      "nominal": {
+        "default": [2, 15]
+      },
+      "condition_var": "target_component",
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "t_depart",
+      "unit": "°C",
+      "action_id": "MES-TEMP-AMBIANTE",
+      "kind": "numeric",
+      "nominal": {
+        "plancher_chauffant": [25, 45],
+        "radiateurs_bt": [35, 55],
+        "default": [30, 55]
+      },
+      "condition_var": "emitter",
+      "sources": ["doc:2407e0ed-4717-40d8-bb9d-5782099f95f5#p7"]
+    },
+    {
+      "quantity_id": "t_retour",
+      "unit": "°C",
+      "action_id": "MES-TEMP-AMBIANTE",
+      "kind": "numeric",
+      "nominal": {
+        "default": [20, 50]
+      },
+      "condition_var": "emitter",
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "t_exterieure",
+      "unit": "°C",
+      "action_id": "MES-TEMP-AMBIANTE",
+      "kind": "numeric",
+      "nominal": {
+        "default": [-15, 35]
+      },
+      "condition_var": null,
+      "sources": ["doc:a1e7ea7d-7ab4-4ae3-a7c8-f9d5b6dcd3df#p15"]
+    },
+    {
+      "quantity_id": "delta_sonde_k",
+      "unit": "K",
+      "action_id": "MES-SONDE",
+      "kind": "numeric",
+      "nominal": {
+        "default": [0, 2]
+      },
+      "condition_var": null,
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "continuite_sonde_ohm",
+      "unit": "ohm",
+      "action_id": "MES-CONTINUITE",
+      "kind": "numeric",
+      "nominal": {
+        "default": [0, 500]
+      },
+      "condition_var": null,
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "resistance_ohm",
+      "unit": "ohm",
+      "action_id": "MES-RESISTANCE",
+      "kind": "numeric",
+      "nominal": {
+        "default": [10, 50000]
+      },
+      "condition_var": null,
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "purgeur",
+      "unit": null,
+      "action_id": "OBS-PURGEUR",
+      "kind": "qualitative",
+      "modalities": ["sec", "crache_air"],
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "bruit_pompe",
+      "unit": null,
+      "action_id": "OBS-BRUIT-POMPE",
+      "kind": "qualitative",
+      "modalities": ["silencieux", "claquement", "cavitation"],
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "givre",
+      "unit": null,
+      "action_id": "OBS-GELEE",
+      "kind": "qualitative",
+      "modalities": ["absent", "localise", "generalise"],
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "led_defaut",
+      "unit": null,
+      "action_id": "OBS-LED-DEFAUT",
+      "kind": "qualitative",
+      "modalities": ["code"],
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "fuite_visible",
+      "unit": null,
+      "action_id": "OBS-FUITE",
+      "kind": "qualitative",
+      "modalities": ["absent", "present"],
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "vanne_position",
+      "unit": null,
+      "action_id": "OBS-VANNE",
+      "kind": "qualitative",
+      "modalities": ["ouverte", "fermee", "inconnue"],
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "bypass_ouvert",
+      "unit": null,
+      "action_id": "OBS-BYPASS",
+      "kind": "qualitative",
+      "modalities": ["oui", "non", "inconnue"],
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "condensats",
+      "unit": null,
+      "action_id": "OBS-CONDENSATS",
+      "kind": "qualitative",
+      "modalities": ["normal", "bouche"],
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "capteur_etat",
+      "unit": null,
+      "action_id": "OBS-CAPTEUR",
+      "kind": "qualitative",
+      "modalities": ["ok", "defaut_connectique"],
+      "sources": ["marcel:2026-07-27"]
+    },
+    {
+      "quantity_id": "vapeur_anormale",
+      "unit": null,
+      "action_id": "OBS-VAPEUR",
+      "kind": "qualitative",
+      "modalities": ["absent", "present"],
+      "sources": ["marcel:2026-07-27"]
+    }
+  ]
+}

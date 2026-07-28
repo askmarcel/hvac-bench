@@ -1,0 +1,44 @@
+{
+  "checked_at": "2026-07-27T08:10:00Z",
+  "method": "curl -L (no JS renderer) — complète un fetch navigateur vide sur forums PHP",
+  "sample_size": 3,
+  "cases_checked": [
+    {
+      "case_id": "hb3-neon-0001",
+      "source_url": "https://chaleurterre.com/forum/viewtopic.php?t=13888",
+      "neon_id": "forum_chaleurterre_13888_4721",
+      "http_status": 200,
+      "bytes": 36717,
+      "title_snippet": "Panne sur module Boro",
+      "content_signals": ["Boro", "module", "forum PHP server-rendered"],
+      "verdict": "live",
+      "quarantine": false,
+      "note": "Fetch vide côté navigateur probablement dû au rendu client ou extension — la source HTTP est valide."
+    },
+    {
+      "case_id": "hb3-neon-0004",
+      "source_url": "https://forum.buildhub.org.uk/topic/40046-ecodan-sika-flow-sensor-failure/",
+      "neon_id": "forum_buildhub_uk_40046_1840",
+      "http_status": 200,
+      "bytes": 225333,
+      "title_snippet": "Ecodan SIKA Flow sensor failure",
+      "content_signals": ["flow", "L-9", "ASHP"],
+      "verdict": "live",
+      "quarantine": false
+    },
+    {
+      "case_id": "hb3-neon-0012",
+      "source_url": "https://chaleurterre.com/forum/viewtopic.php?t=16496",
+      "neon_id": "forum_chaleurterre_16496_7464",
+      "http_status": 200,
+      "bytes": 45340,
+      "title_snippet": "Besoin d'aide probIème Pac, bruit, purge",
+      "content_signals": ["purge", "bruit", "pression"],
+      "verdict": "live",
+      "quarantine": false
+    }
+  ],
+  "quarantined_cases": [],
+  "dev_cases_remaining": 12,
+  "pass": true
+}

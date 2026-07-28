@@ -1,0 +1,39 @@
+{
+  "id": "ham-0014",
+  "titre": "Viessmann Vitocal — verrouillage usine après remplacement de carte par un tiers",
+  "equipement": { "marque": "Viessmann", "modele": "Vitocal 200-S", "famille": "pac_air_eau", "age_ans": 5 },
+  "installation": {
+    "emetteur": "radiateurs_bt",
+    "regime_eau": "45/35",
+    "region_climat": "H1",
+    "particularites": "carte principale remplacée par un installateur tiers il y a 1 semaine"
+  },
+  "plainte_initiale": "Depuis le remplacement de la carte, la PAC refuse de démarrer, code de verrouillage usine affiché.",
+  "etat_operatoire": "arret_force",
+  "ground_state": {
+    "led_defaut": "code_verrouillage_configuration_usine",
+    "pression_circuit_bar": 1.5
+  },
+  "evolution": [
+    {
+      "si_action": "lecture_code_verrouillage",
+      "alors": { "type_verrouillage": "configuration_usine_requise_apres_remplacement_carte" }
+    }
+  ],
+  "verite": {
+    "cause": "la nouvelle carte nécessite une configuration/déverrouillage via l'outil constructeur (accès réservé SAV agréé), non réalisée lors du remplacement",
+    "solution": "escalader au SAV constructeur agréé Viessmann pour déverrouillage et configuration à distance ou sur site, ne pas tenter de contournement",
+    "verification": "non applicable avant intervention du SAV constructeur",
+    "pieges": [
+      "chercher une cause frigorifique ou hydraulique alors que la PAC ne démarre même pas — un code de verrouillage usine après remplacement de carte n'est jamais un défaut terrain"
+    ]
+  },
+  "chemin_expert": ["OBS-LED-DEFAUT"],
+  "escalade_attendue": "sav_verrouille",
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": null
+  },
+  "split": "dev"
+}

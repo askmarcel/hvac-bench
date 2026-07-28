@@ -1,0 +1,38 @@
+{
+  "audited_at": "2026-07-26T19:37:57.292Z",
+  "cases": 20,
+  "with_manual_context": 19,
+  "missing_document_id": [
+    {
+      "case_id": "hb2-0011",
+      "title": "Manuel technique",
+      "excerpt_preview": "Symptôme: La pompe à chaleur affiche l'erreur 7h (débit insuffisant). Le débit d"
+    },
+    {
+      "case_id": "hb2-0012",
+      "title": "Manuel technique",
+      "excerpt_preview": "Symptôme: Codes d'erreur F73 et F75 affichés. La chaudière indique un problème d"
+    },
+    {
+      "case_id": "hb2-0013",
+      "title": "Manuel technique",
+      "excerpt_preview": "Symptôme: Les ventilateurs de l'unité extérieure sont devenus bruyants, puis l'e"
+    },
+    {
+      "case_id": "hb2-0015",
+      "title": "Manuel technique",
+      "excerpt_preview": "Symptôme: La chaudière affiche de multiples erreurs de communication (UBA/MC10, "
+    },
+    {
+      "case_id": "hb2-0016",
+      "title": "Manuel technique",
+      "excerpt_preview": "Symptôme: La télécommande Modul'O Génius 50 affiche un défaut et la PAC ne démar"
+    },
+    {
+      "case_id": "hb2-0019",
+      "title": "Manuel technique",
+      "excerpt_preview": "Symptôme: La pompe à chaleur affiche l'erreur 7h (débit insuffisant). Le débit d"
+    }
+  ],
+  "hb2_0009_note": "Vérifier extrait Grundfos hors sujet (audit)"
+}

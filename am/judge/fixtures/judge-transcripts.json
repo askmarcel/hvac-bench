@@ -1,0 +1,41 @@
+{
+  "description": "6 transcripts fixtures pour am:check-judge (T5) — 2 parfaits, 2 faux diagnostics (tombent dans un piège documenté), 2 conclusions sans mesure. Vérité et pièges repris des cas am/cases/dev correspondants, pas réinventés.",
+  "fixtures": [
+    {
+      "name": "parfait-1-air-circuit",
+      "case_id": "ham-0001",
+      "transcript": "Technicien hotline: Vérifie la pression du circuit, tu dois être autour de 1,2-1,5 bar.\nInstallateur: J'ai 1,2 bar au mano.\nTechnicien hotline: OK, regarde le purgeur, il crache de l'air ou c'est sec ?\nInstallateur: Ça crache de l'air.\nTechnicien hotline: Fais une purge complète au point haut jusqu'à écoulement stable, puis redonne-moi le ΔT, tu dois être autour de 5-7K sur ce plancher chauffant.\nInstallateur: Après la purge, ΔT à 6,2K, plus de code.\nTechnicien hotline: Parfait, c'était de l'air dans le circuit suite à ta vidange récente. Purge faite, pression contrôlée, débit revenu, c'est réglé. Recontrôle dans 48h que le code ne revient pas.",
+      "expected": { "cause_ok": true, "solution_ok": true, "piege": false, "valeur_attendue_annoncee": true }
+    },
+    {
+      "name": "parfait-2-sonde-sectionnee",
+      "case_id": "ham-0011",
+      "transcript": "Technicien hotline: Le code affiché c'est sonde départ. Mesure la continuité de la sonde au multimètre, tu dois avoir entre 0 et 500 ohms.\nInstallateur: J'ai un circuit ouvert, ça n'affiche rien, c'est hors échelle.\nTechnicien hotline: Regarde le connecteur, il y a un fil qui a l'air sectionné ou abîmé près du connecteur ?\nInstallateur: Ah oui, il y a un fil coupé juste avant le connecteur, ça a dû frotter contre le capot.\nTechnicien hotline: Répare ou remplace le câble de la sonde à cet endroit, protège le passage, et recontrôle la continuité après.\nInstallateur: Fil réparé, je remesure : 120 ohms, dans la plage, et le code a disparu.\nTechnicien hotline: Parfait, c'est réglé, surveille sur 48h qu'il ne revient pas.",
+      "expected": { "cause_ok": true, "solution_ok": true, "piege": false, "valeur_attendue_annoncee": true }
+    },
+    {
+      "name": "faux-diagnostic-1-piege-circulateur",
+      "case_id": "ham-0017",
+      "transcript": "Technicien hotline: Tu entends quoi comme bruit exactement ?\nInstallateur: Un bruit de cavitation au niveau de la pompe.\nTechnicien hotline: Ça sent le circulateur fatigué, remplace-le, c'est la cause la plus fréquente sur ce genre de bruit.\nInstallateur: OK je remplace le circulateur.\nInstallateur: Le bruit est toujours là après remplacement.\nTechnicien hotline: Referme quand même le dossier avec le nouveau circulateur posé, ça devrait s'arranger avec le temps.",
+      "expected": { "cause_ok": false, "solution_ok": false, "piege": true, "valeur_attendue_annoncee": false }
+    },
+    {
+      "name": "faux-diagnostic-2-piege-manque-fluide",
+      "case_id": "ham-0009",
+      "transcript": "Technicien hotline: L'unité extérieure est givrée comment, localement ou partout ?\nInstallateur: Complètement givrée, généralisée.\nTechnicien hotline: Avec un givre pareil et une HP basse, c'est clairement un manque de fluide frigorigène. Il faut chercher la fuite et recharger.\nInstallateur: D'accord, je regarde pour la fuite.\nTechnicien hotline: Recharge le circuit et referme, ça devrait repartir.",
+      "expected": { "cause_ok": false, "solution_ok": false, "piege": true, "valeur_attendue_annoncee": false }
+    },
+    {
+      "name": "conclusion-sans-mesure-1-vase-expansion",
+      "case_id": "ham-0003",
+      "transcript": "Technicien hotline: Elle perd de la pression régulièrement, c'est presque toujours le circulateur qui fatigue sur ces modèles après quelques années. Remplace le circulateur.\nInstallateur: D'accord, je remplace le circulateur.",
+      "expected": { "cause_ok": false, "solution_ok": false, "piege": false, "valeur_attendue_annoncee": false }
+    },
+    {
+      "name": "conclusion-sans-mesure-2-carte-morte",
+      "case_id": "ham-0013",
+      "transcript": "Technicien hotline: Erreur de communication entre les deux unités, à tous les coups c'est la carte électronique de l'unité extérieure qui a lâché. Remplace la carte.\nInstallateur: OK je commande la carte et je la remplace.",
+      "expected": { "cause_ok": false, "solution_ok": false, "piege": false, "valeur_attendue_annoncee": false }
+    }
+  ]
+}

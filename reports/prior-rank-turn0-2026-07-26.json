@@ -1,0 +1,232 @@
+{
+  "measured_at": "2026-07-26T20:44:29.247Z",
+  "n_cases_total": 20,
+  "n_diagnosable": 15,
+  "mean_true_cause_rank_turn0": 5,
+  "median_true_cause_rank_turn0": 4,
+  "top3_rate_turn0": 0.467,
+  "rank1_count": 1,
+  "verdict": "WARN — prior faible (médiane 4-8), ré-injecter signal code/marque/saison",
+  "cases": [
+    {
+      "case_id": "hb2-0001",
+      "family": "code_multi_cause",
+      "true_cause_id": "air_circuit",
+      "rank_turn_0": 5,
+      "n_hypotheses": 7,
+      "true_cause_prior": 0.125,
+      "top_cause_id": "pompe_grippee",
+      "prior_source": "local",
+      "signature": "eb8804b24fa32f5a"
+    },
+    {
+      "case_id": "hb2-0002",
+      "family": "code_multi_cause",
+      "true_cause_id": "air_circuit",
+      "rank_turn_0": 5,
+      "n_hypotheses": 7,
+      "true_cause_prior": 0.125,
+      "top_cause_id": "pompe_grippee",
+      "prior_source": "local",
+      "signature": "eb8804b24fa32f5a"
+    },
+    {
+      "case_id": "hb2-0003",
+      "family": "code_multi_cause",
+      "true_cause_id": "pompe_grippee",
+      "rank_turn_0": 1,
+      "n_hypotheses": 7,
+      "true_cause_prior": 0.1875,
+      "top_cause_id": "pompe_grippee",
+      "prior_source": "local",
+      "signature": "eb8804b24fa32f5a"
+    },
+    {
+      "case_id": "hb2-0004",
+      "family": "code_multi_cause",
+      "true_cause_id": "bypass_ferme",
+      "rank_turn_0": 4,
+      "n_hypotheses": 7,
+      "true_cause_prior": 0.125,
+      "top_cause_id": "pompe_grippee",
+      "prior_source": "local",
+      "signature": "eb8804b24fa32f5a"
+    },
+    {
+      "case_id": "hb2-0005",
+      "family": "code_multi_cause",
+      "true_cause_id": "pression_basse",
+      "rank_turn_0": 3,
+      "n_hypotheses": 7,
+      "true_cause_prior": 0.125,
+      "top_cause_id": "pompe_grippee",
+      "prior_source": "local",
+      "signature": "eb8804b24fa32f5a"
+    },
+    {
+      "case_id": "hb2-0006",
+      "family": "no_code",
+      "true_cause_id": "air_circuit",
+      "rank_turn_0": 10,
+      "n_hypotheses": 16,
+      "true_cause_prior": 0.026884862653419047,
+      "top_cause_id": "cause_inconnue",
+      "prior_source": "local",
+      "signature": "d073ade9e16af413"
+    },
+    {
+      "case_id": "hb2-0007",
+      "family": "no_code",
+      "true_cause_id": "vanne_fermee",
+      "rank_turn_0": 2,
+      "n_hypotheses": 16,
+      "true_cause_prior": 0.09551208285385503,
+      "top_cause_id": "cause_inconnue",
+      "prior_source": "local",
+      "signature": "f4def2686f1e6400"
+    },
+    {
+      "case_id": "hb2-0008",
+      "family": "no_code",
+      "true_cause_id": "filtre_colmate",
+      "rank_turn_0": 6,
+      "n_hypotheses": 6,
+      "true_cause_prior": 0,
+      "top_cause_id": "cause_inconnue",
+      "prior_source": "local",
+      "signature": "d49eb7e1b8a31094"
+    },
+    {
+      "case_id": "hb2-0009",
+      "family": "no_code",
+      "true_cause_id": "air_circuit",
+      "rank_turn_0": 10,
+      "n_hypotheses": 16,
+      "true_cause_prior": 0.026884862653419047,
+      "top_cause_id": "cause_inconnue",
+      "prior_source": "local",
+      "signature": "d073ade9e16af413"
+    },
+    {
+      "case_id": "hb2-0010",
+      "family": "no_code",
+      "true_cause_id": "sonde_hs",
+      "rank_turn_0": 3,
+      "n_hypotheses": 16,
+      "true_cause_prior": 0.07479861910241659,
+      "top_cause_id": "cause_inconnue",
+      "prior_source": "local",
+      "signature": "f4def2686f1e6400"
+    },
+    {
+      "case_id": "hb2-0011",
+      "family": "code_trompeur",
+      "true_cause_id": "air_circuit",
+      "rank_turn_0": 5,
+      "n_hypotheses": 7,
+      "true_cause_prior": 0.125,
+      "top_cause_id": "pompe_grippee",
+      "prior_source": "local",
+      "signature": "eb8804b24fa32f5a"
+    },
+    {
+      "case_id": "hb2-0012",
+      "family": "code_trompeur",
+      "true_cause_id": "filtre_colmate",
+      "rank_turn_0": 13,
+      "n_hypotheses": 16,
+      "true_cause_prior": 0.012857977790765631,
+      "top_cause_id": "cause_inconnue",
+      "prior_source": "local",
+      "signature": "529a478ff84d4599"
+    },
+    {
+      "case_id": "hb2-0013",
+      "family": "code_trompeur",
+      "true_cause_id": "filtre_colmate",
+      "rank_turn_0": 2,
+      "n_hypotheses": 2,
+      "true_cause_prior": 0,
+      "top_cause_id": "carte_hs",
+      "prior_source": "local",
+      "signature": "4a737de2b1d08b92"
+    },
+    {
+      "case_id": "hb2-0014",
+      "family": "code_trompeur",
+      "true_cause_id": "condensats_bouches",
+      "rank_turn_0": 3,
+      "n_hypotheses": 6,
+      "true_cause_prior": 0.0892857142857143,
+      "top_cause_id": "cause_inconnue",
+      "prior_source": "parent",
+      "signature": "d49eb7e1b8a31094"
+    },
+    {
+      "case_id": "hb2-0015",
+      "family": "code_trompeur",
+      "true_cause_id": "sonde_hs",
+      "rank_turn_0": 3,
+      "n_hypotheses": 16,
+      "true_cause_prior": 0.07479861910241659,
+      "top_cause_id": "cause_inconnue",
+      "prior_source": "parent",
+      "signature": "f4def2686f1e6400"
+    },
+    {
+      "case_id": "hb2-0016",
+      "family": "escalade_legitime",
+      "true_cause_id": "carte_hs",
+      "rank_turn_0": 5,
+      "n_hypotheses": 5,
+      "true_cause_prior": 0,
+      "top_cause_id": "charge_insuffisante",
+      "prior_source": "local",
+      "signature": "66b4a23c1f6def6d"
+    },
+    {
+      "case_id": "hb2-0017",
+      "family": "escalade_legitime",
+      "true_cause_id": "pompe_grippee",
+      "rank_turn_0": 13,
+      "n_hypotheses": 16,
+      "true_cause_prior": 0.014959723820483316,
+      "top_cause_id": "cause_inconnue",
+      "prior_source": "local",
+      "signature": "f4def2686f1e6400"
+    },
+    {
+      "case_id": "hb2-0018",
+      "family": "escalade_legitime",
+      "true_cause_id": "carte_hs",
+      "rank_turn_0": 2,
+      "n_hypotheses": 6,
+      "true_cause_prior": 0.10714285714285715,
+      "top_cause_id": "cause_inconnue",
+      "prior_source": "parent",
+      "signature": "d49eb7e1b8a31094"
+    },
+    {
+      "case_id": "hb2-0019",
+      "family": "escalade_legitime",
+      "true_cause_id": "sous_dimension",
+      "rank_turn_0": 7,
+      "n_hypotheses": 7,
+      "true_cause_prior": 0,
+      "top_cause_id": "pompe_grippee",
+      "prior_source": "local",
+      "signature": "eb8804b24fa32f5a"
+    },
+    {
+      "case_id": "hb2-0020",
+      "family": "escalade_legitime",
+      "true_cause_id": "carte_hs",
+      "rank_turn_0": 4,
+      "n_hypotheses": 4,
+      "true_cause_prior": 0,
+      "top_cause_id": "cause_mecanique",
+      "prior_source": "generic",
+      "signature": "d451b67dbe14921c"
+    }
+  ]
+}

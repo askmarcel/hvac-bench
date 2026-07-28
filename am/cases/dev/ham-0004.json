@@ -1,0 +1,45 @@
+{
+  "id": "ham-0004",
+  "titre": "Mitsubishi Ecodan — vanne 3 voies bloquée en ECS, pas de code affiché",
+  "equipement": { "marque": "Mitsubishi Electric", "modele": "Ecodan PUZ-WM", "famille": "pac_air_eau", "age_ans": 7 },
+  "installation": {
+    "emetteur": "mixte",
+    "regime_eau": "45/35",
+    "region_climat": "H2",
+    "particularites": "vanne 3 voies jamais changée depuis l'installation"
+  },
+  "plainte_initiale": "Plus de chauffage depuis 2 jours, l'eau chaude sanitaire fonctionne normalement, aucun code erreur affiché.",
+  "etat_operatoire": "nominal",
+  "ground_state": {
+    "vanne_position": "inconnue",
+    "t_depart": 48,
+    "debit_l_min": 3,
+    "led_defaut": "aucun_code"
+  },
+  "evolution": [
+    {
+      "si_action": "observation_vanne_3_voies",
+      "alors": { "vanne_position": "bloquee_ecs", "actionnement_manuel": "ne_bouge_pas" }
+    },
+    {
+      "si_action": "demontage_vanne",
+      "alors": { "etat_interne": "grippee_par_depot_calcaire", "resout_apres_remplacement": true }
+    }
+  ],
+  "verite": {
+    "cause": "vanne 3 voies grippée en position ECS par entartrage du corps de vanne",
+    "solution": "déposer et remplacer la vanne 3 voies (nettoyage rarement suffisant sur ce modèle), purger, contrôler le cycle chauffage/ECS",
+    "verification": "alternance chauffage/ECS correcte sur 24h, débit chauffage revenu au-dessus de 20 l/min",
+    "pieges": [
+      "conclure à une carte électronique morte parce qu'aucun code n'est affiché — sans mesure mécanique de la vanne, l'absence de code ne dit rien"
+    ]
+  },
+  "chemin_expert": ["OBS-VANNE", "DEM-VANNE"],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": null
+  },
+  "split": "dev"
+}

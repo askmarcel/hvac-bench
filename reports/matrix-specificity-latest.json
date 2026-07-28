@@ -1,0 +1,271 @@
+{
+  "measured_at": "2026-07-27T06:47:25.510Z",
+  "before": null,
+  "after": {
+    "n_actions_linked": 32,
+    "n_hypotheses": 17,
+    "median_hypotheses_per_action": 1,
+    "in_band_1_to_3": 29,
+    "over_broad_gt_3": 3,
+    "over_broad_actions": [
+      {
+        "action_id": "MES-DT-EAU",
+        "n_hypotheses": 8
+      },
+      {
+        "action_id": "MES-DEBIT",
+        "n_hypotheses": 4
+      },
+      {
+        "action_id": "MES-HP-BP",
+        "n_hypotheses": 4
+      }
+    ],
+    "powers": [
+      {
+        "action_id": "MES-DT-EAU",
+        "n_hypotheses": 8,
+        "hypothesis_ids": [
+          "air_circuit",
+          "bypass_ferme",
+          "defaut_debit",
+          "filtre_colmate",
+          "pompe_grippee",
+          "pression_basse",
+          "sous_dimension",
+          "vanne_fermee"
+        ]
+      },
+      {
+        "action_id": "MES-DEBIT",
+        "n_hypotheses": 4,
+        "hypothesis_ids": [
+          "bypass_ferme",
+          "defaut_debit",
+          "flowswitch_hs",
+          "sous_dimension"
+        ]
+      },
+      {
+        "action_id": "MES-HP-BP",
+        "n_hypotheses": 4,
+        "hypothesis_ids": [
+          "carte_hs",
+          "charge_insuffisante",
+          "compresseur_hs",
+          "pompe_grippee"
+        ]
+      },
+      {
+        "action_id": "MES-PRESSION",
+        "n_hypotheses": 3,
+        "hypothesis_ids": [
+          "air_circuit",
+          "defaut_debit",
+          "pression_basse"
+        ]
+      },
+      {
+        "action_id": "OBS-GELEE",
+        "n_hypotheses": 3,
+        "hypothesis_ids": [
+          "charge_insuffisante",
+          "degivrage_anormal",
+          "filtre_colmate"
+        ]
+      },
+      {
+        "action_id": "MAN-RESET",
+        "n_hypotheses": 2,
+        "hypothesis_ids": [
+          "defaut_transitoire",
+          "filtre_colmate"
+        ]
+      },
+      {
+        "action_id": "OBS-BYPASS",
+        "n_hypotheses": 2,
+        "hypothesis_ids": [
+          "bypass_ferme",
+          "sous_dimension"
+        ]
+      },
+      {
+        "action_id": "DEM-CIRCULATEUR",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "pompe_grippee"
+        ]
+      },
+      {
+        "action_id": "DEM-FILTRE",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "filtre_colmate"
+        ]
+      },
+      {
+        "action_id": "DEM-SONDE",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "sonde_hs"
+        ]
+      },
+      {
+        "action_id": "INT-CHARGE",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "charge_insuffisante"
+        ]
+      },
+      {
+        "action_id": "MAN-DESENGORGEMENT",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "condensats_bouches"
+        ]
+      },
+      {
+        "action_id": "MAN-FORCAGE-DEGIV",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "degivrage_anormal"
+        ]
+      },
+      {
+        "action_id": "MAN-FORCAGE-VENTILO",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "vanne_fermee"
+        ]
+      },
+      {
+        "action_id": "MAN-NETTOYAGE-FILTRE",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "filtre_colmate"
+        ]
+      },
+      {
+        "action_id": "MAN-PURGE",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "air_circuit"
+        ]
+      },
+      {
+        "action_id": "MAN-REGLAGE-BYPASS",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "bypass_ferme"
+        ]
+      },
+      {
+        "action_id": "MAN-REMPLISSAGE",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "pression_basse"
+        ]
+      },
+      {
+        "action_id": "MES-AMPERAGE",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "pompe_grippee"
+        ]
+      },
+      {
+        "action_id": "MES-CONTINUITE",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "sonde_hs"
+        ]
+      },
+      {
+        "action_id": "MES-SONDE",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "sonde_hs"
+        ]
+      },
+      {
+        "action_id": "OBS-BRUIT-POMPE",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "pompe_grippee"
+        ]
+      },
+      {
+        "action_id": "OBS-CONDENSATS",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "condensats_bouches"
+        ]
+      },
+      {
+        "action_id": "OBS-FUITE",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "pompe_grippee"
+        ]
+      },
+      {
+        "action_id": "OBS-LED-DEFAUT",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "carte_hs"
+        ]
+      },
+      {
+        "action_id": "OBS-PURGEUR",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "air_circuit"
+        ]
+      },
+      {
+        "action_id": "OBS-VANNE",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "vanne_fermee"
+        ]
+      },
+      {
+        "action_id": "REM-CARTE",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "carte_hs"
+        ]
+      },
+      {
+        "action_id": "REM-CIRCULATEUR",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "pompe_grippee"
+        ]
+      },
+      {
+        "action_id": "REM-COMPRESSEUR",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "compresseur_hs"
+        ]
+      },
+      {
+        "action_id": "REM-FLOWSWITCH",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "flowswitch_hs"
+        ]
+      },
+      {
+        "action_id": "REM-SONDE",
+        "n_hypotheses": 1,
+        "hypothesis_ids": [
+          "sonde_hs"
+        ]
+      }
+    ]
+  },
+  "target_hypotheses_per_action": "1-3"
+}

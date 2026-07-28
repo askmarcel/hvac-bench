@@ -1,0 +1,176 @@
+{
+  "version": "fault-tree-v3-pac_air_eau.2026-07-27",
+  "family": "pac_air_eau",
+  "T_cutoff": "2026-04-01",
+  "lr_tiers": { "fort": 10, "moyen": 3, "faible": 1.5 },
+  "post_repair_rules": {
+    "confirmatory": {
+      "description": "MAN-*/REM-* ciblant C + grandeur nominale + symptôme disparaît → confirme C (LR fort)",
+      "lr": "fort"
+    },
+    "counterfactual": {
+      "description": "MAN-*/REM-* ciblant C + grandeur nominale + symptôme persiste → refute C (LR fort)",
+      "lr": "fort"
+    }
+  },
+  "causes": [
+    {
+      "cause_id": "air_circuit",
+      "mechanism": "Air occlus dans le circuit hydraulique → débit effectif réduit, ΔT anormal, purgeur actif",
+      "effects": [
+        { "quantity": "delta_t_eau", "direction": "high", "operating_state": "regime_etabli", "lr": "fort", "status": "sourced", "sources": ["doc:b7355b17-1fb2-4c16-9fb1-e1fd5eb484ab#p91"] },
+        { "quantity": "delta_t_eau", "direction": "low", "operating_state": "en_securite", "lr": "fort", "status": "sourced", "sources": ["marcel:2026-07-27-p2b"] },
+        { "quantity": "debit_l_min", "direction": "low", "lr": "fort", "status": "sourced", "sources": ["doc:b7355b17-1fb2-4c16-9fb1-e1fd5eb484ab#p91"] },
+        { "quantity": "purgeur", "value": "crache_air", "lr": "moyen", "status": "sourced", "sources": ["marcel:2026-07-27"] }
+      ],
+      "repair_actions": ["MAN-PURGE"]
+    },
+    {
+      "cause_id": "filtre_colmate",
+      "mechanism": "Filtre encrassé → perte de charge, débit réduit, ΔT élevé",
+      "effects": [
+        { "quantity": "delta_t_eau", "direction": "high", "operating_state": "regime_etabli", "lr": "fort", "status": "sourced", "sources": ["doc:2407e0ed-4717-40d8-bb9d-5782099f95f5#p7"] },
+        { "quantity": "delta_t_eau", "direction": "low", "operating_state": "en_securite", "lr": "fort", "status": "sourced", "sources": ["marcel:2026-07-27-p2b"] },
+        { "quantity": "debit_l_min", "direction": "low", "lr": "fort", "status": "sourced", "sources": ["doc:b7355b17-1fb2-4c16-9fb1-e1fd5eb484ab#p91"] },
+        { "quantity": "pression_circuit_bar", "direction": "in_range", "lr": "faible", "status": "sourced", "sources": ["marcel:2026-07-27"] }
+      ],
+      "repair_actions": ["MAN-NETTOYAGE-FILTRE", "DEM-FILTRE"]
+    },
+    {
+      "cause_id": "pompe_grippee",
+      "mechanism": "Circulateur grippé ou rotor bloqué → débit insuffisant, bruit anormal",
+      "effects": [
+        { "quantity": "bruit_pompe", "value": "claquement", "lr": "fort", "status": "sourced", "sources": ["marcel:2026-07-27"] },
+        { "quantity": "delta_t_eau", "direction": "high", "operating_state": "regime_etabli", "lr": "fort", "status": "sourced", "sources": ["doc:b7355b17-1fb2-4c16-9fb1-e1fd5eb484ab#p91"] },
+        { "quantity": "delta_t_eau", "direction": "low", "operating_state": "en_securite", "lr": "fort", "status": "sourced", "sources": ["marcel:2026-07-27-p2b"] },
+        { "quantity": "amperage_circulateur", "direction": "low", "lr": "moyen", "status": "draft", "sources": [], "note": "Dépend type pompe — à sourcer par famille" }
+      ],
+      "repair_actions": ["REM-CIRCULATEUR", "DEM-CIRCULATEUR"]
+    },
+    {
+      "cause_id": "pression_basse",
+      "mechanism": "Pression hydraulique insuffisante → risque cavitation, défaut débit",
+      "effects": [
+        { "quantity": "pression_circuit_bar", "direction": "low", "lr": "fort", "status": "sourced", "sources": ["doc:b7355b17-1fb2-4c16-9fb1-e1fd5eb484ab#p91", "doc:b21ee3bb-b0cb-41b0-ac4d-81f62f521f75#p21"] },
+        { "quantity": "delta_t_eau", "direction": "high", "lr": "moyen", "status": "sourced", "sources": ["marcel:2026-07-27"] }
+      ],
+      "repair_actions": ["MAN-REMPLISSAGE"]
+    },
+    {
+      "cause_id": "bypass_ferme",
+      "mechanism": "Bypass/soupape différentielle mal réglée → débit insuffisant sur boucles",
+      "effects": [
+        { "quantity": "debit_l_min", "direction": "low", "lr": "fort", "status": "sourced", "sources": ["doc:de614caf-ddf2-4df5-81b8-2218ab7870ff#p27"] },
+        { "quantity": "bypass_ouvert", "value": "non", "lr": "moyen", "status": "sourced", "sources": ["marcel:2026-07-27"] },
+        { "quantity": "delta_t_eau", "direction": "high", "lr": "moyen", "status": "sourced", "sources": ["doc:2407e0ed-4717-40d8-bb9d-5782099f95f5#p7"] }
+      ],
+      "repair_actions": ["MAN-REGLAGE-BYPASS"]
+    },
+    {
+      "cause_id": "flowswitch_hs",
+      "mechanism": "Contrôleur de débit défaillant — débit réel OK mais sécurité déclenchée",
+      "effects": [
+        { "quantity": "debit_l_min", "direction": "in_range", "lr": "fort", "status": "sourced", "sources": ["marcel:2026-07-27"] },
+        { "quantity": "led_defaut", "value": "code", "lr": "moyen", "status": "sourced", "sources": ["doc:b7355b17-1fb2-4c16-9fb1-e1fd5eb484ab#p91"] }
+      ],
+      "repair_actions": ["REM-FLOWSWITCH"]
+    },
+    {
+      "cause_id": "sonde_hs",
+      "mechanism": "Sonde défectueuse ou décalée → mesure erronée, régulation incohérente",
+      "effects": [
+        { "quantity": "delta_sonde_k", "direction": "high", "lr": "fort", "status": "sourced", "sources": ["marcel:2026-07-27"] },
+        { "quantity": "t_depart", "direction": "high", "lr": "moyen", "status": "sourced", "sources": ["marcel:2026-07-27"] }
+      ],
+      "repair_actions": ["REM-SONDE", "MES-SONDE"]
+    },
+    {
+      "cause_id": "carte_hs",
+      "mechanism": "Carte électronique HS → codes défaut, comportement incohérent",
+      "effects": [
+        { "quantity": "led_defaut", "value": "code", "lr": "fort", "status": "sourced", "sources": ["marcel:2026-07-27"] },
+        { "quantity": "hp_bar", "direction": "in_range", "lr": "faible", "status": "sourced", "sources": ["marcel:2026-07-27"] }
+      ],
+      "repair_actions": ["REM-CARTE"]
+    },
+    {
+      "cause_id": "compresseur_hs",
+      "mechanism": "Compresseur défaillant → convergence HP-BP anormale",
+      "effects": [
+        { "quantity": "delta_hp_bp", "direction": "low", "lr": "fort", "status": "sourced", "sources": ["marcel:2026-07-27"] },
+        { "quantity": "amperage_compresseur", "direction": "low", "lr": "moyen", "status": "draft", "sources": [], "note": "Variable selon type compresseur" }
+      ],
+      "repair_actions": ["REM-COMPRESSEUR"]
+    },
+    {
+      "cause_id": "degivrage_anormal",
+      "mechanism": "Cycle de dégivrage défaillant ou trop fréquent",
+      "effects": [
+        { "quantity": "givre", "value": "localise", "lr": "fort", "status": "sourced", "sources": ["marcel:2026-07-27"] },
+        { "quantity": "hp_bar", "direction": "in_range", "lr": "faible", "status": "sourced", "sources": ["marcel:2026-07-27"] }
+      ],
+      "repair_actions": ["MAN-FORCAGE-DEGIV"]
+    },
+    {
+      "cause_id": "charge_insuffisante",
+      "mechanism": "Charge frigorigène insuffisante → basses pressions, givre",
+      "effects": [
+        { "quantity": "hp_bar", "direction": "low", "lr": "fort", "status": "sourced", "sources": ["marcel:2026-07-27"] },
+        { "quantity": "bp_bar", "direction": "low", "lr": "fort", "status": "sourced", "sources": ["marcel:2026-07-27"] },
+        { "quantity": "givre", "value": "generalise", "lr": "moyen", "status": "sourced", "sources": ["marcel:2026-07-27"] }
+      ],
+      "repair_actions": ["INT-CHARGE"]
+    },
+    {
+      "cause_id": "vanne_fermee",
+      "mechanism": "Vanne fermée ou défectueuse → restriction débit",
+      "effects": [
+        { "quantity": "vanne_position", "value": "fermee", "lr": "fort", "status": "sourced", "sources": ["marcel:2026-07-27"] },
+        { "quantity": "delta_t_eau", "direction": "high", "lr": "moyen", "status": "sourced", "sources": ["doc:b7355b17-1fb2-4c16-9fb1-e1fd5eb484ab#p91"] }
+      ],
+      "repair_actions": ["REM-VANNE", "MAN-FORCAGE-VENTILO"]
+    },
+    {
+      "cause_id": "defaut_transitoire",
+      "mechanism": "Défaut transitoire résolu par reset",
+      "effects": [
+        { "quantity": "led_defaut", "value": "code", "lr": "faible", "status": "sourced", "sources": ["marcel:2026-07-27"] },
+        { "quantity": "delta_t_eau", "direction": "in_range", "lr": "faible", "status": "sourced", "sources": ["marcel:2026-07-27"] }
+      ],
+      "repair_actions": ["MAN-RESET"]
+    },
+    {
+      "cause_id": "condensats_bouches",
+      "mechanism": "Évacuation condensats obstruée",
+      "effects": [
+        { "quantity": "condensats", "value": "bouche", "lr": "fort", "status": "sourced", "sources": ["marcel:2026-07-27"] },
+        { "quantity": "givre", "value": "localise", "lr": "moyen", "status": "sourced", "sources": ["marcel:2026-07-27"] }
+      ],
+      "repair_actions": ["MAN-DESENGORGEMENT"]
+    },
+    {
+      "cause_id": "defaut_debit",
+      "mechanism": "Débit hydraulique réellement insuffisant (non capteur)",
+      "effects": [
+        { "quantity": "debit_l_min", "direction": "low", "lr": "fort", "status": "sourced", "sources": ["doc:b7355b17-1fb2-4c16-9fb1-e1fd5eb484ab#p91"] },
+        { "quantity": "delta_t_eau", "direction": "high", "lr": "fort", "status": "sourced", "sources": ["doc:2407e0ed-4717-40d8-bb9d-5782099f95f5#p7"] }
+      ],
+      "repair_actions": ["MES-DEBIT"]
+    },
+    {
+      "cause_id": "sous_dimension",
+      "mechanism": "Circuit hydraulique sous-dimensionné → débit limite à puissance nominale",
+      "effects": [
+        { "quantity": "debit_l_min", "direction": "low", "lr": "moyen", "status": "sourced", "sources": ["doc:de614caf-ddf2-4df5-81b8-2218ab7870ff#p27"] },
+        { "quantity": "delta_t_eau", "direction": "high", "lr": "moyen", "status": "sourced", "sources": ["marcel:2026-07-27"] }
+      ],
+      "repair_actions": []
+    },
+    {
+      "cause_id": "cause_inconnue",
+      "mechanism": "Cause résiduelle non classifiée — non concluable",
+      "effects": [],
+      "repair_actions": []
+    }
+  ]
+}

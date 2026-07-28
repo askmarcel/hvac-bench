@@ -1,0 +1,47 @@
+{
+  "id": "ham-0016",
+  "titre": "Daikin Altherma — sous-dimensionnement, escalade bureau d'études",
+  "equipement": { "marque": "Daikin", "modele": "Altherma 3 EHVH08", "famille": "pac_air_eau", "age_ans": 2 },
+  "installation": {
+    "emetteur": "radiateurs_ht",
+    "regime_eau": "65/55",
+    "region_climat": "H1",
+    "particularites": "maison ancienne mal isolée, PAC 8kW pour un besoin réel estimé à 12kW"
+  },
+  "plainte_initiale": "Par temps froid (moins de 0°C), la maison ne monte jamais à la température de consigne, même en fonctionnement continu.",
+  "etat_operatoire": "nominal",
+  "ground_state": {
+    "t_exterieure": -3,
+    "t_depart": 60,
+    "delta_t_eau_K": 16,
+    "debit_l_min": 28,
+    "hp_bar": 23,
+    "bp_bar": 8
+  },
+  "evolution": [
+    {
+      "si_action": "calcul_deperditions",
+      "alors": {
+        "puissance_necessaire_kw": 12,
+        "puissance_installee_kw": 8,
+        "ecart": "sous_dimensionne_de_33_pourcent"
+      }
+    }
+  ],
+  "verite": {
+    "cause": "PAC sous-dimensionnée par rapport aux déperditions réelles du bâtiment (isolation ancienne, calcul initial optimiste)",
+    "solution": "escalader vers un bureau d'études pour recalcul des déperditions et étude de complément (appoint électrique, ou remplacement par une unité de puissance supérieure)",
+    "verification": "non applicable — étude de dimensionnement requise avant toute action corrective",
+    "pieges": [
+      "multiplier les mesures frigorifiques/hydrauliques qui reviendront toutes normales — tout est en plage ici, le problème est un dimensionnement, pas une panne"
+    ]
+  },
+  "chemin_expert": ["MES-TEMP-AMBIANTE", "MES-DEBIT"],
+  "escalade_attendue": "sous_dimensionnement",
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": null
+  },
+  "split": "dev"
+}

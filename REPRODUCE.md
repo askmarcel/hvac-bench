@@ -3,123 +3,154 @@
 ## Prérequis
 
 - Node 22, pnpm 9, `pnpm install`
-- Clone https://github.com/askmarcel/hvac-bench-heldout (accès privé) ou copie locale `../hvac-bench-heldout/`
-- `BENCH_API_URL` et `BENCH_API_KEY` pour le bras D (clé `HvacBench-CI` en CI)
+- Clone https://github.com/askmarcel/hvac-bench-heldout (privé) ou copie locale `../hvac-bench-heldout/`
+- Credentials — voir [docs/BRAS-ET-CREDENTIALS.md](./docs/BRAS-ET-CREDENTIALS.md)
 
-## Chaîne complète
+| Bras | Variables |
+|---|---|
+| D | `BENCH_API_URL`, `BENCH_API_KEY` (`ak_live_…`) |
+| A / B | `OPENROUTER_API_KEY` (ou `BENCH_ARM_*_API_KEY`) |
+
+Fichier local recommandé (gitignored) :
 
 ```bash
-# 0. Le held-out doit passer le schéma avant tout run
-pnpm validate:cases --paths ../hvac-bench-heldout/dataset/gate.jsonl
-
-# 1. Index corpus (depuis le monorepo WebApp, une fois par run)
-cd ../AskMarcel-WebApp-NextJS
-pnpm exec tsx scripts/export-bench-index.ts ../hvac-bench-heldout/index/corpus-index.json
-cd ../hvac-bench
-
-# 2. Run bras D — le produit réel
-BENCH_API_URL=https://… BENCH_API_KEY=… \
-  pnpm run:d --cases ../hvac-bench-heldout/dataset/gate.jsonl --out runs/2026-07-25
-
-# 3. Scorer
-pnpm score --cases ../hvac-bench-heldout/dataset/gate.jsonl \
-           --run runs/2026-07-25/raw.jsonl \
-           --meta runs/2026-07-25/run.json \
-           --index ../hvac-bench-heldout/index/corpus-index.json \
-           --out runs/2026-07-25/score.json
-
-# 4. Gate
-pnpm gate --score runs/2026-07-25/score.json --baseline baselines/last-green.json
+# hvac-bench/.env.bench
+BENCH_API_URL=https://app.askmarcel.app
+BENCH_API_KEY=ak_live_…
 ```
 
-`pnpm test` vérifie le harnais lui-même sur réponses simulées, sans réseau ni secret.
+Créer une clé bench : `cd ../AskMarcel-WebApp-NextJS && pnpm exec tsx scripts/create-bench-ci-key.ts`
 
-## Ce qui rend un run comparable à un autre
+## Chaîne complète (gate 52 cas)
 
-Un run n'est comparable qu'à conditions égales sur ces cinq éléments, tous inscrits dans
-`run.json` et `score.json` :
+```bash
+# 0. Schéma
+pnpm validate:cases --paths ../hvac-bench-heldout/dataset/gate.jsonl
+pnpm validate:cases --paths dataset/public/bench-v2.jsonl dataset/public/sample.jsonl
 
-| Élément | Où il est figé |
+# 1. Index corpus (monorepo WebApp)
+cd ../AskMarcel-WebApp-NextJS
+NEXT_PUBLIC_SUPABASE_URL=… SUPABASE_SERVICE_ROLE_KEY=… \
+  pnpm exec tsx scripts/export-bench-index.ts ../hvac-bench-heldout/index/corpus-index.json
+cd ../hvac-bench
+
+# 2. Run bras D
+set -a && source .env.bench && set +a
+pnpm run:d --cases ../hvac-bench-heldout/dataset/gate.jsonl --out runs/gate-d-YYYY-MM-DD
+
+# 3. Scorer + gate
+pnpm score --cases ../hvac-bench-heldout/dataset/gate.jsonl \
+  --run runs/gate-d-YYYY-MM-DD/raw.jsonl \
+  --meta runs/gate-d-YYYY-MM-DD/run.json \
+  --index ../hvac-bench-heldout/index/corpus-index.json \
+  --out runs/gate-d-YYYY-MM-DD/score.json
+
+pnpm gate --score runs/gate-d-YYYY-MM-DD/score.json --baseline baselines/last-green.json
+```
+
+## Dataset complet (204 cas)
+
+```bash
+set -a && source .env.bench && set +a
+export BENCH_CONCURRENCY=2   # éviter 429 sur prod
+pnpm run:d --cases full --out runs/bench-v2-full-d-YYYY-MM-DD
+
+# Si 429 :
+pnpm exec tsx scripts/retry-failed-records.ts \
+  --cases full --run runs/bench-v2-full-d-YYYY-MM-DD/raw.jsonl --delay-ms 5000
+
+export OPENROUTER_API_KEY=…
+pnpm run:a --cases full --out runs/bench-v2-full-a-YYYY-MM-DD
+pnpm run:b --cases full --out runs/bench-v2-full-b-YYYY-MM-DD
+
+pnpm score --cases full \
+  --run runs/bench-v2-full-d-YYYY-MM-DD/raw.jsonl \
+  --meta runs/bench-v2-full-d-YYYY-MM-DD/run.json \
+  --index ../hvac-bench-heldout/index/corpus-index.json \
+  --out runs/bench-v2-full-d-YYYY-MM-DD/score.json
+
+pnpm compare:arms \
+  --a runs/bench-v2-full-a-YYYY-MM-DD/score.json \
+  --b runs/bench-v2-full-b-YYYY-MM-DD/score.json \
+  --d runs/bench-v2-full-d-YYYY-MM-DD/score.json
+```
+
+Référence : [reports/bench-v2-full-2026-07-26.md](./reports/bench-v2-full-2026-07-26.md).
+
+`pnpm test` vérifie le harnais sur réponses simulées, sans réseau.
+
+## Comparabilité des runs
+
+| Élément | Où figé |
 |---|---|
-| Version du dataset | `dataset_version` — sha256 tronqué du `gate.jsonl` |
-| Version du contrat de réponse | `contract_version`, lu dans la première réponse |
-| Version de l'index corpus | `index_version` — date d'export |
-| Version du scorer | `scorer_version` |
-| Bras | `arm` |
+| Dataset | `dataset_version` dans `run.json` / `score.json` |
+| Contrat | `contract_version` (première réponse D) |
+| Index | `index_version` — date export `corpus-index.json` |
+| Scorer | `scorer_version` |
+| Bras | `arm` + modèle dans `run.json` (`endpoint`) |
 
-Changer l'un d'eux invalide la comparaison à la baseline. Le CDC §10 exige un amendement
-daté avant tout re-run revendiqué comparable.
+Changer l’un invalide la comparaison à la baseline (CDC §10).
 
-## Le run pré-correctif
+## Baseline verte (gate 52)
 
-Le premier run bras D est archivé en `baselines/pre-fix.json` — **preuve interne, jamais
-baseline verte** (CDC REQ-G3).
-
-**État 2026-07-25 :** exécuté via CI ([run #30160899365](https://github.com/askmarcel/hvac-bench/actions/runs/30160899365)), figé dans le dépôt (commit `718d2a8`).
-
-## La baseline verte
-
-Après split `score_gate` / `score_leak`, la baseline est figée en `baselines/last-green.json` :
-
+- Fichier : `baselines/last-green.json`
 - Run : `d-2026-07-25T19-58-56-240Z-83d39b5e`
-- CI : [Actions #30172655627](https://github.com/askmarcel/hvac-bench/actions/runs/30172655627)
-- Attribution de référence (**score_gate**, 33 cas hors `corpus_leakage`) : **86,2 %** (25/29)
-- Citations fantômes : **0**
-- Tranches : `score_gate` 33 cas · `score_leak` 19 cas (signal, non bloquant)
+- Attribution **score_gate** : **86,2 %** (25/29)
+- Pré-correctif archivé : `baselines/pre-fix.json` — jamais baseline publique
 
-Tout push sur `main` compare la règle 1 (régression attribution) à `slices.score_gate.attribution_rate`
-de cette baseline.
-
-Run pré-split archivé : `d-2026-07-25T19-30-40-134Z-f8ef518d` ([#30161016782](https://github.com/askmarcel/hvac-bench/actions/runs/30161016782)), attribution globale 83,3 %.
-
-Le runner écrit `raw.jsonl` au fil de l'eau pour qu'un plantage à mi-parcours ne le gâche pas.
+Le runner écrit `raw.jsonl` au fil de l'eau.
 
 ## Déterminisme
 
-Le scorer ne fait aucun appel réseau et n'utilise aucun LLM (NFR-4) : mêmes `raw.jsonl`,
-`gate.jsonl` et index produisent le même `score.json`. Le runner, lui, interroge un système
-en production : deux runs ne sont pas identiques, ce qui est la raison d'être des
-intervalles de confiance à 95 %.
+Scorer : déterministe, sans réseau (NFR-4). Runners prod / OpenRouter : non déterministes → intervalles Wilson 95 %.
 
-## Vérifier le dataset avant de dépenser un run
-
-Depuis le monorepo WebApp :
+## Vérifier le dataset (avant un run coûteux)
 
 ```bash
+cd ../AskMarcel-WebApp-NextJS
 pnpm exec tsx scripts/verify-gate-dataset.ts ../hvac-bench-heldout/dataset/gate.jsonl
+pnpm exec tsx scripts/verify-gate-dataset.ts ../hvac-bench/dataset/public/bench-v2.jsonl
 ```
 
-Il confronte chaque cas à la base. Un code déclaré inexistant qui existe réellement pour la
-marque citée est une vérité terrain inversée : le bench punirait alors le comportement
-correct. C'est arrivé sur 6 cas de la v0.
-
-## Bras A (closed-book)
+## Générer bench-v2.jsonl
 
 ```bash
-# Prérequis : OPENROUTER_API_KEY ou BENCH_ARM_A_API_KEY
-export BENCH_ARM_A_MODEL=openai/gpt-4o   # optionnel
-
-pnpm run:a --cases ../hvac-bench-heldout/dataset/gate.jsonl --out runs/arm-a-2026-07-25
-pnpm score --cases ../hvac-bench-heldout/dataset/gate.jsonl \
-  --run runs/arm-a-2026-07-25/raw.jsonl --meta runs/arm-a-2026-07-25/run.json \
-  --index ../hvac-bench-heldout/index/corpus-index.json \
-  --out runs/arm-a-2026-07-25/score.json
-pnpm compare:arms --a runs/arm-a-2026-07-25/score.json --d baselines/last-green.json
+cd ../AskMarcel-WebApp-NextJS
+pnpm exec tsx scripts/seed-bench-v2-lists.ts      # optionnel, Supabase
+pnpm exec tsx scripts/generate-bench-v2-candidates.ts
+cd ../hvac-bench
+pnpm validate:cases --paths dataset/public/bench-v2.jsonl
 ```
 
-Rapport figé : [reports/arm-a-vs-d-2026-07-25.md](./reports/arm-a-vs-d-2026-07-25.md).
+## Bras A / B (gate 52 — historique)
 
-## Bras B (LLM + web search)
+Rapports figés sur 52 cas : [arm-a-vs-d](./reports/arm-a-vs-d-2026-07-25.md), [arm-a-b-vs-d](./reports/arm-a-b-vs-d-2026-07-25.md).
 
 ```bash
-# Prérequis : OPENROUTER_API_KEY
-pnpm run:b --cases ../hvac-bench-heldout/dataset/gate.jsonl --out runs/arm-b-2026-07-25
-pnpm score --cases ../hvac-bench-heldout/dataset/gate.jsonl \
-  --run runs/arm-b-2026-07-25/raw.jsonl --meta runs/arm-b-2026-07-25/run.json \
-  --index ../hvac-bench-heldout/index/corpus-index.json \
-  --out runs/arm-b-2026-07-25/score.json
-pnpm compare:arms --a baselines/arm-a-2026-07-25.json \
-  --b runs/arm-b-2026-07-25/score.json --d baselines/last-green.json
+export OPENROUTER_API_KEY=…
+export BENCH_ARM_A_MODEL=deepseek/deepseek-v4-flash  # défaut (models-v2.json)
+export BENCH_ARM_B_MODEL=mistralai/mistral-large-2512 # défaut (models-v2.json, même modèle que E)
+export BENCH_ARM_E_MODEL=mistralai/mistral-large-2512 # bras E pilote v2
+
+pnpm run:a --cases ../hvac-bench-heldout/dataset/gate.jsonl --out runs/arm-a-YYYY-MM-DD
+pnpm run:b --cases ../hvac-bench-heldout/dataset/gate.jsonl --out runs/arm-b-YYYY-MM-DD
 ```
 
-Rapport combiné : [reports/arm-a-b-vs-d-2026-07-25.md](./reports/arm-a-b-vs-d-2026-07-25.md).
+## Bras C (MCP diagnose)
+
+```bash
+set -a && source .env.bench && set +a
+pnpm run:c --cases ../hvac-bench-heldout/dataset/gate.jsonl --out runs/gate-c-YYYY-MM-DD
+pnpm compare:arms --c runs/gate-c-YYYY-MM-DD/score.json --d runs/.../score-gate52.json
+```
+
+Rapport : [reports/arm-c-vs-d-gate52.md](./reports/arm-c-vs-d-gate52.md).
+
+## Phase 4 — annotation workflow
+
+```bash
+pnpm export:workflow --run runs/bench-v2-full-d-2026-07-26/raw.jsonl
+pnpm score:workflow --in workflow/phase4-annotations.json
+```
+
+Guide : [Hvac_Bench/doc_Hvac_Bench_Phase4_Workflow.md](../Hvac_Bench/doc_Hvac_Bench_Phase4_Workflow.md).

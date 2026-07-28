@@ -1,0 +1,150 @@
+{
+  "causes": 17,
+  "total_edges": 37,
+  "sourced_edges": 35,
+  "pct_sourced": 0.946,
+  "separability": [
+    {
+      "pair": "air_circuit|filtre_colmate",
+      "ok": true,
+      "separator": "purgeur"
+    },
+    {
+      "pair": "air_circuit|pompe_grippee",
+      "ok": true,
+      "separator": "debit_l_min"
+    },
+    {
+      "pair": "air_circuit|pression_basse",
+      "ok": true,
+      "separator": "debit_l_min"
+    },
+    {
+      "pair": "air_circuit|bypass_ferme",
+      "ok": true,
+      "separator": "purgeur"
+    },
+    {
+      "pair": "air_circuit|flowswitch_hs",
+      "ok": true,
+      "separator": "delta_t_eau"
+    },
+    {
+      "pair": "air_circuit|sonde_hs",
+      "ok": true,
+      "separator": "delta_t_eau"
+    },
+    {
+      "pair": "air_circuit|vanne_fermee",
+      "ok": true,
+      "separator": "debit_l_min"
+    },
+    {
+      "pair": "filtre_colmate|pompe_grippee",
+      "ok": true,
+      "separator": "debit_l_min"
+    },
+    {
+      "pair": "filtre_colmate|pression_basse",
+      "ok": true,
+      "separator": "debit_l_min"
+    },
+    {
+      "pair": "filtre_colmate|bypass_ferme",
+      "ok": true,
+      "separator": "pression_circuit_bar"
+    },
+    {
+      "pair": "filtre_colmate|flowswitch_hs",
+      "ok": true,
+      "separator": "delta_t_eau"
+    },
+    {
+      "pair": "filtre_colmate|sonde_hs",
+      "ok": true,
+      "separator": "delta_t_eau"
+    },
+    {
+      "pair": "filtre_colmate|vanne_fermee",
+      "ok": true,
+      "separator": "debit_l_min"
+    },
+    {
+      "pair": "pompe_grippee|pression_basse",
+      "ok": true,
+      "separator": "bruit_pompe"
+    },
+    {
+      "pair": "pompe_grippee|bypass_ferme",
+      "ok": true,
+      "separator": "bruit_pompe"
+    },
+    {
+      "pair": "pompe_grippee|flowswitch_hs",
+      "ok": true,
+      "separator": "bruit_pompe"
+    },
+    {
+      "pair": "pompe_grippee|sonde_hs",
+      "ok": true,
+      "separator": "bruit_pompe"
+    },
+    {
+      "pair": "pompe_grippee|vanne_fermee",
+      "ok": true,
+      "separator": "bruit_pompe"
+    },
+    {
+      "pair": "pression_basse|bypass_ferme",
+      "ok": true,
+      "separator": "pression_circuit_bar"
+    },
+    {
+      "pair": "pression_basse|flowswitch_hs",
+      "ok": true,
+      "separator": "pression_circuit_bar"
+    },
+    {
+      "pair": "pression_basse|sonde_hs",
+      "ok": true,
+      "separator": "pression_circuit_bar"
+    },
+    {
+      "pair": "pression_basse|vanne_fermee",
+      "ok": true,
+      "separator": "pression_circuit_bar"
+    },
+    {
+      "pair": "bypass_ferme|flowswitch_hs",
+      "ok": true,
+      "separator": "debit_l_min"
+    },
+    {
+      "pair": "bypass_ferme|sonde_hs",
+      "ok": true,
+      "separator": "debit_l_min"
+    },
+    {
+      "pair": "bypass_ferme|vanne_fermee",
+      "ok": true,
+      "separator": "debit_l_min"
+    },
+    {
+      "pair": "flowswitch_hs|sonde_hs",
+      "ok": true,
+      "separator": "debit_l_min"
+    },
+    {
+      "pair": "flowswitch_hs|vanne_fermee",
+      "ok": true,
+      "separator": "debit_l_min"
+    },
+    {
+      "pair": "sonde_hs|vanne_fermee",
+      "ok": true,
+      "separator": "delta_sonde_k"
+    }
+  ],
+  "errors": [],
+  "pass": true
+}

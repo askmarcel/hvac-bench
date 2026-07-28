@@ -1,0 +1,231 @@
+{
+  "date": "2026-07-27",
+  "baselines": {
+    "generated_at": "2026-07-27T08:47:27.904Z",
+    "roster": {
+      "gate_diagnostic_case_ids": [
+        "hb2-0001",
+        "hb2-0002",
+        "hb2-0003",
+        "hb2-0004",
+        "hb2-0005",
+        "hb2-0007",
+        "hb2-0010",
+        "hb2-0011",
+        "hb2-0013",
+        "hb2-0015"
+      ],
+      "count": 10
+    },
+    "historical_15_all_families": {
+      "O_bayes": {
+        "conv_at_5": 0.8,
+        "fraction": "12/15"
+      },
+      "O_bayes_db": {
+        "conv_at_5": 0.25,
+        "fraction": "3.75/15 (audit ~4/15)"
+      }
+    },
+    "O_bayes": {
+      "roster_10": {
+        "numerator": 10,
+        "denominator": 10,
+        "rate": 1
+      },
+      "scorer_v2_subset": {
+        "convergence_at_5": 1,
+        "n": 10
+      },
+      "per_case": [
+        {
+          "case_id": "hb2-0001",
+          "path": [
+            "MES-DT-EAU",
+            "OBS-PURGEUR",
+            "MAN-PURGE"
+          ],
+          "state": "conclusion",
+          "cause_id": "air_circuit",
+          "expected": "air_circuit",
+          "turns": 3,
+          "success": true
+        },
+        {
+          "case_id": "hb2-0002",
+          "path": [
+            "MES-PRESSION",
+            "OBS-PURGEUR",
+            "MAN-PURGE"
+          ],
+          "state": "conclusion",
+          "cause_id": "air_circuit",
+          "expected": "air_circuit",
+          "turns": 3,
+          "success": true
+        },
+        {
+          "case_id": "hb2-0003",
+          "path": [
+            "OBS-BRUIT-POMPE",
+            "MES-AMPERAGE"
+          ],
+          "state": "conclusion",
+          "cause_id": "pompe_grippee",
+          "expected": "pompe_grippee",
+          "turns": 2,
+          "success": true
+        },
+        {
+          "case_id": "hb2-0004",
+          "path": [
+            "MES-DEBIT",
+            "OBS-BYPASS",
+            "MAN-REGLAGE-BYPASS"
+          ],
+          "state": "conclusion",
+          "cause_id": "bypass_ferme",
+          "expected": "bypass_ferme",
+          "turns": 3,
+          "success": true
+        },
+        {
+          "case_id": "hb2-0005",
+          "path": [
+            "MES-PRESSION",
+            "MAN-REMPLISSAGE"
+          ],
+          "state": "conclusion",
+          "cause_id": "pression_basse",
+          "expected": "pression_basse",
+          "turns": 2,
+          "success": true
+        },
+        {
+          "case_id": "hb2-0007",
+          "path": [
+            "OBS-VANNE",
+            "MES-DT-EAU"
+          ],
+          "state": "conclusion",
+          "cause_id": "vanne_fermee",
+          "expected": "vanne_fermee",
+          "turns": 2,
+          "success": true
+        },
+        {
+          "case_id": "hb2-0010",
+          "path": [
+            "MES-SONDE",
+            "MES-DT-EAU",
+            "REM-SONDE"
+          ],
+          "state": "conclusion",
+          "cause_id": "sonde_hs",
+          "expected": "sonde_hs",
+          "turns": 3,
+          "success": true
+        },
+        {
+          "case_id": "hb2-0011",
+          "path": [
+            "MES-DT-EAU",
+            "OBS-PURGEUR",
+            "MAN-PURGE"
+          ],
+          "state": "conclusion",
+          "cause_id": "air_circuit",
+          "expected": "air_circuit",
+          "turns": 3,
+          "success": true
+        },
+        {
+          "case_id": "hb2-0013",
+          "path": [
+            "OBS-GELEE",
+            "MES-HP-BP",
+            "MAN-NETTOYAGE-FILTRE"
+          ],
+          "state": "conclusion",
+          "cause_id": "filtre_colmate",
+          "expected": "filtre_colmate",
+          "turns": 3,
+          "success": true
+        },
+        {
+          "case_id": "hb2-0015",
+          "path": [
+            "MES-CONTINUITE",
+            "MES-RESISTANCE",
+            "DEM-SONDE"
+          ],
+          "state": "conclusion",
+          "cause_id": "sonde_hs",
+          "expected": "sonde_hs",
+          "turns": 3,
+          "success": true
+        }
+      ]
+    },
+    "O_bayes_db": {
+      "roster_10": {
+        "numerator": 0,
+        "denominator": 10,
+        "rate": 0,
+        "status": "skipped",
+        "reason": "no_supabase"
+      },
+      "scorer_v2_subset": null
+    }
+  },
+  "h3": {
+    "conv_at_5": 0.1,
+    "numerator": 1,
+    "denominator": 10,
+    "verdict": "FAIL"
+  },
+  "escalade": {
+    "escalation_recall": 1,
+    "escalation_recall_numerator": 3,
+    "escalation_recall_denominator": 3,
+    "false_conclusions_on_escalade": 0,
+    "pass": true
+  },
+  "h4": {
+    "generated_at": "2026-07-27T08:47:27.911Z",
+    "hypothesis": "H4",
+    "profiles": [
+      {
+        "profile": "tier3_default",
+        "lr_tiers": {
+          "fort": 10,
+          "moyen": 3,
+          "faible": 1.5
+        },
+        "conv_at_5": 0.1,
+        "numerator": 1,
+        "denominator": 10,
+        "run_dir": "/Users/mac/Documents/AskMarcel-APP/hvac-bench/runs/o-tree-db-2026-07-27T08-47-27-909Z-d8bcd606"
+      },
+      {
+        "profile": "adjusted",
+        "lr_tiers": {
+          "fort": 15,
+          "moyen": 4,
+          "faible": 2
+        },
+        "conv_at_5": 0.2,
+        "numerator": 2,
+        "denominator": 10,
+        "run_dir": "/Users/mac/Documents/AskMarcel-APP/hvac-bench/runs/o-tree-db-2026-07-27T08-47-27-910Z-8bb76451"
+      }
+    ],
+    "delta_cases": 1,
+    "threshold_max_delta_cases": 1,
+    "verdict": "PASS"
+  },
+  "p3_decision": "**NO-GO P3** — conv@5 = 1/10 (0.100) < 0,40 ; prémisse « connaissance publique suffit » infirmée ; garder moteur v3, repivoter élicitation Marcel lourde",
+  "runs": {
+    "o_tree_db": "/Users/mac/Documents/AskMarcel-APP/hvac-bench/runs/o-tree-db-2026-07-27T08-47-27-904Z-e7ccd8fb"
+  }
+}

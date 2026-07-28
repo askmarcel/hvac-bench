@@ -1,0 +1,47 @@
+{
+  "id": "ham-0008",
+  "titre": "Daikin Altherma — détendeur électronique bloqué, surchauffe et sous-refroidissement bas",
+  "equipement": { "marque": "Daikin", "modele": "Altherma 3 EHVH08", "famille": "pac_air_eau", "age_ans": 6 },
+  "installation": {
+    "emetteur": "plancher_chauffant",
+    "regime_eau": "35/28",
+    "region_climat": "H1",
+    "particularites": "bruit anormal côté détente depuis 2 semaines"
+  },
+  "plainte_initiale": "Bruit de sifflement côté unité extérieure, chauffage irrégulier, parfois insuffisant.",
+  "etat_operatoire": "nominal",
+  "ground_state": {
+    "hp_bar": 22,
+    "bp_bar": 9,
+    "delta_hp_bp": 13,
+    "surchauffe_k": 3,
+    "sous_refroidissement_k": 1,
+    "givre": "absent"
+  },
+  "evolution": [
+    {
+      "si_action": "controle_detendeur",
+      "alors": { "etat_detendeur": "bloque_partiellement_ouvert", "diagnostic": "detendeur_electronique_defaillant" }
+    },
+    {
+      "si_action": "remplacement_detendeur",
+      "alors": { "surchauffe_k": 6, "sous_refroidissement_k": 4, "resout": true }
+    }
+  ],
+  "verite": {
+    "cause": "détendeur électronique (EEV) bloqué partiellement ouvert — sous-refroidissement et surchauffe tous deux hors plage basse, signature différente d'un manque de fluide",
+    "solution": "remplacer le détendeur électronique, contrôler les pressions et températures après stabilisation",
+    "verification": "surchauffe et sous-refroidissement revenus en plage (4-8K et 3-6K), sifflement disparu",
+    "pieges": [
+      "confondre avec un manque de fluide — ici la surchauffe est BASSE, pas haute, ce qui oriente vers la détente et non vers la charge"
+    ]
+  },
+  "chemin_expert": ["MES-HP-BP", "DEM-DETENDEUR"],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": null
+  },
+  "split": "dev"
+}

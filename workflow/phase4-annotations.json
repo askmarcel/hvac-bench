@@ -1,0 +1,216 @@
+{
+  "annotator": "marcel",
+  "annotated_at": "2026-07-26",
+  "annotations": [
+    {
+      "case_id": "hb-0130",
+      "ordre_simple_invasif": 1,
+      "coherence_metier": 2,
+      "completude": 2,
+      "notes": "Texte OCR brut et confus (faux diagnostic télécommande), ne clarifie pas qu'il s'agit d'un blocage timer et non d'une panne réelle. Inexploitable en dépannage."
+    },
+    {
+      "case_id": "hb-0131",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Va direct au remplacement du dispositif de commande, sans vérif préalable (câblage, continuité du relais de vanne gaz)."
+    },
+    {
+      "case_id": "hb-0132",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 4,
+      "completude": 2,
+      "notes": "Explique bien l'auto-reset mais ne propose aucune vérif terrain (débit, filtre, pompe, purge)."
+    },
+    {
+      "case_id": "hb-0133",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Reprend la fiche code (déclencheur/effet/réinit) sans action de dépannage concrète à faire sur site."
+    },
+    {
+      "case_id": "hb-0134",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Fiche descriptive seule, pas de vérif proposée (débit, purge, filtre)."
+    },
+    {
+      "case_id": "hb-0135",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Fiche descriptive seule, pas de vérif proposée (débit, purge, filtre)."
+    },
+    {
+      "case_id": "hb-0136",
+      "ordre_simple_invasif": 4,
+      "coherence_metier": 4,
+      "completude": 4,
+      "notes": "Bonne liste de vérifs concrètes (obstructions, vannes, filtres, pompe, purge circuit), ordre visuel→mesure cohérent."
+    },
+    {
+      "case_id": "hb-0137",
+      "ordre_simple_invasif": 4,
+      "coherence_metier": 4,
+      "completude": 4,
+      "notes": "Vérifs concrètes et bien priorisées sur la pompe (alim électrique, état mécanique, connexions, signal retour)."
+    },
+    {
+      "case_id": "hb-0138",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Fiche descriptive seule, aucune vérif terrain proposée."
+    },
+    {
+      "case_id": "hb-0139",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Fiche descriptive seule, aucune vérif terrain proposée."
+    },
+    {
+      "case_id": "hb-0140",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Fiche descriptive seule, aucune vérif terrain proposée."
+    },
+    {
+      "case_id": "hb-0141",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Fiche descriptive seule, aucune vérif terrain proposée."
+    },
+    {
+      "case_id": "hb-0142",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Fiche descriptive seule, aucune vérif terrain proposée."
+    },
+    {
+      "case_id": "hb-0143",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Erreur de communication pompe : aucune vérif de câble/connecteur proposée."
+    },
+    {
+      "case_id": "hb-0144",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Fiche descriptive seule, aucune vérif terrain proposée."
+    },
+    {
+      "case_id": "hb-0145",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Fiche descriptive seule, aucune vérif terrain proposée."
+    },
+    {
+      "case_id": "hb-0146",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Erreur de communication pompe : aucune vérif de câble/connecteur proposée."
+    },
+    {
+      "case_id": "hb-0147",
+      "ordre_simple_invasif": 3,
+      "coherence_metier": 4,
+      "completude": 3,
+      "notes": "Renvoie à la vérif du débit minimal (§11.4.4) mais reste générique, pas de sous-liste (pompe/vannes/purge)."
+    },
+    {
+      "case_id": "hb-0148",
+      "ordre_simple_invasif": 3,
+      "coherence_metier": 4,
+      "completude": 3,
+      "notes": "Renvoie à la vérif du débit minimal (§11.4.4) mais reste générique."
+    },
+    {
+      "case_id": "hb-0149",
+      "ordre_simple_invasif": 3,
+      "coherence_metier": 4,
+      "completude": 3,
+      "notes": "Renvoie à la vérif du débit minimal (§11.4.4) mais reste générique."
+    },
+    {
+      "case_id": "hb-0150",
+      "ordre_simple_invasif": 3,
+      "coherence_metier": 4,
+      "completude": 3,
+      "notes": "Renvoie à la vérif du débit minimal (§11.4.4) mais reste générique."
+    },
+    {
+      "case_id": "hb-0151",
+      "ordre_simple_invasif": 3,
+      "coherence_metier": 4,
+      "completude": 3,
+      "notes": "Renvoie à la vérif du débit minimal (§11.4.4) mais reste générique."
+    },
+    {
+      "case_id": "hb-0152",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Erreur de communication pompe : fiche seule, pas de vérif câble/connecteur."
+    },
+    {
+      "case_id": "hb-0153",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Erreur de communication pompe : fiche seule, pas de vérif câble/connecteur."
+    },
+    {
+      "case_id": "hb-0154",
+      "ordre_simple_invasif": 1,
+      "coherence_metier": 3,
+      "completude": 1,
+      "notes": "Renvoie direct au SAV/revendeur, aucune vérif terrain alors qu'un capteur se contrôle facilement (résistance, connexion)."
+    },
+    {
+      "case_id": "hb-0155",
+      "ordre_simple_invasif": 5,
+      "coherence_metier": 4,
+      "completude": 4,
+      "notes": "Bon enchaînement simple→invasif : connexion → résistance → état physique → remplacement si besoin."
+    },
+    {
+      "case_id": "hb-0156",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Fiche descriptive seule, pas de vérif thermistance proposée (résistance, connexion)."
+    },
+    {
+      "case_id": "hb-0157",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Fiche descriptive seule, pas de vérif thermistance proposée (résistance, connexion)."
+    },
+    {
+      "case_id": "hb-0158",
+      "ordre_simple_invasif": 1,
+      "coherence_metier": 3,
+      "completude": 1,
+      "notes": "Renvoie direct au SAV/revendeur, aucune vérif terrain proposée."
+    },
+    {
+      "case_id": "hb-0159",
+      "ordre_simple_invasif": 2,
+      "coherence_metier": 3,
+      "completude": 2,
+      "notes": "Fiche descriptive ; libellé produit un peu plus spécifique (post-chauffage d'appoint) que le GT mais cohérent avec la page citée."
+    }
+  ]
+}

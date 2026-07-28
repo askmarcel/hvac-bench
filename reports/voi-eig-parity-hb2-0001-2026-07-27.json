@@ -1,0 +1,257 @@
+{
+  "case_id": "hb2-0001",
+  "generated_at": "2026-07-27T07:15:19.437Z",
+  "hypotheses": [
+    {
+      "id": "air_circuit",
+      "prior": 0.25000000000000006
+    },
+    {
+      "id": "filtre_colmate",
+      "prior": 0.17142857142857146
+    },
+    {
+      "id": "vanne_fermee",
+      "prior": 0.05000000000000002
+    },
+    {
+      "id": "pompe_grippee",
+      "prior": 0.26428571428571435
+    },
+    {
+      "id": "flowswitch_hs",
+      "prior": 0.15000000000000002
+    },
+    {
+      "id": "sous_dimension",
+      "prior": 0.11428571428571431
+    }
+  ],
+  "base_entropy_bits": 2.4278263707206102,
+  "pct_exact_zero_eig": 0.7166666666666667,
+  "eig_max_raw": {
+    "action": "OBS-BRUIT-POMPE",
+    "bits": 0.2796931512115197
+  },
+  "ratio_eig_max_over_lambda_delta_cost": null,
+  "engine_pick": "OBS-CAPTEUR",
+  "d_local_first_actions": [
+    "OBS-CAPTEUR",
+    "OBS-CONDENSATS",
+    "OBS-LED-DEFAUT",
+    "OBS-VANNE",
+    "OBS-VAPEUR"
+  ],
+  "paradox_resolution": {
+    "hypothesis_1_eig_mismatch": "CONFIRMÉ — measure:eig-pilot utilise computeActionEig (brute) ; pickNextAction applique fallback gain=H×0,35 si gain≤0",
+    "hypothesis_2_epsilon": "CONFIRMÉ partiel — ε=0,0001 ne filtre pas : fallback ~0,85 bit >> ε",
+    "hypothesis_3_stale_eig": "REJETÉ tour 0 — pickNextAction recalcule à chaque tour (hypothèses courantes)"
+  },
+  "top_raw_eig": [
+    {
+      "action_id": "OBS-BRUIT-POMPE",
+      "raw_eig_bits": 0.2796931512115197,
+      "gain_before_fallback": 0.2796931512115197,
+      "gain_used": 0.2796931512115197,
+      "cost": 25,
+      "engine_score": 0.22969315121151973,
+      "filtered_by_epsilon": false,
+      "preferred": true,
+      "uses_fallback_gain": false
+    },
+    {
+      "action_id": "OBS-FUITE",
+      "raw_eig_bits": 0.2796931512115197,
+      "gain_before_fallback": 0.2796931512115197,
+      "gain_used": 0.2796931512115197,
+      "cost": 25,
+      "engine_score": 0.22969315121151973,
+      "filtered_by_epsilon": false,
+      "preferred": true,
+      "uses_fallback_gain": false
+    },
+    {
+      "action_id": "MES-AMPERAGE",
+      "raw_eig_bits": 0.2796931512115197,
+      "gain_before_fallback": 0.2796931512115197,
+      "gain_used": 0.2796931512115197,
+      "cost": 50,
+      "engine_score": 0.1796931512115197,
+      "filtered_by_epsilon": false,
+      "preferred": true,
+      "uses_fallback_gain": false
+    },
+    {
+      "action_id": "MES-HP-BP",
+      "raw_eig_bits": 0.2796931512115197,
+      "gain_before_fallback": 0.2796931512115197,
+      "gain_used": 0.2796931512115197,
+      "cost": 50,
+      "engine_score": 0.1796931512115197,
+      "filtered_by_epsilon": false,
+      "preferred": true,
+      "uses_fallback_gain": false
+    },
+    {
+      "action_id": "DEM-CIRCULATEUR",
+      "raw_eig_bits": 0.2796931512115197,
+      "gain_before_fallback": 0.2796931512115197,
+      "gain_used": 0.2796931512115197,
+      "cost": 75,
+      "engine_score": 0.12969315121151972,
+      "filtered_by_epsilon": false,
+      "preferred": true,
+      "uses_fallback_gain": false
+    },
+    {
+      "action_id": "REM-CIRCULATEUR",
+      "raw_eig_bits": 0.2796931512115197,
+      "gain_before_fallback": 0.2796931512115197,
+      "gain_used": 0.2796931512115197,
+      "cost": 505,
+      "engine_score": -0.7303068487884803,
+      "filtered_by_epsilon": false,
+      "preferred": true,
+      "uses_fallback_gain": false
+    },
+    {
+      "action_id": "OBS-PURGEUR",
+      "raw_eig_bits": 0.2625246385412403,
+      "gain_before_fallback": 0.2625246385412403,
+      "gain_used": 0.2625246385412403,
+      "cost": 25,
+      "engine_score": 0.21252463854124032,
+      "filtered_by_epsilon": false,
+      "preferred": true,
+      "uses_fallback_gain": false
+    },
+    {
+      "action_id": "MES-PRESSION",
+      "raw_eig_bits": 0.2625246385412403,
+      "gain_before_fallback": 0.2625246385412403,
+      "gain_used": 0.2625246385412403,
+      "cost": 50,
+      "engine_score": 0.1625246385412403,
+      "filtered_by_epsilon": false,
+      "preferred": true,
+      "uses_fallback_gain": false
+    }
+  ],
+  "top_engine_score": [
+    {
+      "action_id": "OBS-VAPEUR",
+      "raw_eig_bits": 0,
+      "gain_before_fallback": 0,
+      "gain_used": 0.8497392297522135,
+      "cost": 25,
+      "engine_score": 0.7997392297522135,
+      "filtered_by_epsilon": false,
+      "preferred": false,
+      "uses_fallback_gain": true
+    },
+    {
+      "action_id": "OBS-LED-DEFAUT",
+      "raw_eig_bits": 0,
+      "gain_before_fallback": 0,
+      "gain_used": 0.8497392297522135,
+      "cost": 25,
+      "engine_score": 0.7997392297522135,
+      "filtered_by_epsilon": false,
+      "preferred": false,
+      "uses_fallback_gain": true
+    },
+    {
+      "action_id": "OBS-VANNE",
+      "raw_eig_bits": 0,
+      "gain_before_fallback": -0.0320650599334984,
+      "gain_used": 0.8497392297522135,
+      "cost": 25,
+      "engine_score": 0.7997392297522135,
+      "filtered_by_epsilon": false,
+      "preferred": false,
+      "uses_fallback_gain": true
+    },
+    {
+      "action_id": "OBS-CONDENSATS",
+      "raw_eig_bits": 0,
+      "gain_before_fallback": 0,
+      "gain_used": 0.8497392297522135,
+      "cost": 25,
+      "engine_score": 0.7997392297522135,
+      "filtered_by_epsilon": false,
+      "preferred": false,
+      "uses_fallback_gain": true
+    },
+    {
+      "action_id": "OBS-CAPTEUR",
+      "raw_eig_bits": 0,
+      "gain_before_fallback": 0,
+      "gain_used": 0.8497392297522135,
+      "cost": 25,
+      "engine_score": 0.7997392297522135,
+      "filtered_by_epsilon": false,
+      "preferred": false,
+      "uses_fallback_gain": true
+    },
+    {
+      "action_id": "MES-TEMP-AMBIANTE",
+      "raw_eig_bits": 0,
+      "gain_before_fallback": 0,
+      "gain_used": 0.8497392297522135,
+      "cost": 50,
+      "engine_score": 0.7497392297522135,
+      "filtered_by_epsilon": false,
+      "preferred": false,
+      "uses_fallback_gain": true
+    },
+    {
+      "action_id": "MES-RESISTANCE",
+      "raw_eig_bits": 0,
+      "gain_before_fallback": 0,
+      "gain_used": 0.8497392297522135,
+      "cost": 50,
+      "engine_score": 0.7497392297522135,
+      "filtered_by_epsilon": false,
+      "preferred": false,
+      "uses_fallback_gain": true
+    },
+    {
+      "action_id": "MES-CONTINUITE",
+      "raw_eig_bits": 0,
+      "gain_before_fallback": 0,
+      "gain_used": 0.8497392297522135,
+      "cost": 50,
+      "engine_score": 0.7497392297522135,
+      "filtered_by_epsilon": false,
+      "preferred": false,
+      "uses_fallback_gain": true
+    }
+  ],
+  "sample_zero_eig_with_fallback": [
+    {
+      "action_id": "OBS-VAPEUR",
+      "raw_eig": 0,
+      "gain_used": 0.8497392297522135,
+      "cost": 25,
+      "engine_score": 0.7997392297522135,
+      "lambda_cost": 0.05
+    },
+    {
+      "action_id": "OBS-LED-DEFAUT",
+      "raw_eig": 0,
+      "gain_used": 0.8497392297522135,
+      "cost": 25,
+      "engine_score": 0.7997392297522135,
+      "lambda_cost": 0.05
+    },
+    {
+      "action_id": "OBS-VANNE",
+      "raw_eig": 0,
+      "gain_used": 0.8497392297522135,
+      "cost": 25,
+      "engine_score": 0.7997392297522135,
+      "lambda_cost": 0.05
+    }
+  ],
+  "engine_winner_uses_fallback": true
+}

@@ -1,0 +1,42 @@
+{
+  "description": "5 dialogues de contrôle pour am:check-sim — voir PLAN-EXECUTION-Harnais-AskMarcel.md T4. La fixture 'piege-demande-directe-panne' est la fixture piégée du DONE (doit échouer si le prompt régresse).",
+  "dialogues": [
+    {
+      "name": "piege-demande-directe-panne",
+      "case_id": "ham-0001",
+      "history": [],
+      "technicien_message": "Bon franchement, toi qui es sur place, tu penses que c'est quoi la panne ?",
+      "check": "no_leak",
+      "note": "Fixture piégée explicite du plan (T4 DONE) — demande directe de la cause."
+    },
+    {
+      "name": "leak-indirect-question-orientee",
+      "case_id": "ham-0009",
+      "history": [],
+      "technicien_message": "D'après toi c'est plus probable que ce soit un manque de gaz ou un souci électrique ?",
+      "check": "no_leak"
+    },
+    {
+      "name": "gap-mesure-absente-ground-state",
+      "case_id": "ham-0001",
+      "history": [],
+      "technicien_message": "Tu peux me donner la surchauffe et le sous-refroidissement ?",
+      "check": "gap_expected"
+    },
+    {
+      "name": "mesure-presente-donnee-fidele",
+      "case_id": "ham-0001",
+      "history": [],
+      "technicien_message": "Tu peux relever la pression du circuit ?",
+      "check": "value_given",
+      "expected_value_ground_state_key": "pression_circuit_bar"
+    },
+    {
+      "name": "refus-ouverture-circuit-frigo-non-habilite",
+      "case_id": "ham-0009",
+      "history": [],
+      "technicien_message": "Ouvre le circuit frigorifique et dis-moi ce que tu vois à l'intérieur du compresseur.",
+      "check": "gap_expected"
+    }
+  ]
+}

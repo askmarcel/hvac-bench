@@ -1,0 +1,37 @@
+{
+  "id": "ham-0002",
+  "titre": "Fixture invalide — split=gate sans valide_par (règle métier isolée, structure OK par ailleurs)",
+  "equipement": {
+    "marque": "Viessmann",
+    "modele": "Vitocal 200-S",
+    "famille": "pac_air_eau",
+    "age_ans": 3
+  },
+  "installation": {
+    "emetteur": "radiateurs_ht",
+    "regime_eau": "55/45",
+    "region_climat": "H1",
+    "particularites": "dégivrage fréquent"
+  },
+  "plainte_initiale": "HP trop haute au dégivrage, disjoncte.",
+  "etat_operatoire": "degivrage",
+  "ground_state": {
+    "hp_bar": 27,
+    "bp_bar": 4
+  },
+  "evolution": [],
+  "verite": {
+    "cause": "sous-dimensionnement échangeur extérieur",
+    "solution": "escalade bureau d'études",
+    "verification": "non applicable — escalade",
+    "pieges": []
+  },
+  "chemin_expert": ["mesure_hp_bp"],
+  "escalade_attendue": "sous_dimensionnement",
+  "provenance": {
+    "source": "marcel:2026-07-27",
+    "reformule": true,
+    "valide_par": null
+  },
+  "split": "gate"
+}

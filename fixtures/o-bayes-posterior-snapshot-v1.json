@@ -1,0 +1,190 @@
+{
+  "version": "o-bayes-posterior-v1",
+  "convergence_at_5": 0.8,
+  "cases": {
+    "hb2-0001": {
+      "concluded": true,
+      "cause_id": "air_circuit",
+      "true_cause_id": "air_circuit",
+      "true_cause_prior": 0.991746,
+      "posteriors": {
+        "air_circuit": 0.991746,
+        "sous_dimension": 0.006267,
+        "pompe_grippee": 0.001006,
+        "filtre_colmate": 0.000653,
+        "vanne_fermee": 0.00019,
+        "flowswitch_hs": 0.000137
+      }
+    },
+    "hb2-0002": {
+      "concluded": true,
+      "cause_id": "air_circuit",
+      "true_cause_id": "air_circuit",
+      "true_cause_prior": 0.948033,
+      "posteriors": {
+        "air_circuit": 0.948033,
+        "pression_basse": 0.039005,
+        "flowswitch_hs": 0.007863,
+        "bypass_ferme": 0.004868,
+        "pompe_grippee": 0.000231
+      }
+    },
+    "hb2-0003": {
+      "concluded": true,
+      "cause_id": "pompe_grippee",
+      "true_cause_id": "pompe_grippee",
+      "true_cause_prior": 0.90766,
+      "posteriors": {
+        "pompe_grippee": 0.90766,
+        "air_circuit": 0.049455,
+        "filtre_colmate": 0.033912,
+        "carte_hs": 0.008478,
+        "flowswitch_hs": 0.000495
+      }
+    },
+    "hb2-0004": {
+      "concluded": true,
+      "cause_id": "bypass_ferme",
+      "true_cause_id": "bypass_ferme",
+      "true_cause_prior": 0.911829,
+      "posteriors": {
+        "bypass_ferme": 0.911829,
+        "defaut_debit": 0.064642,
+        "filtre_colmate": 0.023271,
+        "sous_dimension": 0.000259
+      }
+    },
+    "hb2-0005": {
+      "concluded": true,
+      "cause_id": "pression_basse",
+      "true_cause_id": "pression_basse",
+      "true_cause_prior": 0.881076,
+      "posteriors": {
+        "pression_basse": 0.881076,
+        "pompe_grippee": 0.07511,
+        "flowswitch_hs": 0.04263,
+        "air_circuit": 0.001184
+      }
+    },
+    "hb2-0006": {
+      "concluded": true,
+      "cause_id": "air_circuit",
+      "true_cause_id": "air_circuit",
+      "true_cause_prior": 0.90122,
+      "posteriors": {
+        "air_circuit": 0.90122,
+        "pression_basse": 0.071471,
+        "filtre_colmate": 0.025391,
+        "pompe_grippee": 0.001918
+      }
+    },
+    "hb2-0007": {
+      "concluded": true,
+      "cause_id": "vanne_fermee",
+      "true_cause_id": "vanne_fermee",
+      "true_cause_prior": 0.854622,
+      "posteriors": {
+        "vanne_fermee": 0.854622,
+        "defaut_debit": 0.077541,
+        "sonde_hs": 0.039021,
+        "carte_hs": 0.028815
+      }
+    },
+    "hb2-0008": {
+      "concluded": false,
+      "cause_id": null,
+      "true_cause_id": "filtre_colmate",
+      "true_cause_prior": 0.832224,
+      "posteriors": {
+        "filtre_colmate": 0.832224,
+        "charge_insuffisante": 0.0749,
+        "degivrage_anormal": 0.0749,
+        "condensats_bouches": 0.017976
+      }
+    },
+    "hb2-0009": {
+      "concluded": false,
+      "cause_id": null,
+      "true_cause_id": "air_circuit",
+      "true_cause_prior": 0.399509,
+      "posteriors": {
+        "pression_basse": 0.550049,
+        "air_circuit": 0.399509,
+        "filtre_colmate": 0.046899,
+        "pompe_grippee": 0.003543
+      }
+    },
+    "hb2-0010": {
+      "concluded": true,
+      "cause_id": "sonde_hs",
+      "true_cause_id": "sonde_hs",
+      "true_cause_prior": 0.943547,
+      "posteriors": {
+        "sonde_hs": 0.943547,
+        "carte_hs": 0.040134,
+        "filtre_colmate": 0.015886,
+        "defaut_debit": 0.000432
+      }
+    },
+    "hb2-0011": {
+      "concluded": true,
+      "cause_id": "air_circuit",
+      "true_cause_id": "air_circuit",
+      "true_cause_prior": 0.952888,
+      "posteriors": {
+        "air_circuit": 0.952888,
+        "pression_basse": 0.039205,
+        "flowswitch_hs": 0.007904,
+        "pompe_grippee": 0.000004
+      }
+    },
+    "hb2-0012": {
+      "concluded": true,
+      "cause_id": "filtre_colmate",
+      "true_cause_id": "filtre_colmate",
+      "true_cause_prior": 0.906788,
+      "posteriors": {
+        "filtre_colmate": 0.906788,
+        "air_circuit": 0.078346,
+        "flowswitch_hs": 0.012053,
+        "pompe_grippee": 0.002812
+      }
+    },
+    "hb2-0013": {
+      "concluded": true,
+      "cause_id": "filtre_colmate",
+      "true_cause_id": "filtre_colmate",
+      "true_cause_prior": 0.916666,
+      "posteriors": {
+        "filtre_colmate": 0.916666,
+        "degivrage_anormal": 0.07744,
+        "charge_insuffisante": 0.005867,
+        "sonde_hs": 0.000027
+      }
+    },
+    "hb2-0014": {
+      "concluded": false,
+      "cause_id": null,
+      "true_cause_id": "condensats_bouches",
+      "true_cause_prior": 0.831318,
+      "posteriors": {
+        "condensats_bouches": 0.831318,
+        "carte_hs": 0.082709,
+        "filtre_colmate": 0.082709,
+        "degivrage_anormal": 0.003265
+      }
+    },
+    "hb2-0015": {
+      "concluded": true,
+      "cause_id": "sonde_hs",
+      "true_cause_id": "sonde_hs",
+      "true_cause_prior": 0.898183,
+      "posteriors": {
+        "sonde_hs": 0.898183,
+        "charge_insuffisante": 0.055073,
+        "defaut_transitoire": 0.046729,
+        "carte_hs": 0.000016
+      }
+    }
+  }
+}

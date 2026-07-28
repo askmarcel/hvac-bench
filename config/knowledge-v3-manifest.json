@@ -1,0 +1,37 @@
+{
+  "version": "knowledge-v3.2026-07-27",
+  "T_cutoff": "2026-04-01",
+  "knowledge_authored_at": "2026-07-27",
+  "family": "pac_air_eau",
+  "artifacts": {
+    "quantities": "taxonomy/quantities-v3.json",
+    "fault_tree": "taxonomy/fault-tree-v3-pac_air_eau.json",
+    "action_map": "taxonomy/action-quantity-map-v3.json"
+  },
+  "knowledge_sources": [
+    "doc:b7355b17-1fb2-4c16-9fb1-e1fd5eb484ab",
+    "doc:2407e0ed-4717-40d8-bb9d-5782099f95f5",
+    "doc:b21ee3bb-b0cb-41b0-ac4d-81f62f521f75",
+    "doc:de614caf-ddf2-4df5-81b8-2218ab7870ff",
+    "doc:a1e7ea7d-7ab4-4ae3-a7c8-f9d5b6dcd3df",
+    "marcel:2026-07-27"
+  ],
+  "marcel_review": {
+    "date": "2026-07-27",
+    "artifact": "workflow/marcel-review-v3-resolved.csv",
+    "pending_artifact": "workflow/marcel-review-v3.csv",
+    "parity_script": "scripts/sync-marcel-edge-review.ts",
+    "edges_marcel_sourced": 22,
+    "edges_draft_retained": 2,
+    "arbiter": "marcel",
+    "notes": "Arbitrages draft→sourced tracés ligne à ligne ; parité vérifiée par npm run check:marcel-review-parity"
+  },
+  "allowed_dev_source_domains": [
+    "chaleurterre.com",
+    "forumconstruire.com",
+    "buildhub.org.uk",
+    "heizungsforum.de",
+    "heatinghelp.com",
+    "haustechnikdialog.de"
+  ]
+}

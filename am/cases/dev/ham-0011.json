@@ -1,0 +1,40 @@
+{
+  "id": "ham-0011",
+  "titre": "Atlantic Alféa — sonde de départ sectionnée, code défaut sonde",
+  "equipement": { "marque": "Atlantic", "modele": "Alféa Extensa Duo", "famille": "pac_air_eau", "age_ans": 4 },
+  "installation": {
+    "emetteur": "plancher_chauffant",
+    "regime_eau": "35/28",
+    "region_climat": "H2",
+    "particularites": "aucune intervention récente"
+  },
+  "plainte_initiale": "Code défaut sonde départ, la PAC s'arrête par intermittence.",
+  "etat_operatoire": "en_securite",
+  "ground_state": {
+    "continuite_sonde_ohm": 50000,
+    "led_defaut": "code_sonde_depart",
+    "capteur_etat": "defaut_connectique"
+  },
+  "evolution": [
+    { "si_action": "mesure_continuite_sonde", "alors": { "continuite_sonde_ohm": 50000, "diagnostic": "circuit_ouvert" } },
+    { "si_action": "controle_connecteur_sonde", "alors": { "connecteur": "fil_sectionne_pres_du_connecteur" } },
+    {
+      "si_action": "reparation_fil_sonde",
+      "alors": { "continuite_sonde_ohm": 120, "code": "disparu", "resout": true }
+    }
+  ],
+  "verite": {
+    "cause": "fil de la sonde de température départ sectionné près du connecteur (frottement contre le capot)",
+    "solution": "réparer ou remplacer le câble de la sonde, protéger le passage de câble, contrôler la continuité",
+    "verification": "continuité dans la plage (0-500 ohm), plus de code sonde sur 48h",
+    "pieges": []
+  },
+  "chemin_expert": ["MES-CONTINUITE", "OBS-CAPTEUR", "REM-SONDE"],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": null
+  },
+  "split": "dev"
+}

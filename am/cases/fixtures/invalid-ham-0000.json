@@ -1,0 +1,34 @@
+{
+  "id": "ham-0000",
+  "titre": "Fixture invalide — pour am:validate-cases uniquement (ne jamais mettre dans cases/dev ou cases/gate)",
+  "equipement": {
+    "marque": "Atlantic",
+    "modele": "Alféa Extensa Duo",
+    "famille": "pac_air_eau",
+    "age_ans": 5
+  },
+  "installation": {
+    "emetteur": "radiateurs_bt",
+    "regime_eau": "45/35",
+    "region_climat": "H2",
+    "particularites": ""
+  },
+  "plainte_initiale": "Bloquée en mode ECS, ne repasse plus en chauffage.",
+  "etat_operatoire": "nominal",
+  "ground_state": {},
+  "evolution": [],
+  "verite": {
+    "cause": "vanne 3 voies bloquée mécaniquement",
+    "solution": "démonter et débloquer la vanne 3 voies, ou la remplacer si usée",
+    "verification": "cycle chauffage/ECS alterné correctement sur 24h",
+    "pieges": []
+  },
+  "chemin_expert": ["observation_vanne_3_voies"],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "marcel:2026-07-27",
+    "reformule": true,
+    "valide_par": null
+  },
+  "split": "gate"
+}

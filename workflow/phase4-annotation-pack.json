@@ -1,0 +1,1086 @@
+{
+  "generated_at": "2026-07-26T09:58:42.868Z",
+  "n": 30,
+  "cases": [
+    {
+      "case_id": "hb-0130",
+      "prompt": "Daikin, code erreur 00, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "00",
+      "ground_truth_meaning": "3 FAUX DIAGNOSTICS PAR LA TELECOMMANDE La partie d’affichage de la température indique les codes correspondants. Lorsque le bouton Annuler de la mise en marche par minuterie (ON TIMER CANCEL) ou le bo",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "57bfdfd1-0c21-463d-9a80-bfba06b7a751",
+        "document_title": "FTYN L RYN L OM FR Operation%20manuals French",
+        "page": 9,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Code erreur 00 — 3 FAUX DIAGNOSTICS PAR LA TELECOMMANDE La partie d’affichage de la température indique les codes correspondants. Lorsque le bouton Annuler de la mise en marche par minuterie (ON TIMER CANCEL) ou le bo",
+        "steps": [
+          "3 FAUX DIAGNOSTICS PAR LA TELECOMMANDE La partie d’affichage de la température indique les codes correspondants. Lorsque le bouton Annuler de la mise en marche par minuterie (ON TIMER CANCEL) ou le bouton de la mise à l’arrêt par minuterie (OFF TIMER CANCEL) est enfoncé pendant 5 secondes, un signe \" \" clignote sur la partie d’affichage de la température. Appuyez sur le bouton ON TIMER CANCEL ou …"
+        ],
+        "citation": {
+          "manual_title": "FTYN L RYN L OM FR Operation%20manuals French",
+          "page": 9,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/57bfdfd1-0c21-463d-9a80-bfba06b7a751/9",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 1,
+        "coherence_metier": 2,
+        "completude": 2,
+        "notes": "Texte OCR brut et confus (faux diagnostic télécommande), ne clarifie pas qu'il s'agit d'un blocage timer et non d'une panne réelle. Inexploitable en dépannage.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0131",
+      "prompt": "Daikin, code erreur 29, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "29",
+      "ground_truth_meaning": "Code d'erreur 29, 30 Cause: Défaillance du relais de la vanne de gaz. Solution possible: Remplacez le dispositif de commande.",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "f4ee542c-c803-46ba-a27d-0e3853dcf8c0",
+        "document_title": "EHY2KOMB-A.EJHA-AV3_Installer reference guide_4PFR531180-1D_French",
+        "page": 230,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Code erreur 29-30 — Code d'erreur 29, 30\nCause: Défaillance du relais de la vanne de gaz.\nSolution possible: Remplacez le dispositif de commande.",
+        "steps": [
+          "Code d'erreur 29, 30\nCause: Défaillance du relais de la vanne de gaz.\nSolution possible: Remplacez le dispositif de commande."
+        ],
+        "citation": {
+          "manual_title": "EHY2KOMB-A.EJHA-AV3_Installer reference guide_4PFR531180-1D_French",
+          "page": 230,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/f4ee542c-c803-46ba-a27d-0e3853dcf8c0/230",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Va direct au remplacement du dispositif de commande, sans vérif préalable (câblage, continuité du relais de vanne gaz).",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0132",
+      "prompt": "Daikin, code erreur 7H-01, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-01",
+      "ground_truth_meaning": "15.4.2 Codes d'erreur: vue d'ensemble Codes d'erreur de l'unité Code d'erreur Description 7H-01 Problème au niveau du débit d'eau 7H-04 Problème au niveau du débit d'eau pendant la production d'eau ch",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1c1f7666-c079-4042-a6d7-4781ac7745ed",
+        "document_title": "ERLA11-14D(V3.W1).ERLA-D(V3.W1)7.EBSH(B)-D.EBSX(B)-D_Installer reference guide_4PFR759879-1A_French",
+        "page": 288,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Dépannage — Lorsque le débit d'eau minimum est inférieur à 12 l/min, l'unité s'arrête temporairement et l'interface utilisateur affiche l'erreur 7H-01. Cette erreur se réinitialise automatiquement après quelques",
+        "steps": [
+          "Lorsque le débit d'eau minimum est inférieur à 12 l/min, l'unité s'arrête temporairement et l'interface utilisateur affiche l'erreur 7H-01. Cette erreur se réinitialise automatiquement après quelques temps, et le fonctionnement de l'unité reprend."
+        ],
+        "citation": {
+          "manual_title": "EHVH E6V9W,EHVX E3V6V,9WG,ERGA04 08EVA 4PFR629086 1 Installer reference guide French",
+          "page": 248,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/7de1d134-c6fe-4905-a6ef-e4f1244b2a47/248",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 4,
+        "completude": 2,
+        "notes": "Explique bien l'auto-reset mais ne propose aucune vérif terrain (débit, filtre, pompe, purge).",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0133",
+      "prompt": "Daikin, code erreur 7H-04, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-04",
+      "ground_truth_meaning": "Code d'erreur: 7H-04 Description: Problème au niveau du débit d'eau pendant la production d'eau chaude sanitaire",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "9a8ae421-abbb-4a03-9b88-7a10d6ef3023",
+        "document_title": "ERGA-EV(7.H.H7).ERGA04-08EVA.EHSH(B)-E.EHSX(B)-E_Installer reference guide_4PFR759881-1A_French",
+        "page": 294,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "14.4.4 Codes d'erreur de l'unité — Code d'erreur : 7H-04\nTitre : Problème au niveau du débit d'eau pendant la production d'eau chaude sanitaire\nDéclencheur : Un débit d'eau anormal est détecté, principalement lors de la production d'ea",
+        "steps": [
+          "Code d'erreur : 7H-04\nTitre : Problème au niveau du débit d'eau pendant la production d'eau chaude sanitaire\nDéclencheur : Un débit d'eau anormal est détecté, principalement lors de la production d'eau chaude sanitaire.\nEffet : La pompe à chaleur cessera de fonctionner.\nRéinitialisation : Automatique"
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 209,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/209",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Reprend la fiche code (déclencheur/effet/réinit) sans action de dépannage concrète à faire sur site.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0134",
+      "prompt": "Daikin, code erreur 7H-05, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-05",
+      "ground_truth_meaning": "Code d'erreur: 7H-05 Description: Problème au niveau du débit d'eau pendant le chauffage/l'échantillonnage",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "9a8ae421-abbb-4a03-9b88-7a10d6ef3023",
+        "document_title": "ERGA-EV(7.H.H7).ERGA04-08EVA.EHSH(B)-E.EHSX(B)-E_Installer reference guide_4PFR759881-1A_French",
+        "page": 294,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "14.4.4 Codes d'erreur de l'unité — Code d'erreur : 7H-05\nTitre : Anomalie de débit pendant le fonctionnement du chauffage\nDéclencheur : Le débit minimal requis pendant le fonctionnement du chauffage n'a pas été atteint.\nEffet : La pomp",
+        "steps": [
+          "Code d'erreur : 7H-05\nTitre : Anomalie de débit pendant le fonctionnement du chauffage\nDéclencheur : Le débit minimal requis pendant le fonctionnement du chauffage n'a pas été atteint.\nEffet : La pompe à chaleur cessera de fonctionner.\nRéinitialisation : Automatique"
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 209,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/209",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Fiche descriptive seule, pas de vérif proposée (débit, purge, filtre).",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0135",
+      "prompt": "Daikin, code erreur 7H-06, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-06",
+      "ground_truth_meaning": "Code d'erreur: 7H-06 Description: Problème au niveau du débit d'eau pendant le refroidissement/dégivrage",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "9a8ae421-abbb-4a03-9b88-7a10d6ef3023",
+        "document_title": "ERGA-EV(7.H.H7).ERGA04-08EVA.EHSH(B)-E.EHSX(B)-E_Installer reference guide_4PFR759881-1A_French",
+        "page": 294,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "14.4.4 Codes d'erreur de l'unité — Code d'erreur : 7H-06\nTitre : Débit anormal pendant le fonctionnement du refroidissement\nDéclencheur : Le débit minimal requis pendant le refroidissement du circuit de l'émetteur n'a pas été atteint.",
+        "steps": [
+          "Code d'erreur : 7H-06\nTitre : Débit anormal pendant le fonctionnement du refroidissement\nDéclencheur : Le débit minimal requis pendant le refroidissement du circuit de l'émetteur n'a pas été atteint.\nEffet : La pompe à chaleur cessera de fonctionner.\nRéinitialisation : Manuel"
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 209,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/209",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Fiche descriptive seule, pas de vérif proposée (débit, purge, filtre).",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0136",
+      "prompt": "Daikin, code erreur 7H-07, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-07",
+      "ground_truth_meaning": "Code d'erreur Description 7H-07 Problème au niveau du débit d'eau. Déblocage de la pompe actif",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1c1f7666-c079-4042-a6d7-4781ac7745ed",
+        "document_title": "ERLA11-14D(V3.W1).ERLA-D(V3.W1)7.EBSH(B)-D.EBSX(B)-D_Installer reference guide_4PFR759879-1A_French",
+        "page": 289,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Codes d'erreur: vue d'ensemble — Problème au niveau du débit d'eau. Déblocage de la pompe actif. La pompe a été débloquée automatiquement, mais le débit reste insuffisant. Vérifier les obstructions, les vannes, les filtres et l'état",
+        "steps": [
+          "Problème au niveau du débit d'eau. Déblocage de la pompe actif. La pompe a été débloquée automatiquement, mais le débit reste insuffisant. Vérifier les obstructions, les vannes, les filtres et l'état de la pompe. S'assurer que le circuit est bien rempli et dégazé."
+        ],
+        "citation": {
+          "manual_title": "EHSH XB E Installer reference guide 4PFR678716 1A French",
+          "page": 283,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/6f604725-6fb2-45f2-98b4-7134b189cf2a/283",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 4,
+        "coherence_metier": 4,
+        "completude": 4,
+        "notes": "Bonne liste de vérifs concrètes (obstructions, vannes, filtres, pompe, purge circuit), ordre visuel→mesure cohérent.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0137",
+      "prompt": "Daikin, code erreur 7H-08, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-08",
+      "ground_truth_meaning": "Code d'erreur: 7H-08 Description: Anomalie de la pompe pendant le fonctionnement (retour de pompe)",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "9a8ae421-abbb-4a03-9b88-7a10d6ef3023",
+        "document_title": "ERGA-EV(7.H.H7).ERGA04-08EVA.EHSH(B)-E.EHSX(B)-E_Installer reference guide_4PFR759881-1A_French",
+        "page": 294,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Codes d'erreur: vue d'ensemble — Anomalie de la pompe pendant le fonctionnement (retour de pompe). Vérifier le fonctionnement de la pompe, son alimentation électrique, son état mécanique et les connexions. Vérifier la présence de blo",
+        "steps": [
+          "Anomalie de la pompe pendant le fonctionnement (retour de pompe). Vérifier le fonctionnement de la pompe, son alimentation électrique, son état mécanique et les connexions. Vérifier la présence de blocage ou d'usure. Contrôler le signal de retour de la pompe."
+        ],
+        "citation": {
+          "manual_title": "EHSH XB E Installer reference guide 4PFR678716 1A French",
+          "page": 283,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/6f604725-6fb2-45f2-98b4-7134b189cf2a/283",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 4,
+        "coherence_metier": 4,
+        "completude": 4,
+        "notes": "Vérifs concrètes et bien priorisées sur la pompe (alim électrique, état mécanique, connexions, signal retour).",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0138",
+      "prompt": "Daikin, code erreur 7H-09, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-09",
+      "ground_truth_meaning": "Code d'erreur # Titre Déclencheur Effet Réinitialisation 7H-09 Débit anormal pendant le dégivrage de l'émetteur Le débit minimal requis pendant le dégivrage du circuit de l'émetteur n'a pas été attein",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 224,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "14.4.4 Codes d'erreur de l'unité — Code d'erreur : 7H-09\nTitre : Débit anormal pendant le dégivrage de l'émetteur\nDéclencheur : Le débit minimal requis pendant le dégivrage du circuit de l'émetteur n'a pas été atteint.\nEffet : La pompe",
+        "steps": [
+          "Code d'erreur : 7H-09\nTitre : Débit anormal pendant le dégivrage de l'émetteur\nDéclencheur : Le débit minimal requis pendant le dégivrage du circuit de l'émetteur n'a pas été atteint.\nEffet : La pompe à chaleur cessera de fonctionner.\nRéinitialisation : Manuel"
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 209,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/209",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Fiche descriptive seule, aucune vérif terrain proposée.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0139",
+      "prompt": "Daikin, code erreur 7H-10, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-10",
+      "ground_truth_meaning": "Code d'erreur # Titre Déclencheur Effet Réinitialisation 7H-10 Débit anormal pendant le dégivrage du ballon Le débit minimal requis pendant le dégivrage du circuit du ballon n'a pas été atteint La pom",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 224,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Dépannage — Code d'erreur 7H-10 : Débit anormal pendant le dégivrage du ballon. Déclencheur : Le débit minimal requis pendant le dégivrage du circuit du ballon n'a pas été atteint. Effet : La pompe à chaleur cess",
+        "steps": [
+          "Code d'erreur 7H-10 : Débit anormal pendant le dégivrage du ballon. Déclencheur : Le débit minimal requis pendant le dégivrage du circuit du ballon n'a pas été atteint. Effet : La pompe à chaleur cessera de fonctionner. Réinitialisation : Manuel."
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 210,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/210",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Fiche descriptive seule, aucune vérif terrain proposée.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0140",
+      "prompt": "Daikin, code erreur 7H-11, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-11",
+      "ground_truth_meaning": "Code d'erreur # Titre Déclencheur Effet Réinitialisation 7H-11 Anomalie de débit pendant que la vanne 4 voies fonctionne en refroidissement Les exigences de débit minimales n'ont pas été atteintes pen",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 224,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Dépannage — Code d'erreur 7H-11 : Anomalie de débit pendant que la vanne 4 voies fonctionne en refroidissement. Déclencheur : Les exigences de débit minimales n'ont pas été atteintes pendant que la vanne 4 voies",
+        "steps": [
+          "Code d'erreur 7H-11 : Anomalie de débit pendant que la vanne 4 voies fonctionne en refroidissement. Déclencheur : Les exigences de débit minimales n'ont pas été atteintes pendant que la vanne 4 voies fonctionne en refroidissement. Effet : La pompe à chaleur cessera de fonctionner. Réinitialisation : Manuel."
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 210,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/210",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Fiche descriptive seule, aucune vérif terrain proposée.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0141",
+      "prompt": "Daikin, code erreur 7H-12, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-12",
+      "ground_truth_meaning": "Code d'erreur # Titre Déclencheur Effet Réinitialisation 7H-12 Anomalie pompe zone principale bloquée Anomalie pompe zone principale bloquée La pompe cesse de fonctionner. Automatique",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 224,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Dépannage — Code d'erreur 7H-12 : Anomalie pompe zone principale bloquée. Déclencheur : Anomalie pompe zone principale bloquée. Effet : La pompe cesse de fonctionner. Réinitialisation : Automatique.",
+        "steps": [
+          "Code d'erreur 7H-12 : Anomalie pompe zone principale bloquée. Déclencheur : Anomalie pompe zone principale bloquée. Effet : La pompe cesse de fonctionner. Réinitialisation : Automatique."
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 210,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/210",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Fiche descriptive seule, aucune vérif terrain proposée.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0142",
+      "prompt": "Daikin, code erreur 7H-13, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-13",
+      "ground_truth_meaning": "Code d'erreur # Titre Déclencheur Effet Réinitialisation 7H-13 Anomalie panne électrique pompe zone principale Anomalie panne électrique pompe zone principale La pompe cesse de fonctionner. Automatiqu",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 224,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Dépannage — Code d'erreur 7H-13 : Anomalie panne électrique pompe zone principale. Déclencheur : Anomalie panne électrique pompe zone principale. Effet : La pompe cesse de fonctionner. Réinitialisation : Automati",
+        "steps": [
+          "Code d'erreur 7H-13 : Anomalie panne électrique pompe zone principale. Déclencheur : Anomalie panne électrique pompe zone principale. Effet : La pompe cesse de fonctionner. Réinitialisation : Automatique."
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 210,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/210",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Fiche descriptive seule, aucune vérif terrain proposée.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0143",
+      "prompt": "Daikin, code erreur 7H-14, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-14",
+      "ground_truth_meaning": "Code d'erreur # Titre Déclencheur Effet Réinitialisation 7H-14 Erreur de communication pompe zone supplémentaire Anomalie de communication entre l'unité intérieure et la pompe de la zone supplémentair",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 224,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Dépannage — Code d'erreur 7H-14 : Erreur de communication pompe zone supplémentaire. Déclencheur : Anomalie de communication entre l'unité intérieure et la pompe de la zone supplémentaire. Effet : L'unité continu",
+        "steps": [
+          "Code d'erreur 7H-14 : Erreur de communication pompe zone supplémentaire. Déclencheur : Anomalie de communication entre l'unité intérieure et la pompe de la zone supplémentaire. Effet : L'unité continue de fonctionner. Réinitialisation : Automatique. Note : Dès qu'il y a une erreur de communication, la pompe passe à plein régime, entraînant un comportement inefficace et des bruits d'écoulement pot…"
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 210,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/210",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Erreur de communication pompe : aucune vérif de câble/connecteur proposée.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0144",
+      "prompt": "Daikin, code erreur 7H-15, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-15",
+      "ground_truth_meaning": "Code d'erreur # Titre Déclencheur Effet Réinitialisation 7H-15 Anomalie pompe zone supplémentaire bloquée Anomalie pompe zone supplémentaire bloquée La pompe cesse de fonctionner. Automatique",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 224,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Dépannage — Code d'erreur 7H-15 : Anomalie pompe zone supplémentaire bloquée. Déclencheur : Anomalie pompe zone supplémentaire bloquée. Effet : La pompe cesse de fonctionner. Réinitialisation : Automatique.",
+        "steps": [
+          "Code d'erreur 7H-15 : Anomalie pompe zone supplémentaire bloquée. Déclencheur : Anomalie pompe zone supplémentaire bloquée. Effet : La pompe cesse de fonctionner. Réinitialisation : Automatique."
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 210,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/210",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Fiche descriptive seule, aucune vérif terrain proposée.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0145",
+      "prompt": "Daikin, code erreur 7H-16, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-16",
+      "ground_truth_meaning": "Code d'erreur # Titre Déclencheur Effet Réinitialisation 7H-16 Anomalie panne électrique pompe zone supplémentaire Anomalie panne électrique pompe zone supplémentaire La pompe cesse de fonctionner. Au",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 224,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Dépannage — Code d'erreur 7H-16 : Anomalie panne électrique pompe zone supplémentaire. Déclencheur : Anomalie panne électrique pompe zone supplémentaire. Effet : La pompe cesse de fonctionner. Réinitialisation :",
+        "steps": [
+          "Code d'erreur 7H-16 : Anomalie panne électrique pompe zone supplémentaire. Déclencheur : Anomalie panne électrique pompe zone supplémentaire. Effet : La pompe cesse de fonctionner. Réinitialisation : Automatique."
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 210,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/210",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Fiche descriptive seule, aucune vérif terrain proposée.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0146",
+      "prompt": "Daikin, code erreur 7H-17, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-17",
+      "ground_truth_meaning": "Code d'erreur # 7H-17 Titre: Erreur de communication pompe zone principale Déclencheur: Anomalie de communication entre l'unité intérieure et la pompe de la zone principale Effet: L'unité continue de ",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 225,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Dépannage — Code d'erreur 7H-17 : Erreur de communication pompe zone principale. Déclencheur : Anomalie de communication entre l'unité intérieure et la pompe de la zone principale. Effet : L'unité continue de fon",
+        "steps": [
+          "Code d'erreur 7H-17 : Erreur de communication pompe zone principale. Déclencheur : Anomalie de communication entre l'unité intérieure et la pompe de la zone principale. Effet : L'unité continue de fonctionner. Réinitialisation : Automatique. Note : Dès qu'il y a une erreur de communication, la pompe passe à plein régime, entraînant un comportement inefficace et des bruits d'écoulement potentiels.…"
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 210,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/210",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Erreur de communication pompe : aucune vérif de câble/connecteur proposée.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0147",
+      "prompt": "Daikin, code erreur 7H-18, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-18",
+      "ground_truth_meaning": "Code d'erreur # 7H-18 Titre: Le problème de débit d'eau requis à la demande de rafraîchissement Déclencheur: Le débit d'eau minimal requis à la demande de rafraîchissement n'a pas été atteint Effet: L",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 225,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "14.3.1 Problème: débit d'eau trop faible — Si le code d'erreur 7H-18 apparaît, il se peut que certains actionneurs ne puissent pas fonctionner, empêchant le démarrage du mode. Vérifiez les exigences de débit minimal dans la section 11.4.4 (pag",
+        "steps": [
+          "Si le code d'erreur 7H-18 apparaît, il se peut que certains actionneurs ne puissent pas fonctionner, empêchant le démarrage du mode. Vérifiez les exigences de débit minimal dans la section 11.4.4 (page 175) et ajustez si nécessaire."
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 198,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/198",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 3,
+        "coherence_metier": 4,
+        "completude": 3,
+        "notes": "Renvoie à la vérif du débit minimal (§11.4.4) mais reste générique, pas de sous-liste (pompe/vannes/purge).",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0148",
+      "prompt": "Daikin, code erreur 7H-19, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-19",
+      "ground_truth_meaning": "Code d'erreur # 7H-19 Titre: Le problème de débit d'eau requis à la demande de chauffage du ballon Déclencheur: Le débit d'eau minimal requis à la demande de chauffage du ballon n'a pas été atteint Ef",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 225,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "14.3.1 Problème: débit d'eau trop faible — Si le code d'erreur 7H-19 apparaît, il se peut que certains actionneurs ne puissent pas fonctionner, empêchant le démarrage du mode. Vérifiez les exigences de débit minimal dans la section 11.4.4 (pag",
+        "steps": [
+          "Si le code d'erreur 7H-19 apparaît, il se peut que certains actionneurs ne puissent pas fonctionner, empêchant le démarrage du mode. Vérifiez les exigences de débit minimal dans la section 11.4.4 (page 175) et ajustez si nécessaire."
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 198,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/198",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 3,
+        "coherence_metier": 4,
+        "completude": 3,
+        "notes": "Renvoie à la vérif du débit minimal (§11.4.4) mais reste générique.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0149",
+      "prompt": "Daikin, code erreur 7H-20, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-20",
+      "ground_truth_meaning": "Code d'erreur # 7H-20 Titre: Le problème de débit d'eau requis dans le circuit hydraulique de l'émetteur Déclencheur: Le débit d'eau minimal requis dans le circuit hydraulique de l'émetteur n'a pas ét",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 225,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "14.3.1 Problème: débit d'eau trop faible — Si le code d'erreur 7H-20 apparaît, cela signifie que les exigences de débit minimal de l'unité ne sont pas respectées. Vérifiez les exigences et ajustez dans la section 11.4.4 (page 175).",
+        "steps": [
+          "Si le code d'erreur 7H-20 apparaît, cela signifie que les exigences de débit minimal de l'unité ne sont pas respectées. Vérifiez les exigences et ajustez dans la section 11.4.4 (page 175)."
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 198,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/198",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 3,
+        "coherence_metier": 4,
+        "completude": 3,
+        "notes": "Renvoie à la vérif du débit minimal (§11.4.4) mais reste générique.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0150",
+      "prompt": "Daikin, code erreur 7H-21, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-21",
+      "ground_truth_meaning": "Code d'erreur # 7H-21 Titre: Le problème de débit d'eau requis dans le circuit hydraulique du ballon Déclencheur: Le débit d'eau minimal requis dans le circuit hydraulique du ballon n'a pas été attein",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 225,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "14.3.1 Problème: débit d'eau trop faible — Si le code d'erreur 7H-21 apparaît, cela signifie que les exigences de débit minimal de l'unité ne sont pas respectées. Vérifiez les exigences et ajustez dans la section 11.4.4 (page 175).",
+        "steps": [
+          "Si le code d'erreur 7H-21 apparaît, cela signifie que les exigences de débit minimal de l'unité ne sont pas respectées. Vérifiez les exigences et ajustez dans la section 11.4.4 (page 175)."
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 198,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/198",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 3,
+        "coherence_metier": 4,
+        "completude": 3,
+        "notes": "Renvoie à la vérif du débit minimal (§11.4.4) mais reste générique.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0151",
+      "prompt": "Daikin, code erreur 7H-22, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-22",
+      "ground_truth_meaning": "Code d'erreur # 7H-22 Titre: Le problème de débit d'eau requis à la demande de chauffage Déclencheur: Le débit d'eau minimal requis à la demande de chauffage n'a pas été atteint Effet: L'unité exige u",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 225,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "14.3.1 Problème: débit d'eau trop faible — Si le code d'erreur 7H-22 apparaît, il se peut que certains actionneurs ne puissent pas fonctionner, empêchant le démarrage du mode. Vérifiez les exigences de débit minimal dans la section 11.4.4 (pag",
+        "steps": [
+          "Si le code d'erreur 7H-22 apparaît, il se peut que certains actionneurs ne puissent pas fonctionner, empêchant le démarrage du mode. Vérifiez les exigences de débit minimal dans la section 11.4.4 (page 175) et ajustez si nécessaire."
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 198,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/198",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 3,
+        "coherence_metier": 4,
+        "completude": 3,
+        "notes": "Renvoie à la vérif du débit minimal (§11.4.4) mais reste générique.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0152",
+      "prompt": "Daikin, code erreur 7H-23, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-23",
+      "ground_truth_meaning": "Code d'erreur # 7H-23 Titre: Erreur de communication pompe zone principale Déclencheur: Anomalie de communication entre l'unité intérieure et la pompe de la zone principale Effet: L'unité cesse de fon",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 226,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Dépannage — Code d'erreur 7H-23 : Erreur de communication pompe zone principale. Déclencheur : Anomalie de communication entre l'unité intérieure et la pompe de la zone principale. Effet : L'unité cesse de foncti",
+        "steps": [
+          "Code d'erreur 7H-23 : Erreur de communication pompe zone principale. Déclencheur : Anomalie de communication entre l'unité intérieure et la pompe de la zone principale. Effet : L'unité cesse de fonctionner. Réinitialisation : Automatique. Note : Dès qu'il y a une erreur de communication, la pompe passe à plein régime, entraînant un comportement inefficace et des bruits d'écoulement potentiels. Co…"
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 211,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/211",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Erreur de communication pompe : fiche seule, pas de vérif câble/connecteur.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0153",
+      "prompt": "Daikin, code erreur 7H-24, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "7H-24",
+      "ground_truth_meaning": "Code d'erreur # 7H-24 Titre: Erreur de communication pompe zone supplémentaire Déclencheur: Anomalie de communication entre l'unité intérieure et la pompe de la zone supplémentaire Effet: L'unité cess",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 226,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Dépannage — Code d'erreur 7H-24 : Erreur de communication pompe zone supplémentaire. Déclencheur : Anomalie de communication entre l'unité intérieure et la pompe de la zone supplémentaire. Effet : L'unité cesse d",
+        "steps": [
+          "Code d'erreur 7H-24 : Erreur de communication pompe zone supplémentaire. Déclencheur : Anomalie de communication entre l'unité intérieure et la pompe de la zone supplémentaire. Effet : L'unité cesse de fonctionner. Réinitialisation : Automatique. Note : Dès qu'il y a une erreur de communication sur la pompe, celle-ci passe à plein régime, ce qui entraîne un comportement inefficace de l'unité et d…"
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 212,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/212",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Erreur de communication pompe : fiche seule, pas de vérif câble/connecteur.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0154",
+      "prompt": "Daikin, code erreur 80, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "80",
+      "ground_truth_meaning": "Code d'erreur: 80 Code d'erreur détaillé: 00 Description: Problème de capteur de température de retour Action: Contactez votre revendeur",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "f4ee542c-c803-46ba-a27d-0e3853dcf8c0",
+        "document_title": "EHY2KOMB-A.EJHA-AV3_Installer reference guide_4PFR531180-1D_French",
+        "page": 226,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Code erreur 80 — Code d'erreur: 80\nCode d'erreur détaillé: 00\nDescription: Problème de capteur de température de retour\nAction: Contactez votre revendeur",
+        "steps": [
+          "Code d'erreur: 80\nCode d'erreur détaillé: 00\nDescription: Problème de capteur de température de retour\nAction: Contactez votre revendeur"
+        ],
+        "citation": {
+          "manual_title": "EHY2KOMB-A.EJHA-AV3_Installer reference guide_4PFR531180-1D_French",
+          "page": 226,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/f4ee542c-c803-46ba-a27d-0e3853dcf8c0/226",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 1,
+        "coherence_metier": 3,
+        "completude": 1,
+        "notes": "Renvoie direct au SAV/revendeur, aucune vérif terrain alors qu'un capteur se contrôle facilement (résistance, connexion).",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0155",
+      "prompt": "Daikin, code erreur 80-00, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "80-00",
+      "ground_truth_meaning": "Code d'erreur: 80-00 Description: Problème au niveau du capteur de température de retour",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "9a8ae421-abbb-4a03-9b88-7a10d6ef3023",
+        "document_title": "ERGA-EV(7.H.H7).ERGA04-08EVA.EHSH(B)-E.EHSX(B)-E_Installer reference guide_4PFR759881-1A_French",
+        "page": 294,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Codes d'erreur: vue d'ensemble — Problème au niveau du capteur de température de retour. Vérifier la connexion du capteur, sa résistance et son état physique. S'assurer qu'il est correctement placé et qu'il n'y a pas de court-circuit",
+        "steps": [
+          "Problème au niveau du capteur de température de retour. Vérifier la connexion du capteur, sa résistance et son état physique. S'assurer qu'il est correctement placé et qu'il n'y a pas de court-circuit ou de déconnexion. Remplacer le capteur si nécessaire."
+        ],
+        "citation": {
+          "manual_title": "EHSH XB E Installer reference guide 4PFR678716 1A French",
+          "page": 283,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/6f604725-6fb2-45f2-98b4-7134b189cf2a/283",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 5,
+        "coherence_metier": 4,
+        "completude": 4,
+        "notes": "Bon enchaînement simple→invasif : connexion → résistance → état physique → remplacement si besoin.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0156",
+      "prompt": "Daikin, code erreur 80-03, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "80-03",
+      "ground_truth_meaning": "Code d'erreur # 80-03 Titre: Anomalie de la zone principale de la thermistance de température de l'arrivée d'eau Déclencheur: La zone principale de la thermistance de l'arrivée d'eau fonctionne mal Ef",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 226,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Dépannage — Code d'erreur 80-03 : Anomalie de la zone principale de la thermistance de température de l'arrivée d'eau. Déclencheur : La thermistance de l'arrivée d'eau de la zone principale fonctionne mal. Effet",
+        "steps": [
+          "Code d'erreur 80-03 : Anomalie de la zone principale de la thermistance de température de l'arrivée d'eau. Déclencheur : La thermistance de l'arrivée d'eau de la zone principale fonctionne mal. Effet : L'unité continue de fonctionner. Réinitialisation : Automatique. Note : Cette erreur n'existe que pour une unité bizone."
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 212,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/212",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Fiche descriptive seule, pas de vérif thermistance proposée (résistance, connexion).",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0157",
+      "prompt": "Daikin, code erreur 80-04, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "80-04",
+      "ground_truth_meaning": "Code d'erreur # 80-04 Titre: Anomalie de la thermistance de température de l'arrivée d'eau de la zone supplémentaire Déclencheur: La zone supplémentaire de la thermistance de l'arrivée d'eau fonctionn",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1fff74c9-dec4-43d7-af99-8c56b67c7f6c",
+        "document_title": "EPSK06-10AV3.EPSK08-10AW1.EPSK12-14AW1.EPSKS-AV3.EPSX(B)07A.EPSX(B)10A.EPSX(B)14A_Installer reference guide_4PFR773394-1C_French",
+        "page": 226,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Dépannage — Code d'erreur 80-04 : Anomalie de la thermistance de température de l'arrivée d'eau de la zone supplémentaire. Déclencheur : La thermistance de l'arrivée d'eau de la zone supplémentaire fonctionne mal",
+        "steps": [
+          "Code d'erreur 80-04 : Anomalie de la thermistance de température de l'arrivée d'eau de la zone supplémentaire. Déclencheur : La thermistance de l'arrivée d'eau de la zone supplémentaire fonctionne mal. Effet : L'unité continue de fonctionner. Réinitialisation : Automatique. Note : Cette erreur n'existe que pour une unité bizone."
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 212,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/212",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Fiche descriptive seule, pas de vérif thermistance proposée (résistance, connexion).",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0158",
+      "prompt": "Daikin, code erreur 81, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "81",
+      "ground_truth_meaning": "Code d'erreur: 81 Code d'erreur détaillé: 00 Description: Problème de capteur de la température de départ Action: Contactez votre revendeur",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "f4ee542c-c803-46ba-a27d-0e3853dcf8c0",
+        "document_title": "EHY2KOMB-A.EJHA-AV3_Installer reference guide_4PFR531180-1D_French",
+        "page": 226,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Code erreur 81 — Code d'erreur: 81\nCode d'erreur détaillé: 00\nDescription: Problème de capteur de la température de départ\nAction: Contactez votre revendeur",
+        "steps": [
+          "Code d'erreur: 81\nCode d'erreur détaillé: 00\nDescription: Problème de capteur de la température de départ\nAction: Contactez votre revendeur"
+        ],
+        "citation": {
+          "manual_title": "EHY2KOMB-A.EJHA-AV3_Installer reference guide_4PFR531180-1D_French",
+          "page": 226,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/f4ee542c-c803-46ba-a27d-0e3853dcf8c0/226",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 1,
+        "coherence_metier": 3,
+        "completude": 1,
+        "notes": "Renvoie direct au SAV/revendeur, aucune vérif terrain proposée.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    },
+    {
+      "case_id": "hb-0159",
+      "prompt": "Daikin, code erreur 81-00, diagnostic et vérifications ?",
+      "brand_hint": "Daikin",
+      "error_code_hint": "81-00",
+      "ground_truth_meaning": "Code d'erreur Description 81-00 Problème au niveau du capteur de température de l'eau de départ",
+      "ground_truth_source": {
+        "kind": "manufacturer_pdf",
+        "document_id": "1c1f7666-c079-4042-a6d7-4781ac7745ed",
+        "document_title": "ERLA11-14D(V3.W1).ERLA-D(V3.W1)7.EBSH(B)-D.EBSX(B)-D_Installer reference guide_4PFR759879-1A_French",
+        "page": 289,
+        "notes": "GT rédigée depuis chunk PDF puis confrontée à la page citée (verify-gate-dataset)."
+      },
+      "prod_response_summary": {
+        "state": "answer",
+        "cause": "Dépannage — Code d'erreur 81-00 : Anomalie de la thermistance de température de l'eau en sortie après le chauffage d'appoint. Déclencheur : La thermistance de température de l'eau en sortie après le chauffage d'a",
+        "steps": [
+          "Code d'erreur 81-00 : Anomalie de la thermistance de température de l'eau en sortie après le chauffage d'appoint. Déclencheur : La thermistance de température de l'eau en sortie après le chauffage d'appoint fonctionne mal. Effet : La pompe à chaleur et le chauffage d'appoint cessent de fonctionner pour le chauffage et l'eau chaude sanitaire. Réinitialisation : Automatique."
+        ],
+        "citation": {
+          "manual_title": "Altherma  4   installateur manuel French",
+          "page": 212,
+          "snapshot_url": "https://api.askmarcel.app/v1/pdf-snapshot/53d2f61e-a901-42af-8f11-d3454d06d779/212",
+          "lang": "fr",
+          "source_type": "manual"
+        }
+      },
+      "annotation": {
+        "ordre_simple_invasif": 2,
+        "coherence_metier": 3,
+        "completude": 2,
+        "notes": "Fiche descriptive ; libellé produit un peu plus spécifique (post-chauffage d'appoint) que le GT mais cohérent avec la page citée.",
+        "annotator": "marcel",
+        "annotated_at": "2026-07-26"
+      }
+    }
+  ]
+}

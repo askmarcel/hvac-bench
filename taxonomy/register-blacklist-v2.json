@@ -1,0 +1,15 @@
+{
+  "version": "2026-07-26",
+  "description": "Motifs INV-1/INV-2 — occurrence dans la sortie complète ⇒ register FAIL (CDC §1.3)",
+  "flags": "i",
+  "patterns": [
+    "faites? appel à",
+    "contact(er|ez) un (professionnel|technicien|installateur|spécialiste)",
+    "technicien (habilité|qualifié|agréé)",
+    "professionnel qualifié",
+    "il est (recommandé|conseillé) de faire appel",
+    "par un spécialiste",
+    "rapprochez-vous d'un",
+    "consultez un professionnel"
+  ]
+}

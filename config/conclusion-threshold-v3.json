@@ -1,0 +1,8 @@
+{
+  "version": "conclusion-threshold-v3.2026-07-27",
+  "default_threshold": 0.85,
+  "calibrated_threshold": null,
+  "calibrated_on": null,
+  "calibrated_at": null,
+  "note": "Rempli par calibrate:conclusion-threshold-v3-neon — jeu dev Neon uniquement, hors gate"
+}

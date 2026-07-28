@@ -1,0 +1,10 @@
+{
+  "version": "2026-07-27",
+  "description": "Actions sans grandeur mappable en P0 — hors catalogue candidat moteur v3",
+  "actions": [
+    {
+      "action_id": "MES-TENSION",
+      "reason": "Hors arbre P0 — pas de quantity_id dédiée ; réintroduire en P4 si besoin prod"
+    }
+  ]
+}

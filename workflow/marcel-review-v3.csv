@@ -1,0 +1,25 @@
+edge_id,cause_id,quantity,direction_or_value,lr,status_before,question,proposed_source,reviewer
+air_circuit|purgeur,air_circuit,purgeur,crache_air,moyen,draft,Purgeur crache air = effet discriminant air_circuit vs débit bas mécanique ?,marcel:2026-07-27,marcel
+bypass_ferme|bypass_ouvert,bypass_ferme,bypass_ouvert,non,moyen,draft,Bypass fermé / non ouvert = cause débit insuffisant boucles ?,marcel:2026-07-27,marcel
+carte_hs|hp_bar,carte_hs,hp_bar,in_range,faible,draft,HP in_range exclut cause frigo — oriente carte / logique ?,marcel:2026-07-27,marcel
+carte_hs|led_defaut,carte_hs,led_defaut,code,fort,draft,Code défaut persistant sans cause hydraulique = carte ?,marcel:2026-07-27,marcel
+charge_insuffisante|bp_bar,charge_insuffisante,bp_bar,low,fort,draft,BP basse corrélée HP basse (charge) ?,marcel:2026-07-27,marcel
+charge_insuffisante|givre,charge_insuffisante,givre,generalise,moyen,draft,Givre généralisé aspiration = sous-charge ?,marcel:2026-07-27,marcel
+charge_insuffisante|hp_bar,charge_insuffisante,hp_bar,low,fort,draft,HP basse + BP basse = charge insuffisante ?,marcel:2026-07-27,marcel
+compresseur_hs|amperage_compresseur,compresseur_hs,amperage_compresseur,low,moyen,draft,"Seuil ampérage compresseur HS — variable inverter, conservé draft",,marcel
+compresseur_hs|delta_hp_bp,compresseur_hs,delta_hp_bp,low,fort,draft,Convergence HP−BP basse = compresseur faible ?,marcel:2026-07-27,marcel
+condensats_bouches|condensats,condensats_bouches,condensats,bouche,fort,draft,Condensats obstrués = givre / arrêt sécurité ?,marcel:2026-07-27,marcel
+condensats_bouches|givre,condensats_bouches,givre,localise,moyen,draft,Givre localisé lié condensats (pas charge) ?,marcel:2026-07-27,marcel
+defaut_transitoire|delta_t_eau,defaut_transitoire,delta_t_eau,in_range,faible,draft,ΔT in_range en transitoire (pas défaut hydraulique) ?,marcel:2026-07-27,marcel
+defaut_transitoire|led_defaut,defaut_transitoire,led_defaut,code,faible,draft,Code transitoire effacé au reset — LR faible ?,marcel:2026-07-27,marcel
+degivrage_anormal|givre,degivrage_anormal,givre,localise,fort,draft,Givre localisé échangeur vs généralisé charge ?,marcel:2026-07-27,marcel
+degivrage_anormal|hp_bar,degivrage_anormal,hp_bar,in_range,faible,draft,"HP normale en dégivrage anormal (cycle, pas charge) ?",marcel:2026-07-27,marcel
+filtre_colmate|pression_circuit_bar,filtre_colmate,pression_circuit_bar,in_range,faible,draft,"Pression in_range compatible filtre colmaté (perte charge locale, pas fuite) ?",marcel:2026-07-27,marcel
+flowswitch_hs|debit_l_min,flowswitch_hs,debit_l_min,in_range,fort,draft,Débit in_range + code 7H = discriminant flowswitch HS vs defaut_debit (débit réel bas),marcel:2026-07-27,marcel
+pompe_grippee|amperage_circulateur,pompe_grippee,amperage_circulateur,low,moyen,draft,Ampérage bas (rotor bloqué) ou haut (surcharge) — bloqué sans doc par famille pompe,,marcel
+pompe_grippee|bruit_pompe,pompe_grippee,bruit_pompe,claquement,fort,draft,Claquement au démarrage = signature circulateur grippé ?,marcel:2026-07-27,marcel
+pression_basse|delta_t_eau,pression_basse,delta_t_eau,high,moyen,draft,ΔT élevé secondaire à débit réduit par pression basse ?,marcel:2026-07-27,marcel
+sonde_hs|delta_sonde_k,sonde_hs,delta_sonde_k,high,fort,draft,Écart sonde vs mesure référence > seuil K ?,marcel:2026-07-27,marcel
+sonde_hs|t_depart,sonde_hs,t_depart,high,moyen,draft,Température départ incohérente avec régime (sonde décalée) ?,marcel:2026-07-27,marcel
+sous_dimension|delta_t_eau,sous_dimension,delta_t_eau,high,moyen,draft,"ΔT high (pas low) — P/ṁ·cp : sous-dimensionnement = débit limite, ΔT monte",marcel:2026-07-27,marcel
+vanne_fermee|vanne_position,vanne_fermee,vanne_position,fermee,fort,draft,Vanne fermée / bloquée ECS = pas de chauffage ?,marcel:2026-07-27,marcel

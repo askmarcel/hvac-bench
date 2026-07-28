@@ -1,0 +1,13 @@
+{
+  "mined_at": "2026-07-26",
+  "version": "canonical-v2-nmin-signature",
+  "rows_total": 7834,
+  "rule_match_rate": 0.5422517232575951,
+  "unknown_bucket": 3586,
+  "signatures_count": 1011,
+  "hypotheses_count": 16,
+  "notes": "n_min au niveau signature ; repli parent equipment_type| ; pas de filtre n<hyp.",
+  "signatures_sans_cause_reelle": 299,
+  "parent_fallback_count": 968,
+  "prior_rows_written": 15471
+}

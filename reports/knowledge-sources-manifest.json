@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-07-27T08:19:48.364Z",
+  "T_cutoff": "2026-04-01",
+  "knowledge_sources": [
+    "doc:b7355b17-1fb2-4c16-9fb1-e1fd5eb484ab",
+    "doc:2407e0ed-4717-40d8-bb9d-5782099f95f5",
+    "doc:b21ee3bb-b0cb-41b0-ac4d-81f62f521f75",
+    "doc:de614caf-ddf2-4df5-81b8-2218ab7870ff",
+    "doc:a1e7ea7d-7ab4-4ae3-a7c8-f9d5b6dcd3df",
+    "marcel:2026-07-27"
+  ],
+  "sources_checked": 65,
+  "dev_cases": 12,
+  "errors": [],
+  "pass": true
+}

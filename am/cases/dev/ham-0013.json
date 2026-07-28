@@ -1,0 +1,43 @@
+{
+  "id": "ham-0013",
+  "titre": "Mitsubishi Ecodan — câble de liaison sectionné par rongeurs, défaut communication",
+  "equipement": { "marque": "Mitsubishi Electric", "modele": "Ecodan PUZ-WM", "famille": "pac_air_eau", "age_ans": 4 },
+  "installation": {
+    "emetteur": "mixte",
+    "regime_eau": "40/32",
+    "region_climat": "H2",
+    "particularites": "câble de liaison passé en extérieur, rongeurs suspectés"
+  },
+  "plainte_initiale": "Code erreur communication, l'unité extérieure ne démarre plus du tout.",
+  "etat_operatoire": "arret_force",
+  "ground_state": {
+    "led_defaut": "code_erreur_communication_E-B",
+    "resistance_ohm": 999999,
+    "fuite_visible": "absent"
+  },
+  "evolution": [
+    { "si_action": "mesure_resistance_liaison", "alors": { "resistance_ohm": 999999, "diagnostic": "coupure_de_cable" } },
+    {
+      "si_action": "inspection_cable_exterieur",
+      "alors": { "etat_gaine": "rongee_par_rongeurs", "localisation": "passage_exterieur_non_protege" }
+    },
+    {
+      "si_action": "reparation_cable",
+      "alors": { "resistance_ohm": 45, "communication": "retablie", "resout": true }
+    }
+  ],
+  "verite": {
+    "cause": "câble de liaison inter-unités sectionné par des rongeurs sur le tronçon extérieur non protégé",
+    "solution": "réparer ou remplacer le tronçon de câble, protéger le passage (gaine ou goulotte), contrôler la reprise de communication",
+    "verification": "plus de code communication, unité extérieure redémarre normalement sur 48h",
+    "pieges": []
+  },
+  "chemin_expert": ["MES-RESISTANCE", "OBS-CAPTEUR"],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": null
+  },
+  "split": "dev"
+}

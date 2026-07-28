@@ -1,0 +1,13 @@
+{
+  "matrix_version": "likelihoods-v3.2026-07-27",
+  "T_cutoff": "2026-04-01",
+  "fault_tree_version": "fault-tree-v3-pac_air_eau.2026-07-27",
+  "quantities_version": "quantities-v3.2026-07-27",
+  "lr_tiers": {
+    "fort": 10,
+    "moyen": 3,
+    "faible": 1.5
+  },
+  "post_repair_lr_tier": "fort",
+  "note": "LR par arête cause→effet — pas de scalaires globaux v2"
+}

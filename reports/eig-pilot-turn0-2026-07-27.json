@@ -1,0 +1,6846 @@
+{
+  "generated_at": "2026-07-27T07:15:19.919Z",
+  "n_cases": 15,
+  "prior_mass_useless_threshold": 0.6,
+  "pooled_eig": {
+    "median": 0,
+    "std": 0.08305511240360763,
+    "n_samples": 900,
+    "pct_exact_zero": 0.7966666666666666
+  },
+  "per_case_median_eig_std": 0.08436265655085193,
+  "per_case_median_eig_max_over_lambda_delta": 6.06891738612153,
+  "cases": [
+    {
+      "case_id": "hb2-0001",
+      "base_entropy_bits": 2.4278263707206102,
+      "n_actions": 60,
+      "eig_median": 0,
+      "eig_std": 0.10063563638966933,
+      "eig_max": 0.2796931512115197,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.7166666666666667,
+      "eig_max_action": "OBS-BRUIT-POMPE",
+      "engine_pick_action": "OBS-CAPTEUR",
+      "engine_top_score": 0.7997392297522135,
+      "cheapest_action": "OBS-PURGEUR",
+      "cheapest_cost": 25,
+      "eig_max_cost": 25,
+      "lambda_delta_cost": 0,
+      "eig_max_over_lambda_delta_cost": null,
+      "useless_mass_actions": [
+        "MES-DT-EAU"
+      ],
+      "actions": [
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.2796931512115197,
+          "prior_mass": 0.26428571428571435,
+          "cost": 25,
+          "voi_score": 0.22969315121151973
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0.2796931512115197,
+          "prior_mass": 0.26428571428571435,
+          "cost": 25,
+          "voi_score": 0.22969315121151973
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.2796931512115197,
+          "prior_mass": 0.26428571428571435,
+          "cost": 50,
+          "voi_score": 0.1796931512115197
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.2796931512115197,
+          "prior_mass": 0.26428571428571435,
+          "cost": 50,
+          "voi_score": 0.1796931512115197
+        },
+        {
+          "action_id": "DEM-CIRCULATEUR",
+          "eig_bits": 0.2796931512115197,
+          "prior_mass": 0.26428571428571435,
+          "cost": 75,
+          "voi_score": 0.12969315121151972
+        },
+        {
+          "action_id": "REM-CIRCULATEUR",
+          "eig_bits": 0.2796931512115197,
+          "prior_mass": 0.26428571428571435,
+          "cost": 505,
+          "voi_score": -0.7303068487884803
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.2625246385412403,
+          "prior_mass": 0.25000000000000006,
+          "cost": 25,
+          "voi_score": 0.21252463854124032
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.2625246385412403,
+          "prior_mass": 0.25000000000000006,
+          "cost": 50,
+          "voi_score": 0.1625246385412403
+        },
+        {
+          "action_id": "MAN-PURGE",
+          "eig_bits": 0.2625246385412403,
+          "prior_mass": 0.25000000000000006,
+          "cost": 50,
+          "voi_score": 0.1625246385412403
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.15382147997672835,
+          "prior_mass": 0.17142857142857146,
+          "cost": 25,
+          "voi_score": 0.10382147997672835
+        },
+        {
+          "action_id": "MAN-RESET",
+          "eig_bits": 0.15382147997672835,
+          "prior_mass": 0.17142857142857146,
+          "cost": 50,
+          "voi_score": 0.05382147997672834
+        },
+        {
+          "action_id": "MAN-NETTOYAGE-FILTRE",
+          "eig_bits": 0.15382147997672835,
+          "prior_mass": 0.17142857142857146,
+          "cost": 50,
+          "voi_score": 0.05382147997672834
+        },
+        {
+          "action_id": "DEM-FILTRE",
+          "eig_bits": 0.15382147997672835,
+          "prior_mass": 0.17142857142857146,
+          "cost": 75,
+          "voi_score": 0.0038214799767283536
+        },
+        {
+          "action_id": "REM-FLOWSWITCH",
+          "eig_bits": 0.12042019160007245,
+          "prior_mass": 0.15000000000000002,
+          "cost": 245,
+          "voi_score": -0.36957980839992755
+        },
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.1025648272227615,
+          "prior_mass": 0.26428571428571435,
+          "cost": 50,
+          "voi_score": 0.0025648272227614954
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.06363509699686087,
+          "prior_mass": 0.8500000000000002,
+          "cost": 50,
+          "voi_score": -0.03636490300313913
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0.06267342252842045,
+          "prior_mass": 0.11428571428571431,
+          "cost": 25,
+          "voi_score": 0.01267342252842045
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0.05000000000000002,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TENSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-DEGIV",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REMPLISSAGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-DESENGORGEMENT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0.05000000000000002,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REGLAGE-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE-FRIGO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-VIDANGE-PARTIELLE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "DEM-ECHANGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "INT-RECUP-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 250,
+          "voi_score": -0.5
+        },
+        {
+          "action_id": "INT-TIRAGE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "INT-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 220,
+          "voi_score": -0.44
+        },
+        {
+          "action_id": "INT-BRASURE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 300,
+          "voi_score": -0.6
+        },
+        {
+          "action_id": "INT-REPARATION-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 350,
+          "voi_score": -0.7000000000000001
+        },
+        {
+          "action_id": "INT-DEGLACAGE-MANUEL",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 100,
+          "voi_score": -0.2
+        },
+        {
+          "action_id": "INT-CONTROLE-ETANCHEITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 200,
+          "voi_score": -0.4
+        },
+        {
+          "action_id": "INT-REMPLACEMENT-FILTRE-DESHY",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "REM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 205,
+          "voi_score": -0.41000000000000003
+        },
+        {
+          "action_id": "REM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 325,
+          "voi_score": -0.65
+        },
+        {
+          "action_id": "REM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 575,
+          "voi_score": -1.1500000000000001
+        },
+        {
+          "action_id": "REM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 1325,
+          "voi_score": -2.65
+        },
+        {
+          "action_id": "REM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 405,
+          "voi_score": -0.81
+        },
+        {
+          "action_id": "REM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 475,
+          "voi_score": -0.9500000000000001
+        },
+        {
+          "action_id": "REM-POMPE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 125,
+          "voi_score": -0.25
+        },
+        {
+          "action_id": "REM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 170,
+          "voi_score": -0.34
+        },
+        {
+          "action_id": "REM-CAPTEUR-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 275,
+          "voi_score": -0.55
+        },
+        {
+          "action_id": "REM-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 215,
+          "voi_score": -0.43
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0002",
+      "base_entropy_bits": 2.2340682910038527,
+      "n_actions": 60,
+      "eig_median": 0,
+      "eig_std": 0.09168186804487782,
+      "eig_max": 0.26467185261531223,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.75,
+      "eig_max_action": "OBS-BRUIT-POMPE",
+      "engine_pick_action": "OBS-CAPTEUR",
+      "engine_top_score": 0.7319239018513484,
+      "cheapest_action": "OBS-PURGEUR",
+      "cheapest_cost": 25,
+      "eig_max_cost": 25,
+      "lambda_delta_cost": 0,
+      "eig_max_over_lambda_delta_cost": null,
+      "useless_mass_actions": [
+        "MES-DT-EAU"
+      ],
+      "actions": [
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.26467185261531223,
+          "prior_mass": 0.282442748091603,
+          "cost": 25,
+          "voi_score": 0.21467185261531224
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0.26467185261531223,
+          "prior_mass": 0.282442748091603,
+          "cost": 25,
+          "voi_score": 0.21467185261531224
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.26467185261531223,
+          "prior_mass": 0.282442748091603,
+          "cost": 50,
+          "voi_score": 0.16467185261531223
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.26467185261531223,
+          "prior_mass": 0.282442748091603,
+          "cost": 50,
+          "voi_score": 0.16467185261531223
+        },
+        {
+          "action_id": "DEM-CIRCULATEUR",
+          "eig_bits": 0.26467185261531223,
+          "prior_mass": 0.282442748091603,
+          "cost": 75,
+          "voi_score": 0.11467185261531224
+        },
+        {
+          "action_id": "REM-CIRCULATEUR",
+          "eig_bits": 0.26467185261531223,
+          "prior_mass": 0.282442748091603,
+          "cost": 505,
+          "voi_score": -0.7453281473846878
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.24813848561914398,
+          "prior_mass": 0.2671755725190839,
+          "cost": 25,
+          "voi_score": 0.198138485619144
+        },
+        {
+          "action_id": "MAN-PURGE",
+          "eig_bits": 0.24813848561914398,
+          "prior_mass": 0.2671755725190839,
+          "cost": 50,
+          "voi_score": 0.14813848561914397
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.19563311837921926,
+          "prior_mass": 0.45801526717557245,
+          "cost": 50,
+          "voi_score": 0.09563311837921926
+        },
+        {
+          "action_id": "MAN-REMPLISSAGE",
+          "eig_bits": 0.15291719806441728,
+          "prior_mass": 0.19083969465648853,
+          "cost": 50,
+          "voi_score": 0.052917198064417276
+        },
+        {
+          "action_id": "REM-FLOWSWITCH",
+          "eig_bits": 0.10949481818115281,
+          "prior_mass": 0.16030534351145037,
+          "cost": 245,
+          "voi_score": -0.3805051818188472
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.0712406594433137,
+          "prior_mass": 0.8396946564885495,
+          "cost": 50,
+          "voi_score": -0.028759340556686303
+        },
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.06853296504148787,
+          "prior_mass": 0.2595419847328244,
+          "cost": 50,
+          "voi_score": -0.031467034958512136
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0.01843245163994922,
+          "prior_mass": 0.09923664122137404,
+          "cost": 25,
+          "voi_score": -0.03156754836005078
+        },
+        {
+          "action_id": "MAN-REGLAGE-BYPASS",
+          "eig_bits": 0.01843245163994922,
+          "prior_mass": 0.09923664122137404,
+          "cost": 50,
+          "voi_score": -0.08156754836005078
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TENSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-RESET",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-DEGIV",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-NETTOYAGE-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-DESENGORGEMENT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE-FRIGO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-VIDANGE-PARTIELLE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "DEM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-ECHANGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "INT-RECUP-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 250,
+          "voi_score": -0.5
+        },
+        {
+          "action_id": "INT-TIRAGE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "INT-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 220,
+          "voi_score": -0.44
+        },
+        {
+          "action_id": "INT-BRASURE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 300,
+          "voi_score": -0.6
+        },
+        {
+          "action_id": "INT-REPARATION-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 350,
+          "voi_score": -0.7000000000000001
+        },
+        {
+          "action_id": "INT-DEGLACAGE-MANUEL",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 100,
+          "voi_score": -0.2
+        },
+        {
+          "action_id": "INT-CONTROLE-ETANCHEITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 200,
+          "voi_score": -0.4
+        },
+        {
+          "action_id": "INT-REMPLACEMENT-FILTRE-DESHY",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "REM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 205,
+          "voi_score": -0.41000000000000003
+        },
+        {
+          "action_id": "REM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 325,
+          "voi_score": -0.65
+        },
+        {
+          "action_id": "REM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 575,
+          "voi_score": -1.1500000000000001
+        },
+        {
+          "action_id": "REM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 1325,
+          "voi_score": -2.65
+        },
+        {
+          "action_id": "REM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 405,
+          "voi_score": -0.81
+        },
+        {
+          "action_id": "REM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 475,
+          "voi_score": -0.9500000000000001
+        },
+        {
+          "action_id": "REM-POMPE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 125,
+          "voi_score": -0.25
+        },
+        {
+          "action_id": "REM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 170,
+          "voi_score": -0.34
+        },
+        {
+          "action_id": "REM-CAPTEUR-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 275,
+          "voi_score": -0.55
+        },
+        {
+          "action_id": "REM-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 215,
+          "voi_score": -0.43
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0003",
+      "base_entropy_bits": 2.1452606758975032,
+      "n_actions": 60,
+      "eig_median": 0,
+      "eig_std": 0.09436883586277012,
+      "eig_max": 0.2667340814545356,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.7333333333333333,
+      "eig_max_action": "OBS-BRUIT-POMPE",
+      "engine_pick_action": "OBS-BYPASS",
+      "engine_top_score": 0.700841236564126,
+      "cheapest_action": "OBS-PURGEUR",
+      "cheapest_cost": 25,
+      "eig_max_cost": 25,
+      "lambda_delta_cost": 0,
+      "eig_max_over_lambda_delta_cost": null,
+      "useless_mass_actions": [
+        "MES-DT-EAU"
+      ],
+      "actions": [
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.2667340814545356,
+          "prior_mass": 0.3008130081300813,
+          "cost": 25,
+          "voi_score": 0.2167340814545356
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0.2667340814545356,
+          "prior_mass": 0.3008130081300813,
+          "cost": 25,
+          "voi_score": 0.2167340814545356
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.2667340814545356,
+          "prior_mass": 0.3008130081300813,
+          "cost": 50,
+          "voi_score": 0.16673408145453558
+        },
+        {
+          "action_id": "DEM-CIRCULATEUR",
+          "eig_bits": 0.2667340814545356,
+          "prior_mass": 0.3008130081300813,
+          "cost": 75,
+          "voi_score": 0.1167340814545356
+        },
+        {
+          "action_id": "REM-CIRCULATEUR",
+          "eig_bits": 0.2667340814545356,
+          "prior_mass": 0.3008130081300813,
+          "cost": 505,
+          "voi_score": -0.7432659185454644
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.25049682518545247,
+          "prior_mass": 0.2845528455284553,
+          "cost": 25,
+          "voi_score": 0.20049682518545248
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.25049682518545247,
+          "prior_mass": 0.2845528455284553,
+          "cost": 50,
+          "voi_score": 0.15049682518545246
+        },
+        {
+          "action_id": "MAN-PURGE",
+          "eig_bits": 0.25049682518545247,
+          "prior_mass": 0.2845528455284553,
+          "cost": 50,
+          "voi_score": 0.15049682518545246
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.1953301686130553,
+          "prior_mass": 0.34959349593495936,
+          "cost": 50,
+          "voi_score": 0.0953301686130553
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.14492010173691838,
+          "prior_mass": 0.1951219512195122,
+          "cost": 25,
+          "voi_score": 0.09492010173691838
+        },
+        {
+          "action_id": "MAN-RESET",
+          "eig_bits": 0.14492010173691838,
+          "prior_mass": 0.1951219512195122,
+          "cost": 50,
+          "voi_score": 0.04492010173691838
+        },
+        {
+          "action_id": "MAN-NETTOYAGE-FILTRE",
+          "eig_bits": 0.14492010173691838,
+          "prior_mass": 0.1951219512195122,
+          "cost": 50,
+          "voi_score": 0.04492010173691838
+        },
+        {
+          "action_id": "DEM-FILTRE",
+          "eig_bits": 0.14492010173691838,
+          "prior_mass": 0.1951219512195122,
+          "cost": 75,
+          "voi_score": -0.005079898263081611
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.11908913093570739,
+          "prior_mass": 0.7804878048780488,
+          "cost": 50,
+          "voi_score": 0.019089130935707382
+        },
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.11170284193166813,
+          "prior_mass": 0.17073170731707316,
+          "cost": 50,
+          "voi_score": 0.011702841931668123
+        },
+        {
+          "action_id": "REM-FLOWSWITCH",
+          "eig_bits": 0.11170284193166813,
+          "prior_mass": 0.17073170731707316,
+          "cost": 245,
+          "voi_score": -0.37829715806833186
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0,
+          "prior_mass": 0.04878048780487805,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TENSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-DEGIV",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REMPLISSAGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-DESENGORGEMENT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REGLAGE-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE-FRIGO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-VIDANGE-PARTIELLE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "DEM-ECHANGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "INT-RECUP-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 250,
+          "voi_score": -0.5
+        },
+        {
+          "action_id": "INT-TIRAGE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "INT-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 220,
+          "voi_score": -0.44
+        },
+        {
+          "action_id": "INT-BRASURE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 300,
+          "voi_score": -0.6
+        },
+        {
+          "action_id": "INT-REPARATION-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 350,
+          "voi_score": -0.7000000000000001
+        },
+        {
+          "action_id": "INT-DEGLACAGE-MANUEL",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 100,
+          "voi_score": -0.2
+        },
+        {
+          "action_id": "INT-CONTROLE-ETANCHEITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 200,
+          "voi_score": -0.4
+        },
+        {
+          "action_id": "INT-REMPLACEMENT-FILTRE-DESHY",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "REM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 205,
+          "voi_score": -0.41000000000000003
+        },
+        {
+          "action_id": "REM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 325,
+          "voi_score": -0.65
+        },
+        {
+          "action_id": "REM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0.04878048780487805,
+          "cost": 575,
+          "voi_score": -1.1500000000000001
+        },
+        {
+          "action_id": "REM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 1325,
+          "voi_score": -2.65
+        },
+        {
+          "action_id": "REM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 405,
+          "voi_score": -0.81
+        },
+        {
+          "action_id": "REM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 475,
+          "voi_score": -0.9500000000000001
+        },
+        {
+          "action_id": "REM-POMPE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 125,
+          "voi_score": -0.25
+        },
+        {
+          "action_id": "REM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 170,
+          "voi_score": -0.34
+        },
+        {
+          "action_id": "REM-CAPTEUR-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 275,
+          "voi_score": -0.55
+        },
+        {
+          "action_id": "REM-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 215,
+          "voi_score": -0.43
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0004",
+      "base_entropy_bits": 1.9614981328195902,
+      "n_actions": 60,
+      "eig_median": 0,
+      "eig_std": 0.07231934647828267,
+      "eig_max": 0.27250054496667,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.8666666666666667,
+      "eig_max_action": "OBS-GELEE",
+      "engine_pick_action": "MES-DT-EAU",
+      "engine_top_score": 0.9788239730507747,
+      "cheapest_action": "OBS-PURGEUR",
+      "cheapest_cost": 25,
+      "eig_max_cost": 25,
+      "lambda_delta_cost": 0,
+      "eig_max_over_lambda_delta_cost": null,
+      "useless_mass_actions": [
+        "MES-DT-EAU",
+        "MES-DEBIT"
+      ],
+      "actions": [
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.27250054496667,
+          "prior_mass": 0.3478260869565217,
+          "cost": 25,
+          "voi_score": 0.22250054496667
+        },
+        {
+          "action_id": "MAN-RESET",
+          "eig_bits": 0.27250054496667,
+          "prior_mass": 0.3478260869565217,
+          "cost": 50,
+          "voi_score": 0.17250054496666997
+        },
+        {
+          "action_id": "MAN-NETTOYAGE-FILTRE",
+          "eig_bits": 0.27250054496667,
+          "prior_mass": 0.3478260869565217,
+          "cost": 50,
+          "voi_score": 0.17250054496666997
+        },
+        {
+          "action_id": "DEM-FILTRE",
+          "eig_bits": 0.27250054496667,
+          "prior_mass": 0.3478260869565217,
+          "cost": 75,
+          "voi_score": 0.12250054496666998
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.16039124436670127,
+          "prior_mass": 0.23188405797101447,
+          "cost": 50,
+          "voi_score": 0.06039124436670126
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0.11914689252303123,
+          "prior_mass": 0.42028985507246375,
+          "cost": 25,
+          "voi_score": 0.06914689252303123
+        },
+        {
+          "action_id": "MAN-REGLAGE-BYPASS",
+          "eig_bits": 0.10776001415223946,
+          "prior_mass": 0.18840579710144928,
+          "cost": 50,
+          "voi_score": 0.007760014152239453
+        },
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.07272052531631745,
+          "prior_mass": 0.6521739130434783,
+          "cost": 50,
+          "voi_score": -0.027279474683682553
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0,
+          "prior_mass": 1,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TENSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-DEGIV",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REMPLISSAGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-DESENGORGEMENT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE-FRIGO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-VIDANGE-PARTIELLE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "DEM-CIRCULATEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-ECHANGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "INT-RECUP-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 250,
+          "voi_score": -0.5
+        },
+        {
+          "action_id": "INT-TIRAGE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "INT-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 220,
+          "voi_score": -0.44
+        },
+        {
+          "action_id": "INT-BRASURE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 300,
+          "voi_score": -0.6
+        },
+        {
+          "action_id": "INT-REPARATION-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 350,
+          "voi_score": -0.7000000000000001
+        },
+        {
+          "action_id": "INT-DEGLACAGE-MANUEL",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 100,
+          "voi_score": -0.2
+        },
+        {
+          "action_id": "INT-CONTROLE-ETANCHEITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 200,
+          "voi_score": -0.4
+        },
+        {
+          "action_id": "INT-REMPLACEMENT-FILTRE-DESHY",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "REM-CIRCULATEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 505,
+          "voi_score": -1.01
+        },
+        {
+          "action_id": "REM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 245,
+          "voi_score": -0.49
+        },
+        {
+          "action_id": "REM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 205,
+          "voi_score": -0.41000000000000003
+        },
+        {
+          "action_id": "REM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 325,
+          "voi_score": -0.65
+        },
+        {
+          "action_id": "REM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 575,
+          "voi_score": -1.1500000000000001
+        },
+        {
+          "action_id": "REM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 1325,
+          "voi_score": -2.65
+        },
+        {
+          "action_id": "REM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 405,
+          "voi_score": -0.81
+        },
+        {
+          "action_id": "REM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 475,
+          "voi_score": -0.9500000000000001
+        },
+        {
+          "action_id": "REM-POMPE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 125,
+          "voi_score": -0.25
+        },
+        {
+          "action_id": "REM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 170,
+          "voi_score": -0.34
+        },
+        {
+          "action_id": "REM-CAPTEUR-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 275,
+          "voi_score": -0.55
+        },
+        {
+          "action_id": "REM-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 215,
+          "voi_score": -0.43
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0005",
+      "base_entropy_bits": 1.9622214328866967,
+      "n_actions": 60,
+      "eig_median": 0,
+      "eig_std": 0.08436265655085204,
+      "eig_max": 0.24391032469958396,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.7833333333333333,
+      "eig_max_action": "OBS-BRUIT-POMPE",
+      "engine_pick_action": "OBS-BYPASS",
+      "engine_top_score": 0.6367775015103437,
+      "cheapest_action": "OBS-PURGEUR",
+      "cheapest_cost": 25,
+      "eig_max_cost": 25,
+      "lambda_delta_cost": 0,
+      "eig_max_over_lambda_delta_cost": null,
+      "useless_mass_actions": [
+        "MES-DT-EAU"
+      ],
+      "actions": [
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.24391032469958396,
+          "prior_mass": 0.3135593220338983,
+          "cost": 25,
+          "voi_score": 0.19391032469958397
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0.24391032469958396,
+          "prior_mass": 0.3135593220338983,
+          "cost": 25,
+          "voi_score": 0.19391032469958397
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.24391032469958396,
+          "prior_mass": 0.3135593220338983,
+          "cost": 50,
+          "voi_score": 0.14391032469958395
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.24391032469958396,
+          "prior_mass": 0.3135593220338983,
+          "cost": 50,
+          "voi_score": 0.14391032469958395
+        },
+        {
+          "action_id": "DEM-CIRCULATEUR",
+          "eig_bits": 0.24391032469958396,
+          "prior_mass": 0.3135593220338983,
+          "cost": 75,
+          "voi_score": 0.09391032469958396
+        },
+        {
+          "action_id": "REM-CIRCULATEUR",
+          "eig_bits": 0.24391032469958396,
+          "prior_mass": 0.3135593220338983,
+          "cost": 505,
+          "voi_score": -0.766089675300416
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.22833939263908176,
+          "prior_mass": 0.2966101694915254,
+          "cost": 25,
+          "voi_score": 0.17833939263908177
+        },
+        {
+          "action_id": "MAN-PURGE",
+          "eig_bits": 0.22833939263908176,
+          "prior_mass": 0.2966101694915254,
+          "cost": 50,
+          "voi_score": 0.12833939263908176
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.15946701679405528,
+          "prior_mass": 0.5084745762711864,
+          "cost": 50,
+          "voi_score": 0.05946701679405528
+        },
+        {
+          "action_id": "MAN-REMPLISSAGE",
+          "eig_bits": 0.13692589000560185,
+          "prior_mass": 0.21186440677966104,
+          "cost": 50,
+          "voi_score": 0.03692589000560184
+        },
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.094505819337382,
+          "prior_mass": 0.17796610169491525,
+          "cost": 50,
+          "voi_score": -0.005494180662618003
+        },
+        {
+          "action_id": "REM-FLOWSWITCH",
+          "eig_bits": 0.094505819337382,
+          "prior_mass": 0.17796610169491525,
+          "cost": 245,
+          "voi_score": -0.395494180662618
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.08391012033529544,
+          "prior_mass": 0.8220338983050848,
+          "cost": 50,
+          "voi_score": -0.01608987966470457
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TENSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-RESET",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-DEGIV",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-NETTOYAGE-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-DESENGORGEMENT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REGLAGE-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE-FRIGO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-VIDANGE-PARTIELLE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "DEM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-ECHANGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "INT-RECUP-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 250,
+          "voi_score": -0.5
+        },
+        {
+          "action_id": "INT-TIRAGE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "INT-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 220,
+          "voi_score": -0.44
+        },
+        {
+          "action_id": "INT-BRASURE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 300,
+          "voi_score": -0.6
+        },
+        {
+          "action_id": "INT-REPARATION-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 350,
+          "voi_score": -0.7000000000000001
+        },
+        {
+          "action_id": "INT-DEGLACAGE-MANUEL",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 100,
+          "voi_score": -0.2
+        },
+        {
+          "action_id": "INT-CONTROLE-ETANCHEITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 200,
+          "voi_score": -0.4
+        },
+        {
+          "action_id": "INT-REMPLACEMENT-FILTRE-DESHY",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "REM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 205,
+          "voi_score": -0.41000000000000003
+        },
+        {
+          "action_id": "REM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 325,
+          "voi_score": -0.65
+        },
+        {
+          "action_id": "REM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 575,
+          "voi_score": -1.1500000000000001
+        },
+        {
+          "action_id": "REM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 1325,
+          "voi_score": -2.65
+        },
+        {
+          "action_id": "REM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 405,
+          "voi_score": -0.81
+        },
+        {
+          "action_id": "REM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 475,
+          "voi_score": -0.9500000000000001
+        },
+        {
+          "action_id": "REM-POMPE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 125,
+          "voi_score": -0.25
+        },
+        {
+          "action_id": "REM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 170,
+          "voi_score": -0.34
+        },
+        {
+          "action_id": "REM-CAPTEUR-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 275,
+          "voi_score": -0.55
+        },
+        {
+          "action_id": "REM-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 215,
+          "voi_score": -0.43
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0006",
+      "base_entropy_bits": 1.800687778417815,
+      "n_actions": 60,
+      "eig_median": 0,
+      "eig_std": 0.08597163781693695,
+      "eig_max": 0.2667392899657519,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.8333333333333334,
+      "eig_max_action": "OBS-BRUIT-POMPE",
+      "engine_pick_action": "MES-DT-EAU",
+      "engine_top_score": 0.8903782781297984,
+      "cheapest_action": "OBS-PURGEUR",
+      "cheapest_cost": 25,
+      "eig_max_cost": 25,
+      "lambda_delta_cost": 0,
+      "eig_max_over_lambda_delta_cost": null,
+      "useless_mass_actions": [
+        "MES-DT-EAU"
+      ],
+      "actions": [
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.2667392899657519,
+          "prior_mass": 0.38418079096045193,
+          "cost": 25,
+          "voi_score": 0.21673928996575192
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0.2667392899657519,
+          "prior_mass": 0.38418079096045193,
+          "cost": 25,
+          "voi_score": 0.21673928996575192
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.2667392899657519,
+          "prior_mass": 0.38418079096045193,
+          "cost": 50,
+          "voi_score": 0.1667392899657519
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.2667392899657519,
+          "prior_mass": 0.38418079096045193,
+          "cost": 50,
+          "voi_score": 0.1667392899657519
+        },
+        {
+          "action_id": "DEM-CIRCULATEUR",
+          "eig_bits": 0.2667392899657519,
+          "prior_mass": 0.38418079096045193,
+          "cost": 75,
+          "voi_score": 0.11673928996575192
+        },
+        {
+          "action_id": "REM-CIRCULATEUR",
+          "eig_bits": 0.2667392899657519,
+          "prior_mass": 0.38418079096045193,
+          "cost": 505,
+          "voi_score": -0.7432607100342481
+        },
+        {
+          "action_id": "MAN-REMPLISSAGE",
+          "eig_bits": 0.24837263342488303,
+          "prior_mass": 0.3578154425612053,
+          "cost": 50,
+          "voi_score": 0.14837263342488302
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.14775366381000588,
+          "prior_mass": 0.5310734463276836,
+          "cost": 50,
+          "voi_score": 0.04775366381000587
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.0647387884782038,
+          "prior_mass": 0.17325800376647835,
+          "cost": 25,
+          "voi_score": 0.014738788478203799
+        },
+        {
+          "action_id": "MAN-PURGE",
+          "eig_bits": 0.0647387884782038,
+          "prior_mass": 0.17325800376647835,
+          "cost": 50,
+          "voi_score": -0.035261211521796204
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0,
+          "prior_mass": 0.0847457627118644,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0,
+          "prior_mass": 1,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TENSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-RESET",
+          "eig_bits": 0,
+          "prior_mass": 0.0847457627118644,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-DEGIV",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-NETTOYAGE-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0.0847457627118644,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-DESENGORGEMENT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REGLAGE-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE-FRIGO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-VIDANGE-PARTIELLE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "DEM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0.0847457627118644,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-ECHANGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "INT-RECUP-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 250,
+          "voi_score": -0.5
+        },
+        {
+          "action_id": "INT-TIRAGE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "INT-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 220,
+          "voi_score": -0.44
+        },
+        {
+          "action_id": "INT-BRASURE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 300,
+          "voi_score": -0.6
+        },
+        {
+          "action_id": "INT-REPARATION-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 350,
+          "voi_score": -0.7000000000000001
+        },
+        {
+          "action_id": "INT-DEGLACAGE-MANUEL",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 100,
+          "voi_score": -0.2
+        },
+        {
+          "action_id": "INT-CONTROLE-ETANCHEITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 200,
+          "voi_score": -0.4
+        },
+        {
+          "action_id": "INT-REMPLACEMENT-FILTRE-DESHY",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "REM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 245,
+          "voi_score": -0.49
+        },
+        {
+          "action_id": "REM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 205,
+          "voi_score": -0.41000000000000003
+        },
+        {
+          "action_id": "REM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 325,
+          "voi_score": -0.65
+        },
+        {
+          "action_id": "REM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 575,
+          "voi_score": -1.1500000000000001
+        },
+        {
+          "action_id": "REM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 1325,
+          "voi_score": -2.65
+        },
+        {
+          "action_id": "REM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 405,
+          "voi_score": -0.81
+        },
+        {
+          "action_id": "REM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 475,
+          "voi_score": -0.9500000000000001
+        },
+        {
+          "action_id": "REM-POMPE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 125,
+          "voi_score": -0.25
+        },
+        {
+          "action_id": "REM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 170,
+          "voi_score": -0.34
+        },
+        {
+          "action_id": "REM-CAPTEUR-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 275,
+          "voi_score": -0.55
+        },
+        {
+          "action_id": "REM-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 215,
+          "voi_score": -0.43
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0007",
+      "base_entropy_bits": 1.9156149894853605,
+      "n_actions": 60,
+      "eig_median": 0,
+      "eig_std": 0.07573693990810634,
+      "eig_max": 0.2748348336180504,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.8,
+      "eig_max_action": "OBS-VANNE",
+      "engine_pick_action": "OBS-BRUIT-POMPE",
+      "engine_top_score": 0.6204652463198761,
+      "cheapest_action": "OBS-PURGEUR",
+      "cheapest_cost": 25,
+      "eig_max_cost": 25,
+      "lambda_delta_cost": 0,
+      "eig_max_over_lambda_delta_cost": null,
+      "useless_mass_actions": [],
+      "actions": [
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0.2748348336180504,
+          "prior_mass": 0.36283185840707965,
+          "cost": 25,
+          "voi_score": 0.2248348336180504
+        },
+        {
+          "action_id": "MAN-FORCAGE-VENTILO",
+          "eig_bits": 0.2748348336180504,
+          "prior_mass": 0.36283185840707965,
+          "cost": 50,
+          "voi_score": 0.17483483361805038
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0.21106522437779462,
+          "prior_mass": 0.28761061946902655,
+          "cost": 50,
+          "voi_score": 0.11106522437779462
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0.21106522437779462,
+          "prior_mass": 0.28761061946902655,
+          "cost": 50,
+          "voi_score": 0.11106522437779462
+        },
+        {
+          "action_id": "DEM-SONDE",
+          "eig_bits": 0.21106522437779462,
+          "prior_mass": 0.28761061946902655,
+          "cost": 75,
+          "voi_score": 0.06106522437779463
+        },
+        {
+          "action_id": "REM-SONDE",
+          "eig_bits": 0.21106522437779462,
+          "prior_mass": 0.28761061946902655,
+          "cost": 205,
+          "voi_score": -0.1989347756222054
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.1741448834578312,
+          "prior_mass": 0.5,
+          "cost": 50,
+          "voi_score": 0.07414488345783118
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0.12996408722961528,
+          "prior_mass": 0.21238938053097345,
+          "cost": 25,
+          "voi_score": 0.07996408722961527
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.12996408722961528,
+          "prior_mass": 0.21238938053097345,
+          "cost": 50,
+          "voi_score": 0.02996408722961527
+        },
+        {
+          "action_id": "REM-CARTE",
+          "eig_bits": 0.12996408722961528,
+          "prior_mass": 0.21238938053097345,
+          "cost": 575,
+          "voi_score": -1.0200359127703849
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.03458546296569809,
+          "prior_mass": 0.13716814159292037,
+          "cost": 50,
+          "voi_score": -0.06541453703430192
+        },
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.03458546296569809,
+          "prior_mass": 0.13716814159292037,
+          "cost": 50,
+          "voi_score": -0.06541453703430192
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TENSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-RESET",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-DEGIV",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REMPLISSAGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-NETTOYAGE-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-DESENGORGEMENT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REGLAGE-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE-FRIGO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-VIDANGE-PARTIELLE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "DEM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-CIRCULATEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-ECHANGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "INT-RECUP-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 250,
+          "voi_score": -0.5
+        },
+        {
+          "action_id": "INT-TIRAGE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "INT-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 220,
+          "voi_score": -0.44
+        },
+        {
+          "action_id": "INT-BRASURE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 300,
+          "voi_score": -0.6
+        },
+        {
+          "action_id": "INT-REPARATION-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 350,
+          "voi_score": -0.7000000000000001
+        },
+        {
+          "action_id": "INT-DEGLACAGE-MANUEL",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 100,
+          "voi_score": -0.2
+        },
+        {
+          "action_id": "INT-CONTROLE-ETANCHEITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 200,
+          "voi_score": -0.4
+        },
+        {
+          "action_id": "INT-REMPLACEMENT-FILTRE-DESHY",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "REM-CIRCULATEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 505,
+          "voi_score": -1.01
+        },
+        {
+          "action_id": "REM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 245,
+          "voi_score": -0.49
+        },
+        {
+          "action_id": "REM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 325,
+          "voi_score": -0.65
+        },
+        {
+          "action_id": "REM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 1325,
+          "voi_score": -2.65
+        },
+        {
+          "action_id": "REM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 405,
+          "voi_score": -0.81
+        },
+        {
+          "action_id": "REM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 475,
+          "voi_score": -0.9500000000000001
+        },
+        {
+          "action_id": "REM-POMPE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 125,
+          "voi_score": -0.25
+        },
+        {
+          "action_id": "REM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 170,
+          "voi_score": -0.34
+        },
+        {
+          "action_id": "REM-CAPTEUR-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 275,
+          "voi_score": -0.55
+        },
+        {
+          "action_id": "REM-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 215,
+          "voi_score": -0.43
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0008",
+      "base_entropy_bits": 1.8366003408685505,
+      "n_actions": 60,
+      "eig_median": 0,
+      "eig_std": 0.08135682012873464,
+      "eig_max": 0.32117262367028787,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.8333333333333334,
+      "eig_max_action": "MES-DT-EAU",
+      "engine_pick_action": "OBS-BRUIT-POMPE",
+      "engine_top_score": 0.5928101193039926,
+      "cheapest_action": "OBS-PURGEUR",
+      "cheapest_cost": 25,
+      "eig_max_cost": 50,
+      "lambda_delta_cost": 25,
+      "eig_max_over_lambda_delta_cost": 6.423452473405757,
+      "useless_mass_actions": [
+        "OBS-GELEE"
+      ],
+      "actions": [
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.32117262367028787,
+          "prior_mass": 0.47058823529411764,
+          "cost": 50,
+          "voi_score": 0.22117262367028787
+        },
+        {
+          "action_id": "MAN-RESET",
+          "eig_bits": 0.32117262367028787,
+          "prior_mass": 0.47058823529411764,
+          "cost": 50,
+          "voi_score": 0.22117262367028787
+        },
+        {
+          "action_id": "MAN-NETTOYAGE-FILTRE",
+          "eig_bits": 0.32117262367028787,
+          "prior_mass": 0.47058823529411764,
+          "cost": 50,
+          "voi_score": 0.22117262367028787
+        },
+        {
+          "action_id": "DEM-FILTRE",
+          "eig_bits": 0.32117262367028787,
+          "prior_mass": 0.47058823529411764,
+          "cost": 75,
+          "voi_score": 0.17117262367028788
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.08824909877950748,
+          "prior_mass": 0.823529411764706,
+          "cost": 25,
+          "voi_score": 0.03824909877950748
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0.07398053297237528,
+          "prior_mass": 0.17647058823529413,
+          "cost": 25,
+          "voi_score": 0.023980532972375276
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.07398053297237528,
+          "prior_mass": 0.17647058823529413,
+          "cost": 50,
+          "voi_score": -0.026019467027624726
+        },
+        {
+          "action_id": "MAN-FORCAGE-DEGIV",
+          "eig_bits": 0.07398053297237528,
+          "prior_mass": 0.17647058823529413,
+          "cost": 50,
+          "voi_score": -0.026019467027624726
+        },
+        {
+          "action_id": "MAN-DESENGORGEMENT",
+          "eig_bits": 0.07398053297237528,
+          "prior_mass": 0.17647058823529413,
+          "cost": 50,
+          "voi_score": -0.026019467027624726
+        },
+        {
+          "action_id": "INT-CHARGE",
+          "eig_bits": 0.07398053297237528,
+          "prior_mass": 0.17647058823529413,
+          "cost": 220,
+          "voi_score": -0.3660194670276247
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TENSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REMPLISSAGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REGLAGE-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE-FRIGO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-VIDANGE-PARTIELLE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "DEM-CIRCULATEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-ECHANGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "INT-RECUP-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 250,
+          "voi_score": -0.5
+        },
+        {
+          "action_id": "INT-TIRAGE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "INT-BRASURE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 300,
+          "voi_score": -0.6
+        },
+        {
+          "action_id": "INT-REPARATION-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 350,
+          "voi_score": -0.7000000000000001
+        },
+        {
+          "action_id": "INT-DEGLACAGE-MANUEL",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 100,
+          "voi_score": -0.2
+        },
+        {
+          "action_id": "INT-CONTROLE-ETANCHEITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 200,
+          "voi_score": -0.4
+        },
+        {
+          "action_id": "INT-REMPLACEMENT-FILTRE-DESHY",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "REM-CIRCULATEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 505,
+          "voi_score": -1.01
+        },
+        {
+          "action_id": "REM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 245,
+          "voi_score": -0.49
+        },
+        {
+          "action_id": "REM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 205,
+          "voi_score": -0.41000000000000003
+        },
+        {
+          "action_id": "REM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 325,
+          "voi_score": -0.65
+        },
+        {
+          "action_id": "REM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 575,
+          "voi_score": -1.1500000000000001
+        },
+        {
+          "action_id": "REM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 1325,
+          "voi_score": -2.65
+        },
+        {
+          "action_id": "REM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 405,
+          "voi_score": -0.81
+        },
+        {
+          "action_id": "REM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 475,
+          "voi_score": -0.9500000000000001
+        },
+        {
+          "action_id": "REM-POMPE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 125,
+          "voi_score": -0.25
+        },
+        {
+          "action_id": "REM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 170,
+          "voi_score": -0.34
+        },
+        {
+          "action_id": "REM-CAPTEUR-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 275,
+          "voi_score": -0.55
+        },
+        {
+          "action_id": "REM-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 215,
+          "voi_score": -0.43
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0009",
+      "base_entropy_bits": 1.8006877784178152,
+      "n_actions": 60,
+      "eig_median": 0,
+      "eig_std": 0.08597163781693697,
+      "eig_max": 0.2667392899657519,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.8333333333333334,
+      "eig_max_action": "OBS-BRUIT-POMPE",
+      "engine_pick_action": "MES-DT-EAU",
+      "engine_top_score": 0.8903782781297985,
+      "cheapest_action": "OBS-PURGEUR",
+      "cheapest_cost": 25,
+      "eig_max_cost": 25,
+      "lambda_delta_cost": 0,
+      "eig_max_over_lambda_delta_cost": null,
+      "useless_mass_actions": [
+        "MES-DT-EAU"
+      ],
+      "actions": [
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.2667392899657519,
+          "prior_mass": 0.38418079096045193,
+          "cost": 25,
+          "voi_score": 0.21673928996575192
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0.2667392899657519,
+          "prior_mass": 0.38418079096045193,
+          "cost": 25,
+          "voi_score": 0.21673928996575192
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.2667392899657519,
+          "prior_mass": 0.38418079096045193,
+          "cost": 50,
+          "voi_score": 0.1667392899657519
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.2667392899657519,
+          "prior_mass": 0.38418079096045193,
+          "cost": 50,
+          "voi_score": 0.1667392899657519
+        },
+        {
+          "action_id": "DEM-CIRCULATEUR",
+          "eig_bits": 0.2667392899657519,
+          "prior_mass": 0.38418079096045193,
+          "cost": 75,
+          "voi_score": 0.11673928996575192
+        },
+        {
+          "action_id": "REM-CIRCULATEUR",
+          "eig_bits": 0.2667392899657519,
+          "prior_mass": 0.38418079096045193,
+          "cost": 505,
+          "voi_score": -0.7432607100342481
+        },
+        {
+          "action_id": "MAN-REMPLISSAGE",
+          "eig_bits": 0.24837263342488325,
+          "prior_mass": 0.3578154425612053,
+          "cost": 50,
+          "voi_score": 0.14837263342488324
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.14775366381000654,
+          "prior_mass": 0.5310734463276836,
+          "cost": 50,
+          "voi_score": 0.047753663810006536
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.06473878847820402,
+          "prior_mass": 0.17325800376647835,
+          "cost": 25,
+          "voi_score": 0.01473878847820402
+        },
+        {
+          "action_id": "MAN-PURGE",
+          "eig_bits": 0.06473878847820402,
+          "prior_mass": 0.17325800376647835,
+          "cost": 50,
+          "voi_score": -0.03526121152179598
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0,
+          "prior_mass": 0.0847457627118644,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0,
+          "prior_mass": 1,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TENSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-RESET",
+          "eig_bits": 0,
+          "prior_mass": 0.0847457627118644,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-DEGIV",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-NETTOYAGE-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0.0847457627118644,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-DESENGORGEMENT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REGLAGE-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE-FRIGO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-VIDANGE-PARTIELLE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "DEM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0.0847457627118644,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-ECHANGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "INT-RECUP-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 250,
+          "voi_score": -0.5
+        },
+        {
+          "action_id": "INT-TIRAGE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "INT-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 220,
+          "voi_score": -0.44
+        },
+        {
+          "action_id": "INT-BRASURE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 300,
+          "voi_score": -0.6
+        },
+        {
+          "action_id": "INT-REPARATION-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 350,
+          "voi_score": -0.7000000000000001
+        },
+        {
+          "action_id": "INT-DEGLACAGE-MANUEL",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 100,
+          "voi_score": -0.2
+        },
+        {
+          "action_id": "INT-CONTROLE-ETANCHEITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 200,
+          "voi_score": -0.4
+        },
+        {
+          "action_id": "INT-REMPLACEMENT-FILTRE-DESHY",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "REM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 245,
+          "voi_score": -0.49
+        },
+        {
+          "action_id": "REM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 205,
+          "voi_score": -0.41000000000000003
+        },
+        {
+          "action_id": "REM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 325,
+          "voi_score": -0.65
+        },
+        {
+          "action_id": "REM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 575,
+          "voi_score": -1.1500000000000001
+        },
+        {
+          "action_id": "REM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 1325,
+          "voi_score": -2.65
+        },
+        {
+          "action_id": "REM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 405,
+          "voi_score": -0.81
+        },
+        {
+          "action_id": "REM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 475,
+          "voi_score": -0.9500000000000001
+        },
+        {
+          "action_id": "REM-POMPE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 125,
+          "voi_score": -0.25
+        },
+        {
+          "action_id": "REM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 170,
+          "voi_score": -0.34
+        },
+        {
+          "action_id": "REM-CAPTEUR-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 275,
+          "voi_score": -0.55
+        },
+        {
+          "action_id": "REM-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 215,
+          "voi_score": -0.43
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0010",
+      "base_entropy_bits": 1.8651525943606098,
+      "n_actions": 60,
+      "eig_median": 0,
+      "eig_std": 0.08328157449913284,
+      "eig_max": 0.2891226552871724,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.7666666666666667,
+      "eig_max_action": "MES-CONTINUITE",
+      "engine_pick_action": "OBS-BRUIT-POMPE",
+      "engine_top_score": 0.6028034080262133,
+      "cheapest_action": "OBS-PURGEUR",
+      "cheapest_cost": 25,
+      "eig_max_cost": 50,
+      "lambda_delta_cost": 25,
+      "eig_max_over_lambda_delta_cost": 5.782453105743448,
+      "useless_mass_actions": [],
+      "actions": [
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0.2891226552871724,
+          "prior_mass": 0.39877300613496935,
+          "cost": 50,
+          "voi_score": 0.1891226552871724
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0.2891226552871724,
+          "prior_mass": 0.39877300613496935,
+          "cost": 50,
+          "voi_score": 0.1891226552871724
+        },
+        {
+          "action_id": "DEM-SONDE",
+          "eig_bits": 0.2891226552871724,
+          "prior_mass": 0.39877300613496935,
+          "cost": 75,
+          "voi_score": 0.1391226552871724
+        },
+        {
+          "action_id": "REM-SONDE",
+          "eig_bits": 0.2891226552871724,
+          "prior_mass": 0.39877300613496935,
+          "cost": 205,
+          "voi_score": -0.12087734471282763
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0.20817958341059595,
+          "prior_mass": 0.294478527607362,
+          "cost": 25,
+          "voi_score": 0.15817958341059596
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.20817958341059595,
+          "prior_mass": 0.294478527607362,
+          "cost": 50,
+          "voi_score": 0.10817958341059594
+        },
+        {
+          "action_id": "REM-CARTE",
+          "eig_bits": 0.20817958341059595,
+          "prior_mass": 0.294478527607362,
+          "cost": 575,
+          "voi_score": -0.9418204165894042
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.0951646166665916,
+          "prior_mass": 0.1901840490797546,
+          "cost": 50,
+          "voi_score": -0.004835383333408411
+        },
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.0951646166665916,
+          "prior_mass": 0.1901840490797546,
+          "cost": 50,
+          "voi_score": -0.004835383333408411
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.03790150665511138,
+          "prior_mass": 0.3067484662576687,
+          "cost": 50,
+          "voi_score": -0.06209849334488862
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.001910950710987347,
+          "prior_mass": 0.11656441717791412,
+          "cost": 25,
+          "voi_score": -0.048089049289012656
+        },
+        {
+          "action_id": "MAN-RESET",
+          "eig_bits": 0.001910950710987347,
+          "prior_mass": 0.11656441717791412,
+          "cost": 50,
+          "voi_score": -0.09808904928901266
+        },
+        {
+          "action_id": "MAN-NETTOYAGE-FILTRE",
+          "eig_bits": 0.001910950710987347,
+          "prior_mass": 0.11656441717791412,
+          "cost": 50,
+          "voi_score": -0.09808904928901266
+        },
+        {
+          "action_id": "DEM-FILTRE",
+          "eig_bits": 0.001910950710987347,
+          "prior_mass": 0.11656441717791412,
+          "cost": 75,
+          "voi_score": -0.14808904928901265
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TENSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-DEGIV",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REMPLISSAGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-DESENGORGEMENT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REGLAGE-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE-FRIGO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-VIDANGE-PARTIELLE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "DEM-CIRCULATEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-ECHANGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "INT-RECUP-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 250,
+          "voi_score": -0.5
+        },
+        {
+          "action_id": "INT-TIRAGE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "INT-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 220,
+          "voi_score": -0.44
+        },
+        {
+          "action_id": "INT-BRASURE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 300,
+          "voi_score": -0.6
+        },
+        {
+          "action_id": "INT-REPARATION-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 350,
+          "voi_score": -0.7000000000000001
+        },
+        {
+          "action_id": "INT-DEGLACAGE-MANUEL",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 100,
+          "voi_score": -0.2
+        },
+        {
+          "action_id": "INT-CONTROLE-ETANCHEITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 200,
+          "voi_score": -0.4
+        },
+        {
+          "action_id": "INT-REMPLACEMENT-FILTRE-DESHY",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "REM-CIRCULATEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 505,
+          "voi_score": -1.01
+        },
+        {
+          "action_id": "REM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 245,
+          "voi_score": -0.49
+        },
+        {
+          "action_id": "REM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 325,
+          "voi_score": -0.65
+        },
+        {
+          "action_id": "REM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 1325,
+          "voi_score": -2.65
+        },
+        {
+          "action_id": "REM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 405,
+          "voi_score": -0.81
+        },
+        {
+          "action_id": "REM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 475,
+          "voi_score": -0.9500000000000001
+        },
+        {
+          "action_id": "REM-POMPE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 125,
+          "voi_score": -0.25
+        },
+        {
+          "action_id": "REM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 170,
+          "voi_score": -0.34
+        },
+        {
+          "action_id": "REM-CAPTEUR-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 275,
+          "voi_score": -0.55
+        },
+        {
+          "action_id": "REM-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 215,
+          "voi_score": -0.43
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0011",
+      "base_entropy_bits": 1.9622214328866965,
+      "n_actions": 60,
+      "eig_median": 0,
+      "eig_std": 0.08436265655085193,
+      "eig_max": 0.24391032469958351,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.7833333333333333,
+      "eig_max_action": "OBS-BRUIT-POMPE",
+      "engine_pick_action": "OBS-BYPASS",
+      "engine_top_score": 0.6367775015103437,
+      "cheapest_action": "OBS-PURGEUR",
+      "cheapest_cost": 25,
+      "eig_max_cost": 25,
+      "lambda_delta_cost": 0,
+      "eig_max_over_lambda_delta_cost": null,
+      "useless_mass_actions": [
+        "MES-DT-EAU"
+      ],
+      "actions": [
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.24391032469958351,
+          "prior_mass": 0.3135593220338983,
+          "cost": 25,
+          "voi_score": 0.19391032469958353
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0.24391032469958351,
+          "prior_mass": 0.3135593220338983,
+          "cost": 25,
+          "voi_score": 0.19391032469958353
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.24391032469958351,
+          "prior_mass": 0.3135593220338983,
+          "cost": 50,
+          "voi_score": 0.1439103246995835
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.24391032469958351,
+          "prior_mass": 0.3135593220338983,
+          "cost": 50,
+          "voi_score": 0.1439103246995835
+        },
+        {
+          "action_id": "DEM-CIRCULATEUR",
+          "eig_bits": 0.24391032469958351,
+          "prior_mass": 0.3135593220338983,
+          "cost": 75,
+          "voi_score": 0.09391032469958352
+        },
+        {
+          "action_id": "REM-CIRCULATEUR",
+          "eig_bits": 0.24391032469958351,
+          "prior_mass": 0.3135593220338983,
+          "cost": 505,
+          "voi_score": -0.7660896753004165
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.22833939263908154,
+          "prior_mass": 0.2966101694915254,
+          "cost": 25,
+          "voi_score": 0.17833939263908155
+        },
+        {
+          "action_id": "MAN-PURGE",
+          "eig_bits": 0.22833939263908154,
+          "prior_mass": 0.2966101694915254,
+          "cost": 50,
+          "voi_score": 0.12833939263908153
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.15946701679405528,
+          "prior_mass": 0.5084745762711864,
+          "cost": 50,
+          "voi_score": 0.05946701679405528
+        },
+        {
+          "action_id": "MAN-REMPLISSAGE",
+          "eig_bits": 0.13692589000560162,
+          "prior_mass": 0.21186440677966104,
+          "cost": 50,
+          "voi_score": 0.03692589000560162
+        },
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0.09450581933738178,
+          "prior_mass": 0.17796610169491525,
+          "cost": 50,
+          "voi_score": -0.0054941806626182255
+        },
+        {
+          "action_id": "REM-FLOWSWITCH",
+          "eig_bits": 0.09450581933738178,
+          "prior_mass": 0.17796610169491525,
+          "cost": 245,
+          "voi_score": -0.3954941806626182
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.08391012033529521,
+          "prior_mass": 0.8220338983050847,
+          "cost": 50,
+          "voi_score": -0.016089879664704793
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TENSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-RESET",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-DEGIV",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-NETTOYAGE-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-DESENGORGEMENT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REGLAGE-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE-FRIGO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-VIDANGE-PARTIELLE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "DEM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-ECHANGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "INT-RECUP-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 250,
+          "voi_score": -0.5
+        },
+        {
+          "action_id": "INT-TIRAGE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "INT-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 220,
+          "voi_score": -0.44
+        },
+        {
+          "action_id": "INT-BRASURE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 300,
+          "voi_score": -0.6
+        },
+        {
+          "action_id": "INT-REPARATION-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 350,
+          "voi_score": -0.7000000000000001
+        },
+        {
+          "action_id": "INT-DEGLACAGE-MANUEL",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 100,
+          "voi_score": -0.2
+        },
+        {
+          "action_id": "INT-CONTROLE-ETANCHEITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 200,
+          "voi_score": -0.4
+        },
+        {
+          "action_id": "INT-REMPLACEMENT-FILTRE-DESHY",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "REM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 205,
+          "voi_score": -0.41000000000000003
+        },
+        {
+          "action_id": "REM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 325,
+          "voi_score": -0.65
+        },
+        {
+          "action_id": "REM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 575,
+          "voi_score": -1.1500000000000001
+        },
+        {
+          "action_id": "REM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 1325,
+          "voi_score": -2.65
+        },
+        {
+          "action_id": "REM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 405,
+          "voi_score": -0.81
+        },
+        {
+          "action_id": "REM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 475,
+          "voi_score": -0.9500000000000001
+        },
+        {
+          "action_id": "REM-POMPE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 125,
+          "voi_score": -0.25
+        },
+        {
+          "action_id": "REM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 170,
+          "voi_score": -0.34
+        },
+        {
+          "action_id": "REM-CAPTEUR-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 275,
+          "voi_score": -0.55
+        },
+        {
+          "action_id": "REM-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 215,
+          "voi_score": -0.43
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0012",
+      "base_entropy_bits": 1.5935014522094706,
+      "n_actions": 60,
+      "eig_median": 0,
+      "eig_std": 0.08987074476158811,
+      "eig_max": 0.2957791387414259,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.7666666666666667,
+      "eig_max_action": "OBS-BRUIT-POMPE",
+      "engine_pick_action": "OBS-BYPASS",
+      "engine_top_score": 0.5077255082733146,
+      "cheapest_action": "OBS-PURGEUR",
+      "cheapest_cost": 25,
+      "eig_max_cost": 25,
+      "lambda_delta_cost": 0,
+      "eig_max_over_lambda_delta_cost": null,
+      "useless_mass_actions": [
+        "MES-DT-EAU"
+      ],
+      "actions": [
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0.2957791387414259,
+          "prior_mass": 0.5419354838709678,
+          "cost": 25,
+          "voi_score": 0.24577913874142593
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0.2957791387414259,
+          "prior_mass": 0.5419354838709678,
+          "cost": 25,
+          "voi_score": 0.24577913874142593
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0.2957791387414259,
+          "prior_mass": 0.5419354838709678,
+          "cost": 50,
+          "voi_score": 0.1957791387414259
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.2957791387414259,
+          "prior_mass": 0.5419354838709678,
+          "cost": 50,
+          "voi_score": 0.1957791387414259
+        },
+        {
+          "action_id": "DEM-CIRCULATEUR",
+          "eig_bits": 0.2957791387414259,
+          "prior_mass": 0.5419354838709678,
+          "cost": 75,
+          "voi_score": 0.14577913874142592
+        },
+        {
+          "action_id": "REM-CIRCULATEUR",
+          "eig_bits": 0.2957791387414259,
+          "prior_mass": 0.5419354838709678,
+          "cost": 505,
+          "voi_score": -0.7142208612585741
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0.11770531804084383,
+          "prior_mass": 0.2516129032258065,
+          "cost": 25,
+          "voi_score": 0.06770531804084383
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0.11770531804084383,
+          "prior_mass": 0.2516129032258065,
+          "cost": 50,
+          "voi_score": 0.017705318040843826
+        },
+        {
+          "action_id": "MAN-PURGE",
+          "eig_bits": 0.11770531804084383,
+          "prior_mass": 0.2516129032258065,
+          "cost": 50,
+          "voi_score": 0.017705318040843826
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.03205692929060122,
+          "prior_mass": 0.9612903225806453,
+          "cost": 50,
+          "voi_score": -0.06794307070939878
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.028159427041267282,
+          "prior_mass": 0.16774193548387098,
+          "cost": 25,
+          "voi_score": -0.02184057295873272
+        },
+        {
+          "action_id": "MAN-RESET",
+          "eig_bits": 0.028159427041267282,
+          "prior_mass": 0.16774193548387098,
+          "cost": 50,
+          "voi_score": -0.07184057295873272
+        },
+        {
+          "action_id": "MAN-NETTOYAGE-FILTRE",
+          "eig_bits": 0.028159427041267282,
+          "prior_mass": 0.16774193548387098,
+          "cost": 50,
+          "voi_score": -0.07184057295873272
+        },
+        {
+          "action_id": "DEM-FILTRE",
+          "eig_bits": 0.028159427041267282,
+          "prior_mass": 0.16774193548387098,
+          "cost": 75,
+          "voi_score": -0.12184057295873271
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0,
+          "prior_mass": 0.03870967741935484,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TENSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-DEGIV",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REMPLISSAGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-DESENGORGEMENT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REGLAGE-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE-FRIGO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-VIDANGE-PARTIELLE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "DEM-ECHANGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "INT-RECUP-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 250,
+          "voi_score": -0.5
+        },
+        {
+          "action_id": "INT-TIRAGE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "INT-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 220,
+          "voi_score": -0.44
+        },
+        {
+          "action_id": "INT-BRASURE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 300,
+          "voi_score": -0.6
+        },
+        {
+          "action_id": "INT-REPARATION-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 350,
+          "voi_score": -0.7000000000000001
+        },
+        {
+          "action_id": "INT-DEGLACAGE-MANUEL",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 100,
+          "voi_score": -0.2
+        },
+        {
+          "action_id": "INT-CONTROLE-ETANCHEITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 200,
+          "voi_score": -0.4
+        },
+        {
+          "action_id": "INT-REMPLACEMENT-FILTRE-DESHY",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "REM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0.03870967741935484,
+          "cost": 245,
+          "voi_score": -0.49
+        },
+        {
+          "action_id": "REM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 205,
+          "voi_score": -0.41000000000000003
+        },
+        {
+          "action_id": "REM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 325,
+          "voi_score": -0.65
+        },
+        {
+          "action_id": "REM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 575,
+          "voi_score": -1.1500000000000001
+        },
+        {
+          "action_id": "REM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 1325,
+          "voi_score": -2.65
+        },
+        {
+          "action_id": "REM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 405,
+          "voi_score": -0.81
+        },
+        {
+          "action_id": "REM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 475,
+          "voi_score": -0.9500000000000001
+        },
+        {
+          "action_id": "REM-POMPE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 125,
+          "voi_score": -0.25
+        },
+        {
+          "action_id": "REM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 170,
+          "voi_score": -0.34
+        },
+        {
+          "action_id": "REM-CAPTEUR-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 275,
+          "voi_score": -0.55
+        },
+        {
+          "action_id": "REM-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 215,
+          "voi_score": -0.43
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0013",
+      "base_entropy_bits": 1.966116662662252,
+      "n_actions": 60,
+      "eig_median": 0,
+      "eig_std": 0.07347829168669832,
+      "eig_max": 0.24558664224885507,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.8,
+      "eig_max_action": "MES-CONTINUITE",
+      "engine_pick_action": "OBS-BRUIT-POMPE",
+      "engine_top_score": 0.638140831931788,
+      "cheapest_action": "OBS-PURGEUR",
+      "cheapest_cost": 25,
+      "eig_max_cost": 50,
+      "lambda_delta_cost": 25,
+      "eig_max_over_lambda_delta_cost": 4.911732844977101,
+      "useless_mass_actions": [
+        "OBS-GELEE"
+      ],
+      "actions": [
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0.24558664224885507,
+          "prior_mass": 0.3146067415730337,
+          "cost": 50,
+          "voi_score": 0.14558664224885506
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0.24558664224885507,
+          "prior_mass": 0.3146067415730337,
+          "cost": 50,
+          "voi_score": 0.14558664224885506
+        },
+        {
+          "action_id": "DEM-SONDE",
+          "eig_bits": 0.24558664224885507,
+          "prior_mass": 0.3146067415730337,
+          "cost": 75,
+          "voi_score": 0.09558664224885507
+        },
+        {
+          "action_id": "REM-SONDE",
+          "eig_bits": 0.24558664224885507,
+          "prior_mass": 0.3146067415730337,
+          "cost": 205,
+          "voi_score": -0.16441335775114496
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.20241200034351636,
+          "prior_mass": 0.26966292134831465,
+          "cost": 50,
+          "voi_score": 0.10241200034351636
+        },
+        {
+          "action_id": "INT-CHARGE",
+          "eig_bits": 0.20241200034351636,
+          "prior_mass": 0.26966292134831465,
+          "cost": 220,
+          "voi_score": -0.23758799965648364
+        },
+        {
+          "action_id": "MAN-FORCAGE-DEGIV",
+          "eig_bits": 0.17841995835557123,
+          "prior_mass": 0.24719101123595505,
+          "cost": 50,
+          "voi_score": 0.07841995835557122
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.08280373841833288,
+          "prior_mass": 0.16853932584269662,
+          "cost": 50,
+          "voi_score": -0.01719626158166712
+        },
+        {
+          "action_id": "MAN-RESET",
+          "eig_bits": 0.08280373841833288,
+          "prior_mass": 0.16853932584269662,
+          "cost": 50,
+          "voi_score": -0.01719626158166712
+        },
+        {
+          "action_id": "MAN-NETTOYAGE-FILTRE",
+          "eig_bits": 0.08280373841833288,
+          "prior_mass": 0.16853932584269662,
+          "cost": 50,
+          "voi_score": -0.01719626158166712
+        },
+        {
+          "action_id": "DEM-FILTRE",
+          "eig_bits": 0.08280373841833288,
+          "prior_mass": 0.16853932584269662,
+          "cost": 75,
+          "voi_score": -0.06719626158166711
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.08229287169477018,
+          "prior_mass": 0.6853932584269664,
+          "cost": 25,
+          "voi_score": 0.03229287169477017
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TENSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REMPLISSAGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-DESENGORGEMENT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REGLAGE-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE-FRIGO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-VIDANGE-PARTIELLE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "DEM-CIRCULATEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-ECHANGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "INT-RECUP-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 250,
+          "voi_score": -0.5
+        },
+        {
+          "action_id": "INT-TIRAGE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "INT-BRASURE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 300,
+          "voi_score": -0.6
+        },
+        {
+          "action_id": "INT-REPARATION-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 350,
+          "voi_score": -0.7000000000000001
+        },
+        {
+          "action_id": "INT-DEGLACAGE-MANUEL",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 100,
+          "voi_score": -0.2
+        },
+        {
+          "action_id": "INT-CONTROLE-ETANCHEITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 200,
+          "voi_score": -0.4
+        },
+        {
+          "action_id": "INT-REMPLACEMENT-FILTRE-DESHY",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "REM-CIRCULATEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 505,
+          "voi_score": -1.01
+        },
+        {
+          "action_id": "REM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 245,
+          "voi_score": -0.49
+        },
+        {
+          "action_id": "REM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 325,
+          "voi_score": -0.65
+        },
+        {
+          "action_id": "REM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 575,
+          "voi_score": -1.1500000000000001
+        },
+        {
+          "action_id": "REM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 1325,
+          "voi_score": -2.65
+        },
+        {
+          "action_id": "REM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 405,
+          "voi_score": -0.81
+        },
+        {
+          "action_id": "REM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 475,
+          "voi_score": -0.9500000000000001
+        },
+        {
+          "action_id": "REM-POMPE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 125,
+          "voi_score": -0.25
+        },
+        {
+          "action_id": "REM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 170,
+          "voi_score": -0.34
+        },
+        {
+          "action_id": "REM-CAPTEUR-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 275,
+          "voi_score": -0.55
+        },
+        {
+          "action_id": "REM-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 215,
+          "voi_score": -0.43
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0014",
+      "base_entropy_bits": 1.803435844755277,
+      "n_actions": 60,
+      "eig_median": 0,
+      "eig_std": 0.05478273143248158,
+      "eig_max": 0.31776908332498066,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.85,
+      "eig_max_action": "MAN-FORCAGE-DEGIV",
+      "engine_pick_action": "OBS-BRUIT-POMPE",
+      "engine_top_score": 0.5812025456643468,
+      "cheapest_action": "OBS-PURGEUR",
+      "cheapest_cost": 25,
+      "eig_max_cost": 50,
+      "lambda_delta_cost": 25,
+      "eig_max_over_lambda_delta_cost": 6.355381666499613,
+      "useless_mass_actions": [
+        "OBS-GELEE"
+      ],
+      "actions": [
+        {
+          "action_id": "MAN-FORCAGE-DEGIV",
+          "eig_bits": 0.31776908332498066,
+          "prior_mass": 0.4787234042553191,
+          "cost": 50,
+          "voi_score": 0.21776908332498066
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.18258647442952203,
+          "prior_mass": 0.6808510638297872,
+          "cost": 25,
+          "voi_score": 0.13258647442952204
+        },
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0.09979266986727331,
+          "prior_mass": 0.20212765957446807,
+          "cost": 25,
+          "voi_score": 0.049792669867273306
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0.09979266986727331,
+          "prior_mass": 0.20212765957446807,
+          "cost": 50,
+          "voi_score": -0.00020733013272669631
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.09979266986727331,
+          "prior_mass": 0.20212765957446807,
+          "cost": 50,
+          "voi_score": -0.00020733013272669631
+        },
+        {
+          "action_id": "MAN-RESET",
+          "eig_bits": 0.09979266986727331,
+          "prior_mass": 0.20212765957446807,
+          "cost": 50,
+          "voi_score": -0.00020733013272669631
+        },
+        {
+          "action_id": "MAN-NETTOYAGE-FILTRE",
+          "eig_bits": 0.09979266986727331,
+          "prior_mass": 0.20212765957446807,
+          "cost": 50,
+          "voi_score": -0.00020733013272669631
+        },
+        {
+          "action_id": "DEM-FILTRE",
+          "eig_bits": 0.09979266986727331,
+          "prior_mass": 0.20212765957446807,
+          "cost": 75,
+          "voi_score": -0.050207330132726685
+        },
+        {
+          "action_id": "REM-CARTE",
+          "eig_bits": 0.09979266986727331,
+          "prior_mass": 0.20212765957446807,
+          "cost": 575,
+          "voi_score": -1.0502073301327268
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0,
+          "prior_mass": 0.11702127659574468,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TENSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REMPLISSAGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-DESENGORGEMENT",
+          "eig_bits": 0,
+          "prior_mass": 0.11702127659574468,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REGLAGE-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE-FRIGO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-VIDANGE-PARTIELLE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "DEM-CIRCULATEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-ECHANGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "INT-RECUP-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 250,
+          "voi_score": -0.5
+        },
+        {
+          "action_id": "INT-TIRAGE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "INT-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 220,
+          "voi_score": -0.44
+        },
+        {
+          "action_id": "INT-BRASURE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 300,
+          "voi_score": -0.6
+        },
+        {
+          "action_id": "INT-REPARATION-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 350,
+          "voi_score": -0.7000000000000001
+        },
+        {
+          "action_id": "INT-DEGLACAGE-MANUEL",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 100,
+          "voi_score": -0.2
+        },
+        {
+          "action_id": "INT-CONTROLE-ETANCHEITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 200,
+          "voi_score": -0.4
+        },
+        {
+          "action_id": "INT-REMPLACEMENT-FILTRE-DESHY",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "REM-CIRCULATEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 505,
+          "voi_score": -1.01
+        },
+        {
+          "action_id": "REM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 245,
+          "voi_score": -0.49
+        },
+        {
+          "action_id": "REM-SONDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 205,
+          "voi_score": -0.41000000000000003
+        },
+        {
+          "action_id": "REM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 325,
+          "voi_score": -0.65
+        },
+        {
+          "action_id": "REM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 1325,
+          "voi_score": -2.65
+        },
+        {
+          "action_id": "REM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 405,
+          "voi_score": -0.81
+        },
+        {
+          "action_id": "REM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 475,
+          "voi_score": -0.9500000000000001
+        },
+        {
+          "action_id": "REM-POMPE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 125,
+          "voi_score": -0.25
+        },
+        {
+          "action_id": "REM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 170,
+          "voi_score": -0.34
+        },
+        {
+          "action_id": "REM-CAPTEUR-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 275,
+          "voi_score": -0.55
+        },
+        {
+          "action_id": "REM-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 215,
+          "voi_score": -0.43
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0015",
+      "base_entropy_bits": 1.940109412833944,
+      "n_actions": 60,
+      "eig_median": 0,
+      "eig_std": 0.06808757244175814,
+      "eig_max": 0.2908004817778944,
+      "eig_min": 0,
+      "pct_exact_zero_eig": 0.8333333333333334,
+      "eig_max_action": "OBS-LED-DEFAUT",
+      "engine_pick_action": "OBS-BRUIT-POMPE",
+      "engine_top_score": 0.6290382944918803,
+      "cheapest_action": "OBS-PURGEUR",
+      "cheapest_cost": 25,
+      "eig_max_cost": 25,
+      "lambda_delta_cost": 0,
+      "eig_max_over_lambda_delta_cost": null,
+      "useless_mass_actions": [
+        "MES-HP-BP"
+      ],
+      "actions": [
+        {
+          "action_id": "OBS-LED-DEFAUT",
+          "eig_bits": 0.2908004817778944,
+          "prior_mass": 0.37837837837837834,
+          "cost": 25,
+          "voi_score": 0.24080048177789443
+        },
+        {
+          "action_id": "REM-CARTE",
+          "eig_bits": 0.2908004817778944,
+          "prior_mass": 0.37837837837837834,
+          "cost": 575,
+          "voi_score": -0.8591995182221057
+        },
+        {
+          "action_id": "MES-HP-BP",
+          "eig_bits": 0.18542789149897265,
+          "prior_mass": 0.6013513513513513,
+          "cost": 50,
+          "voi_score": 0.08542789149897265
+        },
+        {
+          "action_id": "OBS-GELEE",
+          "eig_bits": 0.1464714169221728,
+          "prior_mass": 0.22297297297297297,
+          "cost": 25,
+          "voi_score": 0.0964714169221728
+        },
+        {
+          "action_id": "INT-CHARGE",
+          "eig_bits": 0.1464714169221728,
+          "prior_mass": 0.22297297297297297,
+          "cost": 220,
+          "voi_score": -0.2935285830778272
+        },
+        {
+          "action_id": "MES-CONTINUITE",
+          "eig_bits": 0.13043568267170436,
+          "prior_mass": 0.20945945945945943,
+          "cost": 50,
+          "voi_score": 0.03043568267170435
+        },
+        {
+          "action_id": "MES-SONDE",
+          "eig_bits": 0.13043568267170436,
+          "prior_mass": 0.20945945945945943,
+          "cost": 50,
+          "voi_score": 0.03043568267170435
+        },
+        {
+          "action_id": "DEM-SONDE",
+          "eig_bits": 0.13043568267170436,
+          "prior_mass": 0.20945945945945943,
+          "cost": 75,
+          "voi_score": -0.01956431732829564
+        },
+        {
+          "action_id": "REM-SONDE",
+          "eig_bits": 0.13043568267170436,
+          "prior_mass": 0.20945945945945943,
+          "cost": 205,
+          "voi_score": -0.2795643173282957
+        },
+        {
+          "action_id": "MAN-RESET",
+          "eig_bits": 0.10546582127006943,
+          "prior_mass": 0.18918918918918917,
+          "cost": 50,
+          "voi_score": 0.005465821270069421
+        },
+        {
+          "action_id": "OBS-PURGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VAPEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BRUIT-POMPE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CONDENSATS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "OBS-CAPTEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 25,
+          "voi_score": -0.05
+        },
+        {
+          "action_id": "MES-DT-EAU",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-AMPERAGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-DEBIT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TEMP-AMBIANTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MES-TENSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-DEGIV",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REMPLISSAGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-NETTOYAGE-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-DESENGORGEMENT",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-FORCAGE-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-REGLAGE-BYPASS",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-PURGE-FRIGO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "MAN-VIDANGE-PARTIELLE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 50,
+          "voi_score": -0.1
+        },
+        {
+          "action_id": "DEM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-CIRCULATEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-ECHANGEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-CARTE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "DEM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 75,
+          "voi_score": -0.15
+        },
+        {
+          "action_id": "INT-RECUP-CHARGE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 250,
+          "voi_score": -0.5
+        },
+        {
+          "action_id": "INT-TIRAGE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "INT-BRASURE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 300,
+          "voi_score": -0.6
+        },
+        {
+          "action_id": "INT-REPARATION-FUITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 350,
+          "voi_score": -0.7000000000000001
+        },
+        {
+          "action_id": "INT-DEGLACAGE-MANUEL",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 100,
+          "voi_score": -0.2
+        },
+        {
+          "action_id": "INT-CONTROLE-ETANCHEITE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 200,
+          "voi_score": -0.4
+        },
+        {
+          "action_id": "INT-REMPLACEMENT-FILTRE-DESHY",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 180,
+          "voi_score": -0.36
+        },
+        {
+          "action_id": "REM-CIRCULATEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 505,
+          "voi_score": -1.01
+        },
+        {
+          "action_id": "REM-FLOWSWITCH",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 245,
+          "voi_score": -0.49
+        },
+        {
+          "action_id": "REM-VANNE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 325,
+          "voi_score": -0.65
+        },
+        {
+          "action_id": "REM-COMPRESSEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 1325,
+          "voi_score": -2.65
+        },
+        {
+          "action_id": "REM-VENTILO",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 405,
+          "voi_score": -0.81
+        },
+        {
+          "action_id": "REM-DETENDEUR",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 475,
+          "voi_score": -0.9500000000000001
+        },
+        {
+          "action_id": "REM-POMPE-VIDE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 125,
+          "voi_score": -0.25
+        },
+        {
+          "action_id": "REM-FILTRE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 170,
+          "voi_score": -0.34
+        },
+        {
+          "action_id": "REM-CAPTEUR-PRESSION",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 275,
+          "voi_score": -0.55
+        },
+        {
+          "action_id": "REM-RESISTANCE",
+          "eig_bits": 0,
+          "prior_mass": 0,
+          "cost": 215,
+          "voi_score": -0.43
+        }
+      ]
+    }
+  ],
+  "top_eig_actions_pooled": [
+    {
+      "action_id": "MES-HP-BP",
+      "mean_eig": 0.19710202038895555,
+      "n_cases": 15
+    },
+    {
+      "action_id": "OBS-BRUIT-POMPE",
+      "mean_eig": 0.141878496890231,
+      "n_cases": 15
+    },
+    {
+      "action_id": "OBS-FUITE",
+      "mean_eig": 0.141878496890231,
+      "n_cases": 15
+    },
+    {
+      "action_id": "MES-AMPERAGE",
+      "mean_eig": 0.141878496890231,
+      "n_cases": 15
+    },
+    {
+      "action_id": "DEM-CIRCULATEUR",
+      "mean_eig": 0.141878496890231,
+      "n_cases": 15
+    },
+    {
+      "action_id": "REM-CIRCULATEUR",
+      "mean_eig": 0.141878496890231,
+      "n_cases": 15
+    },
+    {
+      "action_id": "MES-PRESSION",
+      "mean_eig": 0.11539617235692465,
+      "n_cases": 15
+    },
+    {
+      "action_id": "OBS-PURGEUR",
+      "mean_eig": 0.09766810864141678,
+      "n_cases": 15
+    },
+    {
+      "action_id": "MAN-PURGE",
+      "mean_eig": 0.09766810864141678,
+      "n_cases": 15
+    },
+    {
+      "action_id": "MAN-RESET",
+      "mean_eig": 0.08070315717723565,
+      "n_cases": 15
+    },
+    {
+      "action_id": "MES-DT-EAU",
+      "mean_eig": 0.07797716529372736,
+      "n_cases": 15
+    },
+    {
+      "action_id": "MAN-NETTOYAGE-FILTRE",
+      "mean_eig": 0.0736721024258977,
+      "n_cases": 15
+    },
+    {
+      "action_id": "DEM-FILTRE",
+      "mean_eig": 0.0736721024258977,
+      "n_cases": 15
+    },
+    {
+      "action_id": "OBS-GELEE",
+      "mean_eig": 0.0733941577505696,
+      "n_cases": 15
+    },
+    {
+      "action_id": "MAN-REMPLISSAGE",
+      "mean_eig": 0.06156761632835914,
+      "n_cases": 15
+    }
+  ],
+  "diagnosis": "Recouvrement action×cause faible — majorité EIG=0 ; fallback gain pickNextAction peut dominer le coût.",
+  "selector_invariant": {
+    "n_diagnosable": 15,
+    "max_top_prior_D": 0.5419354838709678,
+    "max_top_prior_R": 0.7172131147540983,
+    "per_case": [
+      {
+        "case_id": "hb2-0001",
+        "max_top_prior_D": 0.22816032887975335,
+        "max_top_prior_R": 0.26428571428571435,
+        "delta_D_minus_R": -0.036125385405961
+      },
+      {
+        "case_id": "hb2-0002",
+        "max_top_prior_D": 0.282442748091603,
+        "max_top_prior_R": 0.6212222968435192,
+        "delta_D_minus_R": -0.3387795487519161
+      },
+      {
+        "case_id": "hb2-0003",
+        "max_top_prior_D": 0.2605633802816902,
+        "max_top_prior_R": 0.6236635780470421,
+        "delta_D_minus_R": -0.3631001977653519
+      },
+      {
+        "case_id": "hb2-0004",
+        "max_top_prior_D": 0.34782608695652173,
+        "max_top_prior_R": 0.3478260869565217,
+        "delta_D_minus_R": 5.551115123125783e-17
+      },
+      {
+        "case_id": "hb2-0005",
+        "max_top_prior_D": 0.3135593220338983,
+        "max_top_prior_R": 0.38061927785207283,
+        "delta_D_minus_R": -0.06705995581817453
+      },
+      {
+        "case_id": "hb2-0006",
+        "max_top_prior_D": 0.3028953229398664,
+        "max_top_prior_R": 0.38418079096045193,
+        "delta_D_minus_R": -0.08128546802058556
+      },
+      {
+        "case_id": "hb2-0007",
+        "max_top_prior_D": 0.36283185840707965,
+        "max_top_prior_R": 0.7035003431708992,
+        "delta_D_minus_R": -0.3406684847638195
+      },
+      {
+        "case_id": "hb2-0008",
+        "max_top_prior_D": 0.47058823529411764,
+        "max_top_prior_R": 0.47169811320754723,
+        "delta_D_minus_R": -0.001109877913429591
+      },
+      {
+        "case_id": "hb2-0009",
+        "max_top_prior_D": 0.3028953229398663,
+        "max_top_prior_R": 0.38418079096045193,
+        "delta_D_minus_R": -0.08128546802058562
+      },
+      {
+        "case_id": "hb2-0010",
+        "max_top_prior_D": 0.39877300613496935,
+        "max_top_prior_R": 0.6349206349206349,
+        "delta_D_minus_R": -0.23614762878566553
+      },
+      {
+        "case_id": "hb2-0011",
+        "max_top_prior_D": 0.3135593220338983,
+        "max_top_prior_R": 0.3135593220338983,
+        "delta_D_minus_R": 0
+      },
+      {
+        "case_id": "hb2-0012",
+        "max_top_prior_D": 0.5419354838709678,
+        "max_top_prior_R": 0.5869661016541006,
+        "delta_D_minus_R": -0.045030617783132776
+      },
+      {
+        "case_id": "hb2-0013",
+        "max_top_prior_D": 0.3146067415730337,
+        "max_top_prior_R": 0.45787545787545786,
+        "delta_D_minus_R": -0.14326871630242416
+      },
+      {
+        "case_id": "hb2-0014",
+        "max_top_prior_D": 0.35575679172056923,
+        "max_top_prior_R": 0.5135135135135135,
+        "delta_D_minus_R": -0.15775672179294425
+      },
+      {
+        "case_id": "hb2-0015",
+        "max_top_prior_D": 0.37837837837837834,
+        "max_top_prior_R": 0.7172131147540983,
+        "delta_D_minus_R": -0.33883473637572
+      }
+    ],
+    "invariant_holds": false
+  },
+  "eig_variance_guard": {
+    "ok": false,
+    "pooled_std": 0.08305511240360763,
+    "pooled_median": 0,
+    "threshold_std": 0.08,
+    "threshold_median": 0.05
+  },
+  "eig_zero_coverage_guard": {
+    "ok": false,
+    "pct_exact_zero": 0.7966666666666666,
+    "threshold_max": 0.5
+  },
+  "engine_pick_mismatch_cases": 15
+}

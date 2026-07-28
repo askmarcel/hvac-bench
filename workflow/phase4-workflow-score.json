@@ -1,0 +1,13 @@
+{
+  "source": "workflow/phase4-annotations.json",
+  "n_total": 30,
+  "n_scored": 30,
+  "means": {
+    "ordre_simple_invasif": 2.3,
+    "coherence_metier": 3.27,
+    "completude": 2.3,
+    "workflow_composite": 2.62
+  },
+  "scale": "1–5 (1=insuffisant, 5=excellent)",
+  "note": "Score secondaire — ne pas mélanger avec headline hallucination/utilité (CDC §4.6)."
+}

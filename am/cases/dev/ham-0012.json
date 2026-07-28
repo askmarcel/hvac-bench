@@ -1,0 +1,40 @@
+{
+  "id": "ham-0012",
+  "titre": "Daikin Altherma — fusible circulateur grillé après coupure de courant",
+  "equipement": { "marque": "Daikin", "modele": "Altherma 3 EHVH12", "famille": "pac_air_eau", "age_ans": 3 },
+  "installation": {
+    "emetteur": "radiateurs_ht",
+    "regime_eau": "60/50",
+    "region_climat": "H1",
+    "particularites": "orage avec coupure de courant la veille"
+  },
+  "plainte_initiale": "Plus aucun bruit de pompe, la carte est allumée mais rien ne circule.",
+  "etat_operatoire": "arret_force",
+  "ground_state": {
+    "amperage_circulateur": 0,
+    "bruit_pompe": "silencieux",
+    "led_defaut": "aucun_code_specifique"
+  },
+  "evolution": [
+    { "si_action": "mesure_amperage_circulateur", "alors": { "amperage_circulateur": 0 } },
+    { "si_action": "controle_fusible_circulateur", "alors": { "etat_fusible": "grille" } },
+    {
+      "si_action": "remplacement_fusible",
+      "alors": { "amperage_circulateur": 0.8, "bruit_pompe": "silencieux_normal", "resout": true }
+    }
+  ],
+  "verite": {
+    "cause": "fusible du circulateur grillé, probablement suite au pic de tension de l'orage/coupure",
+    "solution": "remplacer le fusible (calibre constructeur), contrôler le circulateur au redémarrage, vérifier l'absence de court-circuit avant de remettre sous tension",
+    "verification": "circulateur tourne, ampérage dans la plage 0.3-2.5A, débit rétabli",
+    "pieges": []
+  },
+  "chemin_expert": ["MES-AMPERAGE"],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": null
+  },
+  "split": "dev"
+}

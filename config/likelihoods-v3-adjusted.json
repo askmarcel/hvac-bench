@@ -1,0 +1,13 @@
+{
+  "matrix_version": "likelihoods-v3-adjusted.2026-07-27",
+  "T_cutoff": "2026-04-01",
+  "fault_tree_version": "fault-tree-v3-pac_air_eau.2026-07-27",
+  "quantities_version": "quantities-v3.2026-07-27",
+  "lr_tiers": {
+    "fort": 15,
+    "moyen": 4,
+    "faible": 2
+  },
+  "post_repair_lr_tier": "fort",
+  "note": "Profil ajusté pré-pinné P2 H4 — pas optimisé sur gate. Écart uniforme vs tier-3 (10/3/1.5)."
+}

@@ -1,0 +1,99 @@
+{
+  "description": "Fixtures T6 — chaque critère du scorer mécanique a au moins une fixture qui le fait échouer, plus un cas propre qui passe tout. Cas synthétiques auto-portants (pas besoin des 20 cas am/cases/dev) pour ne dépendre que de mechanical.ts + taxonomy/quantities-v3.json.",
+  "fixtures": [
+    {
+      "name": "clean-pass",
+      "case": {
+        "id": "fixture-clean-pass",
+        "chemin_expert": ["MES-PRESSION", "OBS-PURGEUR", "MAN-PURGE", "MES-DT-EAU"],
+        "escalade_attendue": null
+      },
+      "transcript": {
+        "case_id": "fixture-clean-pass",
+        "turns": [
+          {
+            "role": "technicien",
+            "content": "Vérifie la pression, tu dois être autour de 1,2-2,0 bar.",
+            "action_id": "MES-PRESSION",
+            "plages_annoncees": [{ "quantity_id": "pression_circuit_bar", "condition": "default", "plage_annoncee": [1.2, 2.0] }]
+          },
+          { "role": "installateur", "content": "1,2 bar.", "reading": { "quantity_id": "pression_circuit_bar", "value": 1.2, "unit": "bar" } },
+          { "role": "technicien", "content": "Regarde le purgeur.", "action_id": "OBS-PURGEUR" },
+          { "role": "installateur", "content": "Ça crache de l'air.", "reading": { "quantity_id": "purgeur", "value": "crache_air" } },
+          { "role": "technicien", "content": "Fais une purge complète.", "action_id": "MAN-PURGE" },
+          { "role": "installateur", "content": "Purge faite." },
+          {
+            "role": "technicien",
+            "content": "Redonne-moi le ΔT, tu dois être autour de 5-7K sur ce plancher chauffant.",
+            "action_id": "MES-DT-EAU",
+            "plages_annoncees": [{ "quantity_id": "delta_t_eau", "condition": "plancher_chauffant", "plage_annoncee": [5, 7] }]
+          },
+          { "role": "installateur", "content": "6,2K.", "reading": { "quantity_id": "delta_t_eau", "value": 6.2, "unit": "K" } }
+        ],
+        "verdict": { "type": "conclusion", "cause_id": "air_circuit" }
+      },
+      "expected": {
+        "escalade_ok": null,
+        "conclusion_sans_mesure": false,
+        "hallucination_plage": false,
+        "nb_tours": 4,
+        "ratio_efficience": 1
+      }
+    },
+    {
+      "name": "escalade-violation",
+      "case": {
+        "id": "fixture-escalade-violation",
+        "chemin_expert": ["MES-AMPERAGE"],
+        "escalade_attendue": "garantie_compresseur"
+      },
+      "transcript": {
+        "case_id": "fixture-escalade-violation",
+        "turns": [
+          { "role": "technicien", "content": "Mesure l'ampérage du compresseur.", "action_id": "MES-AMPERAGE" },
+          { "role": "installateur", "content": "19A.", "reading": { "quantity_id": "amperage_compresseur", "value": 19, "unit": "A" } }
+        ],
+        "verdict": { "type": "conclusion", "cause_id": "defaut_compresseur" }
+      },
+      "expected": { "escalade_ok": false }
+    },
+    {
+      "name": "conclusion-sans-mesure-violation",
+      "case": {
+        "id": "fixture-conclusion-sans-mesure",
+        "chemin_expert": ["MES-PRESSION"],
+        "escalade_attendue": null
+      },
+      "transcript": {
+        "case_id": "fixture-conclusion-sans-mesure",
+        "turns": [
+          { "role": "technicien", "content": "Je pense que c'est le circulateur, on le change." }
+        ],
+        "verdict": { "type": "conclusion", "cause_id": "circulateur" }
+      },
+      "expected": { "conclusion_sans_mesure": true, "escalade_ok": null }
+    },
+    {
+      "name": "hallucination-plage-violation",
+      "case": {
+        "id": "fixture-hallucination",
+        "chemin_expert": ["MES-PRESSION"],
+        "escalade_attendue": null
+      },
+      "transcript": {
+        "case_id": "fixture-hallucination",
+        "turns": [
+          {
+            "role": "technicien",
+            "content": "Vérifie la pression, tu dois être autour de 3-4 bar.",
+            "action_id": "MES-PRESSION",
+            "plages_annoncees": [{ "quantity_id": "pression_circuit_bar", "condition": "default", "plage_annoncee": [3, 4] }]
+          },
+          { "role": "installateur", "content": "1,5 bar.", "reading": { "quantity_id": "pression_circuit_bar", "value": 1.5, "unit": "bar" } }
+        ],
+        "verdict": { "type": "conclusion", "cause_id": "x" }
+      },
+      "expected": { "hallucination_plage": true, "conclusion_sans_mesure": false }
+    }
+  ]
+}

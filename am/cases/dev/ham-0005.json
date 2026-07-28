@@ -1,0 +1,43 @@
+{
+  "id": "ham-0005",
+  "titre": "Daikin Altherma 3 — vanne de bypass fermée après travaux, cycles courts",
+  "equipement": { "marque": "Daikin", "modele": "Altherma 3 EHSH08", "famille": "pac_air_eau", "age_ans": 1 },
+  "installation": {
+    "emetteur": "plancher_chauffant",
+    "regime_eau": "35/28",
+    "region_climat": "H1",
+    "particularites": "travaux récents sur le collecteur"
+  },
+  "plainte_initiale": "La PAC démarre et s'arrête sans arrêt, jamais stable, certaines zones restent froides par intermittence.",
+  "etat_operatoire": "cycle_court",
+  "ground_state": {
+    "bypass_ouvert": "non",
+    "debit_l_min": 12,
+    "delta_t_eau_K": 2,
+    "t_depart": 42
+  },
+  "evolution": [
+    {
+      "si_action": "observation_bypass",
+      "alors": { "bypass_ouvert": "non", "position_vanne_bypass": "fermee_a_fond_apres_travaux" }
+    },
+    {
+      "si_action": "ouverture_bypass",
+      "alors": { "debit_l_min": 26, "delta_t_eau_K": 6, "cycles_courts": "disparus", "resout": true }
+    }
+  ],
+  "verite": {
+    "cause": "vanne de bypass laissée fermée après les travaux sur le collecteur, débit minimum non garanti quand les circuits de plancher se ferment",
+    "solution": "rouvrir et régler la vanne de bypass au débit minimum constructeur, contrôler la disparition des cycles courts",
+    "verification": "plus de cycle court sur 24h, ΔT revenu 5-7K",
+    "pieges": []
+  },
+  "chemin_expert": ["MES-DEBIT", "OBS-BYPASS", "MAN-REGLAGE-BYPASS"],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": null
+  },
+  "split": "dev"
+}

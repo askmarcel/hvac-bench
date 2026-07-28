@@ -1,0 +1,46 @@
+{
+  "id": "ham-0017",
+  "titre": "Mitsubishi Ecodan — cavitation trompeuse, vraie cause vase d'expansion en fin de vie",
+  "equipement": { "marque": "Mitsubishi Electric", "modele": "Ecodan PUZ-HWM", "famille": "pac_air_eau", "age_ans": 9 },
+  "installation": {
+    "emetteur": "plancher_chauffant",
+    "regime_eau": "35/28",
+    "region_climat": "H2",
+    "particularites": "vase d'expansion d'origine, jamais contrôlé"
+  },
+  "plainte_initiale": "Bruit de cavitation au niveau de la pompe depuis 1 mois, ça s'aggrave.",
+  "etat_operatoire": "nominal",
+  "ground_state": {
+    "bruit_pompe": "cavitation",
+    "pression_circuit_bar": 0.8,
+    "purgeur": "crache_air",
+    "amperage_circulateur": 1.1
+  },
+  "evolution": [
+    { "si_action": "remplacement_circulateur", "alors": { "bruit_pompe": "cavitation", "resout": false } },
+    {
+      "si_action": "controle_vase_expansion",
+      "alors": { "pression_precharge_vase_bar": 0.2, "diagnostic": "vessie_percee" }
+    },
+    {
+      "si_action": "remplacement_vase",
+      "alors": { "pression_circuit_bar": 1.6, "bruit_pompe": "silencieux", "resout": true }
+    }
+  ],
+  "verite": {
+    "cause": "vase d'expansion en fin de vie (vessie percée) — la pression circuit chute et de l'air s'introduit, provoquant la cavitation ; le circulateur lui-même est sain",
+    "solution": "remplacer le vase d'expansion, remettre en pression, purger, contrôler la disparition du bruit",
+    "verification": "pression stable au-dessus de 1.2 bar sans réajustement, plus de bruit de cavitation après purge",
+    "pieges": [
+      "remplacer le circulateur en premier réflexe devant la cavitation — l'ampérage nominal du circulateur (1.1A, dans la plage 0.3-2.5A) montre qu'il fonctionne correctement ; c'est la pression/le vase qu'il fallait contrôler d'abord"
+    ]
+  },
+  "chemin_expert": ["OBS-BRUIT-POMPE", "MES-PRESSION"],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": null
+  },
+  "split": "dev"
+}

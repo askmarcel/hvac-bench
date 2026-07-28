@@ -1,0 +1,100 @@
+{
+  "generated_at": "2026-07-26T21:56:58.570Z",
+  "invariant": "max_top_prior(D) > max_top_prior(R)",
+  "n_diagnosable": 15,
+  "max_top_prior_D": 0.5419354838709678,
+  "max_top_prior_R": 0.7172131147540983,
+  "per_case": [
+    {
+      "case_id": "hb2-0001",
+      "max_top_prior_D": 0.22816032887975335,
+      "max_top_prior_R": 0.26428571428571435,
+      "delta_D_minus_R": -0.036125385405961
+    },
+    {
+      "case_id": "hb2-0002",
+      "max_top_prior_D": 0.282442748091603,
+      "max_top_prior_R": 0.6212222968435192,
+      "delta_D_minus_R": -0.3387795487519161
+    },
+    {
+      "case_id": "hb2-0003",
+      "max_top_prior_D": 0.2605633802816902,
+      "max_top_prior_R": 0.6236635780470421,
+      "delta_D_minus_R": -0.3631001977653519
+    },
+    {
+      "case_id": "hb2-0004",
+      "max_top_prior_D": 0.34782608695652173,
+      "max_top_prior_R": 0.3478260869565217,
+      "delta_D_minus_R": 5.551115123125783e-17
+    },
+    {
+      "case_id": "hb2-0005",
+      "max_top_prior_D": 0.3135593220338983,
+      "max_top_prior_R": 0.38061927785207283,
+      "delta_D_minus_R": -0.06705995581817453
+    },
+    {
+      "case_id": "hb2-0006",
+      "max_top_prior_D": 0.3028953229398664,
+      "max_top_prior_R": 0.38418079096045193,
+      "delta_D_minus_R": -0.08128546802058556
+    },
+    {
+      "case_id": "hb2-0007",
+      "max_top_prior_D": 0.36283185840707965,
+      "max_top_prior_R": 0.7035003431708992,
+      "delta_D_minus_R": -0.3406684847638195
+    },
+    {
+      "case_id": "hb2-0008",
+      "max_top_prior_D": 0.47058823529411764,
+      "max_top_prior_R": 0.47169811320754723,
+      "delta_D_minus_R": -0.001109877913429591
+    },
+    {
+      "case_id": "hb2-0009",
+      "max_top_prior_D": 0.3028953229398663,
+      "max_top_prior_R": 0.38418079096045193,
+      "delta_D_minus_R": -0.08128546802058562
+    },
+    {
+      "case_id": "hb2-0010",
+      "max_top_prior_D": 0.39877300613496935,
+      "max_top_prior_R": 0.6349206349206349,
+      "delta_D_minus_R": -0.23614762878566553
+    },
+    {
+      "case_id": "hb2-0011",
+      "max_top_prior_D": 0.3135593220338983,
+      "max_top_prior_R": 0.3135593220338983,
+      "delta_D_minus_R": 0
+    },
+    {
+      "case_id": "hb2-0012",
+      "max_top_prior_D": 0.5419354838709678,
+      "max_top_prior_R": 0.5869661016541006,
+      "delta_D_minus_R": -0.045030617783132776
+    },
+    {
+      "case_id": "hb2-0013",
+      "max_top_prior_D": 0.3146067415730337,
+      "max_top_prior_R": 0.45787545787545786,
+      "delta_D_minus_R": -0.14326871630242416
+    },
+    {
+      "case_id": "hb2-0014",
+      "max_top_prior_D": 0.35575679172056923,
+      "max_top_prior_R": 0.5135135135135135,
+      "delta_D_minus_R": -0.15775672179294425
+    },
+    {
+      "case_id": "hb2-0015",
+      "max_top_prior_D": 0.37837837837837834,
+      "max_top_prior_R": 0.7172131147540983,
+      "delta_D_minus_R": -0.33883473637572
+    }
+  ],
+  "invariant_holds": false
+}

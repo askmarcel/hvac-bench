@@ -1,0 +1,21 @@
+{
+  "cascaded_at": "2026-07-26T23:30:00.000Z",
+  "note": "Chiffres corrigés — 11/15=0.73, 12/15=0.80, écart O_bayes−O_bayes_db ≈ 0.50",
+  "O_bayes": {
+    "convergence_at_5": 0.8,
+    "convergence_fraction": "12/15",
+    "note": "Post-fix REM-SONDE supports + seuil seul"
+  },
+  "O_bayes_db": {
+    "convergence_at_5": 0.3,
+    "target_realistic": "0.45-0.50"
+  },
+  "deltas": {
+    "O_bayes_minus_O_bayes_db_conv5": 0.5
+  },
+  "D_star": {
+    "status": "void",
+    "void_reason": "quota_exceeded 6/20 — ne pas citer 0.00"
+  },
+  "polarity_investigation": "hvac-bench/reports/polarity-regression-investigation-2026-07-26.md"
+}

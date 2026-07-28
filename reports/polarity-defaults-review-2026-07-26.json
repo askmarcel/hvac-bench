@@ -1,0 +1,479 @@
+{
+  "generated_at": "2026-07-26T21:31:49.150Z",
+  "n_unverified": 33,
+  "n_ok_default": 33,
+  "n_fix_contrefactual": 0,
+  "n_review_manual": 0,
+  "unverified_reviews": [
+    {
+      "case_id": "hb2-0001",
+      "action_id": "OBS-PURGEUR",
+      "observation": "Purgeur automatique crache de l'air en continu",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0001",
+      "action_id": "DEM-FILTRE",
+      "observation": "Tamis propre",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0002",
+      "action_id": "MES-PRESSION",
+      "observation": "1,4 bar mesure — limite basse constructeur",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0003",
+      "action_id": "OBS-BRUIT-POMPE",
+      "observation": "Raclement puis arrêt moteur — rotor bloqué",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0003",
+      "action_id": "MES-AMPERAGE",
+      "observation": "0,3 A puis 0 A — protection thermique",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0003",
+      "action_id": "DEM-CIRCULATEUR",
+      "observation": "Arbre grippé, roulement fatigué",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0004",
+      "action_id": "OBS-BYPASS",
+      "observation": "Bypass reste fermé malgré faible débit",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0004",
+      "action_id": "DEM-FILTRE",
+      "observation": "Filtre propre",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0005",
+      "action_id": "MES-PRESSION",
+      "observation": "1,1 bar — sous le seuil constructeur",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0006",
+      "action_id": "OBS-PURGEUR",
+      "observation": "Purgeur radiateur crache de l air",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0007",
+      "action_id": "OBS-VANNE",
+      "observation": "Vanne 3 voies bloquée position ECS",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0007",
+      "action_id": "MES-DT-EAU",
+      "observation": "ΔT quasi nul sur chauffage",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0007",
+      "action_id": "MAN-FORCAGE-VENTILO",
+      "observation": "Forçage vanne chauffage, débit reprend",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0008",
+      "action_id": "OBS-GELEE",
+      "observation": "Givre sur échangeur intérieur",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0008",
+      "action_id": "MAN-RESET",
+      "observation": "Froid rétabli après nettoyage et reset",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "supports",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0009",
+      "action_id": "MES-PRESSION",
+      "observation": "1,0 bar mesure — sous le seuil minimum",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0009",
+      "action_id": "MAN-REMPLISSAGE",
+      "observation": "1,5 bar après appoint",
+      "declared": "refutes",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0010",
+      "action_id": "MES-SONDE",
+      "observation": "Écart 4 K entre sonde UI et mesure locale",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0011",
+      "action_id": "MES-DT-EAU",
+      "observation": "ΔT = 2 K malgré circulateur neuf",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0011",
+      "action_id": "OBS-PURGEUR",
+      "observation": "Air au purgeur haut",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0013",
+      "action_id": "OBS-GELEE",
+      "observation": "Givre uniforme échangeur — manque d air",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0013",
+      "action_id": "MES-HP-BP",
+      "observation": "Pressions nominales",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0014",
+      "action_id": "OBS-CONDENSATS",
+      "observation": "Bac plein, évacuation obstruée",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0015",
+      "action_id": "MES-CONTINUITE",
+      "observation": "Coupure fil sonde ECS au passage cloche",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0016",
+      "action_id": "OBS-LED-DEFAUT",
+      "observation": "U0 persistant, menu paramètre SAV grisé — déverrouillage usine requis",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0016",
+      "action_id": "ESC-SAV",
+      "observation": "Intervention SAV constructeur nécessaire pour code de déverrouillage",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0017",
+      "action_id": "MES-HP-BP",
+      "observation": "Pressions atypiques — soupçon compresseur",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0017",
+      "action_id": "OBS-FUITE",
+      "observation": "Pas de fuite visible, étiquette garantie intacte sur compartiment compresseur",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0017",
+      "action_id": "ESC-GARANTIE",
+      "observation": "Remplacement compresseur sous garantie — ouverture compartiment romprait la garantie",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0018",
+      "action_id": "OBS-LED-DEFAUT",
+      "observation": "E01 inverter, LED carte clignotante",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0018",
+      "action_id": "ESC-PIECE-INDISPONIBLE",
+      "observation": "Référence carte hors production — délai > 8 semaines, pas d'équivalence certifiée",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0020",
+      "action_id": "MES-HP-BP",
+      "observation": "HP élevée, BP basse — soupçon compresseur",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    },
+    {
+      "case_id": "hb2-0020",
+      "action_id": "ESC-CONSIGNATION",
+      "observation": "Consignation TGBT requise par donneur d'ordre avant ouverture compresseur",
+      "declared": "supports",
+      "regex_inferred": "neutral",
+      "contrefactual_inferred": "neutral",
+      "verdict": "ok_default",
+      "reason": "Observation anormale / contexte expert — supports par défaut cohérent"
+    }
+  ],
+  "inferred_mismatches": [
+    {
+      "case_id": "hb2-0001",
+      "action_id": "REM-CIRCULATEUR",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Circulateur déposé : arbre libre, conforme. Aucun effet sur le défaut.",
+      "reason": "inferred_refutes_mismatch"
+    },
+    {
+      "case_id": "hb2-0002",
+      "action_id": "REM-CIRCULATEUR",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Circulateur OK mécaniquement",
+      "reason": "inferred_refutes_mismatch"
+    },
+    {
+      "case_id": "hb2-0005",
+      "action_id": "REM-FLOWSWITCH",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Flowswitch conforme — remplacement inutile",
+      "reason": "inferred_refutes_mismatch"
+    },
+    {
+      "case_id": "hb2-0010",
+      "action_id": "REM-SONDE",
+      "inferred": "refutes",
+      "declared": "supports",
+      "observation": "Régulation stable après remplacement sonde",
+      "reason": "inferred_refutes_mismatch"
+    },
+    {
+      "case_id": "hb2-0011",
+      "action_id": "REM-CIRCULATEUR",
+      "inferred": "supports",
+      "declared": "neutral",
+      "observation": "Remplacement déjà fait — inefficace",
+      "reason": "inferred_supports_mismatch"
+    },
+    {
+      "case_id": "hb2-0014",
+      "action_id": "REM-VENTILO",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Ventilateur conforme — remplacement inutile",
+      "reason": "inferred_refutes_mismatch"
+    },
+    {
+      "case_id": "hb2-0015",
+      "action_id": "MES-RESISTANCE",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Résistance chauffe conforme",
+      "reason": "inferred_refutes_mismatch"
+    },
+    {
+      "case_id": "hb2-0016",
+      "action_id": "MES-PRESSION",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "1,5 bar — hydraulique conforme",
+      "reason": "inferred_refutes_mismatch"
+    },
+    {
+      "case_id": "hb2-0018",
+      "action_id": "MES-CONTINUITE",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Alimentation carte conforme",
+      "reason": "inferred_refutes_mismatch"
+    }
+  ],
+  "fixes_applied": [
+    {
+      "case_id": "hb2-0001",
+      "action_id": "REM-CIRCULATEUR",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Circulateur déposé : arbre libre, conforme. Aucun effet sur le défaut.",
+      "reason": "mismatch_contrefactual_fix"
+    },
+    {
+      "case_id": "hb2-0002",
+      "action_id": "REM-CIRCULATEUR",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Circulateur OK mécaniquement",
+      "reason": "mismatch_contrefactual_fix"
+    },
+    {
+      "case_id": "hb2-0005",
+      "action_id": "REM-FLOWSWITCH",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Flowswitch conforme — remplacement inutile",
+      "reason": "mismatch_contrefactual_fix"
+    },
+    {
+      "case_id": "hb2-0011",
+      "action_id": "REM-CIRCULATEUR",
+      "inferred": "supports",
+      "declared": "neutral",
+      "observation": "Remplacement déjà fait — inefficace",
+      "reason": "mismatch_contrefactual_fix"
+    },
+    {
+      "case_id": "hb2-0014",
+      "action_id": "REM-VENTILO",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Ventilateur conforme — remplacement inutile",
+      "reason": "mismatch_contrefactual_fix"
+    },
+    {
+      "case_id": "hb2-0015",
+      "action_id": "MES-RESISTANCE",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Résistance chauffe conforme",
+      "reason": "mismatch_contrefactual_fix"
+    },
+    {
+      "case_id": "hb2-0016",
+      "action_id": "MES-PRESSION",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "1,5 bar — hydraulique conforme",
+      "reason": "mismatch_contrefactual_fix"
+    },
+    {
+      "case_id": "hb2-0018",
+      "action_id": "MES-CONTINUITE",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Alimentation carte conforme",
+      "reason": "mismatch_contrefactual_fix"
+    }
+  ]
+}

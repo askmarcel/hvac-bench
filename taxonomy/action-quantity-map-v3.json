@@ -1,0 +1,31 @@
+{
+  "version": "2026-07-27",
+  "taxonomy_version": "action-quantity-map-v3.2026-07-27",
+  "mes": {
+    "MES-DT-EAU": { "quantities": ["delta_t_eau"], "kind": "numeric" },
+    "MES-PRESSION": { "quantities": ["pression_circuit_bar"], "kind": "numeric" },
+    "MES-DEBIT": { "quantities": ["debit_l_min"], "kind": "numeric" },
+    "MES-HP-BP": { "quantities": ["hp_bar", "bp_bar", "delta_hp_bp"], "kind": "numeric", "composite": true },
+    "MES-AMPERAGE": {
+      "quantities": ["amperage_circulateur", "amperage_compresseur"],
+      "kind": "numeric",
+      "requires_context": ["target_component"]
+    },
+    "MES-TEMP-AMBIANTE": { "quantities": ["t_depart", "t_retour", "t_exterieure"], "kind": "numeric" },
+    "MES-SONDE": { "quantities": ["delta_sonde_k"], "kind": "numeric" },
+    "MES-CONTINUITE": { "quantities": ["continuite_sonde_ohm"], "kind": "numeric" },
+    "MES-RESISTANCE": { "quantities": ["resistance_ohm"], "kind": "numeric" }
+  },
+  "obs": {
+    "OBS-PURGEUR": { "quantity": "purgeur", "kind": "qualitative" },
+    "OBS-BRUIT-POMPE": { "quantity": "bruit_pompe", "kind": "qualitative" },
+    "OBS-GELEE": { "quantity": "givre", "kind": "qualitative" },
+    "OBS-LED-DEFAUT": { "quantity": "led_defaut", "kind": "qualitative" },
+    "OBS-FUITE": { "quantity": "fuite_visible", "kind": "qualitative" },
+    "OBS-VANNE": { "quantity": "vanne_position", "kind": "qualitative" },
+    "OBS-BYPASS": { "quantity": "bypass_ouvert", "kind": "qualitative" },
+    "OBS-CONDENSATS": { "quantity": "condensats", "kind": "qualitative" },
+    "OBS-CAPTEUR": { "quantity": "capteur_etat", "kind": "qualitative" },
+    "OBS-VAPEUR": { "quantity": "vapeur_anormale", "kind": "qualitative" }
+  }
+}

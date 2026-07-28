@@ -1,0 +1,58 @@
+{
+  "id": "ham-0001",
+  "titre": "Daikin Altherma 3 — défaut débit d'eau (7H) matinal",
+  "equipement": {
+    "marque": "Daikin",
+    "modele": "Altherma 3 EHSH08",
+    "famille": "pac_air_eau",
+    "age_ans": 2
+  },
+  "installation": {
+    "emetteur": "plancher_chauffant",
+    "regime_eau": "35/28",
+    "region_climat": "H1",
+    "particularites": "vidange récente"
+  },
+  "plainte_initiale": "PAC en sécurité tous les matins, code 7H, repart l'après-midi.",
+  "etat_operatoire": "en_securite",
+  "ground_state": {
+    "pression_circuit_bar": 1.2,
+    "delta_t_eau_K": 1.8,
+    "debit_l_min": 9,
+    "purgeur": "crache_air",
+    "bruit_pompe": "cavitation_legere",
+    "hp_bp": "non_mesurable_par_installateur"
+  },
+  "evolution": [
+    {
+      "si_action": "purge_complete",
+      "alors": {
+        "delta_t_eau_K": 6.2,
+        "debit_l_min": 24,
+        "code": "disparu",
+        "resout": true
+      }
+    },
+    {
+      "si_action": "nettoyage_filtre",
+      "alors": { "inchange": true }
+    }
+  ],
+  "verite": {
+    "cause": "air dans le circuit suite à la vidange",
+    "solution": "purge complète + contrôle pression + re-test débit",
+    "verification": "ΔT revenu à 6-7 K, plus de code sur 48h",
+    "pieges": [
+      "remplacer le circulateur (cavitation trompeuse)",
+      "conclure filtre sans démonter"
+    ]
+  },
+  "chemin_expert": ["MES-PRESSION", "OBS-PURGEUR", "MAN-PURGE", "MES-DT-EAU"],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "marcel:2026-07-29",
+    "reformule": true,
+    "valide_par": null
+  },
+  "split": "dev"
+}

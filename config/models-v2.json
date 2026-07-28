@@ -1,0 +1,47 @@
+{
+  "version": "2026-07-26",
+  "temperature": 0,
+  "knowledge_cutoff": "2026-04-01",
+  "forbidden_defaults": ["openai/gpt-4o", "gpt-4o", "perplexity/sonar", "sonar"],
+  "arms": {
+    "A": {
+      "role": "closed-book",
+      "label": "DeepSeek V4 Flash",
+      "openrouter_slug": "deepseek/deepseek-v4-flash",
+      "knowledge_cutoff": "2026-04-01",
+      "env_override": "BENCH_ARM_A_MODEL"
+    },
+    "B": {
+      "role": "web",
+      "label": "Mistral Large",
+      "openrouter_slug": "mistralai/mistral-large-2512",
+      "knowledge_cutoff": "2026-04-01",
+      "env_override": "BENCH_ARM_B_MODEL",
+      "web_search": true
+    },
+    "E": {
+      "role": "manual_in_context",
+      "label": "Mistral Large",
+      "openrouter_slug": "mistralai/mistral-large-2512",
+      "knowledge_cutoff": "2026-04-01",
+      "env_override": "BENCH_ARM_E_MODEL"
+    },
+    "D": {
+      "role": "product",
+      "label": "AskMarcel API v2",
+      "endpoint": "/api/v2/diagnose/session",
+      "priors_source": "production_mined"
+    },
+    "D_star": {
+      "role": "product_assisted",
+      "label": "AskMarcel API v2 — priors assistés (pilote)",
+      "endpoint": "/api/v2/diagnose/session",
+      "priors_source": "pilot_cases"
+    }
+  },
+  "alternates": {
+    "A": ["zhipu/glm-4.5"],
+    "B": ["moonshotai/kimi-k2.5"],
+    "E": []
+  }
+}

@@ -1,0 +1,185 @@
+name: am-harness
+
+on:
+  push:
+    paths:
+      - 'am/**'
+      - 'taxonomy/**'
+      - '.github/workflows/am-harness.yml'
+      - 'package.json'
+  pull_request:
+    paths:
+      - 'am/**'
+      - 'taxonomy/**'
+      - '.github/workflows/am-harness.yml'
+  workflow_dispatch:
+    inputs:
+      run_e2e:
+        description: 'Exécuter le dry-run E2E (nécessite tous les secrets AM_*)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+      run_gate:
+        description: 'Exécuter run gate complet T12 (budget ~900 appels LLM)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+
+jobs:
+  mechanical:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      - run: pnpm install --no-frozen-lockfile
+      - name: Valider les cas AM
+        run: pnpm am:validate-cases
+      - name: Scorer mécanique (fixtures)
+        run: pnpm am:check-scorer
+
+  llm-checks:
+    runs-on: ubuntu-latest
+    needs: mechanical
+    if: github.event_name != 'pull_request'
+    env:
+      AM_SIM_MODEL: ${{ secrets.AM_SIM_MODEL }}
+      AM_SIM_API_KEY: ${{ secrets.AM_SIM_API_KEY }}
+      AM_JUDGE_MODEL: ${{ secrets.AM_JUDGE_MODEL }}
+      AM_JUDGE_API_KEY: ${{ secrets.AM_JUDGE_API_KEY }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      - run: pnpm install --no-frozen-lockfile
+      - name: Vérifier secrets simulateur
+        run: |
+          if [ -z "$AM_SIM_MODEL" ]; then
+            echo "::error::AM_SIM_MODEL requis pour am:check-sim"
+            exit 1
+          fi
+          if [ -z "$AM_SIM_API_KEY" ] && [ -z "$OPENROUTER_API_KEY" ] && [ -z "$OPENAI_API_KEY" ]; then
+            echo "::error::AM_SIM_API_KEY ou OPENROUTER_API_KEY requis"
+            exit 1
+          fi
+      - name: Simulateur installateur (5/5)
+        run: pnpm am:check-sim
+      - name: Vérifier secrets juge
+        run: |
+          if [ -z "$AM_JUDGE_MODEL" ]; then
+            echo "::error::AM_JUDGE_MODEL requis (modèle distinct du simulateur)"
+            exit 1
+          fi
+      - name: Juge (6/6 + variance)
+        run: pnpm am:check-judge
+
+  e2e-dry-run:
+    runs-on: ubuntu-latest
+    needs: llm-checks
+    if: >-
+      github.event_name == 'workflow_dispatch' &&
+      github.event.inputs.run_e2e == 'true'
+    env:
+      AM_HARNESS_URL: ${{ secrets.AM_HARNESS_URL }}
+      AM_HARNESS_BEARER_TOKEN: ${{ secrets.AM_HARNESS_BEARER_TOKEN }}
+      AM_HARNESS_MODEL_ID: ${{ secrets.AM_HARNESS_MODEL_ID }}
+      AM_SIM_MODEL: ${{ secrets.AM_SIM_MODEL }}
+      AM_SIM_API_KEY: ${{ secrets.AM_SIM_API_KEY }}
+      AM_JUDGE_MODEL: ${{ secrets.AM_JUDGE_MODEL }}
+      AM_JUDGE_API_KEY: ${{ secrets.AM_JUDGE_API_KEY }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      ALLOW_BENCH_MODE: 'true'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: hvac-bench
+      - uses: actions/checkout@v4
+        with:
+          repository: askmarcel/AskMarcel-WebApp-NextJS
+          token: ${{ secrets.WEBAPP_REPO_TOKEN }}
+          path: AskMarcel-WebApp-NextJS
+        continue-on-error: true
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install bench
+        working-directory: hvac-bench
+        run: pnpm install --no-frozen-lockfile
+      - name: Vérifier URL harnais
+        run: |
+          if [ -z "$AM_HARNESS_URL" ]; then
+            echo "::error::AM_HARNESS_URL requis (preview WebApp ou staging)"
+            exit 1
+          fi
+          if [ -z "$AM_HARNESS_BEARER_TOKEN" ]; then
+            echo "::error::AM_HARNESS_BEARER_TOKEN requis"
+            exit 1
+          fi
+      - name: Dry-run T10 (2 cas × 3 bras)
+        working-directory: hvac-bench
+        run: pnpm am:dry-run
+      - name: Archiver rapport dry-run
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: am-dry-run-report
+          path: hvac-bench/am/reports/dry-run-*.md
+          retention-days: 90
+
+  gate-run:
+    runs-on: ubuntu-latest
+    needs: llm-checks
+    if: >-
+      github.event_name == 'workflow_dispatch' &&
+      github.event.inputs.run_gate == 'true'
+    env:
+      AM_HARNESS_URL: ${{ secrets.AM_HARNESS_URL }}
+      AM_HARNESS_BEARER_TOKEN: ${{ secrets.AM_HARNESS_BEARER_TOKEN }}
+      AM_HARNESS_MODEL_ID: ${{ secrets.AM_HARNESS_MODEL_ID }}
+      AM_SIM_MODEL: ${{ secrets.AM_SIM_MODEL }}
+      AM_SIM_API_KEY: ${{ secrets.AM_SIM_API_KEY }}
+      AM_JUDGE_MODEL: ${{ secrets.AM_JUDGE_MODEL }}
+      AM_JUDGE_API_KEY: ${{ secrets.AM_JUDGE_API_KEY }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      - run: pnpm install --no-frozen-lockfile
+      - name: Run gate T12 (3 bras × 10 cas × 3 réplicats)
+        run: pnpm am:run-iteration --split gate
+      - name: Archiver rapports gate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: am-gate-report
+          path: |
+            hvac-bench/am/reports/gate-iteration-*.md
+            hvac-bench/runs/**/score.json
+          retention-days: 90

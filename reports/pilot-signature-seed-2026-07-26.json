@@ -1,0 +1,76 @@
+{
+  "arm": "D_star",
+  "priors_source": "pilot_cases",
+  "assisted_priors": true,
+  "seeded_at": "2026-07-26T20:49:01.672Z",
+  "total_rows": 125,
+  "note": "Bras D* — priors assistés par fichiers cas pilote. Non comparable au bras D nominal sans annotation.",
+  "signatures": [
+    {
+      "signature": "eb8804b24fa32f5a",
+      "key": "pac_air_eau|7H",
+      "action": "supplement",
+      "rows": 10
+    },
+    {
+      "signature": "d073ade9e16af413",
+      "key": "chaudiere_gaz|",
+      "action": "supplement",
+      "rows": 16
+    },
+    {
+      "signature": "f4def2686f1e6400",
+      "key": "pac_air_eau|",
+      "action": "supplement",
+      "rows": 16
+    },
+    {
+      "signature": "d49eb7e1b8a31094",
+      "key": "clim_split|",
+      "action": "supplement",
+      "rows": 6
+    },
+    {
+      "signature": "529a478ff84d4599",
+      "key": "chaudiere_gaz|F.75",
+      "action": "supplement",
+      "rows": 16
+    },
+    {
+      "signature": "4a737de2b1d08b92",
+      "key": "pac_air_eau|E7",
+      "action": "seed",
+      "rows": 16
+    },
+    {
+      "signature": "98293d261348fa25",
+      "key": "clim_split|L2",
+      "action": "seed",
+      "rows": 5
+    },
+    {
+      "signature": "04fa95bbe679b0ea",
+      "key": "pac_air_eau|A5",
+      "action": "seed",
+      "rows": 16
+    },
+    {
+      "signature": "66b4a23c1f6def6d",
+      "key": "pac_air_eau|U0",
+      "action": "supplement",
+      "rows": 16
+    },
+    {
+      "signature": "d90f952af543d894",
+      "key": "clim_split|E01",
+      "action": "seed",
+      "rows": 5
+    },
+    {
+      "signature": "d451b67dbe14921c",
+      "key": "crac_precision|ALM-HP",
+      "action": "seed",
+      "rows": 3
+    }
+  ]
+}

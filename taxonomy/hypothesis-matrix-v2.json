@@ -1,0 +1,96 @@
+{
+  "version": "pilot-enriched-2026-07-26",
+  "synced_at": "2026-07-27T06:47:25.506Z",
+  "source": "AskMarcel-WebApp-NextJS/lib/diagnostic-v2/canonical-hypotheses.ts",
+  "hypothesis_actions": {
+    "air_circuit": [
+      "MAN-PURGE",
+      "MES-DT-EAU",
+      "MES-PRESSION",
+      "OBS-PURGEUR"
+    ],
+    "pompe_grippee": [
+      "DEM-CIRCULATEUR",
+      "MES-AMPERAGE",
+      "MES-DT-EAU",
+      "MES-HP-BP",
+      "OBS-BRUIT-POMPE",
+      "OBS-FUITE",
+      "REM-CIRCULATEUR"
+    ],
+    "pression_basse": [
+      "MAN-REMPLISSAGE",
+      "MES-DT-EAU",
+      "MES-PRESSION"
+    ],
+    "filtre_colmate": [
+      "DEM-FILTRE",
+      "MAN-NETTOYAGE-FILTRE",
+      "MAN-RESET",
+      "MES-DT-EAU",
+      "OBS-GELEE"
+    ],
+    "bypass_ferme": [
+      "MAN-REGLAGE-BYPASS",
+      "MES-DEBIT",
+      "MES-DT-EAU",
+      "OBS-BYPASS"
+    ],
+    "flowswitch_hs": [
+      "MES-DEBIT",
+      "REM-FLOWSWITCH"
+    ],
+    "sonde_hs": [
+      "DEM-SONDE",
+      "MES-CONTINUITE",
+      "MES-SONDE",
+      "REM-SONDE"
+    ],
+    "carte_hs": [
+      "MES-HP-BP",
+      "OBS-LED-DEFAUT",
+      "REM-CARTE"
+    ],
+    "compresseur_hs": [
+      "MES-HP-BP",
+      "REM-COMPRESSEUR"
+    ],
+    "degivrage_anormal": [
+      "MAN-FORCAGE-DEGIV",
+      "OBS-GELEE"
+    ],
+    "charge_insuffisante": [
+      "INT-CHARGE",
+      "MES-HP-BP",
+      "OBS-GELEE"
+    ],
+    "vanne_fermee": [
+      "MAN-FORCAGE-VENTILO",
+      "MES-DT-EAU",
+      "OBS-VANNE"
+    ],
+    "defaut_transitoire": [
+      "MAN-RESET"
+    ],
+    "condensats_bouches": [
+      "MAN-DESENGORGEMENT",
+      "OBS-CONDENSATS"
+    ],
+    "defaut_debit": [
+      "MES-DEBIT",
+      "MES-DT-EAU",
+      "MES-PRESSION"
+    ],
+    "sous_dimension": [
+      "MES-DEBIT",
+      "MES-DT-EAU",
+      "OBS-BYPASS"
+    ],
+    "cause_inconnue": []
+  },
+  "specificity": {
+    "median_hypotheses_per_action": 1,
+    "in_band_1_to_3": 29,
+    "over_broad_gt_3": 3
+  }
+}

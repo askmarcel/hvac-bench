@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://askmarcel.internal/hvac-bench/am/schema-am.json",
+  "title": "Cas AM (bench Harnais-AskMarcel — simulateur d'installateur)",
+  "description": "Schéma d'un cas multi-tours joué par le simulateur d'installateur. Voir PLAN-Harnais-AskMarcel-2026-07-27.md §3.2.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "titre",
+    "equipement",
+    "installation",
+    "plainte_initiale",
+    "etat_operatoire",
+    "ground_state",
+    "evolution",
+    "verite",
+    "chemin_expert",
+    "escalade_attendue",
+    "provenance",
+    "split"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^ham-[0-9]{4}$"
+    },
+    "titre": {
+      "type": "string",
+      "minLength": 1
+    },
+    "equipement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["marque", "modele", "famille", "age_ans"],
+      "properties": {
+        "marque": { "type": "string", "minLength": 1 },
+        "modele": { "type": "string", "minLength": 1 },
+        "famille": {
+          "type": "string",
+          "enum": ["pac_air_eau", "pac_air_air", "chaudiere", "clim_crac"]
+        },
+        "age_ans": { "type": "number", "minimum": 0 }
+      }
+    },
+    "installation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["emetteur", "regime_eau", "particularites"],
+      "properties": {
+        "emetteur": {
+          "type": "string",
+          "enum": [
+            "plancher_chauffant",
+            "radiateurs_bt",
+            "radiateurs_ht",
+            "ventilo_convecteur",
+            "mixte",
+            "non_applicable"
+          ]
+        },
+        "regime_eau": { "type": "string", "minLength": 1 },
+        "region_climat": { "type": "string" },
+        "particularites": { "type": "string" }
+      }
+    },
+    "plainte_initiale": { "type": "string", "minLength": 1 },
+    "etat_operatoire": {
+      "type": "string",
+      "enum": ["nominal", "en_securite", "cycle_court", "arret_force", "degivrage"]
+    },
+    "ground_state": {
+      "type": "object",
+      "description": "Toutes les grandeurs mesurables du cas. Objet libre (clé = quantity_id ou observation), non vide.",
+      "minProperties": 1,
+      "additionalProperties": true
+    },
+    "evolution": {
+      "type": "array",
+      "description": "Le monde bouge quand le technicien agit. Peut être vide pour un cas à mesure unique, mais doit exister.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["si_action", "alors"],
+        "properties": {
+          "si_action": { "type": "string", "minLength": 1 },
+          "alors": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    "verite": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cause", "solution", "verification", "pieges"],
+      "properties": {
+        "cause": { "type": "string", "minLength": 1 },
+        "solution": { "type": "string", "minLength": 1 },
+        "verification": { "type": "string", "minLength": 1 },
+        "pieges": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "chemin_expert": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "escalade_attendue": {
+      "type": ["string", "null"],
+      "description": "null si le cas doit se conclure ; sinon motif d'escalade (garantie, sav_verrouille, sous_dimensionnement, ...)."
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "reformule", "valide_par"],
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Ex: 'marcel:2026-07-29', 'neon:ham-legacy-003 | reformule', 'forum:<url> | reformule'. Jamais un document RAG (leçon O5)."
+        },
+        "reformule": { "type": "boolean" },
+        "valide_par": {
+          "type": ["string", "null"],
+          "pattern": "^marcel:[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+          "description": "null tant que Marcel n'a pas relu le cas. Obligatoire (non-null) pour split=gate — vérifié en règle métier, pas seulement par ce pattern."
+        }
+      }
+    },
+    "split": {
+      "type": "string",
+      "enum": ["dev", "gate"]
+    }
+  }
+}

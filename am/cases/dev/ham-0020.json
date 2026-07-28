@@ -1,0 +1,44 @@
+{
+  "id": "ham-0020",
+  "titre": "Daikin Altherma — défaut d'isolement compresseur, disjonctions aléatoires hors garantie",
+  "equipement": { "marque": "Daikin", "modele": "Altherma 3 EHVH08", "famille": "pac_air_eau", "age_ans": 9 },
+  "installation": {
+    "emetteur": "plancher_chauffant",
+    "regime_eau": "35/28",
+    "region_climat": "H1",
+    "particularites": "disjoncte au différentiel depuis 1 semaine, de façon aléatoire"
+  },
+  "plainte_initiale": "Disjoncte au différentiel de façon aléatoire, parfois au démarrage, parfois en cours de cycle.",
+  "etat_operatoire": "arret_force",
+  "ground_state": {
+    "resistance_ohm": 3,
+    "amperage_compresseur": 9,
+    "fuite_visible": "absent"
+  },
+  "evolution": [
+    {
+      "si_action": "mesure_isolement_compresseur",
+      "alors": { "resistance_ohm": 3, "diagnostic": "fuite_a_la_masse_probable_enroulement" }
+    },
+    {
+      "si_action": "remplacement_compresseur",
+      "alors": { "resistance_ohm": 25000, "resout": true, "note": "compresseur hors garantie (9 ans), remplacement facturé" }
+    }
+  ],
+  "verite": {
+    "cause": "défaut d'isolement du bobinage compresseur (fuite à la masse) — l'humidité ou la fatigue du bobinage provoque des déclenchements différentiels aléatoires",
+    "solution": "confirmer par mesure d'isolement dédiée (mégohmmètre) puis remplacer le compresseur ; hors garantie à 9 ans, devis client",
+    "verification": "isolement rétabli après remplacement, plus de déclenchement différentiel sur 1 semaine",
+    "pieges": [
+      "chercher côté tableau électrique (différentiel défaillant) alors que la mesure d'isolement pointe vers le compresseur lui-même"
+    ]
+  },
+  "chemin_expert": ["MES-AMPERAGE", "MES-RESISTANCE"],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": null
+  },
+  "split": "dev"
+}

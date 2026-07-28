@@ -1,0 +1,14 @@
+case_id,action_id,observation_text,value_to_enter,reviewer
+hb2-0010,MES-DT-EAU,"ΔT chauffage normal",,marcel
+hb2-0010,REM-SONDE,"Régulation stable après remplacement sonde",,marcel
+hb2-0011,OBS-PURGEUR,"Air au purgeur haut",,marcel
+hb2-0011,MAN-PURGE,"Défaut résolu — circulateur remplacé à tort",,marcel
+hb2-0013,OBS-GELEE,"Givre uniforme échangeur — manque d air",,marcel
+hb2-0013,MES-HP-BP,"Pressions nominales",,marcel
+hb2-0013,MAN-NETTOYAGE-FILTRE,"Filtres UE très sales, E7 disparaît",,marcel
+hb2-0015,MES-CONTINUITE,"Coupure fil sonde ECS au passage cloche",,marcel
+hb2-0015,DEM-SONDE,"Réparation câblage, A5 disparaît",,marcel
+hb2-0016,OBS-LED-DEFAUT,"U0 persistant, menu paramètre SAV grisé — déverrouillage usine requis",,marcel
+hb2-0017,MES-HP-BP,"Pressions atypiques — soupçon compresseur",,marcel
+hb2-0017,ESC-GARANTIE,"Remplacement compresseur sous garantie — ouverture compartiment romprait la garantie",,marcel
+hb2-0019,ESC-BUREAU-ETUDES,"Puissance installée 8 kW pour 14 kW requis — défaut de conception hydraulique",,marcel

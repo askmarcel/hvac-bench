@@ -1,0 +1,20 @@
+{
+  "repaired_at": "2026-07-26T20:06:01.278Z",
+  "before": {
+    "sig_singleton": 374,
+    "sig_total": 393,
+    "avg_hyp_per_sig": 1.3,
+    "priors_above_cap": 0,
+    "n_below_min": 0,
+    "prior_rows_total": 530
+  },
+  "after": {
+    "sig_singleton": 0,
+    "sig_total": 393,
+    "avg_hyp_per_sig": 2.3,
+    "priors_above_cap": 0,
+    "n_below_min": 0,
+    "prior_rows_total": 904
+  },
+  "prior_rows_written": 904
+}

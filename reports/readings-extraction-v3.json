@@ -1,0 +1,721 @@
+{
+  "generated_at": "2026-07-27T08:04:45.191Z",
+  "scope": "pac_air_eau pilot",
+  "total_tests": 47,
+  "parsed": 11,
+  "qualitative_mapped": 23,
+  "unparseable": 13,
+  "pct_parsed_or_mapped": 0.723,
+  "target_pct": 0.7,
+  "pass": true,
+  "results": [
+    {
+      "case_id": "hb2-0001",
+      "action_id": "MES-DT-EAU",
+      "observation": "ΔT = 1,8 K — très faible, cohérent avec un défaut de débit",
+      "status": "parsed",
+      "readings": [
+        {
+          "quantity_id": "delta_t_eau",
+          "value": 1.8,
+          "unit": "K",
+          "status": "parsed"
+        },
+        {
+          "quantity_id": "delta_t_eau",
+          "value": 1.8,
+          "unit": "K",
+          "status": "parsed"
+        },
+        {
+          "quantity_id": "delta_t_eau",
+          "modality": "low",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "delta_t_eau",
+          "modality": "low",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0001",
+      "action_id": "OBS-PURGEUR",
+      "observation": "Purgeur automatique crache de l'air en continu",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "purgeur",
+          "modality": "crache_air",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0001",
+      "action_id": "MAN-PURGE",
+      "observation": "Purge longue, beaucoup d air evacue. Debit remonte, 7H disparait.",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "purgeur",
+          "modality": "crache_air",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "led_defaut",
+          "modality": "absent",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "debit_l_min",
+          "modality": "normal",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "purgeur",
+          "modality": "crache_air",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "led_defaut",
+          "modality": "absent",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0001",
+      "action_id": "DEM-FILTRE",
+      "observation": "Tamis propre",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "debit_l_min",
+          "modality": "normal",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "debit_l_min",
+          "modality": "normal",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0001",
+      "action_id": "REM-CIRCULATEUR",
+      "observation": "Circulateur déposé : arbre libre, conforme. Aucun effet sur le défaut.",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "bruit_pompe",
+          "modality": "silencieux",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "bruit_pompe",
+          "modality": "silencieux",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0002",
+      "action_id": "MES-PRESSION",
+      "observation": "1,4 bar mesure — limite basse constructeur",
+      "status": "parsed",
+      "readings": [
+        {
+          "quantity_id": "pression_circuit_bar",
+          "value": 1.4,
+          "unit": "bar",
+          "status": "parsed"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0002",
+      "action_id": "OBS-PURGEUR",
+      "observation": "Purgeur bouché, pas de purge auto",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "purgeur",
+          "modality": "crache_air",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "purgeur",
+          "modality": "crache_air",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0002",
+      "action_id": "MAN-PURGE",
+      "observation": "Air évacué au robinet de purge, défaut disparaît",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "purgeur",
+          "modality": "crache_air",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "led_defaut",
+          "modality": "absent",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "purgeur",
+          "modality": "crache_air",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "led_defaut",
+          "modality": "absent",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0002",
+      "action_id": "REM-CIRCULATEUR",
+      "observation": "Circulateur OK mécaniquement",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "bruit_pompe",
+          "modality": "silencieux",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0003",
+      "action_id": "OBS-BRUIT-POMPE",
+      "observation": "Raclement puis arrêt moteur — rotor bloqué",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "bruit_pompe",
+          "modality": "claquement",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0003",
+      "action_id": "MES-AMPERAGE",
+      "observation": "0,3 A puis 0 A — protection thermique",
+      "status": "parsed",
+      "readings": [
+        {
+          "quantity_id": "amperage_circulateur",
+          "value": 0.3,
+          "unit": "A",
+          "status": "parsed"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0003",
+      "action_id": "DEM-CIRCULATEUR",
+      "observation": "Arbre grippé, roulement fatigué",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "bruit_pompe",
+          "modality": "claquement",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0003",
+      "action_id": "REM-CIRCULATEUR",
+      "observation": "Défaut résolu après remplacement",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "debit_l_min",
+          "modality": "normal",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0003",
+      "action_id": "MAN-PURGE",
+      "observation": "Peu d air, pas d amélioration",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "purgeur",
+          "modality": "sec",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "purgeur",
+          "modality": "crache_air",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "purgeur",
+          "modality": "sec",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0004",
+      "action_id": "MES-DEBIT",
+      "observation": "Débit 8 L/min — insuffisant pour la PAC",
+      "status": "parsed",
+      "readings": [
+        {
+          "quantity_id": "debit_l_min",
+          "value": 8,
+          "unit": "l/min",
+          "status": "parsed"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0004",
+      "action_id": "OBS-BYPASS",
+      "observation": "Bypass reste fermé malgré faible débit",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "bypass_ouvert",
+          "modality": "non",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0004",
+      "action_id": "MAN-REGLAGE-BYPASS",
+      "observation": "Ouverture bypass, débit remonte, 7H disparaît",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "led_defaut",
+          "modality": "absent",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "debit_l_min",
+          "modality": "normal",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "bypass_ouvert",
+          "modality": "oui",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0004",
+      "action_id": "DEM-FILTRE",
+      "observation": "Filtre propre",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "debit_l_min",
+          "modality": "normal",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "debit_l_min",
+          "modality": "normal",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0005",
+      "action_id": "MES-PRESSION",
+      "observation": "1,1 bar — sous le seuil constructeur",
+      "status": "parsed",
+      "readings": [
+        {
+          "quantity_id": "pression_circuit_bar",
+          "value": 1.1,
+          "unit": "bar",
+          "status": "parsed"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0005",
+      "action_id": "MAN-REMPLISSAGE",
+      "observation": "Pression portée à 1,5 bar, 7H ne revient plus",
+      "status": "parsed",
+      "readings": [
+        {
+          "quantity_id": "pression_circuit_bar",
+          "value": 1.5,
+          "unit": "bar",
+          "status": "parsed"
+        },
+        {
+          "quantity_id": "led_defaut",
+          "modality": "absent",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "pression_circuit_bar",
+          "value": 1.5,
+          "unit": "bar",
+          "status": "parsed"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0005",
+      "action_id": "MAN-PURGE",
+      "observation": "Légère purge d air, pression stable",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "pression_circuit_bar",
+          "modality": "in_range",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "purgeur",
+          "modality": "crache_air",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "purgeur",
+          "modality": "sec",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0005",
+      "action_id": "REM-FLOWSWITCH",
+      "observation": "Flowswitch conforme — remplacement inutile",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "bruit_pompe",
+          "modality": "silencieux",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "debit_l_min",
+          "modality": "normal",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "debit_l_min",
+          "modality": "normal",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0007",
+      "action_id": "OBS-VANNE",
+      "observation": "Vanne 3 voies bloquée position ECS",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "vanne_position",
+          "modality": "fermee",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "vanne_position",
+          "modality": "fermee",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0007",
+      "action_id": "MES-DT-EAU",
+      "observation": "ΔT quasi nul sur chauffage",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "delta_t_eau",
+          "modality": "low",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "delta_t_eau",
+          "modality": "low",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0007",
+      "action_id": "MAN-FORCAGE-VENTILO",
+      "observation": "Forçage vanne chauffage, débit reprend",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "debit_l_min",
+          "modality": "normal",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "vanne_position",
+          "modality": "ouverte",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0010",
+      "action_id": "MES-SONDE",
+      "observation": "Écart 4 K entre sonde UI et mesure locale",
+      "status": "parsed",
+      "readings": [
+        {
+          "quantity_id": "delta_t_eau",
+          "value": 4,
+          "unit": "K",
+          "status": "parsed"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0010",
+      "action_id": "MES-DT-EAU",
+      "observation": "ΔT chauffage normal",
+      "status": "unparseable",
+      "readings": []
+    },
+    {
+      "case_id": "hb2-0010",
+      "action_id": "REM-SONDE",
+      "observation": "Régulation stable après remplacement sonde",
+      "status": "unparseable",
+      "readings": []
+    },
+    {
+      "case_id": "hb2-0011",
+      "action_id": "MES-DT-EAU",
+      "observation": "ΔT = 2 K malgré circulateur neuf",
+      "status": "parsed",
+      "readings": [
+        {
+          "quantity_id": "delta_t_eau",
+          "value": 2,
+          "unit": "K",
+          "status": "parsed"
+        },
+        {
+          "quantity_id": "delta_t_eau",
+          "value": 2,
+          "unit": "K",
+          "status": "parsed"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0011",
+      "action_id": "OBS-PURGEUR",
+      "observation": "Air au purgeur haut",
+      "status": "unparseable",
+      "readings": []
+    },
+    {
+      "case_id": "hb2-0011",
+      "action_id": "MAN-PURGE",
+      "observation": "Défaut résolu — circulateur remplacé à tort",
+      "status": "unparseable",
+      "readings": []
+    },
+    {
+      "case_id": "hb2-0011",
+      "action_id": "REM-CIRCULATEUR",
+      "observation": "Remplacement déjà fait — inefficace",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "debit_l_min",
+          "modality": "normal",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0013",
+      "action_id": "OBS-GELEE",
+      "observation": "Givre uniforme échangeur — manque d air",
+      "status": "unparseable",
+      "readings": []
+    },
+    {
+      "case_id": "hb2-0013",
+      "action_id": "MES-HP-BP",
+      "observation": "Pressions nominales",
+      "status": "unparseable",
+      "readings": []
+    },
+    {
+      "case_id": "hb2-0013",
+      "action_id": "MAN-NETTOYAGE-FILTRE",
+      "observation": "Filtres UE très sales, E7 disparaît",
+      "status": "unparseable",
+      "readings": []
+    },
+    {
+      "case_id": "hb2-0015",
+      "action_id": "MES-CONTINUITE",
+      "observation": "Coupure fil sonde ECS au passage cloche",
+      "status": "unparseable",
+      "readings": []
+    },
+    {
+      "case_id": "hb2-0015",
+      "action_id": "MES-RESISTANCE",
+      "observation": "Résistance chauffe conforme",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "bruit_pompe",
+          "modality": "silencieux",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0015",
+      "action_id": "DEM-SONDE",
+      "observation": "Réparation câblage, A5 disparaît",
+      "status": "unparseable",
+      "readings": []
+    },
+    {
+      "case_id": "hb2-0016",
+      "action_id": "MES-PRESSION",
+      "observation": "1,5 bar — hydraulique conforme",
+      "status": "parsed",
+      "readings": [
+        {
+          "quantity_id": "pression_circuit_bar",
+          "value": 1.5,
+          "unit": "bar",
+          "status": "parsed"
+        },
+        {
+          "quantity_id": "bruit_pompe",
+          "modality": "silencieux",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0016",
+      "action_id": "OBS-LED-DEFAUT",
+      "observation": "U0 persistant, menu paramètre SAV grisé — déverrouillage usine requis",
+      "status": "unparseable",
+      "readings": []
+    },
+    {
+      "case_id": "hb2-0016",
+      "action_id": "ESC-SAV",
+      "observation": "Intervention SAV constructeur nécessaire pour code de déverrouillage",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "led_defaut",
+          "modality": "code",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0017",
+      "action_id": "MES-HP-BP",
+      "observation": "Pressions atypiques — soupçon compresseur",
+      "status": "unparseable",
+      "readings": []
+    },
+    {
+      "case_id": "hb2-0017",
+      "action_id": "OBS-FUITE",
+      "observation": "Pas de fuite visible, étiquette garantie intacte sur compartiment compresseur",
+      "status": "qualitative_mapped",
+      "readings": [
+        {
+          "quantity_id": "fuite_visible",
+          "modality": "present",
+          "status": "qualitative_mapped"
+        },
+        {
+          "quantity_id": "fuite_visible",
+          "modality": "absent",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0017",
+      "action_id": "ESC-GARANTIE",
+      "observation": "Remplacement compresseur sous garantie — ouverture compartiment romprait la garantie",
+      "status": "unparseable",
+      "readings": []
+    },
+    {
+      "case_id": "hb2-0019",
+      "action_id": "MES-DEBIT",
+      "observation": "Débit 22 L/min — conforme au manuel pour le modèle posé",
+      "status": "parsed",
+      "readings": [
+        {
+          "quantity_id": "debit_l_min",
+          "value": 22,
+          "unit": "l/min",
+          "status": "parsed"
+        },
+        {
+          "quantity_id": "bruit_pompe",
+          "modality": "silencieux",
+          "status": "qualitative_mapped"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0019",
+      "action_id": "MES-DT-EAU",
+      "observation": "ΔT = 2 K en pleine charge — insuffisant pour l'émetteur",
+      "status": "parsed",
+      "readings": [
+        {
+          "quantity_id": "delta_t_eau",
+          "value": 2,
+          "unit": "K",
+          "status": "parsed"
+        },
+        {
+          "quantity_id": "delta_t_eau",
+          "value": 2,
+          "unit": "K",
+          "status": "parsed"
+        }
+      ]
+    },
+    {
+      "case_id": "hb2-0019",
+      "action_id": "ESC-BUREAU-ETUDES",
+      "observation": "Puissance installée 8 kW pour 14 kW requis — défaut de conception hydraulique",
+      "status": "unparseable",
+      "readings": []
+    }
+  ]
+}

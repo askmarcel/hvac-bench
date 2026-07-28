@@ -39,7 +39,7 @@ Contenu requis côté held-out :
 ## Prérequis prod
 
 1. **En-têtes de confiance** : `X-AM-Confidence-Band` / `-Score` sur `/diagnose` et `/diagnose/stream` — déployé ✅
-2. **Quota** : la clé `HvacBench-CI` doit couvrir 52 diagnostics (+ marge re-scoring) — tier `business`, OK ✅
+2. **Quota** : la clé `HvacBench-CI` doit couvrir les diagnostics du job CI (**52 cas**). Un run local **204 cas** peut nécessiter une clé dédiée et `BENCH_CONCURRENCY≤2` (sinon 429 → `scripts/retry-failed-records.ts`).
 3. **doc_title** : RPC `api_search_chunks_error` / `api_search_chunks_vector` sans filtre `is_published` sur le JOIN document — migration `20260725213000` ✅
 4. **Smoke test** (depuis la WebApp, avec la clé CI) :
 
@@ -54,3 +54,50 @@ Attendu : HTTP 200, bande `high`/`medium`/`low` (pas `unknown`), pas de 402 `quo
 ## Tag schéma
 
 Tag `dataset-schema-v0.1.0` poussé sur https://github.com/askmarcel/hvac-bench/releases/tag/dataset-schema-v0.1.0
+
+---
+
+## Workflow `am-harness` (bench Harnais-AskMarcel — T4–T12)
+
+Fichier : `.github/workflows/am-harness.yml`
+
+| Job | Secrets | Rôle |
+|---|---|---|
+| `mechanical` | aucun | `am:validate-cases` + `am:check-scorer` |
+| `llm-checks` | `AM_SIM_*`, `AM_JUDGE_*` (+ fallback `OPENROUTER_API_KEY`) | `am:check-sim` 5/5, `am:check-judge` 6/6 |
+| `e2e-dry-run` | `AM_HARNESS_*` + simulateur | T10 — `workflow_dispatch` avec `run_e2e=true` |
+| `gate-run` | idem | T12 — `workflow_dispatch` avec `run_gate=true` |
+
+### Secrets AM à configurer (repo hvac-bench)
+
+| Secret | Usage |
+|---|---|
+| `AM_SIM_MODEL` | Modèle simulateur installateur |
+| `AM_SIM_API_KEY` | Clé API simulateur (ou `OPENROUTER_API_KEY`) |
+| `AM_JUDGE_MODEL` | Modèle juge — **distinct** du simulateur et du bras |
+| `AM_JUDGE_API_KEY` | Clé API juge |
+| `AM_HARNESS_URL` | URL WebApp (`https://app.askmarcel.app` ou preview) |
+| `AM_HARNESS_BEARER_TOKEN` | JWT Supabase utilisateur bench (auth `/api/mobile/chat`) |
+| `AM_HARNESS_MODEL_ID` | Modèle bras testé (ex. `fast-marcel`) |
+| `OPENROUTER_API_KEY` | Fallback partagé |
+| `WEBAPP_REPO_TOKEN` | (optionnel) checkout WebApp pour e2e local CI |
+
+### Token harness
+
+Créer un utilisateur Supabase dédié bench. Le header `x-bench-mode: 1` contourne quotas/persistance mais **pas** l'auth Bearer.
+
+### Scripts npm AM
+
+```bash
+pnpm am:validate-cases    # schéma + règles métier
+pnpm am:check-scorer      # fixtures mécaniques (sans LLM)
+pnpm am:check-sim         # 5 dialogues contrôle
+pnpm am:check-judge       # 6 transcripts + variance
+pnpm am:dry-run           # T10 : 2 cas × 3 bras
+pnpm am:run-iteration     # T11/T12 : split dev ou gate
+pnpm am:score --run runs/…
+pnpm am:report --scores runs/…/score.json
+pnpm am:stamp-marcel --date YYYY-MM-DD --all
+pnpm am:split-dev-gate --seed 20260728 --apply
+```
+

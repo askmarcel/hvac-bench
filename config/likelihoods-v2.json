@@ -1,0 +1,24 @@
+{
+  "version": "2026-07-26",
+  "likelihoods": {
+    "support": 2.5,
+    "refute": 0.4,
+    "unrelated": 0.6,
+    "eliminate": 0.01
+  },
+  "matrix_version": "pilot-enriched-2026-07-26",
+  "T_cutoff": "2026-04-01",
+  "conclusion_threshold": 0.85,
+  "conclusion_threshold_status": "pending_matrix",
+  "voi": {
+    "scoring": "additive",
+    "lambda_cost_bits_per_eur": 0.002,
+    "min_gain_epsilon": 0.0001
+  },
+  "calibration": {
+    "status": "pending_matrix",
+    "fitted_on": "pilot",
+    "notes": "Seuil 0,85 figé — balayage reporté tant que max_top_prior(D) < ~0,7. Re-sweeper quand la matrice permet à D de conclure."
+  },
+  "notes": "VOI additif score=EIG−λ·cost ; invariant max_top_prior(D)>max_top_prior(R) dans selector-evidence-invariant.test.ts"
+}

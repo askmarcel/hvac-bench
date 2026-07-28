@@ -1,0 +1,340 @@
+{
+  "audited_at": "2026-07-26T20:07:06.341Z",
+  "cases_paths": [
+    "/Users/mac/Documents/AskMarcel-APP/hvac-bench/dataset/pilot/pilot-v2.jsonl"
+  ],
+  "cases_diagnostic": 20,
+  "cases_skipped_no_tests": 0,
+  "tests": 69,
+  "flagged_count": 41,
+  "flagged": [
+    {
+      "case_id": "hb2-0001",
+      "action_id": "OBS-PURGEUR",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Purgeur automatique crache de l'air en continu",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0001",
+      "action_id": "DEM-FILTRE",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Tamis propre",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0001",
+      "action_id": "REM-CIRCULATEUR",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Circulateur déposé : arbre libre, conforme. Aucun effet sur le défaut.",
+      "reason": "inferred_refutes_mismatch"
+    },
+    {
+      "case_id": "hb2-0002",
+      "action_id": "MES-PRESSION",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "1,4 bar mesure — limite basse constructeur",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0002",
+      "action_id": "REM-CIRCULATEUR",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Circulateur OK mécaniquement",
+      "reason": "inferred_refutes_mismatch"
+    },
+    {
+      "case_id": "hb2-0003",
+      "action_id": "OBS-BRUIT-POMPE",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Raclement puis arrêt moteur — rotor bloqué",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0003",
+      "action_id": "MES-AMPERAGE",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "0,3 A puis 0 A — protection thermique",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0003",
+      "action_id": "DEM-CIRCULATEUR",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Arbre grippé, roulement fatigué",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0004",
+      "action_id": "OBS-BYPASS",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Bypass reste fermé malgré faible débit",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0004",
+      "action_id": "DEM-FILTRE",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Filtre propre",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0005",
+      "action_id": "MES-PRESSION",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "1,1 bar — sous le seuil constructeur",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0005",
+      "action_id": "REM-FLOWSWITCH",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Flowswitch conforme — remplacement inutile",
+      "reason": "inferred_refutes_mismatch"
+    },
+    {
+      "case_id": "hb2-0006",
+      "action_id": "OBS-PURGEUR",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Purgeur radiateur crache de l air",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0007",
+      "action_id": "OBS-VANNE",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Vanne 3 voies bloquée position ECS",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0007",
+      "action_id": "MES-DT-EAU",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "ΔT quasi nul sur chauffage",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0007",
+      "action_id": "MAN-FORCAGE-VENTILO",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Forçage vanne chauffage, débit reprend",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0008",
+      "action_id": "OBS-GELEE",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Givre sur échangeur intérieur",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0008",
+      "action_id": "MAN-RESET",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Froid rétabli après nettoyage et reset",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0009",
+      "action_id": "MES-PRESSION",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "1,0 bar mesure — sous le seuil minimum",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0009",
+      "action_id": "MAN-REMPLISSAGE",
+      "inferred": "neutral",
+      "declared": "refutes",
+      "observation": "1,5 bar après appoint",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0010",
+      "action_id": "MES-SONDE",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Écart 4 K entre sonde UI et mesure locale",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0011",
+      "action_id": "MES-DT-EAU",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "ΔT = 2 K malgré circulateur neuf",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0011",
+      "action_id": "OBS-PURGEUR",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Air au purgeur haut",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0011",
+      "action_id": "REM-CIRCULATEUR",
+      "inferred": "supports",
+      "declared": "neutral",
+      "observation": "Remplacement déjà fait — inefficace",
+      "reason": "inferred_supports_mismatch"
+    },
+    {
+      "case_id": "hb2-0013",
+      "action_id": "OBS-GELEE",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Givre uniforme échangeur — manque d air",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0013",
+      "action_id": "MES-HP-BP",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Pressions nominales",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0014",
+      "action_id": "OBS-CONDENSATS",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Bac plein, évacuation obstruée",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0014",
+      "action_id": "REM-VENTILO",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Ventilateur conforme — remplacement inutile",
+      "reason": "inferred_refutes_mismatch"
+    },
+    {
+      "case_id": "hb2-0015",
+      "action_id": "MES-CONTINUITE",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Coupure fil sonde ECS au passage cloche",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0015",
+      "action_id": "MES-RESISTANCE",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Résistance chauffe conforme",
+      "reason": "inferred_refutes_mismatch"
+    },
+    {
+      "case_id": "hb2-0016",
+      "action_id": "MES-PRESSION",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "1,5 bar — hydraulique conforme",
+      "reason": "inferred_refutes_mismatch"
+    },
+    {
+      "case_id": "hb2-0016",
+      "action_id": "OBS-LED-DEFAUT",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "U0 persistant, menu paramètre SAV grisé — déverrouillage usine requis",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0016",
+      "action_id": "ESC-SAV",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Intervention SAV constructeur nécessaire pour code de déverrouillage",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0017",
+      "action_id": "MES-HP-BP",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Pressions atypiques — soupçon compresseur",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0017",
+      "action_id": "OBS-FUITE",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Pas de fuite visible, étiquette garantie intacte sur compartiment compresseur",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0017",
+      "action_id": "ESC-GARANTIE",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Remplacement compresseur sous garantie — ouverture compartiment romprait la garantie",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0018",
+      "action_id": "OBS-LED-DEFAUT",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "E01 inverter, LED carte clignotante",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0018",
+      "action_id": "MES-CONTINUITE",
+      "inferred": "refutes",
+      "declared": "neutral",
+      "observation": "Alimentation carte conforme",
+      "reason": "inferred_refutes_mismatch"
+    },
+    {
+      "case_id": "hb2-0018",
+      "action_id": "ESC-PIECE-INDISPONIBLE",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Référence carte hors production — délai > 8 semaines, pas d'équivalence certifiée",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0020",
+      "action_id": "MES-HP-BP",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "HP élevée, BP basse — soupçon compresseur",
+      "reason": "unverified_label"
+    },
+    {
+      "case_id": "hb2-0020",
+      "action_id": "ESC-CONSIGNATION",
+      "inferred": "neutral",
+      "declared": "supports",
+      "observation": "Consignation TGBT requise par donneur d'ordre avant ouverture compresseur",
+      "reason": "unverified_label"
+    }
+  ]
+}
