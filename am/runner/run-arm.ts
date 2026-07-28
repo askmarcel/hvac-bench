@@ -14,7 +14,7 @@
  *
  * Premier tour : `plainte_initiale` du cas en message `user` (aligné Expo → /api/mobile/chat).
  */
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { randomUUID } from 'node:crypto';
 import { resolve } from 'node:path';
 
@@ -39,6 +39,8 @@ function parseArgs() {
   const arm = arg('arm') ?? 'PROD';
   const split = (arg('split') ?? 'dev') as 'dev' | 'gate';
   const replicates = Number(arg('replicates') ?? '3');
+  const replicateOnly = arg('replicate') ? Number(arg('replicate')) : undefined;
+  const runDir = arg('run-dir');
   const casesFilter = arg('cases')?.split(',').map((s) => s.trim());
   const surface = (arg('surface') ?? 'S2') as 'S1' | 'S2' | 'S3';
   const baseUrl =
@@ -54,7 +56,19 @@ function parseArgs() {
   if (!['S1', 'S2', 'S3'].includes(surface)) {
     throw new Error(`--surface invalide: ${surface} (attendu S1|S2|S3)`);
   }
-  return { arm: arm as 'L0' | 'LW' | 'PROD', split, replicates, casesFilter, baseUrl, surface };
+  if (replicateOnly !== undefined && (!Number.isInteger(replicateOnly) || replicateOnly < 1)) {
+    throw new Error(`--replicate invalide: ${replicateOnly} (entier ≥ 1)`);
+  }
+  return {
+    arm: arm as 'L0' | 'LW' | 'PROD',
+    split,
+    replicates,
+    replicateOnly,
+    runDir,
+    casesFilter,
+    baseUrl,
+    surface,
+  };
 }
 
 type TranscriptTurn = { role: 'technicien' | 'installateur'; content: string };
@@ -219,7 +233,9 @@ async function main() {
     }
   }
 
-  const runId = `am-${args.arm.toLowerCase()}-${new Date().toISOString().replace(/[:.]/g, '-')}`;
+  const runId = args.runDir
+    ? resolve(args.runDir).split('/').pop()!
+    : `am-${args.arm.toLowerCase()}-${new Date().toISOString().replace(/[:.]/g, '-')}`;
   const manifest = buildManifest({
     runId,
     arm: args.arm,
@@ -228,9 +244,11 @@ async function main() {
     surface: args.surface,
   });
 
-  const runsDir = resolve(HVAC_BENCH_ROOT, 'runs', runId);
+  const runsDir = args.runDir ? resolve(args.runDir) : resolve(HVAC_BENCH_ROOT, 'runs', runId);
   mkdirSync(runsDir, { recursive: true });
-  writeFileSync(resolve(runsDir, 'manifest.json'), JSON.stringify(manifest, null, 2));
+  if (!args.runDir) {
+    writeFileSync(resolve(runsDir, 'manifest.json'), JSON.stringify(manifest, null, 2));
+  }
   console.log(`Manifest écrit: ${resolve(runsDir, 'manifest.json')}`);
   console.log(JSON.stringify(manifest, null, 2));
 
@@ -244,12 +262,26 @@ async function main() {
   }
 
   const rawPath = resolve(runsDir, 'raw.jsonl');
-  const records: TranscriptRecord[] = [];
+  const existingRecords: TranscriptRecord[] = existsSync(rawPath)
+    ? readFileSync(rawPath, 'utf8')
+        .trim()
+        .split('\n')
+        .filter(Boolean)
+        .map((line) => JSON.parse(line) as TranscriptRecord)
+    : [];
+  const records: TranscriptRecord[] = [...existingRecords];
+
+  const replicateRange = () => {
+    if (args.replicateOnly !== undefined) return [args.replicateOnly];
+    return Array.from({ length: args.replicates }, (_, i) => i + 1);
+  };
 
   for (const c of cases) {
-    for (let r = 1; r <= args.replicates; r++) {
+    for (const r of replicateRange()) {
       const record = await playCase(c, r, args);
-      records.push(record);
+      const idx = records.findIndex((rec) => rec.case_id === c.id && rec.replicate === r);
+      if (idx >= 0) records[idx] = record;
+      else records.push(record);
       writeFileSync(rawPath, records.map((rec) => JSON.stringify(rec)).join('\n') + '\n');
       console.log(`${record.status === 'completed' ? '✅' : '⚠️ '} ${c.id} réplicat ${r}: ${record.status}${record.blocked_reason ? ` — ${record.blocked_reason}` : ''}`);
     }

@@ -84,6 +84,7 @@
     "am:stamp-marcel": "tsx am/scripts/stamp-marcel-validation.ts",
     "am:split-dev-gate": "tsx am/scripts/split-dev-gate.ts",
     "am:run-iteration": "tsx am/scripts/run-iteration.ts",
+    "am:retry-blocked": "tsx am/scripts/retry-blocked.ts",
     "am:baseline-surfaces": "tsx am/scripts/run-baseline-surfaces.ts --write-report",
     "am:surface-tests": "tsx am/scripts/run-surface-tests.ts --group all",
     "am:surfaces-report": "tsx am/scripts/surfaces-conformite-report.ts",
