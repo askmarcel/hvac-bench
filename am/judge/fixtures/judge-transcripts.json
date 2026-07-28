@@ -10,7 +10,7 @@
     {
       "name": "parfait-2-sonde-sectionnee",
       "case_id": "ham-0011",
-      "transcript": "Technicien hotline: Le code affiché c'est sonde départ. Mesure la continuité de la sonde au multimètre, tu dois avoir entre 0 et 500 ohms.\nInstallateur: J'ai un circuit ouvert, ça n'affiche rien, c'est hors échelle.\nTechnicien hotline: Regarde le connecteur, il y a un fil qui a l'air sectionné ou abîmé près du connecteur ?\nInstallateur: Ah oui, il y a un fil coupé juste avant le connecteur, ça a dû frotter contre le capot.\nTechnicien hotline: Répare ou remplace le câble de la sonde à cet endroit, protège le passage, et recontrôle la continuité après.\nInstallateur: Fil réparé, je remesure : 120 ohms, dans la plage, et le code a disparu.\nTechnicien hotline: Parfait, c'est réglé, surveille sur 48h qu'il ne revient pas.",
+      "transcript": "Technicien hotline: Le code affiché c'est sonde départ. Mesure la continuité de la sonde au multimètre — tu dois avoir circuit ouvert, hors échelle.\nInstallateur: J'ai un circuit ouvert, ça n'affiche rien, c'est hors échelle.\nTechnicien hotline: Regarde le connecteur, il y a un fil qui a l'air sectionné ou abîmé près du connecteur ?\nInstallateur: Ah oui, il y a un fil coupé juste avant le connecteur, ça a dû frotter contre le capot.\nTechnicien hotline: Répare ou remplace le câble de la sonde à cet endroit, protège le passage, et recontrôle la résistance après — tu dois être autour de 6 000-7 000 Ω à 35 °C sur cette CTN 10k.\nInstallateur: Fil réparé, je remesure : 6 500 Ω, dans la plage, et le code a disparu.\nTechnicien hotline: Parfait, c'est réglé, surveille sur 48h qu'il ne revient pas.",
       "expected": { "cause_ok": true, "solution_ok": true, "piege": false, "valeur_attendue_annoncee": true }
     },
     {
@@ -34,9 +34,10 @@
     },
     {
       "name": "conclusion-sans-mesure-2-carte-morte",
+      "_note": "piege:true car ham-0013 liste explicitement « remplacer la carte UI ou UE avant d'avoir vérifié le câble de liaison » — le transcript saute directement à la carte",
       "case_id": "ham-0013",
       "transcript": "Technicien hotline: Erreur de communication entre les deux unités, à tous les coups c'est la carte électronique de l'unité extérieure qui a lâché. Remplace la carte.\nInstallateur: OK je commande la carte et je la remplace.",
-      "expected": { "cause_ok": false, "solution_ok": false, "piege": false, "valeur_attendue_annoncee": false }
+      "expected": { "cause_ok": false, "solution_ok": false, "piege": true, "valeur_attendue_annoncee": false }
     }
   ]
 }
