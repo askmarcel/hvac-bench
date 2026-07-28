@@ -3,8 +3,8 @@
  * am:report — rapport markdown G1–G5 à partir de score.json (un ou plusieurs bras).
  *
  * Usage:
- *   pnpm am:report --scores runs/am-prod-*/score.json
- *   pnpm am:report --scores runs/am-l0-*/score.json runs/am-lw-*/score.json runs/am-prod-*/score.json --out am/reports/gate-am-2026-07-28.md
+ *   pnpm am:report --scores runs/am-prod-<runId>/score.json
+ *   pnpm am:report --scores runs/am-l0-<runId>/score.json runs/am-lw-<runId>/score.json runs/am-prod-<runId>/score.json --out am/reports/gate-am-2026-07-28.md
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { basename, dirname, resolve } from 'node:path';
