@@ -27,6 +27,7 @@
     },
     {
       "name": "conclusion-sans-mesure-1-vase-expansion",
+      "_note": "piege:false car verite.pieges parle de fuite visible sur raccords, pas du circulateur — contrairement à ham-0017 où le piège circulateur est explicitement listé",
       "case_id": "ham-0003",
       "transcript": "Technicien hotline: Elle perd de la pression régulièrement, c'est presque toujours le circulateur qui fatigue sur ces modèles après quelques années. Remplace le circulateur.\nInstallateur: D'accord, je remplace le circulateur.",
       "expected": { "cause_ok": false, "solution_ok": false, "piege": false, "valeur_attendue_annoncee": false }
