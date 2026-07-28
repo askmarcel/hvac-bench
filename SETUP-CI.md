@@ -77,14 +77,63 @@ Fichier : `.github/workflows/am-harness.yml`
 | `AM_JUDGE_MODEL` | Modèle juge — **distinct** du simulateur et du bras |
 | `AM_JUDGE_API_KEY` | Clé API juge |
 | `AM_HARNESS_URL` | URL WebApp (`https://app.askmarcel.app` ou preview) |
-| `AM_HARNESS_BEARER_TOKEN` | JWT Supabase utilisateur bench (auth `/api/mobile/chat`) |
+| `AM_HARNESS_BEARER_TOKEN` | JWT Supabase (court terme) — **préférer** `AM_HARNESS_BENCH_PASSWORD` + régénération en CI |
+| `AM_HARNESS_BENCH_PASSWORD` | Mot de passe du compte bench (`askmarcelapp@gmail.com`) |
+| `AM_HARNESS_SUPABASE_URL` | `NEXT_PUBLIC_SUPABASE_URL` de la WebApp |
+| `AM_HARNESS_SUPABASE_ANON_KEY` | `NEXT_PUBLIC_SUPABASE_ANON_KEY` de la WebApp |
 | `AM_HARNESS_MODEL_ID` | Modèle bras testé (ex. `fast-marcel`) |
 | `OPENROUTER_API_KEY` | Fallback partagé |
 | `WEBAPP_REPO_TOKEN` | (optionnel) checkout WebApp pour e2e local CI |
 
 ### Token harness
 
-Créer un utilisateur Supabase dédié bench. Le header `x-bench-mode: 1` contourne quotas/persistance mais **pas** l'auth Bearer.
+Compte dédié : `57f72ee7-cfe7-4bb3-ab3f-9402851bdd74` (`askmarcelapp@gmail.com`).
+
+Le header `x-bench-mode: 1` contourne quotas/persistance mais **pas** l'auth Bearer.
+
+**Important prod** : sur `app.askmarcel.app`, les headers bench ne sont honorés que si `ALLOW_BENCH_MODE=true` est défini sur le déploiement WebApp (voir `lib/chat/harnais-mode.ts`). Sinon, utiliser une preview avec ce flag.
+
+#### Configuration rapide (recommandée)
+
+```bash
+# 1. Initialiser le mot de passe bench (une fois, depuis la WebApp)
+cd AskMarcel-WebApp-NextJS
+pnpm exec tsx scripts/create-am-harness-bearer-token.ts --init-password 2>&1 | tee /tmp/am-bench-init.txt
+# Copier AM_HARNESS_BENCH_PASSWORD=… depuis la sortie
+
+# 2. Pousser tous les secrets GitHub
+cd ../hvac-bench
+export AM_HARNESS_BENCH_PASSWORD=…   # valeur de l'étape 1
+chmod +x scripts/setup-am-github-secrets.sh
+./scripts/setup-am-github-secrets.sh
+```
+
+Le script lit `OPENROUTER_API_KEY` depuis `AskMarcel-WebApp-NextJS/.env` si présent.
+
+#### Valeurs recommandées
+
+| Secret | Valeur |
+|---|---|
+| `AM_SIM_MODEL` | `google/gemini-2.5-flash` (simulateur, temp 0) |
+| `AM_JUDGE_MODEL` | `mistralai/mistral-large-2512` (juge, **≠** sim et ≠ bras) |
+| `AM_HARNESS_MODEL_ID` | `fast-marcel` |
+| `AM_HARNESS_URL` | `https://app.askmarcel.app/api/mobile/chat` |
+| `AM_SIM_API_KEY` / `AM_JUDGE_API_KEY` | même clé OpenRouter (ou clés séparées) |
+| `OPENROUTER_API_KEY` | clé OpenRouter org |
+
+#### Vérification manuelle
+
+```bash
+# JWT frais
+export AM_HARNESS_BEARER_TOKEN=$(cd AskMarcel-WebApp-NextJS && pnpm exec tsx scripts/create-am-harness-bearer-token.ts)
+curl -sS -o /dev/null -w "%{http_code}" \
+  -H "Authorization: Bearer $AM_HARNESS_BEARER_TOKEN" \
+  -H "x-bench-mode: 1" \
+  -H "Content-Type: application/json" \
+  -d '{"id":"test","modelId":"fast-marcel","messages":[]}' \
+  "$AM_HARNESS_URL"
+# Attendu : 200 (ou 4xx métier, pas 401)
+```
 
 ### Scripts npm AM
 

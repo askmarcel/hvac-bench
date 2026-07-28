@@ -126,6 +126,23 @@ jobs:
       - name: Install bench
         working-directory: hvac-bench
         run: pnpm install --no-frozen-lockfile
+      - name: Régénérer JWT bench
+        env:
+          AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
+        run: |
+          if [ -n "$AM_HARNESS_BENCH_PASSWORD" ] && [ -n "$NEXT_PUBLIC_SUPABASE_URL" ] && [ -n "$NEXT_PUBLIC_SUPABASE_ANON_KEY" ]; then
+            cd hvac-bench && pnpm add @supabase/supabase-js@^2 --silent
+            TOKEN=$(node --input-type=module -e "
+              import { createClient } from '@supabase/supabase-js';
+              const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, { auth: { persistSession: false } });
+              const { data, error } = await c.auth.signInWithPassword({ email: 'askmarcelapp@gmail.com', password: process.env.AM_HARNESS_BENCH_PASSWORD });
+              if (error || !data.session?.access_token) { console.error(error); process.exit(1); }
+              process.stdout.write(data.session.access_token);
+            ")
+            echo "AM_HARNESS_BEARER_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+          fi
       - name: Vérifier URL harnais
         run: |
           if [ -z "$AM_HARNESS_URL" ]; then
@@ -172,6 +189,23 @@ jobs:
           node-version: '22'
           cache: 'pnpm'
       - run: pnpm install --no-frozen-lockfile
+      - name: Régénérer JWT bench
+        env:
+          AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
+        run: |
+          if [ -n "$AM_HARNESS_BENCH_PASSWORD" ] && [ -n "$NEXT_PUBLIC_SUPABASE_URL" ] && [ -n "$NEXT_PUBLIC_SUPABASE_ANON_KEY" ]; then
+            pnpm add @supabase/supabase-js@^2 --silent
+            TOKEN=$(node --input-type=module -e "
+              import { createClient } from '@supabase/supabase-js';
+              const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, { auth: { persistSession: false } });
+              const { data, error } = await c.auth.signInWithPassword({ email: 'askmarcelapp@gmail.com', password: process.env.AM_HARNESS_BENCH_PASSWORD });
+              if (error || !data.session?.access_token) { console.error(error); process.exit(1); }
+              process.stdout.write(data.session.access_token);
+            ")
+            echo "AM_HARNESS_BEARER_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+          fi
       - name: Run gate T12 (3 bras × 10 cas × 3 réplicats)
         run: pnpm am:run-iteration --split gate
       - name: Archiver rapports gate
