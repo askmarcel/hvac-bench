@@ -6,6 +6,8 @@
 import { spawn } from 'node:child_process';
 import { resolve } from 'node:path';
 
+import { extractHarnessTurnText } from './stream-text-extract.js';
+
 export class HarnessUnavailableError extends Error {
   constructor(cause: string) {
     super(`Harnais injoignable (${cause}). WebApp .env + clés LLM ?`);
@@ -39,65 +41,7 @@ export type HarnessTurnArgs = {
 const WEBAPP_ROOT = resolve(import.meta.dirname, '../../../AskMarcel-WebApp-NextJS');
 const BENCH_SCRIPT = resolve(WEBAPP_ROOT, 'scripts/bench-harnais-turn.ts');
 
-type SsePayload = {
-  type?: string;
-  delta?: string;
-  content?: string;
-  text?: string;
-  textDelta?: string;
-  choices?: { delta?: { content?: string } }[];
-};
-
-function extractSseChunk(data: string): string {
-  try {
-    const parsed = JSON.parse(data) as SsePayload;
-    if (parsed.type === 'text-delta' && typeof parsed.delta === 'string') return parsed.delta;
-    if (parsed.type === 'reasoning-delta' && typeof parsed.delta === 'string') return parsed.delta;
-    return (
-      (typeof parsed.content === 'string' && parsed.content) ||
-      (typeof parsed.text === 'string' && parsed.text) ||
-      (typeof parsed.textDelta === 'string' && parsed.textDelta) ||
-      (typeof parsed.choices?.[0]?.delta?.content === 'string' && parsed.choices[0].delta.content) ||
-      ''
-    );
-  } catch {
-    return '';
-  }
-}
-
-function extractAiDataChunk(payload: string): string {
-  try {
-    const token = JSON.parse(payload);
-    return typeof token === 'string' && token.length > 0 ? token : '';
-  } catch {
-    return '';
-  }
-}
-
-function extractTextFromUiMessageStream(raw: string): string {
-  let text = '';
-  for (const line of raw.split('\n')) {
-    const trimmed = line.trimStart();
-    if (!trimmed) continue;
-
-    if (trimmed.startsWith('data:')) {
-      const data = trimmed.slice(5).trimStart();
-      if (!data || data === '[DONE]') continue;
-      const chunk = extractSseChunk(data);
-      if (chunk) text += chunk;
-      continue;
-    }
-
-    const aiDataMatch = trimmed.match(/^([0-9a-z]):(.*)$/i);
-    if (!aiDataMatch) continue;
-    const [, partType, rawPayload = ''] = aiDataMatch;
-    if (partType === '0' && rawPayload.trim()) {
-      const chunk = extractAiDataChunk(rawPayload.trim());
-      if (chunk) text += chunk;
-    }
-  }
-  return text.trim();
-}
+export { serializeToolTurn } from './stream-text-extract.js';
 
 export function resolveHarnessBaseUrl(surface: HarnessSurface, explicit?: string): string {
   if (explicit) return explicit;
@@ -199,7 +143,7 @@ export async function sendHarnessTurnHttp(args: HarnessTurnArgs): Promise<string
   }
 
   const raw = await response.text();
-  const text = extractTextFromUiMessageStream(raw);
+  const text = extractHarnessTurnText(raw);
   if (!text) {
     throw new HarnessUnavailableError('réponse reçue mais aucun texte extrait du flux');
   }

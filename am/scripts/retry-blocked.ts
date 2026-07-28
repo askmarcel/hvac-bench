@@ -5,7 +5,7 @@
  *
  * Usage:
  *   pnpm am:retry-blocked --artifact-dir prior-report
- *   pnpm am:retry-blocked --score runs/am-lw-*/score.json
+ *   pnpm am:retry-blocked --score runs/am-lw-<ts>/score.json
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { basename, dirname, resolve } from 'node:path';
