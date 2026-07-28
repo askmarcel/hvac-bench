@@ -1,0 +1,82 @@
+{
+  "id": "ham-0017",
+  "titre": "Mitsubishi Ecodan — cavitation trompeuse, vraie cause vase d'expansion en fin de vie",
+  "equipement": {
+    "marque": "Mitsubishi Electric",
+    "modele": "Ecodan PUZ-HWM",
+    "famille": "pac_air_eau",
+    "age_ans": 9
+  },
+  "installation": {
+    "emetteur": "plancher_chauffant",
+    "regime_eau": "35/28",
+    "region_climat": "H2",
+    "particularites": "vase d'expansion d'origine, jamais contrôlé, hauteur statique installation ~6 m (RDC + plancher)"
+  },
+  "plainte_initiale": "Bruit de cavitation au niveau de la pompe depuis 1 mois, ça s'aggrave.",
+  "etat_operatoire": "nominal",
+  "ground_state": {
+    "code_defaut": "aucun",
+    "libelle_code": "aucun code actif (seuil manque d'eau non atteint)",
+    "hauteur_statique_m": 6,
+    "pression_precharge_vase_nominale_bar": 0.9,
+    "bruit_pompe": "cavitation",
+    "pression_circuit_bar": 0.8,
+    "purgeur": "crache_air",
+    "amperage_circulateur": 1.1,
+    "amperage_circulateur_nominal_ref": 1
+  },
+  "evolution": [
+    {
+      "si_action": "remplacement_circulateur",
+      "alors": {
+        "bruit_pompe": "cavitation",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "controle_vase_expansion",
+      "alors": {
+        "pression_precharge_vase_bar": 0.2,
+        "pression_precharge_vase_nominale_bar": 0.9,
+        "diagnostic": "vessie_percee",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "remplacement_vase",
+      "alors": {
+        "pression_circuit_bar": 1.5,
+        "pression_precharge_vase_bar": 0.9,
+        "bruit_pompe": "silencieux",
+        "resout": true
+      }
+    }
+  ],
+  "verite": {
+    "cause": "vase d'expansion en fin de vie (vessie percée) — la pression circuit chute et de l'air s'introduit, provoquant la cavitation ; le circulateur lui-même est sain (ampérage nominal)",
+    "solution": "contrôler l'ampérage circulateur et la pression, contrôler la précharge du vase (circuit vidangé ou vase isolé), remplacer le vase d'expansion, régler la précharge nominale selon hauteur statique (~0,9 bar pour 6 m), remettre en pression et purger",
+    "verification": "précharge vase à 0,9 bar (vs 0,2 bar mesurée), pression circuit stable au-dessus de 1,2 bar sans réajustement, plus de bruit de cavitation après purge",
+    "pieges": [
+      "remplacer le circulateur en premier réflexe devant la cavitation — l'ampérage nominal (1,1 A) montre qu'il fonctionne correctement",
+      "remise en pression sans contrôler le vase (soulagement temporaire, la pression rechute)",
+      "purger sans traiter la cause vase (réduit le bruit momentanément mais n'empêche pas la réintroduction d'air)"
+    ]
+  },
+  "chemin_expert": [
+    "OBS-BRUIT-POMPE",
+    "MES-AMPERAGE",
+    "MES-PRESSION",
+    "OBS-PURGEUR",
+    "CONTROLE-VASE",
+    "REM-VASE",
+    "MES-PRESSION"
+  ],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": "marcel:2026-07-28"
+  },
+  "split": "gate"
+}

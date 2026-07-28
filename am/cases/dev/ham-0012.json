@@ -1,7 +1,12 @@
 {
   "id": "ham-0012",
   "titre": "Daikin Altherma — fusible circulateur grillé après coupure de courant",
-  "equipement": { "marque": "Daikin", "modele": "Altherma 3 EHVH12", "famille": "pac_air_eau", "age_ans": 3 },
+  "equipement": {
+    "marque": "Daikin",
+    "modele": "Altherma 3 EHVH12",
+    "famille": "pac_air_eau",
+    "age_ans": 3
+  },
   "installation": {
     "emetteur": "radiateurs_ht",
     "regime_eau": "60/50",
@@ -11,30 +16,82 @@
   "plainte_initiale": "Plus aucun bruit de pompe, la carte est allumée mais rien ne circule.",
   "etat_operatoire": "arret_force",
   "ground_state": {
+    "code_defaut": "7H",
+    "libelle_code": "défaut débit d'eau / circulateur",
     "amperage_circulateur": 0,
     "bruit_pompe": "silencieux",
-    "led_defaut": "aucun_code_specifique"
+    "etat_fusible": "grille",
+    "fusible_calibre_constructeur_a": 2,
+    "contacteur_circulateur": "ok",
+    "debit_l_min": 0
   },
   "evolution": [
-    { "si_action": "mesure_amperage_circulateur", "alors": { "amperage_circulateur": 0 } },
-    { "si_action": "controle_fusible_circulateur", "alors": { "etat_fusible": "grille" } },
+    {
+      "si_action": "mesure_amperage_circulateur",
+      "alors": {
+        "amperage_circulateur": 0,
+        "resout": false
+      }
+    },
+    {
+      "si_action": "controle_fusible_circulateur",
+      "alors": {
+        "etat_fusible": "grille",
+        "fusible_calibre_constructeur_a": 2,
+        "resout": false
+      }
+    },
+    {
+      "si_action": "test_continuite_circulateur",
+      "alors": {
+        "resistance_bobinage_circulateur_ohm": 180,
+        "diagnostic": "bobinage_ok_pas_de_court_circuit",
+        "resout": false
+      }
+    },
     {
       "si_action": "remplacement_fusible",
-      "alors": { "amperage_circulateur": 0.8, "bruit_pompe": "silencieux_normal", "resout": true }
+      "alors": {
+        "amperage_circulateur": 0.8,
+        "bruit_pompe": "silencieux_normal",
+        "debit_l_min": 22,
+        "code": "disparu",
+        "resout": true
+      }
+    },
+    {
+      "si_action": "remplacement_circulateur",
+      "alors": {
+        "resistance_bobinage_circulateur_ohm": 12,
+        "diagnostic": "court_circuit_bobinage",
+        "resout": false
+      }
     }
   ],
   "verite": {
-    "cause": "fusible du circulateur grillé, probablement suite au pic de tension de l'orage/coupure",
-    "solution": "remplacer le fusible (calibre constructeur), contrôler le circulateur au redémarrage, vérifier l'absence de court-circuit avant de remettre sous tension",
-    "verification": "circulateur tourne, ampérage dans la plage 0.3-2.5A, débit rétabli",
-    "pieges": []
+    "cause": "fusible du circulateur grillé, probablement suite au pic de tension de l'orage/coupure — contacteur circulateur sain",
+    "solution": "contrôler le fusible, mesurer la continuité/résistance du bobinage circulateur (écarter un court-circuit moteur) avant toute remise sous tension, remplacer le fusible au calibre constructeur (2 A), contrôler ampérage et débit au redémarrage",
+    "verification": "circulateur tourne, ampérage dans la plage 0.3-2.5A, débit rétabli, code 7H disparu",
+    "pieges": [
+      "remettre un fusible surdimensionné (perd la protection, risque incendie)",
+      "remplacer le circulateur sans avoir testé le fusible et la continuité bobinage",
+      "remplacer la carte électronique (réflexe d'escalade injustifié ici)",
+      "remettre sous tension sans vérifier l'absence de court-circuit au préalable (fait regriller le fusible immédiatement)"
+    ]
   },
-  "chemin_expert": ["MES-AMPERAGE"],
+  "chemin_expert": [
+    "MES-AMPERAGE",
+    "CONTROLE-FUSIBLE",
+    "MES-CONTINUITE-CIRCULATEUR",
+    "REM-FUSIBLE",
+    "MES-AMPERAGE",
+    "MES-DEBIT"
+  ],
   "escalade_attendue": null,
   "provenance": {
     "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
     "reformule": false,
-    "valide_par": null
+    "valide_par": "marcel:2026-07-28"
   },
   "split": "dev"
 }

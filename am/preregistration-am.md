@@ -3,7 +3,7 @@
 **Figé avant tout run gate** (leçon O7/O9). Premier run gate = le chiffre ; toute retouche ensuite → itération sur dev uniquement.
 
 **Date de rédaction** : 2026-07-28  
-**Statut rosters** : EN ATTENTE validation Marcel (`valide_par` null sur les 20 cas au 2026-07-28)
+**Statut rosters** : ✅ Appliqués le 2026-07-28 (stamp `marcel:2026-07-28`, seed `20260728`)
 
 ---
 
@@ -35,11 +35,11 @@ pnpm am:split-dev-gate --seed 20260728 --apply  # puis commit de ce fichier
 
 ### DEV (10 cas — itération libre)
 
-_À remplir après `am:split-dev-gate --apply`_
+ham-0001, ham-0004, ham-0008, ham-0011, ham-0012, ham-0013, ham-0014, ham-0016, ham-0019, ham-0020
 
 ### GATE (10 cas — verrouillés, jamais en dev)
 
-_À remplir après `am:split-dev-gate --apply`_
+ham-0002, ham-0003, ham-0005, ham-0006, ham-0007, ham-0009, ham-0010, ham-0015, ham-0017, ham-0018
 
 ---
 

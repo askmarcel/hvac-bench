@@ -1,39 +1,76 @@
 {
   "id": "ham-0014",
   "titre": "Viessmann Vitocal — verrouillage usine après remplacement de carte par un tiers",
-  "equipement": { "marque": "Viessmann", "modele": "Vitocal 200-S", "famille": "pac_air_eau", "age_ans": 5 },
+  "equipement": {
+    "marque": "Viessmann",
+    "modele": "Vitocal 200-S",
+    "famille": "pac_air_eau",
+    "age_ans": 5
+  },
   "installation": {
     "emetteur": "radiateurs_bt",
     "regime_eau": "45/35",
     "region_climat": "H1",
-    "particularites": "carte principale remplacée par un installateur tiers il y a 1 semaine"
+    "particularites": "carte principale remplacée par un installateur tiers non agréé il y a 1 semaine"
   },
   "plainte_initiale": "Depuis le remplacement de la carte, la PAC refuse de démarrer, code de verrouillage usine affiché.",
   "etat_operatoire": "arret_force",
   "ground_state": {
-    "led_defaut": "code_verrouillage_configuration_usine",
-    "pression_circuit_bar": 1.5
+    "code_defaut": "E07",
+    "libelle_code": "verrouillage configuration usine (Vitosoft requis)",
+    "pression_circuit_bar": 1.5,
+    "cablage_apparent": "conforme_tous_connecteurs_en_place",
+    "historique_intervention": "remplacement_carte_par_tiers_non_agree_1_semaine"
   },
   "evolution": [
     {
+      "si_action": "verif_cablage_carte",
+      "alors": {
+        "cablage_apparent": "conforme_tous_connecteurs_en_place",
+        "diagnostic": "cablage_ok_pas_de_connecteur_oublie",
+        "resout": false
+      }
+    },
+    {
       "si_action": "lecture_code_verrouillage",
-      "alors": { "type_verrouillage": "configuration_usine_requise_apres_remplacement_carte" }
+      "alors": {
+        "type_verrouillage": "configuration_usine_requise_apres_remplacement_carte",
+        "outil_requis": "Vitosoft_SAV_agree",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "escalade_sav",
+      "alors": {
+        "dossier_sav": "transmis_SAV_Viessmann_agree",
+        "tentative_deverrouillage_non_autorisee": "aucune",
+        "resout": true
+      }
     }
   ],
   "verite": {
-    "cause": "la nouvelle carte nécessite une configuration/déverrouillage via l'outil constructeur (accès réservé SAV agréé), non réalisée lors du remplacement",
-    "solution": "escalader au SAV constructeur agréé Viessmann pour déverrouillage et configuration à distance ou sur site, ne pas tenter de contournement",
-    "verification": "non applicable avant intervention du SAV constructeur",
+    "cause": "la nouvelle carte nécessite une configuration/déverrouillage via l'outil constructeur Vitosoft (accès réservé SAV agréé), non réalisée lors du remplacement par un tiers — câblage vérifié conforme en amont",
+    "solution": "vérifier le câblage de la carte (connecteurs selon schéma constructeur), confirmer le code verrouillage, puis escalader au SAV Viessmann agréé pour déverrouillage et configuration — ne pas tenter de contournement",
+    "verification": "dossier transmis au SAV Viessmann agréé : code E07, historique intervention tiers, câblage vérifié conforme — aucune tentative de déverrouillage non autorisée ; reprise normale après intervention SAV",
     "pieges": [
-      "chercher une cause frigorifique ou hydraulique alors que la PAC ne démarre même pas — un code de verrouillage usine après remplacement de carte n'est jamais un défaut terrain"
+      "chercher une cause frigorifique ou hydraulique alors que la PAC ne démarre même pas — un code de verrouillage usine après remplacement de carte n'est jamais un défaut terrain",
+      "tenter un reset usine ou flasher la carte via une procédure non officielle (risque de casse garantie et blocage définitif)",
+      "remplacer à nouveau la carte sans passer par le SAV agréé (le verrouillage se reproduira sans configuration Vitosoft)",
+      "escalader sans avoir vérifié le câblage de la nouvelle carte (connecteur oublié = fixable sur site)"
     ]
   },
-  "chemin_expert": ["OBS-LED-DEFAUT"],
+  "chemin_expert": [
+    "OBS-LED-DEFAUT",
+    "MES-PRESSION",
+    "VERIF-CABLAGE-CARTE",
+    "LECTURE-CODE",
+    "ESC-SAV"
+  ],
   "escalade_attendue": "sav_verrouille",
   "provenance": {
     "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
     "reformule": false,
-    "valide_par": null
+    "valide_par": "marcel:2026-07-28"
   },
   "split": "dev"
 }

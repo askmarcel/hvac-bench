@@ -1,0 +1,102 @@
+{
+  "id": "ham-0018",
+  "titre": "Panasonic Aquarea — givre localisé trompeur, vraie cause sonde de dégivrage déplacée",
+  "equipement": {
+    "marque": "Panasonic",
+    "modele": "Aquarea T-CAP",
+    "famille": "pac_air_eau",
+    "age_ans": 3
+  },
+  "installation": {
+    "emetteur": "radiateurs_bt",
+    "regime_eau": "40/33",
+    "region_climat": "H1",
+    "particularites": "hiver normal, -2°C extérieur, entretien effectué le mois dernier"
+  },
+  "plainte_initiale": "Un coin de l'unité extérieure reste givré en permanence, jamais le reste, chauffage correct par ailleurs.",
+  "etat_operatoire": "nominal",
+  "ground_state": {
+    "fluide": "R410A",
+    "t_exterieure": -2,
+    "givre": "localise_coin_inferieur",
+    "hp_bar": 22,
+    "bp_bar": 8.5,
+    "surchauffe_k": 6,
+    "sous_refroidissement_k": 4,
+    "sonde_position": "deplacee_hors_logement",
+    "resistance_sonde_ohm": 12800,
+    "continuite_sonde": "normale"
+  },
+  "evolution": [
+    {
+      "si_action": "mesure_hp_bp",
+      "alors": {
+        "hp_bar": 22,
+        "bp_bar": 8.5,
+        "surchauffe_k": 6,
+        "sous_refroidissement_k": 4,
+        "diagnostic": "charge_frigorifique_normale",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "mesure_resistance_sonde",
+      "alors": {
+        "resistance_sonde_ohm": 12800,
+        "continuite_sonde": "normale",
+        "diagnostic": "sonde_electriquement_saine",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "controle_visuel_sonde",
+      "alors": {
+        "sonde_position": "deplacee_hors_logement",
+        "clip_fixation": "mal_remis_apres_entretien",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "repositionnement_sonde",
+      "alors": {
+        "sonde_position": "correctement_clipsée",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "forcage_degivrage",
+      "alors": {
+        "givre": "absent_apres_3_cycles",
+        "cycles_degivrage_valides": 3,
+        "resout": true
+      }
+    }
+  ],
+  "verite": {
+    "cause": "sonde de dégivrage déplacée hors de son logement (mal reclipsée lors de l'entretien précédent) — continuité et résistance électriques normales, mais la sonde ne mesure plus la zone givrée ; un coin reste sous-dégivré alors que le circuit frigorifique est sain",
+    "solution": "mesurer HP/BP et résistance sonde pour écarter charge et défaut électrique, contrôler visuellement le positionnement, repositionner la sonde dans son logement, fixer le clip, valider sur plusieurs cycles de dégivrage forcé",
+    "verification": "plus de givre localisé après 3 cycles de dégivrage, HP/BP et surchauffe/sous-refroidissement toujours nominaux",
+    "pieges": [
+      "confondre avec ham-0009 et remplacer directement le connecteur/la sonde sans vérifier le positionnement (pattern-matching sur le cas électrique connu)",
+      "conclure à un manque de fluide devant le givre — HP, BP, surchauffe et sous-refroidissement nominaux éliminent la charge",
+      "remplacer l'échangeur ou la carte (overkill alors que le circuit frigo est sain)",
+      "dégivrage manuel au chalumeau (dangereux, abîme les ailettes, ne traite pas la cause)"
+    ]
+  },
+  "chemin_expert": [
+    "OBS-GELEE",
+    "MES-HP-BP",
+    "MES-SURCHAUFFE-SOUS-REF",
+    "MES-RESISTANCE-SONDE",
+    "OBS-CAPTEUR",
+    "REPOSITIONNEMENT-SONDE-DEGIV",
+    "MAN-FORCAGE-DEGIV"
+  ],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": "marcel:2026-07-28"
+  },
+  "split": "gate"
+}

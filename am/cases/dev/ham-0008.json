@@ -1,47 +1,88 @@
 {
   "id": "ham-0008",
   "titre": "Daikin Altherma — détendeur électronique bloqué, surchauffe et sous-refroidissement bas",
-  "equipement": { "marque": "Daikin", "modele": "Altherma 3 EHVH08", "famille": "pac_air_eau", "age_ans": 6 },
+  "equipement": {
+    "marque": "Daikin",
+    "modele": "Altherma 3 EHVH08",
+    "famille": "pac_air_eau",
+    "age_ans": 6
+  },
   "installation": {
     "emetteur": "plancher_chauffant",
     "regime_eau": "35/28",
     "region_climat": "H1",
-    "particularites": "bruit anormal côté détente depuis 2 semaines"
+    "particularites": "bruit anormal côté détente depuis 2 semaines, fluide R32"
   },
   "plainte_initiale": "Bruit de sifflement côté unité extérieure, chauffage irrégulier, parfois insuffisant.",
   "etat_operatoire": "nominal",
   "ground_state": {
+    "fluide": "R32",
+    "t_exterieure": 5,
     "hp_bar": 22,
     "bp_bar": 9,
+    "hp_bar_nominale_ref": 24,
+    "bp_bar_nominale_ref": 10,
     "delta_hp_bp": 13,
     "surchauffe_k": 3,
     "sous_refroidissement_k": 1,
+    "amperage_compresseur": 9.8,
+    "amperage_compresseur_nominal_ref": 8.5,
+    "bruit_ue": "sifflement_continu_cote_detente",
     "givre": "absent"
   },
   "evolution": [
     {
+      "si_action": "test_bobine_eev",
+      "alors": {
+        "resistance_bobine_eev_ohm": 52,
+        "commande_eev_mode_service": "sans_effet_sur_ouverture",
+        "diagnostic": "bobine_ok_grippage_mecanique_pointeau",
+        "resout": false
+      }
+    },
+    {
       "si_action": "controle_detendeur",
-      "alors": { "etat_detendeur": "bloque_partiellement_ouvert", "diagnostic": "detendeur_electronique_defaillant" }
+      "alors": {
+        "etat_detendeur": "bloque_partiellement_ouvert",
+        "diagnostic": "detendeur_electronique_defaillant",
+        "resout": false
+      }
     },
     {
       "si_action": "remplacement_detendeur",
-      "alors": { "surchauffe_k": 6, "sous_refroidissement_k": 4, "resout": true }
+      "alors": {
+        "surchauffe_k": 6,
+        "sous_refroidissement_k": 4,
+        "bruit_ue": "silencieux",
+        "amperage_compresseur": 8.4,
+        "resout": true
+      }
     }
   ],
   "verite": {
-    "cause": "détendeur électronique (EEV) bloqué partiellement ouvert — sous-refroidissement et surchauffe tous deux hors plage basse, signature différente d'un manque de fluide",
-    "solution": "remplacer le détendeur électronique, contrôler les pressions et températures après stabilisation",
-    "verification": "surchauffe et sous-refroidissement revenus en plage (4-8K et 3-6K), sifflement disparu",
+    "cause": "détendeur électronique (EEV) bloqué partiellement ouvert — sous-refroidissement et surchauffe tous deux hors plage basse, signature différente d'un manque de fluide (surchauffe haute) et d'un filtre déshydrateur colmaté (surchauffe et sous-refroidissement hauts)",
+    "solution": "tester la bobine/commande EEV, puis remplacer le détendeur électronique si grippage mécanique confirmé, contrôler pressions et surchauffe/sous-refroidissement après stabilisation",
+    "verification": "surchauffe et sous-refroidissement revenus en plage (4-8K et 3-6K), sifflement disparu, ampérage compresseur nominal",
     "pieges": [
-      "confondre avec un manque de fluide — ici la surchauffe est BASSE, pas haute, ce qui oriente vers la détente et non vers la charge"
+      "confondre avec un manque de fluide — ici la surchauffe est BASSE, pas haute, ce qui oriente vers la détente et non vers la charge",
+      "recharger du fluide alors que la charge est correcte (aggrave le diagnostic et pollue le circuit)",
+      "remplacer le compresseur à cause du sifflement (bruit trompeur — sifflement continu côté détente ≠ compresseur)",
+      "confondre avec filtre déshydrateur colmaté — signature inverse : surchauffe ET sous-refroidissement hauts (restriction en amont du détendeur)"
     ]
   },
-  "chemin_expert": ["MES-HP-BP", "DEM-DETENDEUR"],
+  "chemin_expert": [
+    "MES-HP-BP",
+    "MES-SURCHAUFFE-SOUS-REF",
+    "TEST-BOBINE-EEV",
+    "DEM-DETENDEUR",
+    "REM-DETENDEUR",
+    "MES-HP-BP"
+  ],
   "escalade_attendue": null,
   "provenance": {
     "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
     "reformule": false,
-    "valide_par": null
+    "valide_par": "marcel:2026-07-28"
   },
   "split": "dev"
 }

@@ -1,47 +1,107 @@
 {
   "id": "ham-0016",
   "titre": "Daikin Altherma — sous-dimensionnement, escalade bureau d'études",
-  "equipement": { "marque": "Daikin", "modele": "Altherma 3 EHVH08", "famille": "pac_air_eau", "age_ans": 2 },
+  "equipement": {
+    "marque": "Daikin",
+    "modele": "Altherma 3 EHVH08",
+    "famille": "pac_air_eau",
+    "age_ans": 2
+  },
   "installation": {
     "emetteur": "radiateurs_ht",
     "regime_eau": "65/55",
     "region_climat": "H1",
-    "particularites": "maison ancienne mal isolée, PAC 8kW pour un besoin réel estimé à 12kW"
+    "particularites": "maison ancienne mal isolée, PAC 8 kW pour un besoin réel estimé à 12 kW"
   },
   "plainte_initiale": "Par temps froid (moins de 0°C), la maison ne monte jamais à la température de consigne, même en fonctionnement continu.",
   "etat_operatoire": "nominal",
   "ground_state": {
     "t_exterieure": -3,
+    "t_ambiante_interieure": 17,
+    "consigne_ambiance": 20,
+    "temperature_base_zone_h1_dtu": -7,
     "t_depart": 60,
-    "delta_t_eau_K": 16,
-    "debit_l_min": 28,
+    "t_depart_contexte": "limite_haute_regulation_HT_atteinte",
+    "delta_t_eau_K": 6,
+    "debit_l_min": 19,
+    "puissance_delivree_kw": 8,
+    "puissance_nominale_pac_kw": 8,
     "hp_bar": 23,
-    "bp_bar": 8
+    "bp_bar": 8,
+    "courbe_chauffe_reglage": "deja_au_maximum_autorise",
+    "vannes_radiateurs_ouverture": "toutes_ouvertes"
   },
   "evolution": [
+    {
+      "si_action": "mesure_hp_bp",
+      "alors": {
+        "hp_bar": 23,
+        "bp_bar": 8,
+        "diagnostic": "pressions_dans_la_plage",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "verif_courbe_chauffe",
+      "alors": {
+        "courbe_chauffe_reglage": "deja_au_maximum_autorise",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "verif_vannes_radiateurs",
+      "alors": {
+        "vannes_radiateurs_ouverture": "toutes_ouvertes",
+        "resout": false
+      }
+    },
     {
       "si_action": "calcul_deperditions",
       "alors": {
         "puissance_necessaire_kw": 12,
         "puissance_installee_kw": 8,
-        "ecart": "sous_dimensionne_de_33_pourcent"
+        "puissance_delivree_kw": 8,
+        "ecart": "sous_dimensionne_de_33_pourcent",
+        "diagnostic": "pac_a_pleine_charge_insuffisante",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "escalade_bureau_etudes",
+      "alors": {
+        "etude_thermique": "transmise_BE",
+        "proposition": "appoint_ou_remplacement_pac_12kw",
+        "resout": true
       }
     }
   ],
   "verite": {
-    "cause": "PAC sous-dimensionnée par rapport aux déperditions réelles du bâtiment (isolation ancienne, calcul initial optimiste)",
-    "solution": "escalader vers un bureau d'études pour recalcul des déperditions et étude de complément (appoint électrique, ou remplacement par une unité de puissance supérieure)",
-    "verification": "non applicable — étude de dimensionnement requise avant toute action corrective",
+    "cause": "PAC sous-dimensionnée par rapport aux déperditions réelles du bâtiment (isolation ancienne, calcul initial optimiste) — machine à pleine charge (~8 kW) avec tous les paramètres de régulation et d'émission déjà optimisés",
+    "solution": "vérifier courbe de chauffe et vannes radiateurs, confirmer que la machine est nominale (HP/BP, débit, ΔT cohérents avec ~8 kW), calculer les déperditions, puis escalader vers un bureau d'études pour recalcul et proposition (appoint électrique dimensionné ou remplacement PAC)",
+    "verification": "étude thermique transmise au BE avec relevés terrain (T° int/ext, puissance délivrée, HP/BP) et proposition d'appoint ou de remplacement PAC dimensionnée — pas d'action corrective majeure sans étude",
     "pieges": [
-      "multiplier les mesures frigorifiques/hydrauliques qui reviendront toutes normales — tout est en plage ici, le problème est un dimensionnement, pas une panne"
+      "multiplier les mesures frigorifiques/hydrauliques qui reviendront toutes normales — tout est en plage ici, le problème est un dimensionnement, pas une panne",
+      "augmenter la courbe de chauffe au-delà de la limite technique (use l'appareil, risque sécurité HP)",
+      "installer un appoint électrique sans étude préalable (bricolage non dimensionné)",
+      "conclure au sous-dimensionnement sans avoir vérifié les vannes radiateurs fermées",
+      "chercher une fuite frigo ou remplacer le compresseur (machine saine, symptôme thermique bâtiment)"
     ]
   },
-  "chemin_expert": ["MES-TEMP-AMBIANTE", "MES-DEBIT"],
+  "chemin_expert": [
+    "MES-TEMP-AMBIANTE",
+    "MES-DEBIT",
+    "MES-DT-EAU",
+    "MES-HP-BP",
+    "VERIF-COURBE-CHAUFFE",
+    "VERIF-VANNES-RADIATEURS",
+    "CALCUL-DEPERDITIONS",
+    "ESC-BUREAU-ETUDES"
+  ],
   "escalade_attendue": "sous_dimensionnement",
   "provenance": {
     "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
     "reformule": false,
-    "valide_par": null
+    "valide_par": "marcel:2026-07-28"
   },
   "split": "dev"
 }

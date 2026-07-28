@@ -1,0 +1,111 @@
+{
+  "id": "ham-0010",
+  "titre": "Viessmann Vitocal — compresseur inverter défaillant, escalade garantie après vérifications",
+  "equipement": {
+    "marque": "Viessmann",
+    "modele": "Vitocal 250-A",
+    "famille": "pac_air_eau",
+    "age_ans": 1
+  },
+  "installation": {
+    "emetteur": "radiateurs_ht",
+    "regime_eau": "55/45",
+    "region_climat": "H1",
+    "particularites": "PAC installée il y a 14 mois"
+  },
+  "plainte_initiale": "Bruit métallique intermittent côté compresseur depuis 3 jours, courant instable en fonctionnement, disjoncte parfois après plusieurs tentatives de redémarrage.",
+  "etat_operatoire": "arret_force",
+  "ground_state": {
+    "compresseur_type": "inverter",
+    "fluide": "R32",
+    "t_exterieure": 3,
+    "code_defaut": "surintensite_compresseur",
+    "libelle_code": "protection surintensité / arrêt forcé",
+    "amperage_compresseur": 18.5,
+    "amperage_compresseur_stabilite": "erratique_17_a_19A",
+    "amperage_compresseur_nominal_ref": 12,
+    "bruit_compresseur": "claquement_metallique_intermittent",
+    "hp_bar": 24,
+    "bp_bar": 9,
+    "hp_bar_nominale_ref": 25,
+    "bp_bar_nominale_ref": 9,
+    "tentatives_redemarrage": 4,
+    "age_installation_mois": 14
+  },
+  "evolution": [
+    {
+      "si_action": "mesure_amperage",
+      "alors": {
+        "amperage_compresseur": 18.5,
+        "stabilite": "erratique_17_a_19A_hors_plage",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "test_condensateur_demarrage",
+      "alors": {
+        "etat_condensateur_demarrage": "auxiliaire_ok_inverter_sans_condensateur_classique",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "verif_cablage_compresseur",
+      "alors": {
+        "etat_cablage_compresseur": "ok",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "mesure_hp_bp",
+      "alors": {
+        "hp_bar": 24,
+        "bp_bar": 9,
+        "diagnostic": "pressions_dans_la_plage",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "tentative_redemarrage",
+      "alors": {
+        "amperage_compresseur": 21,
+        "bruit_compresseur": "claquement_plus_fort",
+        "disjonction": true,
+        "resout": false
+      }
+    },
+    {
+      "si_action": "escalade_garantie",
+      "alors": {
+        "dossier_garantie": "ouvert",
+        "intervention_circuit_scelle": "aucune",
+        "resout": true
+      }
+    }
+  ],
+  "verite": {
+    "cause": "défaillance mécanique interne du compresseur inverter (probable grippage partiel) — après écartement des causes simples (condensateur auxiliaire, câblage, pressions HP/BP dans la plage), ampérage erratique hors plage et bruit métallique persistent",
+    "solution": "arrêt de l'unité, ne plus forcer les redémarrages, ouverture d'un dossier de garantie constructeur avec relevés ampérage/bruit/code transmis au SAV — aucune intervention sur le circuit scellé",
+    "verification": "dossier garantie constitué avec relevés ampérage, bruit, code défaut et tentatives de redémarrage transmis au SAV constructeur ; aucune intervention sur circuit scellé ; remplacement compresseur sous garantie à valider par le constructeur",
+    "pieges": [
+      "forcer les redémarrages (aggrave les dégâts mécaniques et peut compliquer le dossier garantie)",
+      "remplacer le compresseur soi-même hors circuit garantie constructeur (perte de couverture, coût élevé inutile)",
+      "ne pas tester le condensateur de démarrage/auxiliaire avant de conclure (piège principal — souvent confondu avec grippage sur machines à vitesse fixe)",
+      "ouvrir ou intervenir sur le circuit frigorifique scellé (interdit, dangereux, annule la garantie)"
+    ]
+  },
+  "chemin_expert": [
+    "MES-AMPERAGE",
+    "OBS-BRUIT-COMPRESSEUR",
+    "MES-HP-BP",
+    "TEST-CONDENSATEUR-DEMARRAGE",
+    "VERIF-CABLAGE-COMPRESSEUR",
+    "ESC-GARANTIE"
+  ],
+  "escalade_attendue": "garantie_compresseur",
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": "marcel:2026-07-28"
+  },
+  "split": "gate"
+}

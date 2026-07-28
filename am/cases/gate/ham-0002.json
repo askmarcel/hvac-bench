@@ -1,0 +1,72 @@
+{
+  "id": "ham-0002",
+  "titre": "Atlantic Alféa Extensa Duo — filtre hydraulique encrassé, rendement en baisse",
+  "equipement": {
+    "marque": "Atlantic",
+    "modele": "Alféa Extensa Duo",
+    "famille": "pac_air_eau",
+    "age_ans": 3
+  },
+  "installation": {
+    "emetteur": "radiateurs_bt",
+    "regime_eau": "45/35",
+    "region_climat": "H2",
+    "particularites": "filtre à tamis jamais nettoyé depuis la pose"
+  },
+  "plainte_initiale": "Chauffage tiède, la PAC tourne en continu sans jamais atteindre la consigne.",
+  "etat_operatoire": "nominal",
+  "ground_state": {
+    "pression_circuit_bar": 1.5,
+    "debit_l_min": 11,
+    "delta_t_eau_K": 13,
+    "delta_pression_filtre_bar": 0.35,
+    "purgeur": "sec",
+    "bruit_pompe": "silencieux",
+    "bruit_filtre": "sifflement_restriction_legere",
+    "vanne_position": "ouverte",
+    "bypass_filtre": "ferme",
+    "etat_filtre": "encrasse"
+  },
+  "evolution": [
+    {
+      "si_action": "purge_complete",
+      "alors": {
+        "inchange": true
+      }
+    },
+    {
+      "si_action": "nettoyage_filtre",
+      "alors": {
+        "debit_l_min": 22,
+        "delta_t_eau_K": 10,
+        "delta_pression_filtre_bar": 0.05,
+        "resout": true
+      }
+    }
+  ],
+  "verite": {
+    "cause": "filtre à tamis du circuit hydraulique fortement encrassé, jamais nettoyé depuis la pose",
+    "solution": "démonter et nettoyer le filtre à tamis (vérifier sens de pose), purger, contrôler débit et ΔT après remise en route",
+    "verification": "débit revenu entre 20 et 25 l/min en chauffage, ΔT dans la plage radiateurs BT (8-12K), consigne atteinte",
+    "pieges": [
+      "confondre avec un défaut circulateur — le débit bas donne l'impression d'une pompe faible alors que l'ampérage circulateur reste nominal",
+      "bypass filtre ouvert par erreur (masque le vrai débit mesuré en aval)",
+      "confondre avec un problème de dimensionnement radiateurs alors que la restriction est en amont",
+      "ne pas vérifier le sens de pose du filtre après nettoyage"
+    ]
+  },
+  "chemin_expert": [
+    "MES-DEBIT",
+    "OBS-FILTRE",
+    "DEM-FILTRE",
+    "MAN-NETTOYAGE-FILTRE",
+    "MES-DT-EAU"
+  ],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": "marcel:2026-07-28"
+  },
+  "split": "gate"
+}

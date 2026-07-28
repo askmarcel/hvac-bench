@@ -1,45 +1,88 @@
 {
   "id": "ham-0004",
   "titre": "Mitsubishi Ecodan — vanne 3 voies bloquée en ECS, pas de code affiché",
-  "equipement": { "marque": "Mitsubishi Electric", "modele": "Ecodan PUZ-WM", "famille": "pac_air_eau", "age_ans": 7 },
+  "equipement": {
+    "marque": "Mitsubishi Electric",
+    "modele": "Ecodan PUZ-WM",
+    "famille": "pac_air_eau",
+    "age_ans": 7
+  },
   "installation": {
     "emetteur": "mixte",
     "regime_eau": "45/35",
     "region_climat": "H2",
-    "particularites": "vanne 3 voies jamais changée depuis l'installation"
+    "particularites": "vanne 3 voies jamais changée depuis l'installation, eau dure"
   },
   "plainte_initiale": "Plus de chauffage depuis 2 jours, l'eau chaude sanitaire fonctionne normalement, aucun code erreur affiché.",
   "etat_operatoire": "nominal",
   "ground_state": {
-    "vanne_position": "inconnue",
-    "t_depart": 48,
-    "debit_l_min": 3,
-    "led_defaut": "aucun_code"
+    "code_defaut": "aucun",
+    "pression_circuit_bar": 1.5,
+    "debit_chauffage_l_min": 3,
+    "t_depart_commun_avant_vanne": 48,
+    "t_depart_chauffage_apres_vanne": 23,
+    "t_retour_chauffage": 22,
+    "continuite_moteur_vanne": "ok",
+    "tension_commande_vanne_v": 230,
+    "vanne_position": "bloquee_ecs",
+    "actionnement_manuel_vanne": "ne_bouge_pas"
   },
   "evolution": [
     {
+      "si_action": "test_moteur_vanne",
+      "alors": {
+        "continuite_moteur_vanne": "ok",
+        "tension_commande_vanne_v": 230,
+        "vanne_position": "inchangee_bloquee_ecs",
+        "diagnostic": "moteur_commande_ok_grippage_mecanique_a_ecarter_actuateur_hs"
+      }
+    },
+    {
       "si_action": "observation_vanne_3_voies",
-      "alors": { "vanne_position": "bloquee_ecs", "actionnement_manuel": "ne_bouge_pas" }
+      "alors": {
+        "vanne_position": "bloquee_ecs",
+        "actionnement_manuel": "ne_bouge_pas"
+      }
     },
     {
       "si_action": "demontage_vanne",
-      "alors": { "etat_interne": "grippee_par_depot_calcaire", "resout_apres_remplacement": true }
+      "alors": {
+        "etat_interne": "grippee_par_depot_calcaire",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "remplacement_vanne",
+      "alors": {
+        "debit_chauffage_l_min": 24,
+        "vanne_position": "alternance_chauffage_ecs_ok",
+        "resout": true
+      }
     }
   ],
   "verite": {
-    "cause": "vanne 3 voies grippée en position ECS par entartrage du corps de vanne",
+    "cause": "vanne 3 voies grippée en position ECS par entartrage du corps de vanne — le moteur et la commande électrique sont sains (à distinguer d'un actuateur HS, panne plus fréquente en apparence mais écartée ici par le test moteur)",
     "solution": "déposer et remplacer la vanne 3 voies (nettoyage rarement suffisant sur ce modèle), purger, contrôler le cycle chauffage/ECS",
-    "verification": "alternance chauffage/ECS correcte sur 24h, débit chauffage revenu au-dessus de 20 l/min",
+    "verification": "alternance chauffage/ECS correcte sur 24h, débit chauffage revenu au-dessus de 20 l/min, T° départ chauffage > 40 °C en demande",
     "pieges": [
-      "conclure à une carte électronique morte parce qu'aucun code n'est affiché — sans mesure mécanique de la vanne, l'absence de code ne dit rien"
+      "conclure à une carte électronique morte parce qu'aucun code n'est affiché — sans mesure mécanique de la vanne, l'absence de code ne dit rien",
+      "remplacer la carte électronique sans avoir testé le moteur/la vanne (piège principal vu l'absence de code)",
+      "confondre avec circulateur HS — un circulateur chauffage à l'arrêt donne un symptôme proche (pas de débit chauffage, ECS OK) ; à différencier par le débit en aval de la vanne vs sur le circulateur"
     ]
   },
-  "chemin_expert": ["OBS-VANNE", "DEM-VANNE"],
+  "chemin_expert": [
+    "MES-DEBIT",
+    "MES-TEMP-DEPART-RETOUR",
+    "TEST-MOTEUR-VANNE",
+    "OBS-VANNE",
+    "DEM-VANNE",
+    "REM-VANNE"
+  ],
   "escalade_attendue": null,
   "provenance": {
     "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
     "reformule": false,
-    "valide_par": null
+    "valide_par": "marcel:2026-07-28"
   },
   "split": "dev"
 }

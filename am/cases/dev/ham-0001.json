@@ -17,6 +17,7 @@
   "etat_operatoire": "en_securite",
   "ground_state": {
     "pression_circuit_bar": 1.2,
+    "pression_tendance": "chute progressive sur 24-48h (air remontant au vase)",
     "delta_t_eau_K": 1.8,
     "debit_l_min": 9,
     "purgeur": "crache_air",
@@ -35,7 +36,9 @@
     },
     {
       "si_action": "nettoyage_filtre",
-      "alors": { "inchange": true }
+      "alors": {
+        "inchange": true
+      }
     }
   ],
   "verite": {
@@ -44,15 +47,22 @@
     "verification": "ΔT revenu à 6-7 K, plus de code sur 48h",
     "pieges": [
       "remplacer le circulateur (cavitation trompeuse)",
-      "conclure filtre sans démonter"
+      "conclure filtre sans démonter",
+      "ajouter de l'eau sans purger (remonte la pression mais ne règle rien)"
     ]
   },
-  "chemin_expert": ["MES-PRESSION", "OBS-PURGEUR", "MAN-PURGE", "MES-DT-EAU"],
+  "chemin_expert": [
+    "MES-PRESSION",
+    "MES-DEBIT",
+    "OBS-PURGEUR",
+    "MAN-PURGE",
+    "MES-DT-EAU"
+  ],
   "escalade_attendue": null,
   "provenance": {
     "source": "marcel:2026-07-29",
     "reformule": true,
-    "valide_par": null
+    "valide_par": "marcel:2026-07-28"
   },
   "split": "dev"
 }

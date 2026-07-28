@@ -1,7 +1,12 @@
 {
   "id": "ham-0011",
   "titre": "Atlantic Alféa — sonde de départ sectionnée, code défaut sonde",
-  "equipement": { "marque": "Atlantic", "modele": "Alféa Extensa Duo", "famille": "pac_air_eau", "age_ans": 4 },
+  "equipement": {
+    "marque": "Atlantic",
+    "modele": "Alféa Extensa Duo",
+    "famille": "pac_air_eau",
+    "age_ans": 4
+  },
   "installation": {
     "emetteur": "plancher_chauffant",
     "regime_eau": "35/28",
@@ -11,30 +16,73 @@
   "plainte_initiale": "Code défaut sonde départ, la PAC s'arrête par intermittence.",
   "etat_operatoire": "en_securite",
   "ground_state": {
-    "continuite_sonde_ohm": 50000,
-    "led_defaut": "code_sonde_depart",
-    "capteur_etat": "defaut_connectique"
+    "sonde_cible": "depart_pac",
+    "code_defaut": "E01",
+    "libelle_code": "sonde température départ",
+    "continuite_sonde": "circuit_ouvert_OL",
+    "resistance_sonde_ohm": null,
+    "temperature_affichee_depart": "--",
+    "temperature_eau_locale": 35,
+    "capteur_etat": "fil_sectionne"
   },
   "evolution": [
-    { "si_action": "mesure_continuite_sonde", "alors": { "continuite_sonde_ohm": 50000, "diagnostic": "circuit_ouvert" } },
-    { "si_action": "controle_connecteur_sonde", "alors": { "connecteur": "fil_sectionne_pres_du_connecteur" } },
+    {
+      "si_action": "mesure_continuite_sonde",
+      "alors": {
+        "continuite_sonde": "circuit_ouvert_OL",
+        "resistance_sonde_ohm": null,
+        "diagnostic": "circuit_ouvert",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "controle_connecteur_sonde",
+      "alors": {
+        "connecteur": "fil_sectionne_pres_du_connecteur",
+        "capteur_etat": "fil_sectionne",
+        "resout": false
+      }
+    },
     {
       "si_action": "reparation_fil_sonde",
-      "alors": { "continuite_sonde_ohm": 120, "code": "disparu", "resout": true }
+      "alors": {
+        "resistance_sonde_ohm": 6500,
+        "temperature_affichee_depart": 35,
+        "code": "disparu",
+        "resout": true
+      }
+    },
+    {
+      "si_action": "remplacement_sonde",
+      "alors": {
+        "resistance_sonde_ohm": 6400,
+        "temperature_affichee_depart": 35,
+        "code": "disparu",
+        "resout": true
+      }
     }
   ],
   "verite": {
-    "cause": "fil de la sonde de température départ sectionné près du connecteur (frottement contre le capot)",
-    "solution": "réparer ou remplacer le câble de la sonde, protéger le passage de câble, contrôler la continuité",
-    "verification": "continuité dans la plage (0-500 ohm), plus de code sonde sur 48h",
-    "pieges": []
+    "cause": "fil de la sonde de température départ PAC sectionné près du connecteur (frottement contre le capot à la fermeture)",
+    "solution": "réparer ou remplacer le câble de la sonde (ou la sonde si résistance toujours hors plage), protéger le passage de câble, contrôler la continuité et la cohérence affichage/mesure",
+    "verification": "résistance CTN 10k cohérente avec la température eau (~6 000-7 000 Ω à 35 °C), affichage régulation aligné sur mesure locale, plus de code sonde sur 48h",
+    "pieges": [
+      "remplacer la sonde sans vérifier le câble (le défaut est souvent en amont du capteur)",
+      "remplacer la carte électronique en premier réflexe avant tout test capteur",
+      "recalibrer/offsetter la valeur affichée dans les paramètres régulation pour masquer l'aberration au lieu de réparer le câble"
+    ]
   },
-  "chemin_expert": ["MES-CONTINUITE", "OBS-CAPTEUR", "REM-SONDE"],
+  "chemin_expert": [
+    "MES-CONTINUITE",
+    "MES-SONDE",
+    "OBS-CAPTEUR",
+    "REPARATION-FIL-SONDE"
+  ],
   "escalade_attendue": null,
   "provenance": {
     "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
     "reformule": false,
-    "valide_par": null
+    "valide_par": "marcel:2026-07-28"
   },
   "split": "dev"
 }

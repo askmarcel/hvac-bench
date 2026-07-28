@@ -1,7 +1,12 @@
 {
   "id": "ham-0013",
   "titre": "Mitsubishi Ecodan — câble de liaison sectionné par rongeurs, défaut communication",
-  "equipement": { "marque": "Mitsubishi Electric", "modele": "Ecodan PUZ-WM", "famille": "pac_air_eau", "age_ans": 4 },
+  "equipement": {
+    "marque": "Mitsubishi Electric",
+    "modele": "Ecodan PUZ-WM",
+    "famille": "pac_air_eau",
+    "age_ans": 4
+  },
   "installation": {
     "emetteur": "mixte",
     "regime_eau": "40/32",
@@ -11,33 +16,80 @@
   "plainte_initiale": "Code erreur communication, l'unité extérieure ne démarre plus du tout.",
   "etat_operatoire": "arret_force",
   "ground_state": {
-    "led_defaut": "code_erreur_communication_E-B",
-    "resistance_ohm": 999999,
-    "fuite_visible": "absent"
+    "code_defaut": "E-B",
+    "libelle_code": "erreur communication liaison inter-unités",
+    "type_cable_liaison": "2_fils_torsade_non_polarise_M-NET",
+    "longueur_liaison_m": 18,
+    "continuite_liaison": "circuit_ouvert_OL",
+    "resistance_liaison_ohm": null,
+    "etat_ui": "code_E-B_affiche_ue_non_detectee",
+    "etat_ue": "alimentee_sans_dialogue_ui"
   },
   "evolution": [
-    { "si_action": "mesure_resistance_liaison", "alors": { "resistance_ohm": 999999, "diagnostic": "coupure_de_cable" } },
+    {
+      "si_action": "mesure_resistance_liaison",
+      "alors": {
+        "continuite_liaison": "circuit_ouvert_OL",
+        "resistance_liaison_ohm": null,
+        "diagnostic": "coupure_de_cable",
+        "resout": false
+      }
+    },
     {
       "si_action": "inspection_cable_exterieur",
-      "alors": { "etat_gaine": "rongee_par_rongeurs", "localisation": "passage_exterieur_non_protege" }
+      "alors": {
+        "etat_cable_liaison": "gaine_rongee_par_rongeurs",
+        "localisation": "passage_exterieur_non_protege",
+        "resout": false
+      }
     },
     {
       "si_action": "reparation_cable",
-      "alors": { "resistance_ohm": 45, "communication": "retablie", "resout": true }
+      "alors": {
+        "resistance_liaison_ohm": 3.2,
+        "protection_posee": "gaine_anti_rongeurs",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "test_communication",
+      "alors": {
+        "communication_ui_ue": "retablie",
+        "code": "disparu",
+        "resout": true
+      }
+    },
+    {
+      "si_action": "remplacement_cable_complet",
+      "alors": {
+        "resistance_liaison_ohm": 2.8,
+        "protection_posee": "gaine_anti_rongeurs",
+        "communication_ui_ue": "retablie",
+        "resout": true
+      }
     }
   ],
   "verite": {
     "cause": "câble de liaison inter-unités sectionné par des rongeurs sur le tronçon extérieur non protégé",
-    "solution": "réparer ou remplacer le tronçon de câble, protéger le passage (gaine ou goulotte), contrôler la reprise de communication",
-    "verification": "plus de code communication, unité extérieure redémarre normalement sur 48h",
-    "pieges": []
+    "solution": "réparer ou remplacer le tronçon de câble, protéger le passage (gaine anti-rongeurs ou goulotte), tester la continuité puis le dialogue UI/UE (pas seulement l'ohmmètre)",
+    "verification": "résistance boucle <5 Ω, test communication UI/UE OK, plus de code E-B, unité extérieure redémarre normalement sur 48h",
+    "pieges": [
+      "remplacer la carte UI ou UE avant d'avoir vérifié le câble de liaison",
+      "confondre avec un défaut d'alimentation UE (autre cause de non-démarrage, à différencier)",
+      "réparer sans protéger le nouveau câble (le problème revient sans gaine anti-rongeurs)"
+    ]
   },
-  "chemin_expert": ["MES-RESISTANCE", "OBS-CAPTEUR"],
+  "chemin_expert": [
+    "MES-CONTINUITE-LIAISON",
+    "OBS-CABLE-LIAISON",
+    "REPARATION-CABLE",
+    "TEST-COMMUNICATION"
+  ],
   "escalade_attendue": null,
   "provenance": {
     "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
     "reformule": false,
-    "valide_par": null
+    "valide_par": "marcel:2026-07-28"
   },
   "split": "dev"
 }

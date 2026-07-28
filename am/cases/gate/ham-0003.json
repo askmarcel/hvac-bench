@@ -1,0 +1,79 @@
+{
+  "id": "ham-0003",
+  "titre": "Viessmann Vitocal 200-S — vase d'expansion percé, perte de pression récurrente",
+  "equipement": {
+    "marque": "Viessmann",
+    "modele": "Vitocal 200-S",
+    "famille": "pac_air_eau",
+    "age_ans": 6
+  },
+  "installation": {
+    "emetteur": "radiateurs_ht",
+    "regime_eau": "70/55",
+    "region_climat": "H1",
+    "particularites": "vase d'expansion jamais contrôlé depuis la pose"
+  },
+  "plainte_initiale": "Code manque d'eau récurrent, il faut remettre de la pression chaque mois.",
+  "etat_operatoire": "en_securite",
+  "ground_state": {
+    "code_defaut": "F28",
+    "libelle_code": "manque d'eau",
+    "pression_circuit_bar": 0.6,
+    "pression_au_declenchement_bar": 0.35,
+    "pression_apres_derniere_remise_bar": 1.4,
+    "fuite_visible": "absent",
+    "vanne_position": "ouverte",
+    "purgeur": "sec",
+    "bruit_pompe": "normal"
+  },
+  "evolution": [
+    {
+      "si_action": "controle_vase_expansion",
+      "alors": {
+        "pression_precharge_vase_bar": 0.3,
+        "pression_precharge_vase_nominale_bar": 1.4,
+        "diagnostic": "vessie_percee"
+      }
+    },
+    {
+      "si_action": "remise_en_pression",
+      "alors": {
+        "pression_circuit_bar": 1.4,
+        "duree_avant_rechute_jours": 25,
+        "resout": false
+      }
+    },
+    {
+      "si_action": "remplacement_vase",
+      "alors": {
+        "pression_circuit_bar": 1.5,
+        "pression_precharge_vase_bar": 1.4,
+        "resout": true
+      }
+    }
+  ],
+  "verite": {
+    "cause": "vessie du vase d'expansion percée — perte de précharge, le circuit se vide progressivement sans fuite visible",
+    "solution": "remplacer le vase d'expansion (ou sa vessie si accessible), régler la précharge nominale à 1,3-1,5 bar (HT 70/55, hauteur statique de l'installation), remettre le circuit en pression, contrôler la stabilité sur 2 semaines",
+    "verification": "précharge vase à 1,3-1,5 bar (vs 0,3 bar mesurée = anormal), pression circuit stable sans réajustement pendant au moins 2 semaines",
+    "pieges": [
+      "chercher une fuite visible sur les raccords alors qu'il n'y en a pas — une perte de pression sans fuite apparente pointe vers le vase d'expansion",
+      "remise en pression répétée sans contrôler le vase (le tech remet de l'eau chaque mois sans jamais chercher la cause)",
+      "confondre avec une fuite sur le circuit frigorifique — le manque d'eau hydraulique n'a rien à voir avec le fluide frigo"
+    ]
+  },
+  "chemin_expert": [
+    "MES-PRESSION",
+    "OBS-FUITE",
+    "CONTROLE-VASE",
+    "REM-VASE",
+    "MES-PRESSION"
+  ],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": "marcel:2026-07-28"
+  },
+  "split": "gate"
+}

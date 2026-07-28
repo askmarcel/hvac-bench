@@ -1,0 +1,72 @@
+{
+  "id": "ham-0005",
+  "titre": "Daikin Altherma 3 — vanne de bypass fermée après travaux, cycles courts",
+  "equipement": {
+    "marque": "Daikin",
+    "modele": "Altherma 3 EHSH08",
+    "famille": "pac_air_eau",
+    "age_ans": 1
+  },
+  "installation": {
+    "emetteur": "plancher_chauffant",
+    "regime_eau": "35/28",
+    "region_climat": "H1",
+    "particularites": "travaux récents sur le collecteur, pas de ballon tampon"
+  },
+  "plainte_initiale": "La PAC démarre et s'arrête sans arrêt, jamais stable, certaines zones restent froides par intermittence.",
+  "etat_operatoire": "cycle_court",
+  "ground_state": {
+    "code_defaut": "aucun",
+    "libelle_code": "protection anti-cycle sans erreur affichée",
+    "pression_circuit_bar": 1.5,
+    "bypass_ouvert": "non",
+    "debit_l_min": 12,
+    "delta_t_eau_K": 2,
+    "delta_t_mesure_contexte": "fin_de_cycle_court_compresseur_arrete",
+    "demarrages_compresseur_1h": 6,
+    "t_depart": 42
+  },
+  "evolution": [
+    {
+      "si_action": "observation_bypass",
+      "alors": {
+        "bypass_ouvert": "non",
+        "position_vanne_bypass": "fermee_a_fond_apres_travaux"
+      }
+    },
+    {
+      "si_action": "ouverture_bypass",
+      "alors": {
+        "debit_l_min": 19,
+        "delta_t_eau_K": 6,
+        "cycles_courts": "disparus",
+        "demarrages_compresseur_1h": 1,
+        "resout": true
+      }
+    }
+  ],
+  "verite": {
+    "cause": "vanne de bypass laissée fermée après les travaux sur le collecteur, débit minimum non garanti quand les circuits de plancher se ferment",
+    "solution": "rouvrir et régler la vanne de bypass au débit minimum constructeur, contrôler la disparition des cycles courts",
+    "verification": "plus de cycle court sur 24h, débit stabilisé 18-20 l/min, ΔT revenu 5-7K en régime établi",
+    "pieges": [
+      "recalibrer la courbe de chauffe / paramètres régulation sans vérifier le bypass (le tech touche au logiciel au lieu du matériel)",
+      "remplacer le circulateur en pensant qu'il est sous-dimensionné",
+      "conclure à un sous-dimensionnement du plancher (pas assez de zones ouvertes) sans avoir vérifié la position du bypass en premier"
+    ]
+  },
+  "chemin_expert": [
+    "MES-PRESSION",
+    "MES-DEBIT",
+    "OBS-BYPASS",
+    "MAN-REGLAGE-BYPASS",
+    "MES-DT-EAU"
+  ],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": "marcel:2026-07-28"
+  },
+  "split": "gate"
+}

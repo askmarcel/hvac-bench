@@ -1,0 +1,101 @@
+{
+  "id": "ham-0009",
+  "titre": "Mitsubishi Ecodan — connectique sonde dégivrage oxydée, givre généralisé",
+  "equipement": {
+    "marque": "Mitsubishi Electric",
+    "modele": "Ecodan PUZ-HWM",
+    "famille": "pac_air_eau",
+    "age_ans": 5
+  },
+  "installation": {
+    "emetteur": "radiateurs_bt",
+    "regime_eau": "45/35",
+    "region_climat": "H1",
+    "particularites": "hiver rigoureux, -5°C extérieur"
+  },
+  "plainte_initiale": "L'unité extérieure est complètement givrée, la PAC ne chauffe presque plus, ça dure depuis 3 jours.",
+  "etat_operatoire": "en_securite",
+  "ground_state": {
+    "fluide": "R410A",
+    "givre": "generalise",
+    "t_exterieure": -5,
+    "hp_bar": 9,
+    "bp_bar": 0.8,
+    "code_defaut": "protection_basse_pression",
+    "libelle_code": "arrêt sécurité gel / évaporateur givré",
+    "resistance_sonde_ohm": 92000,
+    "resistance_sonde_nominale_ref_ohm": 42000,
+    "capteur_etat": "connecteur_oxyde_resistance_derivee_instable",
+    "amperage_ventilateur": 1.1,
+    "amperage_ventilateur_nominal_ref": 1,
+    "cycles_degivrage_48h": 0
+  },
+  "evolution": [
+    {
+      "si_action": "controle_sonde_degivrage",
+      "alors": {
+        "capteur_etat": "connecteur_oxyde_resistance_derivee_instable",
+        "connecteur": "oxyde_contact_instable",
+        "resistance_sonde_ohm": 92000,
+        "resout": false
+      }
+    },
+    {
+      "si_action": "forcage_degivrage",
+      "alors": {
+        "cycle_degivrage": "incomplet_givre_persistant",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "reparation_connectique_sonde",
+      "alors": {
+        "resistance_sonde_ohm": 41500,
+        "capteur_etat": "ok",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "remplacement_sonde",
+      "alors": {
+        "resistance_sonde_ohm": 41800,
+        "capteur_etat": "ok",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "forcage_degivrage_post_reparation",
+      "alors": {
+        "givre": "absent",
+        "cycles_degivrage_48h": "reprend_normalement",
+        "resout": true
+      }
+    }
+  ],
+  "verite": {
+    "cause": "connectique de la sonde de dégivrage oxydée donnant une résistance dérivée/instable (pas un débranchement franc) — la carte ne lève pas d'alarme capteur mais ne déclenche pas correctement les cycles de dégivrage, le givre s'accumule jusqu'au blocage et à la protection basse pression",
+    "solution": "mesurer la résistance sonde, réparer la connectique (ou remplacer la sonde si résistance toujours hors plage), forcer un cycle de dégivrage manuel, contrôler le déclenchement automatique dans les jours suivants",
+    "verification": "cycles de dégivrage automatiques observés par temps froid, BP/HP revenus en plage après dégivrage, plus de givre généralisé après 48h",
+    "pieges": [
+      "penser à un manque de fluide devant le givre généralisé et la BP basse — ici la cause est la détection du dégivrage, pas la charge frigorifique",
+      "dégivrage manuel au chalumeau/eau chaude (dangereux, abîme les ailettes, ne traite pas la cause)",
+      "remplacer la carte électronique avant d'avoir vérifié la sonde/connectique",
+      "confondre avec un ventilateur HS — vérifier l'ampérage ventilateur (ici nominal) avant de conclure"
+    ]
+  },
+  "chemin_expert": [
+    "OBS-GELEE",
+    "MES-RESISTANCE-SONDE",
+    "OBS-CAPTEUR",
+    "MAN-FORCAGE-DEGIV",
+    "REPARATION-CONNECTIQUE",
+    "MAN-FORCAGE-DEGIV"
+  ],
+  "escalade_attendue": null,
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": "marcel:2026-07-28"
+  },
+  "split": "gate"
+}

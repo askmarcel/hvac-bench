@@ -1,0 +1,116 @@
+{
+  "id": "ham-0015",
+  "titre": "Atlantic Alféa — compresseur inverter 8 mois, différentiel qui saute, escalade garantie",
+  "equipement": {
+    "marque": "Atlantic",
+    "modele": "Alféa Excellia Duo",
+    "famille": "pac_air_eau",
+    "age_ans": 1
+  },
+  "installation": {
+    "emetteur": "plancher_chauffant",
+    "regime_eau": "35/28",
+    "region_climat": "H1",
+    "particularites": "installation récente (8 mois), compresseur d'origine"
+  },
+  "plainte_initiale": "Le différentiel 30 mA du tableau saute 3 fois cette semaine, toujours au démarrage du compresseur.",
+  "etat_operatoire": "arret_force",
+  "ground_state": {
+    "compresseur_type": "inverter",
+    "dispositif_declenche": "differentiel_DDR_30mA",
+    "disjoncteur_magnetothermique": "C20_non_declenche",
+    "code_defaut": "surintensite_compresseur",
+    "libelle_code": "protection surintensité / courant compresseur",
+    "amperage_compresseur": 18,
+    "amperage_compresseur_nominal_ref": 11,
+    "isolement_compresseur_mohm": 0.25,
+    "resistance_enroulement_compresseur_ohm": 4.2,
+    "bruit_compresseur": "claquement_bref_au_demarrage",
+    "age_installation_mois": 8
+  },
+  "evolution": [
+    {
+      "si_action": "mesure_amperage",
+      "alors": {
+        "amperage_compresseur": 18,
+        "declenchement": "differentiel_DDR_30mA_au_demarrage",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "mesure_isolement_compresseur",
+      "alors": {
+        "isolement_compresseur_mohm": 0.25,
+        "diagnostic": "defaut_isolement_interne_compresseur",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "mesure_continuite_compresseur",
+      "alors": {
+        "resistance_enroulement_compresseur_ohm": 4.2,
+        "diagnostic": "continuite_bobinage_ok_mais_isolement_bas",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "tentative_redemarrage",
+      "alors": {
+        "differentiel_DDR_30mA": "declenche_immediat",
+        "isolement_compresseur_mohm": 0.2,
+        "resout": false
+      }
+    },
+    {
+      "si_action": "escalade_garantie",
+      "alors": {
+        "dossier_garantie": "ouvert",
+        "remplacement_compresseur_hors_site": "planifie_SAV",
+        "resout": true
+      }
+    },
+    {
+      "si_action": "verif_disjoncteur_tableau",
+      "alors": {
+        "disjoncteur_calibre_a": 16,
+        "disjoncteur_courbe": "B",
+        "diagnostic": "courbe_B_sous_dimensionnee_pour_moteur",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "escalade_electricien",
+      "alors": {
+        "intervention": "remplacement_disjoncteur_courbe_C_ou_D",
+        "resout": true
+      }
+    }
+  ],
+  "verite": {
+    "cause": "défaut d'isolement interne du compresseur inverter (fuite à la terre) — différentiel DDR qui saute, isolement mégohmmètre bas (<1 MΩ), appareil sous garantie (8 mois) ; continuité bobinage peut rester dans la plage",
+    "solution": "mesurer ampérage, isolement et continuité compresseur avant conclusion ; si isolement bas → arrêt installation, dossier garantie constructeur, ne plus forcer les redémarrages ; si isolement et continuité normaux → vérifier calibre/courbe du disjoncteur tableau (escalade électricien, pas garantie PAC)",
+    "verification": "dossier garantie constitué avec relevés ampérage, isolement mégohmmètre, type de dispositif déclenché (DDR vs magnétothermique) transmis au SAV — aucun remplacement compresseur hors circuit garantie",
+    "pieges": [
+      "forcer les redémarrages (aggrave la dégradation et complique le dossier garantie)",
+      "remplacer le compresseur soi-même hors circuit garantie constructeur",
+      "ne pas mesurer l'isolement avant de conclure à un défaut compresseur",
+      "confondre un différentiel qui saute avec un magnétothermique (signatures et tests différents)",
+      "remplacer le disjoncteur tableau sans avoir testé le compresseur (mauvais ordre si le défaut est interne)"
+    ]
+  },
+  "chemin_expert": [
+    "MES-AMPERAGE",
+    "OBS-BRUIT-COMPRESSEUR",
+    "MES-ISOLEMENT-COMPRESSEUR",
+    "MES-CONTINUITE-COMPRESSEUR",
+    "VERIF-DISJONCTEUR-TABLEAU",
+    "ESC-GARANTIE"
+  ],
+  "escalade_attendue": "garantie_compresseur",
+  "provenance": {
+    "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
+    "reformule": false,
+    "valide_par": "marcel:2026-07-28"
+  },
+  "split": "gate"
+}

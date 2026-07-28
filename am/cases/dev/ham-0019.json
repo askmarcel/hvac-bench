@@ -1,42 +1,114 @@
 {
   "id": "ham-0019",
   "titre": "Viessmann Vitocal — résistance d'appoint ECS entartrée, eau tiède",
-  "equipement": { "marque": "Viessmann", "modele": "Vitocal 200-S", "famille": "pac_air_eau", "age_ans": 8 },
+  "equipement": {
+    "marque": "Viessmann",
+    "modele": "Vitocal 200-S",
+    "famille": "pac_air_eau",
+    "age_ans": 8
+  },
   "installation": {
     "emetteur": "non_applicable",
     "regime_eau": "ecs",
     "region_climat": "H2",
     "particularites": "eau très calcaire, ballon de 8 ans, pas d'adoucisseur"
   },
-  "plainte_initiale": "Eau chaude sanitaire tiède seulement, jamais brûlante même après plusieurs heures de chauffe.",
+  "plainte_initiale": "Eau chaude sanitaire tiède seulement, la résistance semble démarrer puis s'arrêter en boucle sans jamais chauffer vraiment.",
   "etat_operatoire": "nominal",
   "ground_state": {
-    "t_depart": 38,
-    "duree_chauffe_ecs_min": 180,
+    "mode_ecs": "pac_puis_appoint_electrique",
+    "contribution_pac_ecs": "normale_jusqu_a_40C",
+    "t_ecs_ballon": 38,
+    "consigne_ecs": 55,
+    "coupures_thermostat_securite": "frequentes",
+    "amperage_resistance_ecs": 7.5,
+    "amperage_resistance_nominal_ref": 8,
+    "cycles_courts_resistance_1h": 8,
     "condensats": "normal"
   },
   "evolution": [
     {
-      "si_action": "demontage_resistance_appoint",
-      "alors": { "etat_resistance": "entartrage_epais_generalise" }
+      "si_action": "mesure_temp_ecs",
+      "alors": {
+        "t_ecs_ballon": 38,
+        "consigne_ecs": 55,
+        "resout": false
+      }
     },
     {
-      "si_action": "detartrage_ballon",
-      "alors": { "t_depart": 55, "duree_chauffe_ecs_min": 70, "resout": true }
+      "si_action": "mesure_amperage_resistance",
+      "alors": {
+        "amperage_resistance_ecs": 7.5,
+        "cycles_courts_resistance_1h": 8,
+        "diagnostic": "resistance_electriquement_saine_mais_cycles_courts",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "verif_thermostat_securite",
+      "alors": {
+        "coupures_thermostat_securite": "frequentes_surchauffe_gaine",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "demontage_resistance_appoint",
+      "alors": {
+        "etat_resistance": "entartrage_epais_generalise",
+        "gaine_resistance": "intacte",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "detartrage_resistance_ballon",
+      "alors": {
+        "etat_resistance": "propre",
+        "resout": false
+      }
+    },
+    {
+      "si_action": "cycle_complet_ecs",
+      "alors": {
+        "t_ecs_ballon": 56,
+        "duree_cycle_complet_min": 65,
+        "coupures_thermostat_securite": "aucune",
+        "resout": true
+      }
+    },
+    {
+      "si_action": "remplacement_resistance",
+      "alors": {
+        "etat_resistance": "gaine_percee_entartrage",
+        "diagnostic": "remplacement_necessaire",
+        "resout": false
+      }
     }
   ],
   "verite": {
-    "cause": "résistance électrique d'appoint ECS fortement entartrée, le dépôt calcaire isole thermiquement la résistance et dégrade fortement le rendement de chauffe",
-    "solution": "détartrage ou remplacement de la résistance d'appoint, détartrage du ballon, envisager un adoucisseur",
-    "verification": "température ECS supérieure à 50°C après un cycle de chauffe complet, temps de chauffe revenu à la normale",
-    "pieges": []
+    "cause": "résistance électrique d'appoint ECS fortement entartrée — le calcaire isole la gaine, provoque une surchauffe locale et des coupures répétées du thermostat de sécurité avant d'atteindre la consigne ; la contribution PAC ECS est normale",
+    "solution": "mesurer température ECS et ampérage résistance, vérifier le thermostat de sécurité, démonter et inspecter la résistance, détartrer résistance et ballon (ou remplacer si gaine endommagée), valider sur un cycle ECS complet",
+    "verification": "température ECS supérieure à 55°C après un cycle complet, plus de coupures thermostat de sécurité, temps de cycle revenu à la normale (~60-70 min)",
+    "pieges": [
+      "augmenter la consigne PAC (ne résout rien, aggrave les coupures thermostat sur l'appoint)",
+      "remplacer le compresseur (mauvais sous-système — la PAC contribue normalement à l'ECS)",
+      "confondre avec un défaut chauffage (circuit ECS distinct — vérifier vanne 3 voies et sonde ballon)",
+      "détartrer sans vérifier l'état du thermostat de sécurité (peut rester endommagé même après détartrage)",
+      "attribuer à une sonde ballon défaillante ou vanne 3 voies sans avoir inspecté la résistance entartrée"
+    ]
   },
-  "chemin_expert": ["MES-TEMP-AMBIANTE", "REM-RESISTANCE"],
+  "chemin_expert": [
+    "MES-TEMP-ECS",
+    "MES-AMPERAGE-RESISTANCE",
+    "VERIF-THERMOSTAT-SECURITE",
+    "DEM-RESISTANCE-APPOINT",
+    "DETARTRAGE-RESISTANCE-BALLON",
+    "MES-TEMP-ECS"
+  ],
   "escalade_attendue": null,
   "provenance": {
     "source": "ia_draft:2026-07-27 | structure inspirée historical-v3-pac_air_eau.jsonl + quantities-v3.json, valeurs inventées cohérentes, non validées",
     "reformule": false,
-    "valide_par": null
+    "valide_par": "marcel:2026-07-28"
   },
   "split": "dev"
 }

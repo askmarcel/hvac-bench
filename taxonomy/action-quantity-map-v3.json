@@ -6,26 +6,67 @@
     "MES-PRESSION": { "quantities": ["pression_circuit_bar"], "kind": "numeric" },
     "MES-DEBIT": { "quantities": ["debit_l_min"], "kind": "numeric" },
     "MES-HP-BP": { "quantities": ["hp_bar", "bp_bar", "delta_hp_bp"], "kind": "numeric", "composite": true },
+    "MES-PRESSION-HP": { "quantities": ["hp_bar"], "kind": "numeric" },
+    "MES-SURCHAUFFE-SOUS-REF": {
+      "quantities": ["surchauffe_k", "sous_refroidissement_k"],
+      "kind": "numeric",
+      "composite": true
+    },
     "MES-AMPERAGE": {
       "quantities": ["amperage_circulateur", "amperage_compresseur"],
       "kind": "numeric",
       "requires_context": ["target_component"]
     },
     "MES-TEMP-AMBIANTE": { "quantities": ["t_depart", "t_retour", "t_exterieure"], "kind": "numeric" },
+    "MES-TEMP-ECS": { "quantities": ["t_ecs_ballon", "consigne_ecs"], "kind": "numeric" },
+    "MES-AMPERAGE-RESISTANCE": { "quantities": ["amperage_resistance_ecs"], "kind": "numeric" },
+    "VERIF-THERMOSTAT-SECURITE": { "quantities": ["coupures_thermostat_securite"], "kind": "qualitative" },
+    "MES-TEMP-DEPART-RETOUR": { "quantities": ["t_depart_chauffage", "t_retour_chauffage", "t_depart_commun_avant_vanne"], "kind": "numeric" },
     "MES-SONDE": { "quantities": ["delta_sonde_k"], "kind": "numeric" },
     "MES-CONTINUITE": { "quantities": ["continuite_sonde_ohm"], "kind": "numeric" },
-    "MES-RESISTANCE": { "quantities": ["resistance_ohm"], "kind": "numeric" }
+    "MES-CONTINUITE-CIRCULATEUR": { "quantities": ["resistance_bobinage_circulateur_ohm"], "kind": "numeric" },
+    "MES-CONTINUITE-COMPRESSEUR": { "quantities": ["resistance_enroulement_compresseur_ohm"], "kind": "numeric" },
+    "MES-ISOLEMENT-COMPRESSEUR": { "quantities": ["isolement_compresseur_mohm"], "kind": "numeric" },
+    "CONTROLE-FUSIBLE": { "quantities": ["etat_fusible", "fusible_calibre_a"], "kind": "composite" },
+    "MES-CONTINUITE-LIAISON": { "quantities": ["resistance_liaison_ohm"], "kind": "numeric" },
+    "TEST-COMMUNICATION": { "quantities": ["communication_ui_ue"], "kind": "qualitative" },
+    "TEST-MOTEUR-VANNE": {
+      "quantities": ["continuite_moteur_vanne", "tension_commande_vanne_v"],
+      "kind": "composite"
+    },
+    "TEST-BOBINE-EEV": {
+      "quantities": ["resistance_bobine_eev_ohm", "commande_eev_mode_service"],
+      "kind": "composite"
+    },
+    "MES-RESISTANCE": { "quantities": ["resistance_ohm"], "kind": "numeric" },
+    "MES-RESISTANCE-SONDE": { "quantities": ["resistance_sonde_ohm"], "kind": "numeric" },
+    "TEST-CONDENSATEUR-DEMARRAGE": { "quantities": ["etat_condensateur_demarrage"], "kind": "qualitative" },
+    "VERIF-CABLAGE-COMPRESSEUR": { "quantities": ["etat_cablage_compresseur"], "kind": "qualitative" },
+    "VERIF-CABLAGE-CARTE": { "quantities": ["cablage_apparent"], "kind": "qualitative" },
+    "VERIF-DISJONCTEUR-TABLEAU": { "quantities": ["disjoncteur_calibre_a", "disjoncteur_courbe"], "kind": "composite" },
+    "VERIF-COURBE-CHAUFFE": { "quantities": ["courbe_chauffe_reglage"], "kind": "qualitative" },
+    "CALCUL-DEPERDITIONS": {
+      "quantities": ["puissance_necessaire_kw", "puissance_installee_kw"],
+      "kind": "numeric",
+      "composite": true
+    },
+    "LECTURE-CODE": { "quantities": ["code_defaut", "libelle_code"], "kind": "composite" }
   },
   "obs": {
     "OBS-PURGEUR": { "quantity": "purgeur", "kind": "qualitative" },
     "OBS-BRUIT-POMPE": { "quantity": "bruit_pompe", "kind": "qualitative" },
+    "OBS-BRUIT-COMPRESSEUR": { "quantity": "bruit_compresseur", "kind": "qualitative" },
     "OBS-GELEE": { "quantity": "givre", "kind": "qualitative" },
     "OBS-LED-DEFAUT": { "quantity": "led_defaut", "kind": "qualitative" },
     "OBS-FUITE": { "quantity": "fuite_visible", "kind": "qualitative" },
+    "RECHERCHE-FUITE-ACTIVE": { "quantity": "localisation_fuite", "kind": "qualitative" },
+    "OBS-FILTRE": { "quantity": "etat_filtre", "kind": "qualitative" },
     "OBS-VANNE": { "quantity": "vanne_position", "kind": "qualitative" },
+    "VERIF-VANNES-RADIATEURS": { "quantity": "vannes_radiateurs_ouverture", "kind": "qualitative" },
     "OBS-BYPASS": { "quantity": "bypass_ouvert", "kind": "qualitative" },
     "OBS-CONDENSATS": { "quantity": "condensats", "kind": "qualitative" },
     "OBS-CAPTEUR": { "quantity": "capteur_etat", "kind": "qualitative" },
+    "OBS-CABLE-LIAISON": { "quantity": "etat_cable_liaison", "kind": "qualitative" },
     "OBS-VAPEUR": { "quantity": "vapeur_anormale", "kind": "qualitative" }
   }
 }
