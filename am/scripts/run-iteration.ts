@@ -6,7 +6,7 @@
  * Usage:
  *   pnpm am:run-iteration --split dev
  *   pnpm am:run-iteration --split dev --arms LW,PROD
- *   pnpm am:run-iteration --split dev --arms LW,PROD --include-scores runs/am-l0-*/score.json
+ *   pnpm am:run-iteration --split dev --arms LW,PROD --include-scores runs/am-l0-<runId>/score.json
  */
 import { execSync } from 'node:child_process';
 import { existsSync, mkdirSync } from 'node:fs';

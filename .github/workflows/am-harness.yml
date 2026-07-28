@@ -279,11 +279,11 @@ jobs:
           AM_HARNESS_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
           AM_HARNESS_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
         run: |
-          ARGS="--split dev --arms ${{ github.event.inputs.run_arms }}"
+          ARGS=(--split dev --arms "${{ github.event.inputs.run_arms }}")
           if [ -n "${L0_SCORE:-}" ]; then
-            ARGS="$ARGS --include-scores $L0_SCORE"
+            ARGS+=(--include-scores "$L0_SCORE")
           fi
-          pnpm am:run-iteration $ARGS
+          pnpm am:run-iteration "${ARGS[@]}"
       - name: Archiver rapports dev
         if: always()
         uses: actions/upload-artifact@v4
