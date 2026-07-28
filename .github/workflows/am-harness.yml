@@ -72,8 +72,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: askmarcel/AskMarcel-WebApp-NextJS
-          token: ${{ secrets.WEBAPP_REPO_TOKEN || github.token }}
+          token: ${{ secrets.WEBAPP_REPO_TOKEN }}
           path: AskMarcel-WebApp-NextJS
+        continue-on-error: true
       - name: Conformité surfaces (C1–C6)
         if: hashFiles('AskMarcel-WebApp-NextJS/package.json') != ''
         working-directory: AskMarcel-WebApp-NextJS
