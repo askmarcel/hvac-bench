@@ -23,7 +23,8 @@ export type HarnessTurnArgs = {
   chatId: string;
   harnaisMode: HarnaisMode;
   modelId: string;
-  /** Historique complet (UIMessage[] simplifié) — juste role/content pour ce runner. */
+  /** Historique complet (UIMessage[] simplifié) — doit contenir au moins un message `user`
+   *  (plainte initiale), comme Expo `run-mobile-chat-request.ts`. */
   messages: Array<{ role: 'user' | 'assistant'; content: string }>;
 };
 

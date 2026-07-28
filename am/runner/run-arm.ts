@@ -11,6 +11,8 @@
  *  - `AM_HARNESS_BEARER_TOKEN` (JWT Supabase utilisateur bench)
  *  - Clés simulateur (`AM_SIM_*`) — absentes en local volontairement, fournies en CI
  * Sans token ou serveur : échec propre par cas (`status: blocked`), jamais un faux succès.
+ *
+ * Premier tour : `plainte_initiale` du cas en message `user` (aligné Expo → /api/mobile/chat).
  */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { randomUUID } from 'node:crypto';
@@ -57,6 +59,23 @@ type TranscriptRecord = {
   blocked_reason?: string;
 };
 
+/** Historique UIMessage simplifié pour /api/mobile/chat — plainte initiale toujours en tête (comme Expo). */
+function buildHarnessMessages(
+  plainteInitiale: string,
+  simHistory: SimTurn[],
+): Array<{ role: 'user' | 'assistant'; content: string }> {
+  const messages: Array<{ role: 'user' | 'assistant'; content: string }> = [
+    { role: 'user', content: plainteInitiale },
+  ];
+  for (const t of simHistory) {
+    messages.push({
+      role: t.role === 'technicien' ? 'assistant' : 'user',
+      content: t.content,
+    });
+  }
+  return messages;
+}
+
 async function playCase(
   amCase: AmCase & { id: string },
   replicate: number,
@@ -66,6 +85,18 @@ async function playCase(
   const chatId = randomUUID();
   const turns: TranscriptTurn[] = [];
   const harnaisMode = ARM_TO_MODE[args.arm];
+  const plainteInitiale = amCase.plainte_initiale.trim();
+  if (!plainteInitiale) {
+    return {
+      case_id: amCase.id,
+      replicate,
+      turns,
+      status: 'error',
+      blocked_reason: 'plainte_initiale vide sur le cas',
+    };
+  }
+
+  turns.push({ role: 'installateur', content: plainteInitiale });
 
   let technicienMessage: string;
   try {
@@ -75,7 +106,7 @@ async function playCase(
       chatId,
       harnaisMode,
       modelId: process.env.AM_HARNESS_MODEL_ID ?? 'fast-marcel',
-      messages: [],
+      messages: buildHarnessMessages(plainteInitiale, []),
     });
   } catch (e) {
     if (e instanceof HarnessUnavailableError) {
@@ -112,10 +143,7 @@ async function playCase(
         chatId,
         harnaisMode,
         modelId: process.env.AM_HARNESS_MODEL_ID ?? 'fast-marcel',
-        messages: simHistory.map((t) => ({
-          role: t.role === 'technicien' ? 'assistant' : 'user',
-          content: t.content,
-        })),
+        messages: buildHarnessMessages(plainteInitiale, simHistory),
       });
     } catch (e) {
       if (e instanceof HarnessUnavailableError) {
