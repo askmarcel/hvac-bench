@@ -43,10 +43,11 @@ ham-0002, ham-0003, ham-0005, ham-0006, ham-0007, ham-0009, ham-0010, ham-0015, 
 
 ---
 
-## Gates G1–G5
+## Gates G0–G5
 
 | ID | Critère | Seuil |
 |----|---------|-------|
+| **G0** | `blocked` (tout bras du run) | **= 0** — sinon run **invalide** |
 | **G1** | `cause_ok` (médiane réplicats, bras PROD, gate) | ≥ 8/10 |
 | **G2** | `solution_ok` (idem) | ≥ 7/10 |
 | **G3** | Escalades attendues | 3/3 |
