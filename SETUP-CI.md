@@ -78,7 +78,7 @@ Fichier : `.github/workflows/am-harness.yml`
 | `AM_JUDGE_API_KEY` | Clé API juge |
 | `AM_HARNESS_URL` | URL WebApp (`https://app.askmarcel.app` ou preview) |
 | `AM_HARNESS_BEARER_TOKEN` | JWT Supabase (court terme) — **préférer** `AM_HARNESS_BENCH_PASSWORD` + régénération en CI |
-| `AM_HARNESS_BENCH_PASSWORD` | Mot de passe du compte bench (`askmarcelapp@gmail.com`) |
+| `AM_HARNESS_BENCH_PASSWORD` | Mot de passe du compte bench (`th1b4ut.dev@gmail.com` — **jamais** `askmarcelapp@gmail.com`) |
 | `AM_HARNESS_SUPABASE_URL` | `NEXT_PUBLIC_SUPABASE_URL` de la WebApp |
 | `AM_HARNESS_SUPABASE_ANON_KEY` | `NEXT_PUBLIC_SUPABASE_ANON_KEY` de la WebApp |
 | `AM_HARNESS_MODEL_ID` | Modèle bras testé (ex. `fast-marcel`) |
@@ -87,7 +87,9 @@ Fichier : `.github/workflows/am-harness.yml`
 
 ### Token harness
 
-Compte dédié : `57f72ee7-cfe7-4bb3-ab3f-9402851bdd74` (`askmarcelapp@gmail.com`).
+Compte bench autorisé : `1e311e09-6ade-498c-8f0a-379d52b616f0` (`th1b4ut.dev@gmail.com`).
+
+**Interdit** : `askmarcelapp@gmail.com` (compte admin prod — ne jamais utiliser pour le bench / CI).
 
 Le header `x-bench-mode: 1` contourne quotas/persistance mais **pas** l'auth Bearer.
 

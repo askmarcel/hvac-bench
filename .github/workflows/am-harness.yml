@@ -115,6 +115,7 @@ jobs:
       AM_JUDGE_API_KEY: ${{ secrets.AM_JUDGE_API_KEY }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       ALLOW_BENCH_MODE: 'true'
+      AM_HARNESS_BENCH_EMAIL: th1b4ut.dev@gmail.com
     steps:
       - uses: actions/checkout@v4
         with:
@@ -145,7 +146,7 @@ jobs:
             TOKEN=$(node --input-type=module -e "
               import { createClient } from '@supabase/supabase-js';
               const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, { auth: { persistSession: false } });
-              const { data, error } = await c.auth.signInWithPassword({ email: 'askmarcelapp@gmail.com', password: process.env.AM_HARNESS_BENCH_PASSWORD });
+              const { data, error } = await c.auth.signInWithPassword({ email: process.env.AM_HARNESS_BENCH_EMAIL, password: process.env.AM_HARNESS_BENCH_PASSWORD });
               if (error || !data.session?.access_token) { console.error(error); process.exit(1); }
               process.stdout.write(data.session.access_token);
             ")
@@ -187,6 +188,7 @@ jobs:
       AM_JUDGE_MODEL: ${{ secrets.AM_JUDGE_MODEL }}
       AM_JUDGE_API_KEY: ${{ secrets.AM_JUDGE_API_KEY }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      AM_HARNESS_BENCH_EMAIL: th1b4ut.dev@gmail.com
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -208,7 +210,7 @@ jobs:
             TOKEN=$(node --input-type=module -e "
               import { createClient } from '@supabase/supabase-js';
               const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, { auth: { persistSession: false } });
-              const { data, error } = await c.auth.signInWithPassword({ email: 'askmarcelapp@gmail.com', password: process.env.AM_HARNESS_BENCH_PASSWORD });
+              const { data, error } = await c.auth.signInWithPassword({ email: process.env.AM_HARNESS_BENCH_EMAIL, password: process.env.AM_HARNESS_BENCH_PASSWORD });
               if (error || !data.session?.access_token) { console.error(error?.message ?? 'no token'); process.exit(1); }
               process.stdout.write(data.session.access_token);
             " 2>/dev/null) || true
@@ -252,6 +254,7 @@ jobs:
       AM_JUDGE_MODEL: ${{ secrets.AM_JUDGE_MODEL }}
       AM_JUDGE_API_KEY: ${{ secrets.AM_JUDGE_API_KEY }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      AM_HARNESS_BENCH_EMAIL: th1b4ut.dev@gmail.com
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -273,11 +276,22 @@ jobs:
             TOKEN=$(node --input-type=module -e "
               import { createClient } from '@supabase/supabase-js';
               const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, { auth: { persistSession: false } });
-              const { data, error } = await c.auth.signInWithPassword({ email: 'askmarcelapp@gmail.com', password: process.env.AM_HARNESS_BENCH_PASSWORD });
-              if (error || !data.session?.access_token) { console.error(error); process.exit(1); }
+              const { data, error } = await c.auth.signInWithPassword({ email: process.env.AM_HARNESS_BENCH_EMAIL, password: process.env.AM_HARNESS_BENCH_PASSWORD });
+              if (error || !data.session?.access_token) { console.error(error?.message ?? 'no token'); process.exit(1); }
               process.stdout.write(data.session.access_token);
-            ")
-            echo "AM_HARNESS_BEARER_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+            " 2>/dev/null) || true
+            if [ -n "$TOKEN" ]; then
+              echo "AM_HARNESS_BEARER_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+              echo "✅ JWT bench régénéré"
+            else
+              echo "⚠️ JWT regen échoué — fallback sur AM_HARNESS_BEARER_TOKEN secret"
+            fi
+          fi
+      - name: Vérifier token harness
+        run: |
+          if [ -z "$AM_HARNESS_BEARER_TOKEN" ]; then
+            echo "::error::AM_HARNESS_BEARER_TOKEN requis (secret ou regen mot de passe bench)"
+            exit 1
           fi
       - name: Run gate T12 (3 bras × 10 cas × 3 réplicats)
         run: pnpm am:run-iteration --split gate

@@ -5,7 +5,7 @@
 #
 # Usage :
 #   export OPENROUTER_API_KEY=sk-or-v1-…        # ou déjà dans AskMarcel-WebApp-NextJS/.env
-#   export AM_HARNESS_BENCH_PASSWORD=…          # après create-am-harness-bearer-token.ts --init-password
+#   export AM_HARNESS_BENCH_PASSWORD=…          # après create-am-harness-bearer-token.ts --init-password (compte th1b4ut.dev@gmail.com uniquement)
 #   ./scripts/setup-am-github-secrets.sh
 #
 # Optionnel : source automatique depuis la WebApp
