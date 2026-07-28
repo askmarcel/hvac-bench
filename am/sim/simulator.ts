@@ -52,7 +52,7 @@ function buildSystemPrompt(c: AmCase): string {
  * le simulateur a bien répondu "je ne peux pas mesurer ça" quand c'est attendu.
  */
 export function replyLooksLikeGapRefusal(reply: string): boolean {
-  return /je ne peux pas (le )?mesurer|pas (l'appareil|habilité|equipe pour|équipé pour)|j'ai pas ça/i.test(
+  return /je ne peux pas (le )?(mesurer|ouvrir|faire)|pas (l'appareil|habilit|equipe pour|équipé pour)|j'ai pas (ça|l')/i.test(
     reply,
   );
 }
