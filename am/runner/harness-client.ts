@@ -1,32 +1,43 @@
 /**
- * Client HTTP vers le harnais réel (`/api/mobile/chat` de la WebApp) — §0 du plan
- * d'exécution : "ce que le bench mesure = ce que le mobile exécute", un seul point
- * d'entrée, jamais une copie du prompt/tools dans le bench.
- *
- * T8 câblé côté WebApp (`lib/chat/harnais-mode.ts`) : headers `x-bench-mode` +
- * `x-harnais-mode` (L0|LW|PROD). Le parseur SSE suit le format AI SDK v5 UI message
- * stream (aligné sur Expo `stream-parser.ts`) : lignes `data:` JSON + préfixes `0:`/`8:`.
+ * Client vers le harnais réel — D3 : appel direct `runHarnaisTurn` via subprocess
+ * (scripts/bench-harnais-turn.ts), sans HTTP/SSE. Fallback HTTP si
+ * AM_HARNESS_TRANSPORT=http.
  */
+import { spawn } from 'node:child_process';
+import { resolve } from 'node:path';
 
 export class HarnessUnavailableError extends Error {
   constructor(cause: string) {
-    super(`Harnais WebApp injoignable (${cause}). Serveur dev lancé ? T8 câblé ? Bearer token fourni ?`);
+    super(`Harnais injoignable (${cause}). WebApp .env + clés LLM ?`);
     this.name = 'HarnessUnavailableError';
   }
 }
 
 export type HarnaisMode = 'l0' | 'lw' | 'prod';
 
+export type HarnessSurface = 'S1' | 'S2' | 'S3';
+
+export const SURFACE_HTTP_PATHS: Record<HarnessSurface, string> = {
+  S1: '/api/chat',
+  S2: '/api/mobile/chat',
+  S3: '/api/v1/chat/stream',
+};
+
 export type HarnessTurnArgs = {
   baseUrl: string;
-  bearerToken: string;
+  bearerToken?: string;
   chatId: string;
   harnaisMode: HarnaisMode;
   modelId: string;
-  /** Historique complet (UIMessage[] simplifié) — doit contenir au moins un message `user`
-   *  (plainte initiale), comme Expo `run-mobile-chat-request.ts`. */
+  /** Historique complet — doit contenir au moins un message `user` (plainte initiale). */
   messages: Array<{ role: 'user' | 'assistant'; content: string }>;
+  diagnosticContext?: Record<string, unknown> | null;
+  locale?: string;
+  surface?: HarnessSurface;
 };
+
+const WEBAPP_ROOT = resolve(import.meta.dirname, '../../../AskMarcel-WebApp-NextJS');
+const BENCH_SCRIPT = resolve(WEBAPP_ROOT, 'scripts/bench-harnais-turn.ts');
 
 type SsePayload = {
   type?: string;
@@ -63,7 +74,6 @@ function extractAiDataChunk(payload: string): string {
   }
 }
 
-/** Accumule le texte assistant depuis un flux SSE AI SDK v5 (data: + préfixes 0:/8:/d:). */
 function extractTextFromUiMessageStream(raw: string): string {
   let text = '';
   for (const line of raw.split('\n')) {
@@ -89,7 +99,73 @@ function extractTextFromUiMessageStream(raw: string): string {
   return text.trim();
 }
 
-export async function sendHarnessTurn(args: HarnessTurnArgs): Promise<string> {
+export function resolveHarnessBaseUrl(surface: HarnessSurface, explicit?: string): string {
+  if (explicit) return explicit;
+  const host = process.env.AM_HARNESS_URL?.replace(/\/api\/.*$/, '') ?? 'http://localhost:3000';
+  return `${host}${SURFACE_HTTP_PATHS[surface]}`;
+}
+
+function useHttpTransport(): boolean {
+  return process.env.AM_HARNESS_TRANSPORT === 'http';
+}
+
+export async function sendHarnessTurnInProcess(args: HarnessTurnArgs): Promise<string> {
+  const payload = JSON.stringify({
+    harnaisMode: args.harnaisMode,
+    modelId: args.modelId,
+    messages: args.messages,
+    diagnosticContext: args.diagnosticContext ?? null,
+    locale: args.locale ?? 'fr',
+    telemetryFunctionId: `bench-${args.surface ?? 'core'}`,
+  });
+
+  return new Promise((resolvePromise, reject) => {
+    const child = spawn('pnpm', ['exec', 'tsx', BENCH_SCRIPT], {
+      cwd: WEBAPP_ROOT,
+      env: process.env,
+      stdio: ['pipe', 'pipe', 'pipe'],
+    });
+
+    let stdout = '';
+    let stderr = '';
+    child.stdout.on('data', (chunk) => {
+      stdout += chunk.toString();
+    });
+    child.stderr.on('data', (chunk) => {
+      stderr += chunk.toString();
+    });
+    child.on('error', (e) => reject(new HarnessUnavailableError(e.message));
+    child.on('close', (code) => {
+      if (code !== 0) {
+        reject(new HarnessUnavailableError(stderr.trim() || `exit ${code}`));
+        return;
+      }
+      try {
+        const parsed = JSON.parse(stdout.trim()) as { text?: string; error?: string };
+        if (parsed.error) {
+          reject(new HarnessUnavailableError(parsed.error));
+          return;
+        }
+        if (!parsed.text) {
+          reject(new HarnessUnavailableError('réponse vide du subprocess bench-harnais-turn'));
+          return;
+        }
+        resolvePromise(parsed.text);
+      } catch {
+        reject(new HarnessUnavailableError(`JSON invalide: ${stdout.slice(0, 200)}`));
+      }
+    });
+
+    child.stdin.write(payload);
+    child.stdin.end();
+  });
+}
+
+export async function sendHarnessTurnHttp(args: HarnessTurnArgs): Promise<string> {
+  if (!args.bearerToken) {
+    throw new HarnessUnavailableError('bearerToken requis pour transport HTTP');
+  }
+
   const body = {
     id: args.chatId,
     modelId: args.modelId,
@@ -98,6 +174,7 @@ export async function sendHarnessTurn(args: HarnessTurnArgs): Promise<string> {
       role: m.role,
       parts: [{ type: 'text', text: m.content }],
     })),
+    diagnosticContext: args.diagnosticContext ?? undefined,
   };
 
   let response: Response;
@@ -124,7 +201,15 @@ export async function sendHarnessTurn(args: HarnessTurnArgs): Promise<string> {
   const raw = await response.text();
   const text = extractTextFromUiMessageStream(raw);
   if (!text) {
-    throw new HarnessUnavailableError('réponse reçue mais aucun texte extrait du flux (format inattendu)');
+    throw new HarnessUnavailableError('réponse reçue mais aucun texte extrait du flux');
   }
   return text;
+}
+
+/** Point d'entrée unifié — in-process par défaut (D3). */
+export async function sendHarnessTurn(args: HarnessTurnArgs): Promise<string> {
+  if (useHttpTransport()) {
+    return sendHarnessTurnHttp(args);
+  }
+  return sendHarnessTurnInProcess(args);
 }

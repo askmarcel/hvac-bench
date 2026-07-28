@@ -18,7 +18,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { randomUUID } from 'node:crypto';
 import { resolve } from 'node:path';
 
-import { HarnessUnavailableError, sendHarnessTurn, type HarnaisMode } from './harness-client.js';
+import { HarnessUnavailableError, sendHarnessTurn, resolveHarnessBaseUrl, type HarnaisMode } from './harness-client.js';
 import { getHarnessBearerToken, invalidateHarnessTokenCache, isJwtExpiredError } from './bench-auth.js';
 import { buildManifest, loadCasesForSplit } from './manifest.js';
 import { MissingApiKeyError } from '../llm-client.js';
@@ -40,7 +40,10 @@ function parseArgs() {
   const split = (arg('split') ?? 'dev') as 'dev' | 'gate';
   const replicates = Number(arg('replicates') ?? '3');
   const casesFilter = arg('cases')?.split(',').map((s) => s.trim());
-  const baseUrl = arg('base-url') ?? process.env.AM_HARNESS_URL ?? 'http://localhost:3000/api/mobile/chat';
+  const surface = (arg('surface') ?? 'S2') as 'S1' | 'S2' | 'S3';
+  const baseUrl =
+    arg('base-url') ??
+    resolveHarnessBaseUrl(surface, process.env.AM_HARNESS_URL?.includes('/api/') ? process.env.AM_HARNESS_URL : undefined);
 
   if (!['L0', 'LW', 'PROD'].includes(arm)) {
     throw new Error(`--arm invalide: ${arm} (attendu L0|LW|PROD)`);
@@ -48,7 +51,10 @@ function parseArgs() {
   if (!['dev', 'gate'].includes(split)) {
     throw new Error(`--split invalide: ${split} (attendu dev|gate)`);
   }
-  return { arm: arm as 'L0' | 'LW' | 'PROD', split, replicates, casesFilter, baseUrl };
+  if (!['S1', 'S2', 'S3'].includes(surface)) {
+    throw new Error(`--surface invalide: ${surface} (attendu S1|S2|S3)`);
+  }
+  return { arm: arm as 'L0' | 'LW' | 'PROD', split, replicates, casesFilter, baseUrl, surface };
 }
 
 type TranscriptTurn = { role: 'technicien' | 'installateur'; content: string };
@@ -80,6 +86,10 @@ function buildHarnessMessages(
 async function callHarnessTurn(
   args: Omit<Parameters<typeof sendHarnessTurn>[0], 'bearerToken'>,
 ): Promise<string> {
+  if (process.env.AM_HARNESS_TRANSPORT !== 'http') {
+    return sendHarnessTurn(args);
+  }
+
   for (let attempt = 0; attempt < 2; attempt++) {
     const bearerToken = await getHarnessBearerToken();
     try {
@@ -129,6 +139,13 @@ async function playCase(
       harnaisMode,
       modelId: process.env.AM_HARNESS_MODEL_ID ?? 'fast-marcel',
       messages: buildHarnessMessages(plainteInitiale, []),
+      surface: args.surface,
+      diagnosticContext: amCase.equipement?.marque
+        ? {
+            brandName: amCase.equipement.marque,
+            modelName: amCase.equipement.modele,
+          }
+        : null,
     });
   } catch (e) {
     if (e instanceof HarnessUnavailableError) {
@@ -165,6 +182,13 @@ async function playCase(
         harnaisMode,
         modelId: process.env.AM_HARNESS_MODEL_ID ?? 'fast-marcel',
         messages: buildHarnessMessages(plainteInitiale, simHistory),
+        surface: args.surface,
+        diagnosticContext: amCase.equipement?.marque
+          ? {
+              brandName: amCase.equipement.marque,
+              modelName: amCase.equipement.modele,
+            }
+          : null,
       });
     } catch (e) {
       if (e instanceof HarnessUnavailableError) {
@@ -180,21 +204,29 @@ async function playCase(
 
 async function main() {
   const args = parseArgs();
+  const transport = process.env.AM_HARNESS_TRANSPORT === 'http' ? 'http' : 'in-process';
+  console.log(`Surface: ${args.surface} · transport: ${transport}`);
 
-  try {
-    await getHarnessBearerToken();
-  } catch (e) {
-    if (!process.env.AM_HARNESS_BEARER_TOKEN) {
-      console.error(
-        '\n🚫 JWT bench indisponible — impossible d\'appeler /api/mobile/chat (auth requise côté WebApp).',
-      );
-      console.error((e as Error).message);
-      process.exit(2);
+  if (transport === 'http') {
+    try {
+      await getHarnessBearerToken();
+    } catch (e) {
+      if (!process.env.AM_HARNESS_BEARER_TOKEN) {
+        console.error('\n🚫 JWT bench indisponible pour transport HTTP.');
+        console.error((e as Error).message);
+        process.exit(2);
+      }
     }
   }
 
   const runId = `am-${args.arm.toLowerCase()}-${new Date().toISOString().replace(/[:.]/g, '-')}`;
-  const manifest = buildManifest({ runId, arm: args.arm, split: args.split, replicates: args.replicates });
+  const manifest = buildManifest({
+    runId,
+    arm: args.arm,
+    split: args.split,
+    replicates: args.replicates,
+    surface: args.surface,
+  });
 
   const runsDir = resolve(HVAC_BENCH_ROOT, 'runs', runId);
   mkdirSync(runsDir, { recursive: true });

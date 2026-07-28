@@ -83,7 +83,11 @@
     "am:dry-run": "tsx am/scripts/dry-run.ts",
     "am:stamp-marcel": "tsx am/scripts/stamp-marcel-validation.ts",
     "am:split-dev-gate": "tsx am/scripts/split-dev-gate.ts",
-    "am:run-iteration": "tsx am/scripts/run-iteration.ts"
+    "am:run-iteration": "tsx am/scripts/run-iteration.ts",
+    "am:baseline-surfaces": "tsx am/scripts/run-baseline-surfaces.ts --write-report",
+    "am:surface-tests": "tsx am/scripts/run-surface-tests.ts --group all",
+    "am:surfaces-report": "tsx am/scripts/surfaces-conformite-report.ts",
+    "am:check-surfaces": "cd ../AskMarcel-WebApp-NextJS && pnpm exec tsx scripts/check-surfaces-conformity.ts"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

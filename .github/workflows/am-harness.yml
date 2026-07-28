@@ -66,6 +66,23 @@ jobs:
         run: pnpm am:validate-cases
       - name: Scorer mécanique (fixtures)
         run: pnpm am:check-scorer
+      - name: Checkout WebApp (surfaces C1–C6)
+        uses: actions/checkout@v4
+        with:
+          repository: askmarcel/AskMarcel-WebApp-NextJS
+          token: ${{ secrets.WEBAPP_REPO_TOKEN }}
+          path: AskMarcel-WebApp-NextJS
+        continue-on-error: true
+      - name: Conformité surfaces (C1–C6)
+        if: hashFiles('AskMarcel-WebApp-NextJS/package.json') != ''
+        working-directory: AskMarcel-WebApp-NextJS
+        run: |
+          pnpm install --no-frozen-lockfile
+          pnpm exec tsx scripts/check-surfaces-conformity.ts
+      - name: Tests surfaces D/F/G (sans LLM)
+        if: hashFiles('AskMarcel-WebApp-NextJS/package.json') != ''
+        working-directory: hvac-bench
+        run: pnpm exec tsx am/scripts/run-surface-tests.ts --group DFG
 
   llm-checks:
     runs-on: ubuntu-latest
