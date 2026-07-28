@@ -19,6 +19,7 @@ import { randomUUID } from 'node:crypto';
 import { resolve } from 'node:path';
 
 import { HarnessUnavailableError, sendHarnessTurn, type HarnaisMode } from './harness-client.js';
+import { getHarnessBearerToken, invalidateHarnessTokenCache, isJwtExpiredError } from './bench-auth.js';
 import { buildManifest, loadCasesForSplit } from './manifest.js';
 import { MissingApiKeyError } from '../llm-client.js';
 import { simulateInstallerReply, type AmCase, type SimTurn } from '../sim/simulator.js';
@@ -76,11 +77,33 @@ function buildHarnessMessages(
   return messages;
 }
 
+async function callHarnessTurn(
+  args: Omit<Parameters<typeof sendHarnessTurn>[0], 'bearerToken'>,
+): Promise<string> {
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const bearerToken = await getHarnessBearerToken();
+    try {
+      return await sendHarnessTurn({ ...args, bearerToken });
+    } catch (e) {
+      if (
+        attempt === 0 &&
+        e instanceof HarnessUnavailableError &&
+        isJwtExpiredError(e.message)
+      ) {
+        invalidateHarnessTokenCache();
+        console.warn('⚠️  JWT expiré — refresh et nouvel essai…');
+        continue;
+      }
+      throw e;
+    }
+  }
+  throw new Error('callHarnessTurn: unreachable');
+}
+
 async function playCase(
   amCase: AmCase & { id: string },
   replicate: number,
   args: ReturnType<typeof parseArgs>,
-  bearerToken: string,
 ): Promise<TranscriptRecord> {
   const chatId = randomUUID();
   const turns: TranscriptTurn[] = [];
@@ -100,9 +123,8 @@ async function playCase(
 
   let technicienMessage: string;
   try {
-    technicienMessage = await sendHarnessTurn({
+    technicienMessage = await callHarnessTurn({
       baseUrl: args.baseUrl,
-      bearerToken,
       chatId,
       harnaisMode,
       modelId: process.env.AM_HARNESS_MODEL_ID ?? 'fast-marcel',
@@ -137,9 +159,8 @@ async function playCase(
     simHistory.push({ role: 'installateur', content: installerReply });
 
     try {
-      technicienMessage = await sendHarnessTurn({
+      technicienMessage = await callHarnessTurn({
         baseUrl: args.baseUrl,
-        bearerToken,
         chatId,
         harnaisMode,
         modelId: process.env.AM_HARNESS_MODEL_ID ?? 'fast-marcel',
@@ -159,7 +180,18 @@ async function playCase(
 
 async function main() {
   const args = parseArgs();
-  const bearerToken = process.env.AM_HARNESS_BEARER_TOKEN;
+
+  try {
+    await getHarnessBearerToken();
+  } catch (e) {
+    if (!process.env.AM_HARNESS_BEARER_TOKEN) {
+      console.error(
+        '\n🚫 JWT bench indisponible — impossible d\'appeler /api/mobile/chat (auth requise côté WebApp).',
+      );
+      console.error((e as Error).message);
+      process.exit(2);
+    }
+  }
 
   const runId = `am-${args.arm.toLowerCase()}-${new Date().toISOString().replace(/[:.]/g, '-')}`;
   const manifest = buildManifest({ runId, arm: args.arm, split: args.split, replicates: args.replicates });
@@ -169,14 +201,6 @@ async function main() {
   writeFileSync(resolve(runsDir, 'manifest.json'), JSON.stringify(manifest, null, 2));
   console.log(`Manifest écrit: ${resolve(runsDir, 'manifest.json')}`);
   console.log(JSON.stringify(manifest, null, 2));
-
-  if (!bearerToken) {
-    console.error(
-      '\n🚫 AM_HARNESS_BEARER_TOKEN non défini — impossible d\'appeler /api/mobile/chat (auth requise côté WebApp).',
-    );
-    console.error('Manifest et arborescence de run tout de même écrits (preuve de la plomberie). Arrêt propre.');
-    process.exit(2);
-  }
 
   const cases = loadCasesForSplit(args.split)
     .map(({ content }) => JSON.parse(content) as AmCase & { id: string })
@@ -192,7 +216,7 @@ async function main() {
 
   for (const c of cases) {
     for (let r = 1; r <= args.replicates; r++) {
-      const record = await playCase(c, r, args, bearerToken);
+      const record = await playCase(c, r, args);
       records.push(record);
       writeFileSync(rawPath, records.map((rec) => JSON.stringify(rec)).join('\n') + '\n');
       console.log(`${record.status === 'completed' ? '✅' : '⚠️ '} ${c.id} réplicat ${r}: ${record.status}${record.blocked_reason ? ` — ${record.blocked_reason}` : ''}`);

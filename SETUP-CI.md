@@ -146,6 +146,7 @@ pnpm am:check-sim         # 5 dialogues contrôle
 pnpm am:check-judge       # 6 transcripts + variance
 pnpm am:dry-run           # T10 : 2 cas × 3 bras
 pnpm am:run-iteration     # T11/T12 : split dev ou gate
+pnpm am:run-iteration --split dev --arms LW,PROD --include-scores runs/am-l0-*/score.json  # reprendre sans L0
 pnpm am:score --run runs/…
 pnpm am:report --scores runs/…/score.json
 pnpm am:stamp-marcel --date YYYY-MM-DD --all

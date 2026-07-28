@@ -30,6 +30,16 @@ on:
         options:
           - 'false'
           - 'true'
+      run_arms:
+        description: 'Bras T11 (ex: L0,LW,PROD ou LW,PROD pour reprendre sans L0)'
+        required: false
+        default: 'LW,PROD'
+        type: string
+      prior_run_id:
+        description: 'Run ID CI précédent — récupère score L0 pour le rapport (optionnel)'
+        required: false
+        default: ''
+        type: string
       run_gate:
         description: 'Exécuter run gate complet T12 (budget ~900 appels LLM)'
         required: false
@@ -227,8 +237,35 @@ jobs:
             echo "::error::AM_HARNESS_BEARER_TOKEN requis (secret ou regen mot de passe bench)"
             exit 1
           fi
-      - name: Run dev T11 (3 bras × 10 cas × 3 réplicats)
-        run: pnpm am:run-iteration --split dev
+      - name: Récupérer scores L0 du run précédent
+        if: >-
+          github.event.inputs.prior_run_id != '' &&
+          contains(github.event.inputs.run_arms, 'L0') == false
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download "${{ github.event.inputs.prior_run_id }}" \
+            -R "${{ github.repository }}" \
+            -n am-dev-report \
+            -D prior-report
+          L0_SCORE=$(find prior-report -path '*am-l0*/score.json' | head -1)
+          if [ -z "$L0_SCORE" ]; then
+            echo "::error::score L0 introuvable dans l'artifact du run ${{ github.event.inputs.prior_run_id }}"
+            exit 1
+          fi
+          echo "L0_SCORE=$L0_SCORE" >> "$GITHUB_ENV"
+          echo "✅ Score L0 récupéré : $L0_SCORE"
+      - name: Run dev T11
+        env:
+          AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
+          AM_HARNESS_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
+          AM_HARNESS_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
+        run: |
+          ARGS="--split dev --arms ${{ github.event.inputs.run_arms }}"
+          if [ -n "${L0_SCORE:-}" ]; then
+            ARGS="$ARGS --include-scores $L0_SCORE"
+          fi
+          pnpm am:run-iteration $ARGS
       - name: Archiver rapports dev
         if: always()
         uses: actions/upload-artifact@v4
