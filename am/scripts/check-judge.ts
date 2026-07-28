@@ -10,6 +10,7 @@ import { resolve } from 'node:path';
 
 import { MissingApiKeyError } from '../llm-client.js';
 import { judgeTranscript, type JudgeGrade, type Verite } from '../judge/judge.js';
+import { loadCaseById } from '../runner/manifest.js';
 
 const AM_ROOT = resolve(import.meta.dirname, '..');
 const FIXTURES_PATH = resolve(AM_ROOT, 'judge/fixtures/judge-transcripts.json');
@@ -23,9 +24,7 @@ type Fixture = {
 };
 
 function loadVerite(caseId: string): Verite {
-  const path = resolve(AM_ROOT, 'cases/dev', `${caseId}.json`);
-  const c = JSON.parse(readFileSync(path, 'utf8')) as { verite: Verite };
-  return c.verite;
+  return loadCaseById<{ verite: Verite }>(caseId).verite;
 }
 
 function gradesEqual(a: JudgeGrade, b: JudgeGrade): boolean {

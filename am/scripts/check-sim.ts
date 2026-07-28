@@ -8,6 +8,7 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import { MissingApiKeyError } from '../llm-client.js';
+import { loadCaseById } from '../runner/manifest.js';
 import { replyLooksLikeGapRefusal, simulateInstallerReply, type AmCase } from '../sim/simulator.js';
 
 const AM_ROOT = resolve(import.meta.dirname, '..');
@@ -26,8 +27,7 @@ type Dialogue = {
 type FullCase = AmCase & { verite: { cause: string } };
 
 function loadCase(caseId: string): FullCase {
-  const path = resolve(AM_ROOT, 'cases/dev', `${caseId}.json`);
-  return JSON.parse(readFileSync(path, 'utf8')) as FullCase;
+  return loadCaseById<FullCase>(caseId);
 }
 
 const STOPWORDS = new Set([

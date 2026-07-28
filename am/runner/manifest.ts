@@ -55,6 +55,17 @@ export function loadCasesForSplit(split: 'dev' | 'gate'): { path: string; conten
     .map((path) => ({ path, content: readFileSync(path, 'utf8') }));
 }
 
+/** Charge un cas par ID, quel que soit son split (dev ou gate). */
+export function loadCaseById<T = unknown>(caseId: string): T {
+  for (const split of ['dev', 'gate'] as const) {
+    const path = resolve(AM_ROOT, 'cases', split, `${caseId}.json`);
+    if (existsSync(path)) {
+      return JSON.parse(readFileSync(path, 'utf8')) as T;
+    }
+  }
+  throw new Error(`Cas introuvable: ${caseId} (ni dans cases/dev ni cases/gate)`);
+}
+
 export function datasetVersion(cases: { content: string }[]): string {
   const hash = createHash('sha256');
   for (const c of cases) hash.update(c.content);
