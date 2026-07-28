@@ -209,10 +209,21 @@ jobs:
               import { createClient } from '@supabase/supabase-js';
               const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, { auth: { persistSession: false } });
               const { data, error } = await c.auth.signInWithPassword({ email: 'askmarcelapp@gmail.com', password: process.env.AM_HARNESS_BENCH_PASSWORD });
-              if (error || !data.session?.access_token) { console.error(error); process.exit(1); }
+              if (error || !data.session?.access_token) { console.error(error?.message ?? 'no token'); process.exit(1); }
               process.stdout.write(data.session.access_token);
-            ")
-            echo "AM_HARNESS_BEARER_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+            " 2>/dev/null) || true
+            if [ -n "$TOKEN" ]; then
+              echo "AM_HARNESS_BEARER_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+              echo "✅ JWT bench régénéré"
+            else
+              echo "⚠️ JWT regen échoué — fallback sur AM_HARNESS_BEARER_TOKEN secret"
+            fi
+          fi
+      - name: Vérifier token harness
+        run: |
+          if [ -z "$AM_HARNESS_BEARER_TOKEN" ]; then
+            echo "::error::AM_HARNESS_BEARER_TOKEN requis (secret ou regen mot de passe bench)"
+            exit 1
           fi
       - name: Run dev T11 (3 bras × 10 cas × 3 réplicats)
         run: pnpm am:run-iteration --split dev
