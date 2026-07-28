@@ -134,7 +134,7 @@ export async function sendHarnessTurnInProcess(args: HarnessTurnArgs): Promise<s
     child.stderr.on('data', (chunk) => {
       stderr += chunk.toString();
     });
-    child.on('error', (e) => reject(new HarnessUnavailableError(e.message));
+    child.on('error', (e) => reject(new HarnessUnavailableError(e.message)));
     child.on('close', (code) => {
       if (code !== 0) {
         reject(new HarnessUnavailableError(stderr.trim() || `exit ${code}`));
