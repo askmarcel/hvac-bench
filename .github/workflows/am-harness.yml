@@ -144,6 +144,7 @@ jobs:
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       ALLOW_BENCH_MODE: 'true'
       AM_HARNESS_BENCH_EMAIL: th1b4ut.dev@gmail.com
+      AM_HARNESS_TRANSPORT: http
     steps:
       - uses: actions/checkout@v4
         with:
@@ -217,6 +218,11 @@ jobs:
       AM_JUDGE_API_KEY: ${{ secrets.AM_JUDGE_API_KEY }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       AM_HARNESS_BENCH_EMAIL: th1b4ut.dev@gmail.com
+      AM_HARNESS_TRANSPORT: http
+      ALLOW_BENCH_MODE: 'true'
+      AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
+      AM_HARNESS_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
+      AM_HARNESS_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -273,11 +279,9 @@ jobs:
           fi
           echo "L0_SCORE=$L0_SCORE" >> "$GITHUB_ENV"
           echo "✅ Score L0 récupéré : $L0_SCORE"
+      - name: Smoke harness HTTP (ham-0001 × LW × 1 réplicat)
+        run: pnpm exec tsx am/runner/run-arm.ts --arm LW --split dev --cases ham-0001 --replicates 1
       - name: Run dev T11
-        env:
-          AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
-          AM_HARNESS_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
-          AM_HARNESS_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
         run: |
           ARGS=(--split dev --arms "${{ github.event.inputs.run_arms }}")
           if [ -n "${L0_SCORE:-}" ]; then
@@ -310,6 +314,11 @@ jobs:
       AM_JUDGE_API_KEY: ${{ secrets.AM_JUDGE_API_KEY }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       AM_HARNESS_BENCH_EMAIL: th1b4ut.dev@gmail.com
+      AM_HARNESS_TRANSPORT: http
+      ALLOW_BENCH_MODE: 'true'
+      AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
+      AM_HARNESS_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
+      AM_HARNESS_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
