@@ -1,0 +1,757 @@
+# capture-stream 2026-07-29T07:06:54.069Z
+# arm=LW case=ham-0016 url=https://app.askmarcel.app/api/mobile/chat status=200
+
+data: {"type":"start","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"},"messageId":"eqQ0L8cDuQVw0WLt"}
+
+data: {"type":"start-step"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"reasoning-start","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","providerMetadata":{"openrouter":{"reasoning_details":[{"type":"reasoning.text","text":"L","format":"unknown","index":0}]}}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"reasoning-end","id":"gen-1785308808-ViSIOXy06yeKr9efQae9"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-start","id":"gen-1785308808-ViSIOXy06yeKr9efQae9"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"**Diagn"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ostic**"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" : Sympt"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ôme de"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" puissance ins"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"uffis"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ante par"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" grand f"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"roid —"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" plusieurs causes"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" poss"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ibles :"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" sous-dim"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ensionnement"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":","}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" défaut"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" dégiv"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"rage,"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" courbe"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" de ch"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"auffe"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" mal"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" régl"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ée,"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" man"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"que de"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" fluide"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":", ou"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" problème hyd"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"raulique"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":".\n\n"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"**Action"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"** :"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" Donne"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"-m"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"oi le"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" **type"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" d'"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"équip"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ement**"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" et le"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" **"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"modèle"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" exact**"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" (mar"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"que,"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" référence plaque"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" signalétique"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":").\n\n**"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"M"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"éth"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ode/L"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ocalisation"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"** :"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" Plaque"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" signalétique"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" sur le"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" cap"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ot avant"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" ou le"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" côté de"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" l'"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"unité"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" ext"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"érieure ("}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"PAC)"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" ou sur"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" la ch"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"audière"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":".\n\n**"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"Questions"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" de su"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ivi**"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" :\n-"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" Quel"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" équip"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ement as"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"-t"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"u ?"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" **PAC"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" air/e"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"au**,"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" **PAC"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" air/"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"air**,"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" **ch"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"audière"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" gaz"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"**, **"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"chaud"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ière fi"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"oul**,"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" **autre"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"**"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" ?\n-"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" **É"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"mette"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"urs"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"** :"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" planc"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"her chauff"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ant,"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" radiate"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"urs bas"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"se température"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":", rad"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"iateurs"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" haute température"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":", vent"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ilo-con"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"vect"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"eurs ?\n"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"- Le"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" **pro"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"blème"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" est appar"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"u cette"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" année**"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" ou"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" il exist"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ait déjà"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":" les h"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ivers précéd"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-delta","id":"gen-1785308808-ViSIOXy06yeKr9efQae9","delta":"ents ?"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"text-end","id":"gen-1785308808-ViSIOXy06yeKr9efQae9"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"finish-step"}
+
+data: {"type":"message-metadata","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: {"type":"finish","finishReason":"stop","messageMetadata":{"serverId":"4a2ae9c5-1905-4436-9a57-815c9b75ddab"}}
+
+data: [DONE]
+
