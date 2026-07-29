@@ -1,0 +1,12 @@
+# Fixture synthétique — tour tool-only (0 text-delta) reproduisant le blocked G0
+# Format SSE AI SDK tel que renvoyé par /api/mobile/chat
+
+data: {"type":"start","messageId":"fixture-msg-1"}
+
+data: {"type":"start-step"}
+
+data: {"type":"tool-input-available","toolCallId":"call_pd_1","toolName":"presentDiagnostic","input":{"verdict":"cause_identifiee","cause":"Sous-dimensionnement PAC + radiateurs HT par grand froid","confiance":"moyenne","mesuresRecues":[{"grandeur":"T° pièce","valeur":"17 °C"},{"grandeur":"Consigne","valeur":"20 °C"}],"steps":[{"title":"Vérifier courbe de chauffe","detail":"Adapter la courbe eau pour radiateurs HT"}]}}
+
+data: {"type":"finish-step"}
+
+data: {"type":"finish","finishReason":"tool-calls"}

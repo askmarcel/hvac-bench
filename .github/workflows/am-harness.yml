@@ -56,6 +56,30 @@ on:
         options:
           - 'false'
           - 'true'
+      run_smoke_parseur:
+        description: 'Smoke parseur — ham-0016 × 3 réplicats × LW+PROD (6 dialogues)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+      force_full_t11:
+        description: 'AUTORISER T11 complet (90 dialogues) — désactivé par défaut, coût élevé'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+      run_capture_stream:
+        description: 'Phase A.1 — capturer flux HTTP ham-0016 LW+PROD (2 appels harnais, 0 sim/juge)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
 
 jobs:
   mechanical:
@@ -241,6 +265,12 @@ jobs:
           node-version: '22'
           cache: 'pnpm'
       - run: pnpm install --no-frozen-lockfile
+      - name: Garde T11 complet (désactivé par défaut)
+        run: |
+          if [ "${{ github.event.inputs.force_full_t11 }}" != "true" ]; then
+            echo "::error::T11 complet désactivé (coût ~90 dialogues). Valider G0 via run_smoke_parseur=true d'abord, puis force_full_t11=true."
+            exit 1
+          fi
       - name: Régénérer JWT bench
         env:
           AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
@@ -287,8 +317,8 @@ jobs:
           fi
           echo "L0_SCORE=$L0_SCORE" >> "$GITHUB_ENV"
           echo "✅ Score L0 récupéré : $L0_SCORE"
-      - name: Smoke harness HTTP (ham-0001 × LW × 1 réplicat)
-        run: pnpm exec tsx am/runner/run-arm.ts --arm LW --split dev --cases ham-0001 --replicates 1
+      - name: Smoke parseur (ham-0016 × LW × 3 réplicats)
+        run: pnpm exec tsx am/runner/run-arm.ts --arm LW --split dev --cases ham-0016 --replicates 3
       - name: Run dev T11
         run: |
           ARGS=(--split dev --arms "${{ github.event.inputs.run_arms }}")
@@ -306,6 +336,114 @@ jobs:
             runs/**/score.json
             runs/**/raw.jsonl
             runs/**/manifest.json
+          retention-days: 90
+
+  smoke-parseur:
+    runs-on: ubuntu-latest
+    needs: llm-checks
+    if: >-
+      github.event_name == 'workflow_dispatch' &&
+      github.event.inputs.run_smoke_parseur == 'true'
+    env:
+      AM_HARNESS_URL: ${{ secrets.AM_HARNESS_URL }}
+      AM_HARNESS_BEARER_TOKEN: ${{ secrets.AM_HARNESS_BEARER_TOKEN }}
+      AM_HARNESS_MODEL_ID: ${{ secrets.AM_HARNESS_MODEL_ID }}
+      AM_SIM_MODEL: ${{ secrets.AM_SIM_MODEL }}
+      AM_SIM_API_KEY: ${{ secrets.AM_SIM_API_KEY }}
+      AM_JUDGE_MODEL: ${{ secrets.AM_JUDGE_MODEL }}
+      AM_JUDGE_API_KEY: ${{ secrets.AM_JUDGE_API_KEY }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      AM_HARNESS_BENCH_EMAIL: th1b4ut.dev@gmail.com
+      AM_HARNESS_TRANSPORT: http
+      ALLOW_BENCH_MODE: 'true'
+      AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
+      AM_HARNESS_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
+      AM_HARNESS_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      - run: pnpm install --no-frozen-lockfile
+      - name: Régénérer JWT bench
+        env:
+          AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
+        run: |
+          if [ -n "$AM_HARNESS_BENCH_PASSWORD" ] && [ -n "$NEXT_PUBLIC_SUPABASE_URL" ] && [ -n "$NEXT_PUBLIC_SUPABASE_ANON_KEY" ]; then
+            pnpm add @supabase/supabase-js@^2 --silent
+            TOKEN=$(node --input-type=module -e "
+              import { createClient } from '@supabase/supabase-js';
+              const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, { auth: { persistSession: false } });
+              const { data, error } = await c.auth.signInWithPassword({ email: process.env.AM_HARNESS_BENCH_EMAIL, password: process.env.AM_HARNESS_BENCH_PASSWORD });
+              if (error || !data.session?.access_token) { console.error(error?.message ?? 'no token'); process.exit(1); }
+              process.stdout.write(data.session.access_token);
+            " 2>/dev/null) || true
+            if [ -n "$TOKEN" ]; then
+              echo "AM_HARNESS_BEARER_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+            fi
+          fi
+      - name: Smoke parseur ham-0016 × 3 × LW+PROD
+        run: pnpm am:smoke-parseur
+
+  capture-stream:
+    runs-on: ubuntu-latest
+    if: >-
+      github.event_name == 'workflow_dispatch' &&
+      github.event.inputs.run_capture_stream == 'true'
+    env:
+      AM_HARNESS_URL: ${{ secrets.AM_HARNESS_URL }}
+      AM_HARNESS_BEARER_TOKEN: ${{ secrets.AM_HARNESS_BEARER_TOKEN }}
+      AM_HARNESS_MODEL_ID: ${{ secrets.AM_HARNESS_MODEL_ID }}
+      AM_HARNESS_BENCH_EMAIL: th1b4ut.dev@gmail.com
+      AM_HARNESS_TRANSPORT: http
+      ALLOW_BENCH_MODE: 'true'
+      AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
+      AM_HARNESS_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
+      AM_HARNESS_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      - run: pnpm install --no-frozen-lockfile
+      - name: Régénérer JWT bench
+        env:
+          AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
+        run: |
+          if [ -n "$AM_HARNESS_BENCH_PASSWORD" ] && [ -n "$NEXT_PUBLIC_SUPABASE_URL" ] && [ -n "$NEXT_PUBLIC_SUPABASE_ANON_KEY" ]; then
+            pnpm add @supabase/supabase-js@^2 --silent
+            TOKEN=$(node --input-type=module -e "
+              import { createClient } from '@supabase/supabase-js';
+              const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, { auth: { persistSession: false } });
+              const { data, error } = await c.auth.signInWithPassword({ email: process.env.AM_HARNESS_BENCH_EMAIL, password: process.env.AM_HARNESS_BENCH_PASSWORD });
+              if (error || !data.session?.access_token) { console.error(error?.message ?? 'no token'); process.exit(1); }
+              process.stdout.write(data.session.access_token);
+            " 2>/dev/null) || true
+            if [ -n "$TOKEN" ]; then
+              echo "AM_HARNESS_BEARER_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+            fi
+          fi
+      - name: Capturer ham-0016 LW + PROD
+        run: |
+          pnpm am:capture-stream --arm LW --case ham-0016 --out am/runner/fixtures/streams/ham-0016-lw.txt
+          pnpm am:capture-stream --arm PROD --case ham-0016 --out am/runner/fixtures/streams/ham-0016-prod.txt
+      - name: Archiver flux capturés
+        uses: actions/upload-artifact@v4
+        with:
+          name: am-capture-stream
+          path: am/runner/fixtures/streams/ham-0016-*.txt
           retention-days: 90
 
   retry-blocked:

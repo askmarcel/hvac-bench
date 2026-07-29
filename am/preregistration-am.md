@@ -3,7 +3,19 @@
 **Figé avant tout run gate** (leçon O7/O9). Premier run gate = le chiffre ; toute retouche ensuite → itération sur dev uniquement.
 
 **Date de rédaction** : 2026-07-28  
+**Dernière mise à jour** : 2026-07-29 (G0/G4, transport O6, arrêt T11 complet par défaut)  
 **Statut rosters** : ✅ Appliqués le 2026-07-28 (stamp `marcel:2026-07-28`, seed `20260728`)
+
+---
+
+## Transport bench (O6 — pré-hoc)
+
+| Contexte | Transport | Compte pour gate ? |
+|----------|-----------|-------------------|
+| Itération prompt locale | **in-process** (`runHarnaisTurn`, sans `AM_HARNESS_TRANSPORT=http`) | **Non** — boucle dev uniquement |
+| Smoke parseur, T11, T12 | **HTTP** (`AM_HARNESS_TRANSPORT=http` → `/api/mobile/chat`) | **Oui** — seule preuve O6 valide |
+
+> In-process masque les bugs parseur/SSE client. Le gate reste HTTP. Violation O6 si on publie un score gate obtenu en in-process.
 
 ---
 
@@ -22,16 +34,9 @@
 
 ---
 
-## Rosters (à appliquer après visios Marcel)
+## Rosters
 
-Commande de tirage (seed documentée) :
-
-```bash
-pnpm am:stamp-marcel --date YYYY-MM-DD --all   # après les 2 visios
-pnpm am:split-dev-gate --seed 20260728 --apply  # puis commit de ce fichier
-```
-
-**Seed de tirage** : `20260728` (à confirmer au moment du split réel)
+**Seed de tirage** : `20260728`
 
 ### DEV (10 cas — itération libre)
 
@@ -47,14 +52,20 @@ ham-0002, ham-0003, ham-0005, ham-0006, ham-0007, ham-0009, ham-0010, ham-0015, 
 
 | ID | Critère | Seuil |
 |----|---------|-------|
-| **G0** | `blocked` (tout bras du run) | **= 0** — sinon run **invalide** |
-| **G1** | `cause_ok` (médiane réplicats, bras PROD, gate) | ≥ 8/10 |
+| **G0** | `blocked` (tout bras du run) | **= 0** — sinon run **invalide**, scores non publiables |
+| **G1** | `cause_ok` (médiane réplicats, bras PROD, **split gate**) | ≥ 8/10 |
 | **G2** | `solution_ok` (idem) | ≥ 7/10 |
 | **G3** | Escalades attendues | 3/3 |
 | **G3** | `conclusion_sans_mesure` | 0 |
 | **G3** | `hallucination_plage` | 0 |
-| **G4** | Ordre bras sur dev | PROD > LW > L0 |
+| **G4** | **PROD > L0** sur dev (médiane/cas, n=10) | PROD gagne sur **≥ 2 cas** vs L0 (marge pré-déclarée) |
 | **G5** | Écart PROD ↔ Marcel (bras H, 5 cas gate) | ≤ 1 cas |
+
+### Bras LW — attribution, pas gate
+
+**LW** mesure l'apport du **protocole seul** (sans tools DATA). Ce n'est **pas** un gate d'ordre. L'attribution tools vs prompt est **HB** (PROD − LW ≥ 2 cas gagnants sur dev).
+
+> Ancien G4 `PROD > LW > L0` **abrogé** (2026-07-29) : forçait l'échafaudage à battre un LLM nu — gate mal posé, risque d'overfit.
 
 ---
 
@@ -62,15 +73,27 @@ ham-0002, ham-0003, ham-0005, ham-0006, ham-0007, ham-0009, ham-0010, ham-0015, 
 
 | ID | Énoncé |
 |----|--------|
-| **HA** | Le bras PROD passe G1–G3 |
-| **HB** | Les tools DATA (`get_plages`, `get_arbre_memo`, `get_priors`) apportent ≥ 2 cas gagnants (PROD − LW) sur dev |
+| **HA** | Le bras PROD passe G1–G3 sur gate |
+| **HB** | Les tools DATA apportent ≥ 2 cas gagnants (**PROD − LW**) sur dev — bras d'attribution |
 | **HC** | Accord juge ↔ Marcel ≥ 80 % sur les 5 cas bras H |
+
+---
+
+## Smoke parseur (pré-T11)
+
+Avant tout T11 complet : **ham-0016 × 3 réplicats × {LW, PROD}** = 6 dialogues (`pnpm am:smoke-parseur`). Cas reproducteur (blocked 4× sur runs #30380551430 / #30393350693). Un seul réplicat = ~80 % de faux vert si taux blocked ≈ 20 %.
+
+---
+
+## Décision D1 (web 75 %) — actée 2026-07-29
+
+**Option (b)** : `harnaisMode: 'lw'` sur `/api/chat` — 1 ligne, supprime l'incohérence prompt↔tools active en prod, réversible. PROD web **après** T13 + smoke, pas sur G4 non mesurable.
 
 ---
 
 ## Règle post-hoc
 
-Toute modification de prompt, tool ou cas après le premier `am:run-gate` complet est déclarée **post_hoc**. L'itération se fait sur le split **dev** uniquement ; re-gate hebdomadaire déclaré.
+Toute modification de prompt, tool, gate ou cas après le premier `am:run-gate` complet est déclarée **post_hoc**. L'itération se fait sur le split **dev** uniquement ; re-gate hebdomadaire déclaré.
 
 ---
 
