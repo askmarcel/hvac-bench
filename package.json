@@ -81,6 +81,8 @@
     "am:score": "tsx am/scripts/score-run.ts",
     "am:report": "tsx am/scripts/report-run.ts",
     "am:dry-run": "tsx am/scripts/dry-run.ts",
+    "am:capture-stream": "tsx am/scripts/capture-stream.ts",
+    "am:smoke-parseur": "tsx am/scripts/smoke-parseur.ts",
     "am:stamp-marcel": "tsx am/scripts/stamp-marcel-validation.ts",
     "am:split-dev-gate": "tsx am/scripts/split-dev-gate.ts",
     "am:run-iteration": "tsx am/scripts/run-iteration.ts",
