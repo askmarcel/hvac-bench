@@ -4,7 +4,8 @@
  * AM_HARNESS_TRANSPORT=http.
  */
 import { spawn } from 'node:child_process';
-import { resolve } from 'node:path';
+import { existsSync } from 'node:fs';
+import { join, resolve } from 'node:path';
 
 import { extractHarnessTurnText } from './stream-text-extract.js';
 
@@ -39,8 +40,19 @@ export type HarnessTurnArgs = {
   surface?: HarnessSurface;
 };
 
-const WEBAPP_ROOT = resolve(import.meta.dirname, '../../../AskMarcel-WebApp-NextJS');
+const WEBAPP_ROOT = process.env.WEBAPP_REPO_PATH
+  ? resolve(process.env.WEBAPP_REPO_PATH)
+  : resolve(import.meta.dirname, '../../../AskMarcel-WebApp-NextJS');
 const BENCH_SCRIPT = resolve(WEBAPP_ROOT, 'scripts/bench-harnais-turn.ts');
+
+function resolveBenchSubprocess(): { command: string; args: string[] } {
+  const localTsx = resolve(WEBAPP_ROOT, 'node_modules/.bin/tsx');
+  if (existsSync(localTsx)) {
+    return { command: localTsx, args: [BENCH_SCRIPT] };
+  }
+  const pnpm = process.env.PNPM_HOME ? join(process.env.PNPM_HOME, 'pnpm') : 'pnpm';
+  return { command: pnpm, args: ['exec', 'tsx', BENCH_SCRIPT] };
+}
 
 export { serializeToolTurn } from './stream-text-extract.js';
 
@@ -69,7 +81,8 @@ export async function sendHarnessTurnInProcess(args: HarnessTurnArgs): Promise<s
   });
 
   return new Promise((resolvePromise, reject) => {
-    const child = spawn('pnpm', ['exec', 'tsx', BENCH_SCRIPT], {
+    const { command, args } = resolveBenchSubprocess();
+    const child = spawn(command, args, {
       cwd: WEBAPP_ROOT,
       env: process.env,
       stdio: ['pipe', 'pipe', 'pipe'],
