@@ -82,7 +82,8 @@ Fichier : `.github/workflows/am-harness.yml`
 | `AM_HARNESS_SUPABASE_URL` | `NEXT_PUBLIC_SUPABASE_URL` de la WebApp |
 | `AM_HARNESS_SUPABASE_ANON_KEY` | `NEXT_PUBLIC_SUPABASE_ANON_KEY` de la WebApp |
 | `AM_HARNESS_MODEL_ID` | Modèle bras testé (ex. `fast-marcel`) |
-| `AM_HARNESS_TRANSPORT` | **`http` en CI** — appelle `AM_HARNESS_URL` (prod/preview). Sans cette variable, le runner tente le mode in-process (WebApp locale) et échoue en CI |
+| `AM_HARNESS_TRANSPORT` | `http` **uniquement** T14 (`--surface S1\|S2\|S3`). Gate = CORE in-process (défaut CI) |
+| `AM_HARNESS_SUPABASE_SERVICE_ROLE_KEY` | Service role Supabase — requis bench in-process |
 | `OPENROUTER_API_KEY` | Fallback partagé |
 | `WEBAPP_REPO_TOKEN` | (optionnel) checkout WebApp pour e2e local CI |
 
@@ -120,8 +121,7 @@ Le script lit `OPENROUTER_API_KEY` depuis `AskMarcel-WebApp-NextJS/.env` si pré
 | `AM_SIM_MODEL` | `google/gemini-2.5-flash` (simulateur, temp 0) |
 | `AM_JUDGE_MODEL` | `mistralai/mistral-large-2512` (juge, **≠** sim et ≠ bras) |
 | `AM_HARNESS_MODEL_ID` | `fast-marcel` |
-| `AM_HARNESS_URL` | `https://app.askmarcel.app/api/mobile/chat` |
-| `AM_HARNESS_TRANSPORT` | `http` (défini dans `am-harness.yml` pour `dev-run`, `gate-run`, `e2e-dry-run`) |
+| `AM_HARNESS_URL` | `https://app.askmarcel.app` (T14 surfaces HTTP seulement) |
 | `AM_SIM_API_KEY` / `AM_JUDGE_API_KEY` | même clé OpenRouter (ou clés séparées) |
 | `OPENROUTER_API_KEY` | clé OpenRouter org |
 

@@ -67,6 +67,11 @@ function collectIncludeScores(): string[] {
   });
 }
 
+function usesHttpHarness(): boolean {
+  const surface = process.env.AM_HARNESS_SURFACE ?? 'CORE';
+  return surface !== 'CORE' && process.env.AM_HARNESS_TRANSPORT === 'http';
+}
+
 async function main() {
   const split = arg('split') ?? 'dev';
   if (split !== 'dev' && split !== 'gate') {
@@ -76,16 +81,19 @@ async function main() {
 
   const arms = parseArms();
   const includeScores = collectIncludeScores();
+  const surface = process.env.AM_HARNESS_SURFACE ?? 'CORE';
 
-  try {
-    await refreshHarnessBearerToken();
-    console.log(`✅ JWT bench initialisé (${process.env.AM_HARNESS_BENCH_EMAIL ?? 'th1b4ut.dev@gmail.com'})`);
-  } catch (e) {
-    if (!process.env.AM_HARNESS_BEARER_TOKEN) {
-      console.error(`🚫 ${(e as Error).message}`);
-      process.exit(2);
+  if (usesHttpHarness()) {
+    try {
+      await refreshHarnessBearerToken();
+      console.log(`✅ JWT bench initialisé (${process.env.AM_HARNESS_BENCH_EMAIL ?? 'th1b4ut.dev@gmail.com'})`);
+    } catch (e) {
+      if (!process.env.AM_HARNESS_BEARER_TOKEN) {
+        console.error(`🚫 ${(e as Error).message}`);
+        process.exit(2);
+      }
+      console.warn(`⚠️  Refresh JWT initial échoué — fallback AM_HARNESS_BEARER_TOKEN : ${(e as Error).message}`);
     }
-    console.warn(`⚠️  Refresh JWT initial échoué — fallback AM_HARNESS_BEARER_TOKEN : ${(e as Error).message}`);
   }
 
   const date = new Date().toISOString().slice(0, 10);
@@ -93,15 +101,17 @@ async function main() {
   const scorePaths: string[] = [...includeScores];
 
   for (const arm of arms) {
-    try {
-      await refreshHarnessBearerToken();
-      console.log(`\n🔑 JWT bench rafraîchi avant bras ${arm}`);
-    } catch (e) {
-      console.error(`🚫 Refresh JWT avant ${arm} échoué : ${(e as Error).message}`);
-      process.exit(2);
+    if (usesHttpHarness()) {
+      try {
+        await refreshHarnessBearerToken();
+        console.log(`\n🔑 JWT bench rafraîchi avant bras ${arm}`);
+      } catch (e) {
+        console.error(`🚫 Refresh JWT avant ${arm} échoué : ${(e as Error).message}`);
+        process.exit(2);
+      }
     }
 
-    run(`pnpm exec tsx am/runner/run-arm.ts --arm ${arm} --split ${split} --replicates 3`);
+    run(`pnpm exec tsx am/runner/run-arm.ts --arm ${arm} --split ${split} --surface ${surface} --replicates 3`);
     const runPath = latestRunDir();
     if (!existsSync(resolve(runPath, 'raw.jsonl'))) {
       console.error(`Run sans raw.jsonl — arrêt.`);

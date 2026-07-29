@@ -17,9 +17,10 @@ export class HarnessUnavailableError extends Error {
 
 export type HarnaisMode = 'l0' | 'lw' | 'prod';
 
-export type HarnessSurface = 'S1' | 'S2' | 'S3';
+/** CORE = cœur harnais (`runHarnaisTurn` via bench-harnais-turn). S1–S3 = routes HTTP (T14). */
+export type HarnessSurface = 'CORE' | 'S1' | 'S2' | 'S3';
 
-export const SURFACE_HTTP_PATHS: Record<HarnessSurface, string> = {
+export const SURFACE_HTTP_PATHS: Record<Exclude<HarnessSurface, 'CORE'>, string> = {
   S1: '/api/chat',
   S2: '/api/mobile/chat',
   S3: '/api/v1/chat/stream',
@@ -44,12 +45,16 @@ const BENCH_SCRIPT = resolve(WEBAPP_ROOT, 'scripts/bench-harnais-turn.ts');
 export { serializeToolTurn } from './stream-text-extract.js';
 
 export function resolveHarnessBaseUrl(surface: HarnessSurface, explicit?: string): string {
+  if (surface === 'CORE') {
+    return explicit ?? 'in-process://runHarnaisTurn';
+  }
   if (explicit) return explicit;
   const host = process.env.AM_HARNESS_URL?.replace(/\/api\/.*$/, '') ?? 'http://localhost:3000';
   return `${host}${SURFACE_HTTP_PATHS[surface]}`;
 }
 
-function useHttpTransport(): boolean {
+function useHttpTransport(surface?: HarnessSurface): boolean {
+  if (!surface || surface === 'CORE') return false;
   return process.env.AM_HARNESS_TRANSPORT === 'http';
 }
 
@@ -150,9 +155,9 @@ export async function sendHarnessTurnHttp(args: HarnessTurnArgs): Promise<string
   return text;
 }
 
-/** Point d'entrée unifié — in-process par défaut (D3). */
+/** Point d'entrée unifié — CORE in-process par défaut (D3 / O6). HTTP = surfaces T14 uniquement. */
 export async function sendHarnessTurn(args: HarnessTurnArgs): Promise<string> {
-  if (useHttpTransport()) {
+  if (useHttpTransport(args.surface)) {
     return sendHarnessTurnHttp(args);
   }
   return sendHarnessTurnInProcess(args);

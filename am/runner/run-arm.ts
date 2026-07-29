@@ -7,12 +7,13 @@
  * Usage: tsx am/runner/run-arm.ts --arm PROD --split dev --replicates 3 [--cases ham-0001,ham-0002]
  *
  * Prérequis pour une boucle réelle (T10+) :
- *  - WebApp dev ou preview (`AM_HARNESS_URL`, défaut localhost:3000)
- *  - `AM_HARNESS_BEARER_TOKEN` (JWT Supabase utilisateur bench)
+ *  - WebApp checkout sibling (`../AskMarcel-WebApp-NextJS`) — in-process par défaut (CORE)
+ *  - HTTP (`AM_HARNESS_TRANSPORT=http` + `--surface S1|S2|S3`) : tests transport T14 uniquement
+ *  - `AM_HARNESS_BEARER_TOKEN` (JWT) requis seulement en transport HTTP
  *  - Clés simulateur (`AM_SIM_*`) — absentes en local volontairement, fournies en CI
  * Sans token ou serveur : échec propre par cas (`status: blocked`), jamais un faux succès.
  *
- * Premier tour : `plainte_initiale` du cas en message `user` (aligné Expo → /api/mobile/chat).
+ * Premier tour : `plainte_initiale` du cas en message `user` (même entrée que les surfaces).
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { randomUUID } from 'node:crypto';
@@ -42,10 +43,19 @@ function parseArgs() {
   const replicateOnly = arg('replicate') ? Number(arg('replicate')) : undefined;
   const runDir = arg('run-dir');
   const casesFilter = arg('cases')?.split(',').map((s) => s.trim());
-  const surface = (arg('surface') ?? 'S2') as 'S1' | 'S2' | 'S3';
+  const surface = (arg('surface') ?? process.env.AM_HARNESS_SURFACE ?? 'CORE') as
+    | 'CORE'
+    | 'S1'
+    | 'S2'
+    | 'S3';
   const baseUrl =
     arg('base-url') ??
-    resolveHarnessBaseUrl(surface, process.env.AM_HARNESS_URL?.includes('/api/') ? process.env.AM_HARNESS_URL : undefined);
+    resolveHarnessBaseUrl(
+      surface,
+      surface !== 'CORE' && process.env.AM_HARNESS_URL?.includes('/api/')
+        ? process.env.AM_HARNESS_URL
+        : undefined,
+    );
 
   if (!['L0', 'LW', 'PROD'].includes(arm)) {
     throw new Error(`--arm invalide: ${arm} (attendu L0|LW|PROD)`);
@@ -53,8 +63,8 @@ function parseArgs() {
   if (!['dev', 'gate'].includes(split)) {
     throw new Error(`--split invalide: ${split} (attendu dev|gate)`);
   }
-  if (!['S1', 'S2', 'S3'].includes(surface)) {
-    throw new Error(`--surface invalide: ${surface} (attendu S1|S2|S3)`);
+  if (!['CORE', 'S1', 'S2', 'S3'].includes(surface)) {
+    throw new Error(`--surface invalide: ${surface} (attendu CORE|S1|S2|S3)`);
   }
   if (replicateOnly !== undefined && (!Number.isInteger(replicateOnly) || replicateOnly < 1)) {
     throw new Error(`--replicate invalide: ${replicateOnly} (entier ≥ 1)`);
@@ -100,7 +110,9 @@ function buildHarnessMessages(
 async function callHarnessTurn(
   args: Omit<Parameters<typeof sendHarnessTurn>[0], 'bearerToken'>,
 ): Promise<string> {
-  if (process.env.AM_HARNESS_TRANSPORT !== 'http') {
+  const http =
+    args.surface !== 'CORE' && process.env.AM_HARNESS_TRANSPORT === 'http';
+  if (!http) {
     return sendHarnessTurn(args);
   }
 
@@ -218,8 +230,9 @@ async function playCase(
 
 async function main() {
   const args = parseArgs();
-  const transport = process.env.AM_HARNESS_TRANSPORT === 'http' ? 'http' : 'in-process';
-  console.log(`Surface: ${args.surface} · transport: ${transport}`);
+  const transport =
+    args.surface !== 'CORE' && process.env.AM_HARNESS_TRANSPORT === 'http' ? 'http' : 'in-process';
+  console.log(`Harnais: ${args.surface} · transport: ${transport}`);
 
   if (transport === 'http') {
     try {
@@ -288,8 +301,13 @@ async function main() {
   }
 
   const completed = records.filter((r) => r.status === 'completed').length;
-  console.log(`\n${completed}/${records.length} runs complets. Transcripts: ${rawPath}`);
+  const blocked = records.filter((r) => r.status === 'blocked').length;
+  console.log(`\n${completed}/${records.length} runs complets (${blocked} blocked). Transcripts: ${rawPath}`);
   if (completed === 0) process.exit(2);
+  if (blocked > 0) {
+    console.error(`\n🚫 G0 : ${blocked}/${records.length} blocked — run invalide.`);
+    process.exit(2);
+  }
 }
 
 main().catch((e) => {
