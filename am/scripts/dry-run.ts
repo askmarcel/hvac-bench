@@ -6,7 +6,8 @@
  *   pnpm am:dry-run
  *   pnpm am:dry-run --cases ham-0001,ham-0002
  *
- * Prérequis : AM_HARNESS_BEARER_TOKEN, AM_SIM_*, WebApp sur AM_HARNESS_URL.
+ * Prérequis CORE (défaut) : WebApp sibling + OPENROUTER + SUPABASE_SERVICE_ROLE_KEY.
+ * Prérequis HTTP (T14) : AM_HARNESS_BEARER_TOKEN + AM_HARNESS_TRANSPORT=http.
  */
 import { execSync } from 'node:child_process';
 import { existsSync, mkdirSync } from 'node:fs';
@@ -26,8 +27,10 @@ function run(cmd: string) {
 }
 
 function main() {
-  if (!process.env.AM_HARNESS_BEARER_TOKEN) {
-    console.error('🚫 AM_HARNESS_BEARER_TOKEN requis pour le dry-run E2E.');
+  const surface = process.env.AM_HARNESS_SURFACE ?? 'CORE';
+  const http = surface !== 'CORE' && process.env.AM_HARNESS_TRANSPORT === 'http';
+  if (http && !process.env.AM_HARNESS_BEARER_TOKEN) {
+    console.error('🚫 AM_HARNESS_BEARER_TOKEN requis pour dry-run HTTP (surface T14).');
     process.exit(2);
   }
 
@@ -39,7 +42,7 @@ function main() {
 
   for (const arm of ['L0', 'LW', 'PROD'] as const) {
     run(
-      `pnpm exec tsx am/runner/run-arm.ts --arm ${arm} --split dev --replicates 1 --cases ${cases}`,
+      `pnpm exec tsx am/runner/run-arm.ts --arm ${arm} --split dev --surface ${surface} --replicates 1 --cases ${cases}`,
     );
     const runsDir = resolve(HVAC_BENCH_ROOT, 'runs');
     const latest = execSync(`ls -1t ${runsDir} | head -1`, { encoding: 'utf8' }).trim();

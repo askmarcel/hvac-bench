@@ -10,12 +10,13 @@
 
 ## Transport bench (O6 — pré-hoc)
 
-| Contexte | Transport | Compte pour gate ? |
-|----------|-----------|-------------------|
-| Itération prompt locale | **in-process** (`runHarnaisTurn`, sans `AM_HARNESS_TRANSPORT=http`) | **Non** — boucle dev uniquement |
-| Smoke parseur, T11, T12 | **HTTP** (`AM_HARNESS_TRANSPORT=http` → `/api/mobile/chat`) | **Oui** — seule preuve O6 valide |
+| Contexte | Cible mesurée | Transport | Compte pour gate ? |
+|----------|---------------|-----------|-------------------|
+| **T11, T12, smoke** | **Cœur harnais** (`runHarnaisTurn` via `bench-harnais-turn.ts`) | **in-process** (`--surface CORE`, défaut) | **Oui** — seule preuve O6 valide |
+| Itération prompt locale | Idem | in-process | Non — boucle dev uniquement |
+| **T14 surfaces** | Routes HTTP (S1 web, S2 mobile, S3 API v1) | `AM_HARNESS_TRANSPORT=http` + `--surface S1\|S2\|S3` | **Non** — conformité transport, pas le gate |
 
-> In-process masque les bugs parseur/SSE client. Le gate reste HTTP. Violation O6 si on publie un score gate obtenu en in-process.
+> **Le harnais ≠ `/api/mobile/chat`.** L'API mobile est une surface de transport. Le bench gate mesure `lib/chat/run-harnais.ts`. Les bugs parseur SSE client sont hors périmètre gate (T14).
 
 ---
 

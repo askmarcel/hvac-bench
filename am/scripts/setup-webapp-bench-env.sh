@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Prépare .env.local WebApp pour bench in-process (runHarnaisTurn).
+set -euo pipefail
+
+WEBAPP_DIR="${1:-AskMarcel-WebApp-NextJS}"
+
+: "${NEXT_PUBLIC_SUPABASE_URL:?NEXT_PUBLIC_SUPABASE_URL requis}"
+: "${SUPABASE_SERVICE_ROLE_KEY:?SUPABASE_SERVICE_ROLE_KEY requis}"
+: "${OPENROUTER_API_KEY:?OPENROUTER_API_KEY requis}"
+
+cat > "$WEBAPP_DIR/.env.local" <<EOF
+NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY:-}
+SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+EOF
+
+echo "✅ $WEBAPP_DIR/.env.local écrit (harnais in-process)"

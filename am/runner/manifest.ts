@@ -8,7 +8,7 @@ export type RunManifest = {
   arm: 'L0' | 'LW' | 'PROD';
   split: 'dev' | 'gate';
   replicates: number;
-  surface?: 'S1' | 'S2' | 'S3';
+  surface?: 'CORE' | 'S1' | 'S2' | 'S3';
   started_at: string;
   webapp_git_sha: string | null;
   preregistration_hash: string | null;
@@ -78,7 +78,7 @@ export function buildManifest(args: {
   arm: RunManifest['arm'];
   split: RunManifest['split'];
   replicates: number;
-  surface?: 'S1' | 'S2' | 'S3';
+  surface?: 'CORE' | 'S1' | 'S2' | 'S3';
 }): RunManifest {
   const cases = loadCasesForSplit(args.split);
   return {

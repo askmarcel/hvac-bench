@@ -57,7 +57,7 @@ on:
           - 'false'
           - 'true'
       run_smoke_parseur:
-        description: 'Smoke parseur — ham-0016 × 3 réplicats × LW+PROD (6 dialogues)'
+        description: 'Smoke harnais CORE — ham-0016 × 3 × LW+PROD (runHarnaisTurn in-process)'
         required: false
         default: 'false'
         type: choice
@@ -73,7 +73,7 @@ on:
           - 'false'
           - 'true'
       run_capture_stream:
-        description: 'Phase A.1 — capturer flux HTTP ham-0016 LW+PROD (2 appels harnais, 0 sim/juge)'
+        description: 'T14 — capturer flux HTTP surface (S2 mobile par défaut), pas le gate harnais'
         required: false
         default: 'false'
         type: choice
@@ -166,17 +166,14 @@ jobs:
       github.event_name == 'workflow_dispatch' &&
       github.event.inputs.run_e2e == 'true'
     env:
-      AM_HARNESS_URL: ${{ secrets.AM_HARNESS_URL }}
-      AM_HARNESS_BEARER_TOKEN: ${{ secrets.AM_HARNESS_BEARER_TOKEN }}
       AM_HARNESS_MODEL_ID: ${{ secrets.AM_HARNESS_MODEL_ID }}
       AM_SIM_MODEL: ${{ secrets.AM_SIM_MODEL }}
       AM_SIM_API_KEY: ${{ secrets.AM_SIM_API_KEY }}
       AM_JUDGE_MODEL: ${{ secrets.AM_JUDGE_MODEL }}
       AM_JUDGE_API_KEY: ${{ secrets.AM_JUDGE_API_KEY }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-      ALLOW_BENCH_MODE: 'true'
-      AM_HARNESS_BENCH_EMAIL: th1b4ut.dev@gmail.com
-      AM_HARNESS_TRANSPORT: http
+      AM_HARNESS_SURFACE: CORE
+      WEBAPP_REPO_PATH: ${{ github.workspace }}/hvac-bench/AskMarcel-WebApp-NextJS
     steps:
       - uses: actions/checkout@v4
         with:
@@ -185,8 +182,7 @@ jobs:
         with:
           repository: askmarcel/AskMarcel-WebApp-NextJS
           token: ${{ secrets.WEBAPP_REPO_TOKEN }}
-          path: AskMarcel-WebApp-NextJS
-        continue-on-error: true
+          path: hvac-bench/AskMarcel-WebApp-NextJS
       - uses: pnpm/action-setup@v4
         with:
           version: 9
@@ -196,34 +192,17 @@ jobs:
       - name: Install bench
         working-directory: hvac-bench
         run: pnpm install --no-frozen-lockfile
-      - name: Régénérer JWT bench
+      - name: WebApp env (harnais in-process)
+        working-directory: hvac-bench
         env:
-          AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
-        run: |
-          if [ -n "$AM_HARNESS_BENCH_PASSWORD" ] && [ -n "$NEXT_PUBLIC_SUPABASE_URL" ] && [ -n "$NEXT_PUBLIC_SUPABASE_ANON_KEY" ]; then
-            cd hvac-bench && pnpm add @supabase/supabase-js@^2 --silent
-            TOKEN=$(node --input-type=module -e "
-              import { createClient } from '@supabase/supabase-js';
-              const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, { auth: { persistSession: false } });
-              const { data, error } = await c.auth.signInWithPassword({ email: process.env.AM_HARNESS_BENCH_EMAIL, password: process.env.AM_HARNESS_BENCH_PASSWORD });
-              if (error || !data.session?.access_token) { console.error(error); process.exit(1); }
-              process.stdout.write(data.session.access_token);
-            ")
-            echo "AM_HARNESS_BEARER_TOKEN=$TOKEN" >> "$GITHUB_ENV"
-          fi
-      - name: Vérifier URL harnais
-        run: |
-          if [ -z "$AM_HARNESS_URL" ]; then
-            echo "::error::AM_HARNESS_URL requis (preview WebApp ou staging)"
-            exit 1
-          fi
-          if [ -z "$AM_HARNESS_BEARER_TOKEN" ]; then
-            echo "::error::AM_HARNESS_BEARER_TOKEN requis"
-            exit 1
-          fi
-      - name: Dry-run T10 (2 cas × 3 bras)
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.AM_HARNESS_SUPABASE_SERVICE_ROLE_KEY }}
+        run: bash am/scripts/setup-webapp-bench-env.sh AskMarcel-WebApp-NextJS
+      - name: Install WebApp
+        working-directory: hvac-bench/AskMarcel-WebApp-NextJS
+        run: pnpm install --no-frozen-lockfile
+      - name: Dry-run T10 (2 cas × 3 bras, CORE)
         working-directory: hvac-bench
         run: pnpm am:dry-run
       - name: Archiver rapport dry-run
@@ -241,22 +220,21 @@ jobs:
       github.event_name == 'workflow_dispatch' &&
       github.event.inputs.run_dev == 'true'
     env:
-      AM_HARNESS_URL: ${{ secrets.AM_HARNESS_URL }}
-      AM_HARNESS_BEARER_TOKEN: ${{ secrets.AM_HARNESS_BEARER_TOKEN }}
       AM_HARNESS_MODEL_ID: ${{ secrets.AM_HARNESS_MODEL_ID }}
       AM_SIM_MODEL: ${{ secrets.AM_SIM_MODEL }}
       AM_SIM_API_KEY: ${{ secrets.AM_SIM_API_KEY }}
       AM_JUDGE_MODEL: ${{ secrets.AM_JUDGE_MODEL }}
       AM_JUDGE_API_KEY: ${{ secrets.AM_JUDGE_API_KEY }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-      AM_HARNESS_BENCH_EMAIL: th1b4ut.dev@gmail.com
-      AM_HARNESS_TRANSPORT: http
-      ALLOW_BENCH_MODE: 'true'
-      AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
-      AM_HARNESS_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
-      AM_HARNESS_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
+      AM_HARNESS_SURFACE: CORE
+      WEBAPP_REPO_PATH: ${{ github.workspace }}/AskMarcel-WebApp-NextJS
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: askmarcel/AskMarcel-WebApp-NextJS
+          token: ${{ secrets.WEBAPP_REPO_TOKEN }}
+          path: AskMarcel-WebApp-NextJS
       - uses: pnpm/action-setup@v4
         with:
           version: 9
@@ -271,34 +249,15 @@ jobs:
             echo "::error::T11 complet désactivé (coût ~90 dialogues). Valider G0 via run_smoke_parseur=true d'abord, puis force_full_t11=true."
             exit 1
           fi
-      - name: Régénérer JWT bench
+      - name: WebApp env (harnais in-process)
         env:
-          AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
-        run: |
-          if [ -n "$AM_HARNESS_BENCH_PASSWORD" ] && [ -n "$NEXT_PUBLIC_SUPABASE_URL" ] && [ -n "$NEXT_PUBLIC_SUPABASE_ANON_KEY" ]; then
-            pnpm add @supabase/supabase-js@^2 --silent
-            TOKEN=$(node --input-type=module -e "
-              import { createClient } from '@supabase/supabase-js';
-              const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, { auth: { persistSession: false } });
-              const { data, error } = await c.auth.signInWithPassword({ email: process.env.AM_HARNESS_BENCH_EMAIL, password: process.env.AM_HARNESS_BENCH_PASSWORD });
-              if (error || !data.session?.access_token) { console.error(error?.message ?? 'no token'); process.exit(1); }
-              process.stdout.write(data.session.access_token);
-            " 2>/dev/null) || true
-            if [ -n "$TOKEN" ]; then
-              echo "AM_HARNESS_BEARER_TOKEN=$TOKEN" >> "$GITHUB_ENV"
-              echo "✅ JWT bench régénéré"
-            else
-              echo "⚠️ JWT regen échoué — fallback sur AM_HARNESS_BEARER_TOKEN secret"
-            fi
-          fi
-      - name: Vérifier token harness
-        run: |
-          if [ -z "$AM_HARNESS_BEARER_TOKEN" ]; then
-            echo "::error::AM_HARNESS_BEARER_TOKEN requis (secret ou regen mot de passe bench)"
-            exit 1
-          fi
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.AM_HARNESS_SUPABASE_SERVICE_ROLE_KEY }}
+        run: bash am/scripts/setup-webapp-bench-env.sh AskMarcel-WebApp-NextJS
+      - name: Install WebApp
+        working-directory: AskMarcel-WebApp-NextJS
+        run: pnpm install --no-frozen-lockfile
       - name: Récupérer scores L0 du run précédent
         if: >-
           github.event.inputs.prior_run_id != '' &&
@@ -317,8 +276,8 @@ jobs:
           fi
           echo "L0_SCORE=$L0_SCORE" >> "$GITHUB_ENV"
           echo "✅ Score L0 récupéré : $L0_SCORE"
-      - name: Smoke parseur (ham-0016 × LW × 3 réplicats)
-        run: pnpm exec tsx am/runner/run-arm.ts --arm LW --split dev --cases ham-0016 --replicates 3
+      - name: Smoke harnais (ham-0016 × LW × 3 réplicats, CORE)
+        run: pnpm exec tsx am/runner/run-arm.ts --arm LW --split dev --surface CORE --cases ham-0016 --replicates 3
       - name: Run dev T11
         run: |
           ARGS=(--split dev --arms "${{ github.event.inputs.run_arms }}")
@@ -345,22 +304,21 @@ jobs:
       github.event_name == 'workflow_dispatch' &&
       github.event.inputs.run_smoke_parseur == 'true'
     env:
-      AM_HARNESS_URL: ${{ secrets.AM_HARNESS_URL }}
-      AM_HARNESS_BEARER_TOKEN: ${{ secrets.AM_HARNESS_BEARER_TOKEN }}
       AM_HARNESS_MODEL_ID: ${{ secrets.AM_HARNESS_MODEL_ID }}
       AM_SIM_MODEL: ${{ secrets.AM_SIM_MODEL }}
       AM_SIM_API_KEY: ${{ secrets.AM_SIM_API_KEY }}
       AM_JUDGE_MODEL: ${{ secrets.AM_JUDGE_MODEL }}
       AM_JUDGE_API_KEY: ${{ secrets.AM_JUDGE_API_KEY }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-      AM_HARNESS_BENCH_EMAIL: th1b4ut.dev@gmail.com
-      AM_HARNESS_TRANSPORT: http
-      ALLOW_BENCH_MODE: 'true'
-      AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
-      AM_HARNESS_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
-      AM_HARNESS_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
+      AM_HARNESS_SURFACE: CORE
+      WEBAPP_REPO_PATH: ${{ github.workspace }}/AskMarcel-WebApp-NextJS
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: askmarcel/AskMarcel-WebApp-NextJS
+          token: ${{ secrets.WEBAPP_REPO_TOKEN }}
+          path: AskMarcel-WebApp-NextJS
       - uses: pnpm/action-setup@v4
         with:
           version: 9
@@ -369,26 +327,16 @@ jobs:
           node-version: '22'
           cache: 'pnpm'
       - run: pnpm install --no-frozen-lockfile
-      - name: Régénérer JWT bench
+      - name: WebApp env (harnais in-process)
         env:
-          AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
-        run: |
-          if [ -n "$AM_HARNESS_BENCH_PASSWORD" ] && [ -n "$NEXT_PUBLIC_SUPABASE_URL" ] && [ -n "$NEXT_PUBLIC_SUPABASE_ANON_KEY" ]; then
-            pnpm add @supabase/supabase-js@^2 --silent
-            TOKEN=$(node --input-type=module -e "
-              import { createClient } from '@supabase/supabase-js';
-              const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, { auth: { persistSession: false } });
-              const { data, error } = await c.auth.signInWithPassword({ email: process.env.AM_HARNESS_BENCH_EMAIL, password: process.env.AM_HARNESS_BENCH_PASSWORD });
-              if (error || !data.session?.access_token) { console.error(error?.message ?? 'no token'); process.exit(1); }
-              process.stdout.write(data.session.access_token);
-            " 2>/dev/null) || true
-            if [ -n "$TOKEN" ]; then
-              echo "AM_HARNESS_BEARER_TOKEN=$TOKEN" >> "$GITHUB_ENV"
-            fi
-          fi
-      - name: Smoke parseur ham-0016 × 3 × LW+PROD
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.AM_HARNESS_SUPABASE_SERVICE_ROLE_KEY }}
+        run: bash am/scripts/setup-webapp-bench-env.sh AskMarcel-WebApp-NextJS
+      - name: Install WebApp
+        working-directory: AskMarcel-WebApp-NextJS
+        run: pnpm install --no-frozen-lockfile
+      - name: Smoke harnais ham-0016 × 3 × LW+PROD (CORE)
         run: pnpm am:smoke-parseur
 
   capture-stream:
@@ -525,22 +473,21 @@ jobs:
       github.event_name == 'workflow_dispatch' &&
       github.event.inputs.run_gate == 'true'
     env:
-      AM_HARNESS_URL: ${{ secrets.AM_HARNESS_URL }}
-      AM_HARNESS_BEARER_TOKEN: ${{ secrets.AM_HARNESS_BEARER_TOKEN }}
       AM_HARNESS_MODEL_ID: ${{ secrets.AM_HARNESS_MODEL_ID }}
       AM_SIM_MODEL: ${{ secrets.AM_SIM_MODEL }}
       AM_SIM_API_KEY: ${{ secrets.AM_SIM_API_KEY }}
       AM_JUDGE_MODEL: ${{ secrets.AM_JUDGE_MODEL }}
       AM_JUDGE_API_KEY: ${{ secrets.AM_JUDGE_API_KEY }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-      AM_HARNESS_BENCH_EMAIL: th1b4ut.dev@gmail.com
-      AM_HARNESS_TRANSPORT: http
-      ALLOW_BENCH_MODE: 'true'
-      AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
-      AM_HARNESS_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
-      AM_HARNESS_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
+      AM_HARNESS_SURFACE: CORE
+      WEBAPP_REPO_PATH: ${{ github.workspace }}/AskMarcel-WebApp-NextJS
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: askmarcel/AskMarcel-WebApp-NextJS
+          token: ${{ secrets.WEBAPP_REPO_TOKEN }}
+          path: AskMarcel-WebApp-NextJS
       - uses: pnpm/action-setup@v4
         with:
           version: 9
@@ -549,34 +496,15 @@ jobs:
           node-version: '22'
           cache: 'pnpm'
       - run: pnpm install --no-frozen-lockfile
-      - name: Régénérer JWT bench
+      - name: WebApp env (harnais in-process)
         env:
-          AM_HARNESS_BENCH_PASSWORD: ${{ secrets.AM_HARNESS_BENCH_PASSWORD }}
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.AM_HARNESS_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.AM_HARNESS_SUPABASE_ANON_KEY }}
-        run: |
-          if [ -n "$AM_HARNESS_BENCH_PASSWORD" ] && [ -n "$NEXT_PUBLIC_SUPABASE_URL" ] && [ -n "$NEXT_PUBLIC_SUPABASE_ANON_KEY" ]; then
-            pnpm add @supabase/supabase-js@^2 --silent
-            TOKEN=$(node --input-type=module -e "
-              import { createClient } from '@supabase/supabase-js';
-              const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, { auth: { persistSession: false } });
-              const { data, error } = await c.auth.signInWithPassword({ email: process.env.AM_HARNESS_BENCH_EMAIL, password: process.env.AM_HARNESS_BENCH_PASSWORD });
-              if (error || !data.session?.access_token) { console.error(error?.message ?? 'no token'); process.exit(1); }
-              process.stdout.write(data.session.access_token);
-            " 2>/dev/null) || true
-            if [ -n "$TOKEN" ]; then
-              echo "AM_HARNESS_BEARER_TOKEN=$TOKEN" >> "$GITHUB_ENV"
-              echo "✅ JWT bench régénéré"
-            else
-              echo "⚠️ JWT regen échoué — fallback sur AM_HARNESS_BEARER_TOKEN secret"
-            fi
-          fi
-      - name: Vérifier token harness
-        run: |
-          if [ -z "$AM_HARNESS_BEARER_TOKEN" ]; then
-            echo "::error::AM_HARNESS_BEARER_TOKEN requis (secret ou regen mot de passe bench)"
-            exit 1
-          fi
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.AM_HARNESS_SUPABASE_SERVICE_ROLE_KEY }}
+        run: bash am/scripts/setup-webapp-bench-env.sh AskMarcel-WebApp-NextJS
+      - name: Install WebApp
+        working-directory: AskMarcel-WebApp-NextJS
+        run: pnpm install --no-frozen-lockfile
       - name: Run gate T12 (3 bras × 10 cas × 3 réplicats)
         run: pnpm am:run-iteration --split gate
       - name: Archiver rapports gate

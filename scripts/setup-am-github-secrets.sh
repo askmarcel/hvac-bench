@@ -65,6 +65,11 @@ fi
 if [[ -n "${NEXT_PUBLIC_SUPABASE_ANON_KEY:-}" ]]; then
   gh secret set AM_HARNESS_SUPABASE_ANON_KEY --body "$NEXT_PUBLIC_SUPABASE_ANON_KEY" --repo "$REPO"
 fi
+SUPABASE_SERVICE_ROLE_KEY="${SUPABASE_SERVICE_ROLE_KEY:-$(load_env_var "$WEBAPP_DIR/.env" SUPABASE_SERVICE_ROLE_KEY 2>/dev/null || true)}"
+if [[ -n "${SUPABASE_SERVICE_ROLE_KEY:-}" ]]; then
+  echo "→ Service role Supabase (harnais in-process CI)"
+  gh secret set AM_HARNESS_SUPABASE_SERVICE_ROLE_KEY --body "$SUPABASE_SERVICE_ROLE_KEY" --repo "$REPO"
+fi
 
 if [[ -f "$WEBAPP_DIR/scripts/create-am-harness-bearer-token.ts" ]]; then
   if [[ -n "${AM_HARNESS_BENCH_PASSWORD:-}" ]]; then
