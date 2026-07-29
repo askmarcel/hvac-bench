@@ -82,9 +82,16 @@ export async function sendHarnessTurnInProcess(args: HarnessTurnArgs): Promise<s
 
   return new Promise((resolvePromise, reject) => {
     const { command, args } = resolveBenchSubprocess();
+    const shim = resolve(import.meta.dirname, '../scripts/bench-server-only-shim.cjs');
+    const nodeOptions = [
+      process.env.NODE_OPTIONS ?? '',
+      existsSync(shim) ? `--require ${shim}` : '',
+    ]
+      .filter(Boolean)
+      .join(' ');
     const child = spawn(command, args, {
       cwd: WEBAPP_ROOT,
-      env: process.env,
+      env: { ...process.env, ...(nodeOptions ? { NODE_OPTIONS: nodeOptions } : {}) },
       stdio: ['pipe', 'pipe', 'pipe'],
     });
 
