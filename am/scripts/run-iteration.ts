@@ -13,6 +13,7 @@ import { existsSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import { refreshHarnessBearerToken } from '../runner/bench-auth.js';
+import { assertWebappGitCleanForGate } from '../runner/manifest.js';
 
 const HVAC_BENCH_ROOT = resolve(import.meta.dirname, '../..');
 const AM_REPORTS = resolve(HVAC_BENCH_ROOT, 'am/reports');
@@ -77,6 +78,13 @@ async function main() {
   if (split !== 'dev' && split !== 'gate') {
     console.error('--split doit être dev ou gate');
     process.exit(1);
+  }
+
+  try {
+    assertWebappGitCleanForGate(split);
+  } catch (e) {
+    console.error(`🚫 ${(e as Error).message}`);
+    process.exit(2);
   }
 
   const arms = parseArms();

@@ -18,19 +18,16 @@ import {
   type MechanicalScore,
   type RunTranscript,
 } from '../scorer/mechanical.js';
+import { toRunTranscript } from '../runner/transcript-types.js';
 import { MissingApiKeyError } from '../llm-client.js';
 
 const AM_ROOT = resolve(import.meta.dirname, '..');
 const HVAC_BENCH_ROOT = resolve(AM_ROOT, '..');
 const TAXONOMY_PATH = resolve(HVAC_BENCH_ROOT, 'taxonomy/quantities-v3.json');
 
-type RawRecord = {
-  case_id: string;
-  replicate: number;
-  turns: Array<{ role: 'technicien' | 'installateur'; content: string }>;
-  status: 'completed' | 'blocked' | 'error';
-  blocked_reason?: string;
-};
+import type { TranscriptRecord } from '../runner/transcript-types.js';
+
+type RawRecord = TranscriptRecord;
 
 type RunManifest = {
   run_id: string;
@@ -39,7 +36,27 @@ type RunManifest = {
   replicates: number;
 };
 
-type CaseFile = AmCaseForScoring & { verite: Verite };
+type CaseFile = AmCaseForScoring & {
+  verite: Verite;
+  installation?: { emetteur?: string };
+};
+
+function withEmitterCondition(record: RawRecord, emetteur?: string): RawRecord {
+  if (!emetteur) return record;
+  return {
+    ...record,
+    turns: record.turns.map((turn) => {
+      if (!turn.plages_annoncees?.length) return turn;
+      return {
+        ...turn,
+        plages_annoncees: turn.plages_annoncees.map((p) => ({
+          ...p,
+          condition: p.condition ?? emetteur,
+        })),
+      };
+    }),
+  };
+}
 
 type ScoredReplicate = {
   case_id: string;
@@ -85,12 +102,8 @@ function formatTranscriptText(turns: RawRecord['turns']): string {
   return turns.map((t) => `${t.role === 'technicien' ? 'Technicien' : 'Installateur'}: ${t.content}`).join('\n\n');
 }
 
-function toRunTranscript(record: RawRecord): RunTranscript {
-  return {
-    case_id: record.case_id,
-    turns: record.turns.map((t) => ({ role: t.role, content: t.content })),
-    verdict: null,
-  };
+function toRunTranscriptFromRecord(record: RawRecord): RunTranscript {
+  return toRunTranscript(record);
 }
 
 function median(values: number[]): number | null {
@@ -170,7 +183,19 @@ async function main() {
       }
     }
 
-    const mechanical = scoreTranscript(toRunTranscript(record), amCase, taxonomy);
+    const mechanical = scoreTranscript(
+      toRunTranscriptFromRecord(
+        withEmitterCondition(
+          record,
+          typeof amCase.installation?.emetteur === 'string'
+            ? amCase.installation.emetteur
+            : undefined,
+        ),
+      ),
+      amCase,
+      taxonomy,
+      manifest.arm,
+    );
 
     scored.push({
       case_id: record.case_id,

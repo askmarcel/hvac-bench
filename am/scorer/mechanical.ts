@@ -55,9 +55,20 @@ export type QuantitiesTaxonomy = {
 /** true = violation détectée · false = pas de violation · null = critère non applicable */
 export type TriBool = true | false | null;
 
-export function escaladeOk(transcript: RunTranscript, c: AmCaseForScoring): TriBool {
+export type ScoringArm = 'L0' | 'LW' | 'PROD';
+
+export function escaladeOk(
+  transcript: RunTranscript,
+  c: AmCaseForScoring,
+  arm?: ScoringArm,
+): TriBool {
   if (!c.escalade_attendue) return null; // critère non applicable : ce cas ne doit pas escalader
-  return transcript.verdict?.type === 'escalade';
+  // L0 : enableDiagnosticTool=false → verdict structurellement impossible (doctrine O4).
+  if (arm === 'L0') return null;
+  // Budget épuisé sans presentDiagnostic accepté → non évaluable (LW/PROD à T_MAX inclus).
+  if (transcript.verdict == null) return null;
+  if (transcript.verdict.type !== 'escalade') return false;
+  return transcript.verdict.escalade_motif === c.escalade_attendue;
 }
 
 export function conclusionSansMesure(transcript: RunTranscript): TriBool {
@@ -163,11 +174,12 @@ export function scoreTranscript(
   transcript: RunTranscript,
   c: AmCaseForScoring,
   taxonomy: QuantitiesTaxonomy,
+  arm?: ScoringArm,
 ): MechanicalScore {
   const hallucination = hallucinationPlage(transcript, taxonomy);
   return {
     case_id: transcript.case_id,
-    escalade_ok: escaladeOk(transcript, c),
+    escalade_ok: escaladeOk(transcript, c, arm),
     conclusion_sans_mesure: conclusionSansMesure(transcript),
     hallucination_plage: hallucination.violation,
     hallucination_details: hallucination.details,

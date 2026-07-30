@@ -14,6 +14,7 @@ import {
   type MechanicalScore,
   type QuantitiesTaxonomy,
   type RunTranscript,
+  type ScoringArm,
 } from '../scorer/mechanical.js';
 
 const AM_ROOT = resolve(import.meta.dirname, '..');
@@ -22,6 +23,7 @@ const TAXONOMY_PATH = resolve(AM_ROOT, '../taxonomy/quantities-v3.json');
 
 type Fixture = {
   name: string;
+  arm?: ScoringArm;
   case: AmCaseForScoring;
   transcript: RunTranscript;
   expected: Partial<{
@@ -56,7 +58,7 @@ function main() {
   const scores: Record<string, MechanicalScore> = {};
 
   for (const fx of fixtures) {
-    const score = scoreTranscript(fx.transcript, fx.case, taxonomy);
+    const score = scoreTranscript(fx.transcript, fx.case, taxonomy, fx.arm);
     scores[fx.name] = score;
 
     const errors = [

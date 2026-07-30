@@ -19,11 +19,20 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { randomUUID } from 'node:crypto';
 import { resolve } from 'node:path';
 
-import { HarnessUnavailableError, sendHarnessTurn, resolveHarnessBaseUrl, type HarnaisMode } from './harness-client.js';
+import { HarnessUnavailableError, sendHarnessTurn, resolveHarnessBaseUrl, type HarnaisMode, type HarnessTurnResponse } from './harness-client.js';
 import { getHarnessBearerToken, invalidateHarnessTokenCache, isJwtExpiredError } from './bench-auth.js';
-import { buildManifest, loadCasesForSplit } from './manifest.js';
+import { buildManifest, loadCasesForSplit, assertWebappGitCleanForGate } from './manifest.js';
+import { resolveHarnessModelId } from './harness-model-config.js';
+import {
+  enrichTurnFromHarnessResponse,
+  isTerminalVerdict,
+  type EnrichedTurnFields,
+} from './transcript-enrich.js';
+import { inferInstallerReading } from './transcript-parse.js';
+import type { TranscriptRecord, TranscriptTurn } from './transcript-types.js';
 import { MissingApiKeyError } from '../llm-client.js';
 import { simulateInstallerReply, type AmCase, type SimTurn } from '../sim/simulator.js';
+import type { RunVerdict } from '../scorer/mechanical.js';
 
 const AM_ROOT = resolve(import.meta.dirname, '..');
 const HVAC_BENCH_ROOT = resolve(AM_ROOT, '..');
@@ -81,15 +90,6 @@ function parseArgs() {
   };
 }
 
-type TranscriptTurn = { role: 'technicien' | 'installateur'; content: string };
-type TranscriptRecord = {
-  case_id: string;
-  replicate: number;
-  turns: TranscriptTurn[];
-  status: 'completed' | 'blocked' | 'error';
-  blocked_reason?: string;
-};
-
 /** Historique UIMessage simplifié pour /api/mobile/chat — plainte initiale toujours en tête (comme Expo). */
 function buildHarnessMessages(
   plainteInitiale: string,
@@ -109,7 +109,7 @@ function buildHarnessMessages(
 
 async function callHarnessTurn(
   args: Omit<Parameters<typeof sendHarnessTurn>[0], 'bearerToken'>,
-): Promise<string> {
+): Promise<HarnessTurnResponse> {
   const http =
     args.surface !== 'CORE' && process.env.AM_HARNESS_TRANSPORT === 'http';
   if (!http) {
@@ -136,6 +136,31 @@ async function callHarnessTurn(
   throw new Error('callHarnessTurn: unreachable');
 }
 
+function pushTechnicienTurn(
+  turns: TranscriptTurn[],
+  response: HarnessTurnResponse,
+  enriched: EnrichedTurnFields & { verdict?: RunVerdict | null },
+): RunVerdict | null {
+  turns.push({
+    role: 'technicien',
+    content: response.text,
+    action_id: enriched.action_id,
+    plages_annoncees: enriched.plages_annoncees,
+    finish_reason: enriched.finish_reason,
+    warnings: enriched.warnings,
+  });
+  return enriched.verdict ?? null;
+}
+
+function harnessModelId(): string {
+  return resolveHarnessModelId();
+}
+
+function plageConditionFromCase(amCase: AmCase & { id: string }): string | undefined {
+  const emetteur = amCase.installation?.emetteur;
+  return typeof emetteur === 'string' && emetteur.length > 0 ? emetteur : undefined;
+}
+
 async function playCase(
   amCase: AmCase & { id: string },
   replicate: number,
@@ -143,6 +168,7 @@ async function playCase(
 ): Promise<TranscriptRecord> {
   const chatId = randomUUID();
   const turns: TranscriptTurn[] = [];
+  let verdict: RunVerdict | null = null;
   const harnaisMode = ARM_TO_MODE[args.arm];
   const plainteInitiale = amCase.plainte_initiale.trim();
   if (!plainteInitiale) {
@@ -150,6 +176,7 @@ async function playCase(
       case_id: amCase.id,
       replicate,
       turns,
+      verdict: null,
       status: 'error',
       blocked_reason: 'plainte_initiale vide sur le cas',
     };
@@ -157,13 +184,12 @@ async function playCase(
 
   turns.push({ role: 'installateur', content: plainteInitiale });
 
-  let technicienMessage: string;
   try {
-    technicienMessage = await callHarnessTurn({
+    const firstResponse = await callHarnessTurn({
       baseUrl: args.baseUrl,
       chatId,
       harnaisMode,
-      modelId: process.env.AM_HARNESS_MODEL_ID ?? 'fast-marcel',
+      modelId: harnessModelId(),
       messages: buildHarnessMessages(plainteInitiale, []),
       surface: args.surface,
       diagnosticContext: amCase.equipement?.marque
@@ -173,15 +199,31 @@ async function playCase(
           }
         : null,
     });
+    const enriched = enrichTurnFromHarnessResponse(firstResponse, {
+      plageCondition: plageConditionFromCase(amCase),
+    });
+    const turnVerdict = pushTechnicienTurn(turns, firstResponse, enriched);
+    if (turnVerdict) verdict = turnVerdict;
+    if (isTerminalVerdict(verdict)) {
+      return { case_id: amCase.id, replicate, turns, verdict, status: 'completed' };
+    }
   } catch (e) {
     if (e instanceof HarnessUnavailableError) {
-      return { case_id: amCase.id, replicate, turns, status: 'blocked', blocked_reason: e.message };
+      return {
+        case_id: amCase.id,
+        replicate,
+        turns,
+        verdict: null,
+        status: 'blocked',
+        blocked_reason: e.message,
+      };
     }
     throw e;
   }
-  turns.push({ role: 'technicien', content: technicienMessage });
 
   const simHistory: SimTurn[] = [];
+  let technicienMessage = turns[turns.length - 1]!.content;
+
   for (let tour = 0; tour < T_MAX; tour++) {
     let installerReply: string;
     try {
@@ -193,20 +235,34 @@ async function playCase(
       installerReply = result.reply;
     } catch (e) {
       if (e instanceof MissingApiKeyError) {
-        return { case_id: amCase.id, replicate, turns, status: 'blocked', blocked_reason: e.message };
+        return {
+          case_id: amCase.id,
+          replicate,
+          turns,
+          verdict,
+          status: 'blocked',
+          blocked_reason: e.message,
+        };
       }
       throw e;
     }
-    turns.push({ role: 'installateur', content: installerReply });
+    const installerTurn: TranscriptTurn = { role: 'installateur', content: installerReply };
+    const reading = inferInstallerReading(
+      technicienMessage,
+      installerReply,
+      amCase.ground_state,
+    );
+    if (reading) installerTurn.reading = reading;
+    turns.push(installerTurn);
     simHistory.push({ role: 'technicien', content: technicienMessage });
     simHistory.push({ role: 'installateur', content: installerReply });
 
     try {
-      technicienMessage = await callHarnessTurn({
+      const response = await callHarnessTurn({
         baseUrl: args.baseUrl,
         chatId,
         harnaisMode,
-        modelId: process.env.AM_HARNESS_MODEL_ID ?? 'fast-marcel',
+        modelId: harnessModelId(),
         messages: buildHarnessMessages(plainteInitiale, simHistory),
         surface: args.surface,
         diagnosticContext: amCase.equipement?.marque
@@ -216,20 +272,36 @@ async function playCase(
             }
           : null,
       });
+      const enriched = enrichTurnFromHarnessResponse(response, {
+        plageCondition: plageConditionFromCase(amCase),
+      });
+      const turnVerdict = pushTechnicienTurn(turns, response, enriched);
+      if (turnVerdict) verdict = turnVerdict;
+      technicienMessage = response.text;
+      if (isTerminalVerdict(verdict)) {
+        break;
+      }
     } catch (e) {
       if (e instanceof HarnessUnavailableError) {
-        return { case_id: amCase.id, replicate, turns, status: 'blocked', blocked_reason: e.message };
+        return {
+          case_id: amCase.id,
+          replicate,
+          turns,
+          verdict,
+          status: 'blocked',
+          blocked_reason: e.message,
+        };
       }
       throw e;
     }
-    turns.push({ role: 'technicien', content: technicienMessage });
   }
 
-  return { case_id: amCase.id, replicate, turns, status: 'completed' };
+  return { case_id: amCase.id, replicate, turns, verdict, status: 'completed' };
 }
 
 async function main() {
   const args = parseArgs();
+  assertWebappGitCleanForGate(args.split);
   const transport =
     args.surface !== 'CORE' && process.env.AM_HARNESS_TRANSPORT === 'http' ? 'http' : 'in-process';
   console.log(`Harnais: ${args.surface} · transport: ${transport}`);

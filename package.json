@@ -76,6 +76,7 @@
     "am:check-sim": "tsx am/scripts/check-sim.ts",
     "am:check-judge": "tsx am/scripts/check-judge.ts",
     "am:check-scorer": "tsx am/scripts/check-scorer.ts",
+    "am:check-transcript-contract": "tsx am/scripts/check-transcript-contract.ts",
     "am:run-dev": "tsx am/runner/run-arm.ts --split dev",
     "am:run-gate": "tsx am/runner/run-arm.ts --split gate",
     "am:score": "tsx am/scripts/score-run.ts",

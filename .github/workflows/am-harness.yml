@@ -338,6 +338,16 @@ jobs:
         run: pnpm install --no-frozen-lockfile
       - name: Smoke harnais ham-0016 × 3 × LW+PROD (CORE)
         run: pnpm am:smoke-parseur
+      - name: Archiver transcripts smoke
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: am-smoke-parseur
+          path: |
+            runs/**/raw.jsonl
+            runs/**/manifest.json
+            runs/**/score.json
+          retention-days: 90
 
   capture-stream:
     runs-on: ubuntu-latest
@@ -513,6 +523,8 @@ jobs:
         with:
           name: am-gate-report
           path: |
-            hvac-bench/am/reports/gate-iteration-*.md
-            hvac-bench/runs/**/score.json
+            am/reports/gate-iteration-*.md
+            runs/**/score.json
+            runs/**/raw.jsonl
+            runs/**/manifest.json
           retention-days: 90

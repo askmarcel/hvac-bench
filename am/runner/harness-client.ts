@@ -40,6 +40,46 @@ export type HarnessTurnArgs = {
   surface?: HarnessSurface;
 };
 
+export type HarnessStepSnapshot = {
+  text: string;
+  toolCalls: Array<{ toolName: string; input?: unknown }>;
+  toolResults?: Array<{ toolName: string; output?: unknown }>;
+  finishReason?: string;
+};
+
+export type AcceptedDiagnosticSnapshot = {
+  accepted: true;
+  verdict: 'conclusion' | 'escalade';
+  cause?: string;
+  escalade?: { motif: string; detail: string };
+  mesuresRecues?: Array<{ grandeur: string; valeur: string }>;
+};
+
+export type HarnessTurnResponse = {
+  text: string;
+  finishReason?: string;
+  warnings: string[];
+  steps?: HarnessStepSnapshot[];
+  acceptedDiagnostic?: AcceptedDiagnosticSnapshot;
+  openrouter?: {
+    upstreamProvider: string | null;
+    apiModelServed: string | null;
+    providerMetadata: Record<string, unknown> | null;
+  };
+  errorDetail?: { message: string; name?: string; cause?: string; warnings: string[] };
+};
+
+type BenchStdoutPayload = {
+  text?: string;
+  error?: string;
+  finishReason?: string;
+  warnings?: string[];
+  steps?: HarnessStepSnapshot[];
+  acceptedDiagnostic?: AcceptedDiagnosticSnapshot;
+  openrouter?: HarnessTurnResponse['openrouter'];
+  errorDetail?: HarnessTurnResponse['errorDetail'];
+};
+
 const WEBAPP_ROOT = process.env.WEBAPP_REPO_PATH
   ? resolve(process.env.WEBAPP_REPO_PATH)
   : resolve(import.meta.dirname, '../../../AskMarcel-WebApp-NextJS');
@@ -70,7 +110,86 @@ function useHttpTransport(surface?: HarnessSurface): boolean {
   return process.env.AM_HARNESS_TRANSPORT === 'http';
 }
 
-export async function sendHarnessTurnInProcess(args: HarnessTurnArgs): Promise<string> {
+function validateHarnessTurnResponse(parsed: BenchStdoutPayload): HarnessTurnResponse {
+  if (parsed.error) {
+    throw new HarnessUnavailableError(parsed.error);
+  }
+
+  const finishReason = parsed.finishReason;
+  const warnings = parsed.warnings ?? [];
+
+  if (finishReason === 'error' || finishReason === 'length') {
+    const detail = [
+      `finishReason=${finishReason}`,
+      parsed.openrouter?.upstreamProvider
+        ? `upstreamProvider=${parsed.openrouter.upstreamProvider}`
+        : null,
+      warnings.length > 0 ? `warnings=${warnings.join('; ')}` : null,
+      parsed.errorDetail?.cause ? `cause=${parsed.errorDetail.cause}` : null,
+    ]
+      .filter(Boolean)
+      .join('; ');
+    throw new HarnessUnavailableError(detail || `finishReason=${finishReason}`);
+  }
+
+  if (!parsed.text?.trim()) {
+    const detail = [
+      'réponse vide du subprocess bench-harnais-turn',
+      finishReason ? `finishReason=${finishReason}` : null,
+      warnings.length > 0 ? `warnings=${warnings.join('; ')}` : null,
+    ]
+      .filter(Boolean)
+      .join('; ');
+    throw new HarnessUnavailableError(detail);
+  }
+
+  if (warnings.length > 0) {
+    const rendered = warnings.map((w) => (typeof w === 'string' ? w : JSON.stringify(w))).join('; ');
+    console.warn(`⚠️  harness turn warnings: ${rendered}`);
+  }
+
+  return {
+    text: parsed.text,
+    finishReason,
+    warnings,
+    steps: parsed.steps,
+    acceptedDiagnostic: parsed.acceptedDiagnostic,
+    openrouter: parsed.openrouter,
+    errorDetail: parsed.errorDetail,
+  };
+}
+
+function parseBenchStdout(stdout: string, stderr: string, code: number | null): HarnessTurnResponse {
+  const trimmed = stdout.trim();
+  let parsed: BenchStdoutPayload | null = null;
+  try {
+    parsed = JSON.parse(trimmed) as BenchStdoutPayload;
+  } catch {
+    const detail = [
+      `JSON invalide (exit ${code ?? '?'})`,
+      trimmed ? `stdout=${trimmed.slice(0, 200)}` : null,
+      stderr ? `stderr=${stderr.slice(0, 200)}` : null,
+    ]
+      .filter(Boolean)
+      .join('; ');
+    throw new HarnessUnavailableError(detail);
+  }
+
+  if (code !== 0) {
+    const detail = [
+      parsed.error ?? `exit ${code}`,
+      parsed.finishReason ? `finishReason=${parsed.finishReason}` : null,
+      stderr ? `stderr=${stderr.slice(0, 200)}` : null,
+    ]
+      .filter(Boolean)
+      .join('; ');
+    throw new HarnessUnavailableError(detail);
+  }
+
+  return validateHarnessTurnResponse(parsed);
+}
+
+export async function sendHarnessTurnInProcess(args: HarnessTurnArgs): Promise<HarnessTurnResponse> {
   const payload = JSON.stringify({
     harnaisMode: args.harnaisMode,
     modelId: args.modelId,
@@ -81,7 +200,7 @@ export async function sendHarnessTurnInProcess(args: HarnessTurnArgs): Promise<s
   });
 
   return new Promise((resolvePromise, reject) => {
-    const { command, args } = resolveBenchSubprocess();
+    const { command, args: spawnArgs } = resolveBenchSubprocess();
     const shim = resolve(import.meta.dirname, '../scripts/bench-server-only-shim.cjs');
     const nodeOptions = [
       process.env.NODE_OPTIONS ?? '',
@@ -89,9 +208,13 @@ export async function sendHarnessTurnInProcess(args: HarnessTurnArgs): Promise<s
     ]
       .filter(Boolean)
       .join(' ');
-    const child = spawn(command, args, {
+    const child = spawn(command, spawnArgs, {
       cwd: WEBAPP_ROOT,
-      env: { ...process.env, ...(nodeOptions ? { NODE_OPTIONS: nodeOptions } : {}) },
+      env: {
+        ...process.env,
+        AM_HARNESS_BENCH_MODE: 'true',
+        ...(nodeOptions ? { NODE_OPTIONS: nodeOptions } : {}),
+      },
       stdio: ['pipe', 'pipe', 'pipe'],
     });
 
@@ -105,23 +228,10 @@ export async function sendHarnessTurnInProcess(args: HarnessTurnArgs): Promise<s
     });
     child.on('error', (e) => reject(new HarnessUnavailableError(e.message)));
     child.on('close', (code) => {
-      if (code !== 0) {
-        reject(new HarnessUnavailableError(stderr.trim() || `exit ${code}`));
-        return;
-      }
       try {
-        const parsed = JSON.parse(stdout.trim()) as { text?: string; error?: string };
-        if (parsed.error) {
-          reject(new HarnessUnavailableError(parsed.error));
-          return;
-        }
-        if (!parsed.text) {
-          reject(new HarnessUnavailableError('réponse vide du subprocess bench-harnais-turn'));
-          return;
-        }
-        resolvePromise(parsed.text);
-      } catch {
-        reject(new HarnessUnavailableError(`JSON invalide: ${stdout.slice(0, 200)}`));
+        resolvePromise(parseBenchStdout(stdout, stderr, code));
+      } catch (e) {
+        reject(e);
       }
     });
 
@@ -130,7 +240,7 @@ export async function sendHarnessTurnInProcess(args: HarnessTurnArgs): Promise<s
   });
 }
 
-export async function sendHarnessTurnHttp(args: HarnessTurnArgs): Promise<string> {
+export async function sendHarnessTurnHttp(args: HarnessTurnArgs): Promise<HarnessTurnResponse> {
   if (!args.bearerToken) {
     throw new HarnessUnavailableError('bearerToken requis pour transport HTTP');
   }
@@ -172,11 +282,11 @@ export async function sendHarnessTurnHttp(args: HarnessTurnArgs): Promise<string
   if (!text) {
     throw new HarnessUnavailableError('réponse reçue mais aucun texte extrait du flux');
   }
-  return text;
+  return { text, warnings: [] };
 }
 
 /** Point d'entrée unifié — CORE in-process par défaut (D3 / O6). HTTP = surfaces T14 uniquement. */
-export async function sendHarnessTurn(args: HarnessTurnArgs): Promise<string> {
+export async function sendHarnessTurn(args: HarnessTurnArgs): Promise<HarnessTurnResponse> {
   if (useHttpTransport(args.surface)) {
     return sendHarnessTurnHttp(args);
   }

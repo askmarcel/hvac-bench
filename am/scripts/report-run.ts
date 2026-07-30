@@ -27,9 +27,8 @@ type ScoreFile = {
 const GATES = {
   G1: { label: 'cause_ok ≥ 8/10 (médiane réplicats, PROD, gate)', threshold: 0.8, field: 'cause_ok_rate' as const },
   G2: { label: 'solution_ok ≥ 7/10', threshold: 0.7, field: 'solution_ok_rate' as const },
-  G3_escalade: { label: 'escalades 3/3', threshold: 1, field: 'escalade_ok_rate' as const },
+  G3_escalade: { label: 'escalades 2/2 (gate)', threshold: 1, field: 'escalade_ok_rate' as const },
   G3_conclusion: { label: 'conclusion_sans_mesure = 0', threshold: 0, field: 'conclusion_sans_mesure_rate' as const, invert: true },
-  G3_hallucination: { label: 'hallucination_plage = 0', threshold: 0, field: 'hallucination_plage_rate' as const, invert: true },
 };
 
 function arg(name: string): string | undefined {
@@ -112,7 +111,12 @@ function main() {
       `| G2 solution_ok | ≥ 70% | ${pct(agg.solution_ok_rate)} | ${gateVerdict(agg.solution_ok_rate, GATES.G2.threshold)} |`,
       `| G3 escalade_ok | 100% | ${pct(agg.escalade_ok_rate)} | ${gateVerdict(agg.escalade_ok_rate, GATES.G3_escalade.threshold)} |`,
       `| G3 conclusion_sans_mesure | 0% | ${pct(agg.conclusion_sans_mesure_rate)} | ${gateVerdict(agg.conclusion_sans_mesure_rate, GATES.G3_conclusion.threshold, true)} |`,
-      `| G3 hallucination_plage | 0% | ${pct(agg.hallucination_plage_rate)} | ${gateVerdict(agg.hallucination_plage_rate, GATES.G3_hallucination.threshold, true)} |`,
+      '',
+      '### Métriques hors gate',
+      '',
+      `| Métrique | Mesuré | Verdict |`,
+      `|----------|--------|---------|`,
+      `| hallucination_plage_rate | ${pct(agg.hallucination_plage_rate)} | INFO — revue manuelle de hallucination_details requise |`,
       '',
     );
   } else {

@@ -58,6 +58,58 @@
       "expected": { "escalade_ok": false }
     },
     {
+      "name": "escalade-wrong-motif",
+      "case": {
+        "id": "fixture-escalade-wrong-motif",
+        "chemin_expert": ["MES-DT-EAU", "ESC-BUREAU-ETUDES"],
+        "escalade_attendue": "sous_dimensionnement"
+      },
+      "transcript": {
+        "case_id": "fixture-escalade-wrong-motif",
+        "turns": [
+          { "role": "technicien", "content": "Mesure le delta T eau.", "action_id": "MES-DT-EAU" },
+          { "role": "installateur", "content": "6K.", "reading": { "quantity_id": "delta_t_eau", "value": 6, "unit": "K" } }
+        ],
+        "verdict": { "type": "escalade", "escalade_motif": "sav_verrouille" }
+      },
+      "expected": { "escalade_ok": false }
+    },
+    {
+      "name": "escalade-correct-motif",
+      "case": {
+        "id": "fixture-escalade-correct-motif",
+        "chemin_expert": ["MES-DT-EAU", "ESC-BUREAU-ETUDES"],
+        "escalade_attendue": "sous_dimensionnement"
+      },
+      "transcript": {
+        "case_id": "fixture-escalade-correct-motif",
+        "turns": [
+          { "role": "technicien", "content": "Mesure le delta T eau.", "action_id": "MES-DT-EAU" },
+          { "role": "installateur", "content": "6K.", "reading": { "quantity_id": "delta_t_eau", "value": 6, "unit": "K" } }
+        ],
+        "verdict": { "type": "escalade", "escalade_motif": "sous_dimensionnement" }
+      },
+      "expected": { "escalade_ok": true }
+    },
+    {
+      "name": "escalade-l0-non-evaluable",
+      "arm": "L0",
+      "case": {
+        "id": "fixture-escalade-l0",
+        "chemin_expert": ["MES-DT-EAU", "ESC-BUREAU-ETUDES"],
+        "escalade_attendue": "sous_dimensionnement"
+      },
+      "transcript": {
+        "case_id": "fixture-escalade-l0",
+        "turns": [
+          { "role": "technicien", "content": "Mesure le delta T eau.", "action_id": "MES-DT-EAU" },
+          { "role": "installateur", "content": "6K.", "reading": { "quantity_id": "delta_t_eau", "value": 6, "unit": "K" } }
+        ],
+        "verdict": null
+      },
+      "expected": { "escalade_ok": null }
+    },
+    {
       "name": "conclusion-sans-mesure-violation",
       "case": {
         "id": "fixture-conclusion-sans-mesure",
